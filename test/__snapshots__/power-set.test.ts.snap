@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`power set power set 1`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`power set power set 2`] = `
+Array [
+  Array [
+    1,
+  ],
+]
+`;
+
+exports[`power set power set 3`] = `
+Array [
+  Array [
+    1,
+    2,
+  ],
+]
+`;
+
+exports[`power set power set 4`] = `
+Array [
+  Array [
+    1,
+    2,
+    3,
+  ],
+]
+`;
