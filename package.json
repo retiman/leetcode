@@ -11,12 +11,12 @@
     "url": "git+https://github.com/retiman/leetcode.git"
   },
   "scripts": {
-    "all": "npm run clean && npm run build && npm run fix",
+    "all": "npm run clean && npm run build && npm run fix && npm run test",
     "build": "tsc --project tsconfig.json",
     "clean": "node scripts/clean.mjs",
     "fix": "npm run lint:fix && npm run format:fix",
-    "format:fix": "prettier --write src test",
-    "lint:fix": "eslint --fix --ext .ts src test",
+    "format:fix": "prettier --write test",
+    "lint:fix": "eslint --fix --ext .ts test",
     "test": "jest --roots test"
   },
   "main": "dist/index.js",
