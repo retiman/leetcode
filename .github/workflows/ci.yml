@@ -28,5 +28,17 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Fix
+        run: npm run fix
+
+      - name: Commit
+        id: commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: github-actions[bot]
+          author_email: github-actions[bot]@github.com
+          message: Automatic commit via GitHub Actions
+
       - name: Test
+        if: ${{ steps.commit.outputs.committed == 'false' }}
         run: npm run test
