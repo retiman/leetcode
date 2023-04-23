@@ -25,6 +25,8 @@ describe('breadth first search', () => {
       const queue: Array<string> = [root];
 
       while (queue.length > 0) {
+        // Because the queue is non-empty, the shift() function cannot return undefined, but apparently Typescript does
+        // not know that.
         const u = queue.shift() as string;
         if (this.visited.has(u)) {
           continue;
