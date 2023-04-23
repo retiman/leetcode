@@ -28,11 +28,14 @@ describe('depth first search', () => {
         return;
       }
 
+      // Add the node to the visited list and start recording preorder.
+      //
       // A preordering gives the order that nodes were DISCOVERED in.  As is, this will give a lexicographical ordering of
       // the elements (or a generalization of alphabetical order).
       this.visited.add(u);
       this.preorder.push(u);
 
+      // Recursively visit the frontier nodes one by one.
       const frontier = this.adj.get(u);
       frontier?.forEach(v => this.runInternal(v));
 
