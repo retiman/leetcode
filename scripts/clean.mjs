@@ -1,3 +1,6 @@
+import * as fs from 'fs';
 import * as fse from 'fs-extra';
 
-fse.rmSync('build', { recursive: true });
+if (fs.existsSync('build')) {
+  fse.rmSync('build', { recursive: true });
+}
