@@ -25,7 +25,7 @@ describe('breadth first search', () => {
       const queue: Array<string> = [root];
 
       while (queue.length > 0) {
-        const u = queue.shift();
+        const u = queue.shift() as string;
         if (this.visited.has(u)) {
           continue;
         }
