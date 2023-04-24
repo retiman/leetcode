@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`power set run 1`] = `Set {}`;
-
-exports[`power set run 2`] = `Set {}`;
+exports[`power set run 1`] = `
+Set {
+  Set {},
+  Set {
+    1,
+  },
+}
+`;
