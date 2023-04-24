@@ -34,7 +34,9 @@ describe('power set', () => {
   }
 
   test('run', async () => {
-    // expect(ps([])).toMatchSnapshot();
+    expect(ps([])).toMatchSnapshot();
     expect(ps([1])).toMatchSnapshot();
+    expect(ps([1, 2])).toMatchSnapshot();
+    expect(ps([1, 2, 3])).toMatchSnapshot();
   });
 });

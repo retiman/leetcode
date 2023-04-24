@@ -3,7 +3,61 @@
 exports[`power set run 1`] = `
 Set {
   Set {},
+}
+`;
+
+exports[`power set run 2`] = `
+Set {
+  Set {},
   Set {
+    1,
+  },
+}
+`;
+
+exports[`power set run 3`] = `
+Set {
+  Set {},
+  Set {
+    2,
+  },
+  Set {
+    1,
+  },
+  Set {
+    2,
+    1,
+  },
+}
+`;
+
+exports[`power set run 4`] = `
+Set {
+  Set {},
+  Set {
+    3,
+  },
+  Set {
+    2,
+  },
+  Set {
+    3,
+    2,
+  },
+  Set {
+    1,
+  },
+  Set {
+    3,
+    1,
+  },
+  Set {
+    2,
+    1,
+  },
+  Set {
+    3,
+    2,
     1,
   },
 }
