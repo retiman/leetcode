@@ -34,10 +34,10 @@ describe('permutations', () => {
   });
 
   test('run 1, 2, 3, 4', async () => {
-    const ps = permutations([1,2,3,4]);
-    const length = 4*3*2*1;
+    const ps = permutations([1, 2, 3, 4]);
+    const length = 4 * 3 * 2 * 1;
 
     expect(ps.length).toBe(length);
     expect(ps).toMatchSnapshot();
-  })
+  });
 });
