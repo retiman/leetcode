@@ -1,3 +1,14 @@
+build/
 coverage/
 dist/
 node_modules/
+
+# Ignore all the dotfiles in the repository root.
+*.*
+LICENSE
+
+# Unless they are a certain file type or explicitly included.
+package.json
+tsconfig.json
+!*.js
+!*.mjs
