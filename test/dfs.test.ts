@@ -19,7 +19,9 @@ describe('depth first search', () => {
     }
 
     public run() {
-      this.nodes.forEach(u => { this.runInternal(u); });
+      this.nodes.forEach(u => {
+        this.runInternal(u);
+      });
       return [this.preorder, this.postorder];
     }
 
@@ -37,7 +39,9 @@ describe('depth first search', () => {
 
       // Recursively visit the frontier nodes one by one.
       const frontier = this.adj.get(u);
-      frontier?.forEach(v => { this.runInternal(v); });
+      frontier?.forEach(v => {
+        this.runInternal(v);
+      });
 
       // A postordering gives the order that nodes were VISITED in.  As is, it's not that useful.  REVERSING this list
       // will give you a topological sort.
