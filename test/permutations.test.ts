@@ -1,5 +1,5 @@
 describe('permutations', () => {
-  function permutations(xs: Array<number>): Array<Array<number>> {
+  function permutations(xs: number[]): number[][] {
     if (xs.length === 0) {
       return [[]];
     }

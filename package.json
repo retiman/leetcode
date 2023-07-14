@@ -18,8 +18,8 @@
     "format:fix": "prettier --write **/*",
     "lint": "eslint --ext .js,.ts .",
     "lint:fix": "eslint --ext .js,.ts --fix .",
-    "postbuild": "node script/postbuild.js",
-    "test": "jest --config test/jest.config.js",
+    "snapshot:update": "npm run test -- -u",
+    "test": "jest --config jest.config.js",
     "all": "npm run clean && npm run fix && npm run build && npm run test"
   },
   "main": "dist/index.js",

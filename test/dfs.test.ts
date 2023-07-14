@@ -1,16 +1,16 @@
 describe('depth first search', () => {
   type Vertex = string;
   type Edge = [string, string];
-  type Graph = Array<Edge>;
+  type Graph = Edge[];
 
   class DepthFirstSearch {
     private readonly adj: Map<Vertex, Set<Vertex>>;
-    private readonly nodes: Array<string>;
+    private readonly nodes: string[];
     private readonly visited: Set<string>;
-    private readonly preorder: Array<string>;
-    private readonly postorder: Array<string>;
+    private readonly preorder: string[];
+    private readonly postorder: string[];
 
-    constructor(graph: Array<Edge>) {
+    constructor(graph: Edge[]) {
       this.adj = this.makeAdjacencyList(graph);
       this.nodes = [...this.adj.keys()];
       this.visited = new Set();
@@ -19,7 +19,7 @@ describe('depth first search', () => {
     }
 
     public run() {
-      this.nodes.forEach(u => this.runInternal(u));
+      this.nodes.forEach(u => { this.runInternal(u); });
       return [this.preorder, this.postorder];
     }
 
@@ -37,7 +37,7 @@ describe('depth first search', () => {
 
       // Recursively visit the frontier nodes one by one.
       const frontier = this.adj.get(u);
-      frontier?.forEach(v => this.runInternal(v));
+      frontier?.forEach(v => { this.runInternal(v); });
 
       // A postordering gives the order that nodes were VISITED in.  As is, it's not that useful.  REVERSING this list
       // will give you a topological sort.
@@ -45,7 +45,7 @@ describe('depth first search', () => {
     }
 
     private makeAdjacencyList(graph: Graph) {
-      const adj: Map<Vertex, Set<Vertex>> = new Map();
+      const adj = new Map<Vertex, Set<Vertex>>();
 
       graph.forEach(([u, v]) => {
         const us = adj.get(u) ?? new Set();
@@ -62,7 +62,7 @@ describe('depth first search', () => {
   }
 
   test('run', async () => {
-    const graph: Array<Edge> = [
+    const graph: Edge[] = [
       ['a', 'b'],
       ['a', 'c'],
       ['a', 'e'],

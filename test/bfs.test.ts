@@ -1,15 +1,15 @@
 describe('breadth first search', () => {
   type Vertex = string;
   type Edge = [string, string];
-  type Graph = Array<Edge>;
+  type Graph = Edge[];
 
   class BreadthFirstSearch {
     private readonly adj: Map<Vertex, Set<Vertex>>;
-    private readonly nodes: Array<string>;
+    private readonly nodes: string[];
     private readonly visited: Set<string>;
-    private readonly result: Array<string>;
+    private readonly result: string[];
 
-    constructor(graph: Array<Edge>) {
+    constructor(graph: Edge[]) {
       this.adj = this.makeAdjacencyList(graph);
       this.nodes = [...this.adj.keys()];
       this.visited = new Set();
@@ -22,7 +22,7 @@ describe('breadth first search', () => {
       }
 
       const root = this.nodes[0];
-      const queue: Array<string> = [root];
+      const queue: string[] = [root];
 
       while (queue.length > 0) {
         // Because the queue is non-empty, the shift() function cannot return undefined, but apparently Typescript does
@@ -45,7 +45,7 @@ describe('breadth first search', () => {
     }
 
     private makeAdjacencyList(graph: Graph) {
-      const adj: Map<Vertex, Set<Vertex>> = new Map();
+      const adj = new Map<Vertex, Set<Vertex>>();
 
       graph.forEach(([u, v]) => {
         const us = adj.get(u) ?? new Set();
@@ -62,7 +62,7 @@ describe('breadth first search', () => {
   }
 
   test('run', async () => {
-    const graph: Array<Edge> = [
+    const graph: Edge[] = [
       ['a', 'b'],
       ['a', 'c'],
       ['a', 'e'],
