@@ -1,5 +1,5 @@
 describe('power set', () => {
-  function __ps(xs: Set<number>): Set<Set<number>> {
+  function _ps(xs: Set<number>): Set<Set<number>> {
     if (xs.size === 0) {
       // Note that new Set(new Set()) gives you a set with zero elements, because the constructor takes all elements of
       // the first argument and adds them to the set.  So you actually want to construct a new iterable based on the
@@ -14,10 +14,10 @@ describe('power set', () => {
     const rest = new Set(xs);
     rest.delete(x);
 
-    const excluded: Set<Set<number>> = __ps(rest);
+    const excluded: Set<Set<number>> = _ps(rest);
 
     // Add x to all of the subsets from above.
-    const included: Set<Set<number>> = new Set();
+    const included = new Set<Set<number>>();
     excluded.forEach(ex => {
       const rest = new Set(ex);
       rest.add(x);
@@ -29,8 +29,8 @@ describe('power set', () => {
     return new Set([...excluded, ...included]);
   }
 
-  function ps(xs: Array<number>) {
-    return __ps(new Set(xs));
+  function ps(xs: number[]) {
+    return _ps(new Set(xs));
   }
 
   test('run', async () => {
