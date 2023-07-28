@@ -32,6 +32,8 @@ describe('depth first search', () => {
       return [this.preorder, this.postorder];
     }
 
+    // The general strategy is to preorder visit the node, then recursively call this function on frontier nodes.
+    // Finally postorder visit the node.
     private runInternal(u: string) {
       if (this.visited.has(u)) {
         return;
