@@ -1,3 +1,10 @@
+// Depth first search can be used to solve a variety of problems.
+//
+// For a DAG, a reverse postorder traversal gives you a topological sort.
+//
+// The binary tree inorder traversal is done with DFS.
+//
+// See https://leetcode.com/problems/binary-tree-inorder-traversal/
 describe('depth first search', () => {
   type Vertex = string;
   type Edge = [string, string];

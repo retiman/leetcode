@@ -1,3 +1,8 @@
+// Breadth first search can be used to solve a variety of problems.
+//
+// The level order traversal of a binary search tree is essentially BFS.
+//
+// See https://leetcode.com/problems/binary-tree-level-order-traversal/
 describe('breadth first search', () => {
   type Vertex = string;
   type Edge = [string, string];
