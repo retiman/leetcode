@@ -41,7 +41,6 @@ describe('coin sum', () => {
       }
     });
 
-    console.log(ways);
     return ways[target];
   }
 

@@ -21,10 +21,17 @@
     "outDir": "./build",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017",
+    "target": "ES6",
     "typeRoots": ["node_modules/@types"],
-    "types": ["node", "@types/jest"]
+    "types": ["jest", "node"]
   },
-  "include": ["script", "src", "test", ".eslintrc.js", "jest.config.js", "jest.setup.js"],
-  "exclude": ["dist", "node_modules"]
+  // For some reason, @typescript-eslint/parser will check the files you ask to lint against files included in the
+  // project here.  Why does it do that?  I don't know.  However, if you want source files linted, they must appear
+  // here.
+  //
+  // This only applies to TypeScript/JavaScript files, so there is no need to list everything.
+  //
+  // See https://stackoverflow.com/questions/61956555/why-is-typescript-eslint-parser-including-files-outside-of-those-configured-in
+  // See https://www.typescriptlang.org/tsconfig#include
+  "include": ["script", "src", "test", ".eslintrc.js", ".prettierrc.js"],
 }
