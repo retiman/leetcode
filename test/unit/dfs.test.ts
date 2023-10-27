@@ -12,9 +12,13 @@ describe('depth first search', () => {
 
   class DepthFirstSearch {
     private readonly adj: Map<Vertex, Set<Vertex>>;
+
     private readonly nodes: string[];
+
     private readonly visited: Set<string>;
+
     private readonly preorder: string[];
+
     private readonly postorder: string[];
 
     constructor(graph: Edge[]) {

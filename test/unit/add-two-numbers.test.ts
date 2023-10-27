@@ -60,7 +60,7 @@ describe('add two numbers', () => {
 
     const xs: number[] = [];
     for (let i = s.length - 1; i >= 0; i--) {
-      const d = parseInt(s.charAt(i));
+      const d = parseInt(s.charAt(i), 10 /* radix */);
       xs.push(d);
     }
 

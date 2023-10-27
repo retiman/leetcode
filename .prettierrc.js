@@ -4,6 +4,7 @@ module.exports = {
   bracketSpacing: true,
   endOfLine: 'lf',
   printWidth: 120,
+  proseWrap: 'always',
   quoteProps: 'as-needed',
   semi: true,
   singleQuote: true,

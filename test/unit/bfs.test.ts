@@ -10,8 +10,11 @@ describe('breadth first search', () => {
 
   class BreadthFirstSearch {
     private readonly adj: Map<Vertex, Set<Vertex>>;
+
     private readonly nodes: string[];
+
     private readonly visited: Set<string>;
+
     private readonly result: string[];
 
     constructor(graph: Edge[]) {

@@ -15,6 +15,8 @@ describe('two sum', () => {
         }
       }
     }
+
+    return [];
   }
 
   function findFaster(xs: number[], target: number) {
@@ -30,14 +32,16 @@ describe('two sum', () => {
 
       // Otherwise, loop through the list as usual.
       for (let j = i + 1; j < xs.length; j += 1) {
-        const y = xs[j];
-        m.set(y, j);
+        const z = xs[j];
+        m.set(z, j);
 
-        if (x + y === target) {
+        if (x + z === target) {
           return [i, j];
         }
       }
     }
+
+    return [];
   }
 
   test('run', async () => {
