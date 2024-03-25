@@ -1,14 +1,14 @@
 {
-  "name": "@retiman/leetcode",
+  "name": "@retiman/project-blind",
   "version": "0.0.1",
   "license": "MIT",
   "author": "Min Huang",
   "email": "min.huang@alumni.usc.edu",
-  "description": "Leetcode problems and solutions",
-  "homepage": "https://github.com/retiman/leetcode#README.md",
+  "description": "Leetcode, hackerrank, and other problems with solutions",
+  "homepage": "https://github.com/retiman/project-blind#README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/retiman/leetcode.git"
+    "url": "git+https://github.com/retiman/project-blind.git"
   },
   "scripts": {
     "build": "tsc",

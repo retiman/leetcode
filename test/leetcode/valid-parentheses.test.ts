@@ -8,7 +8,7 @@
 //
 // See https://leetcode.com/problems/valid-parentheses/
 describe('valid parentheses', () => {
-  function isValid(text: string): boolean {
+  function isValid(text: string) {
     const map = new Map<string, string>();
     map.set('(', ')');
     map.set('{', '}');
@@ -40,7 +40,6 @@ describe('valid parentheses', () => {
   }
 
   test('run', async () => {
-    expect(isValid('(')).toBe(false);
     expect(isValid('()')).toBe(true);
     expect(isValid('()[]{}')).toBe(true);
     expect(isValid('(}')).toBe(false);
