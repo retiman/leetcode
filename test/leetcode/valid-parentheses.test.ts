@@ -36,7 +36,7 @@ describe('valid parentheses', () => {
       }
     }
 
-    return true;
+    return stack.length === 0;
   }
 
   test('run', async () => {
