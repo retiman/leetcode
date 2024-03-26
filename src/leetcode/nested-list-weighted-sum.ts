@@ -14,7 +14,7 @@ export class NestedInteger {
 
   // Return true if this NestedInteger holds a single integer, rather than a nested list.
   isInteger(): boolean {
-    return this.value !== undefined;
+    return this.value !== null;
   }
 
   // Return the single integer that this NestedInteger holds, if it holds a single integer
