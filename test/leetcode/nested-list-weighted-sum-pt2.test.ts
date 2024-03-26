@@ -6,7 +6,7 @@
 //
 // Return the sum of each integer in nestedList multiplied by its weight.
 //
-// See https://leetcode.com/problems/nested-list-weight-sum-ii/description/
+// See https://leetcode.com/problems/nested-list-weight-sum-ii/
 import { NestedInteger } from '../../src/leetcode/nested-list-weighted-sum';
 
 describe('nested list weighted sum pt2', () => {
