@@ -7,7 +7,7 @@
 // See https://leetcode.com/problems/nested-list-weight-sum
 import { NestedInteger } from '../../src/leetcode/nested-list-weighted-sum';
 
-describe('nested list weighted sum pt2', () => {
+describe('nested list weighted sum pt1', () => {
   function depthSum(nestedList: NestedInteger[]): number {
     function compute(x: NestedInteger, depth: number): number {
       if (x.isInteger()) {
