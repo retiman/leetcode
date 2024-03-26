@@ -5,38 +5,9 @@
 // Return the head of the merged linked list.
 //
 // See https://leetcode.com/problems/merge-two-sorted-lists/
+import { list2node, ListNode } from '../../src/leetcode/merge-two-sorted-lists';
+
 describe('merge two sorted lists', () => {
-  // This class definition comes from the problem itself and we cannot change it, or else our submission will not be
-  // accepted.
-  class ListNode {
-    val: number;
-
-    next: ListNode | null;
-
-    constructor(val?: number, next?: ListNode | null) {
-      this.val = val === undefined ? 0 : val;
-      this.next = next === undefined ? null : next;
-    }
-  }
-
-  function list2node(xs: number[]) {
-    let head: ListNode | null = null;
-    let current: ListNode | null = null;
-
-    xs.forEach(x => {
-      const node = new ListNode(x);
-      if (current === null) {
-        current = node;
-        head = node;
-      } else {
-        current.next = node;
-        current = current.next;
-      }
-    });
-
-    return head;
-  }
-
   function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
     let head: ListNode | null = null;
     let current: ListNode | null = null;
