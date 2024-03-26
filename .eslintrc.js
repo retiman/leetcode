@@ -62,6 +62,11 @@ module.exports = {
     // See https://eslint.org/docs/latest/rules/no-continue
     // See https://refactoring.com/catalog/replaceNestedConditionalWithGuardClauses.html
     'no-continue': 'off',
+    // Disabled because some solutions can be implemented more naturally with a while (true) loop.
+    'no-constant-condition': 'off',
+    // Disabled because some solutions run more optimally if you do mutate the inputs.  This will trigger even if you
+    // reassign a field in an object, which makes it more convenient if turned off.
+    'no-param-reassign': 'off',
     // Disabled because this is convenient in for loops.  Generally it is disabled because automatic semicolon insertion
     // can inadvertently change semantics.
     //
