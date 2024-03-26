@@ -14,7 +14,7 @@ describe('merge k sorted lists', () => {
       // We scan every element to find the minimum value and then add it to the current head.  In theory we could sort
       // the list first, then when one of the lists advances, remove it from the list and then insert it again in sorted
       // order resulting in a log(n) optimization.
-      let min: number | undefined = undefined;
+      let min: number | undefined;
       let index = -1;
       for (let i = 0; i < lists.length; i++) {
         const node = lists[i];
