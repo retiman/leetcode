@@ -11,7 +11,11 @@ export class ListNode {
   }
 }
 
-export function list2node(xs: number[]) {
+export function list2node(xs: number[] | null): ListNode | null {
+  if (xs === null) {
+    return null;
+  }
+
   let head: ListNode | null = null;
   let current: ListNode | null = null;
 
@@ -27,4 +31,19 @@ export function list2node(xs: number[]) {
   });
 
   return head;
+}
+
+export function node2list(node: ListNode | null): number[] {
+  if (node === null) {
+    return [];
+  }
+
+  const xs: number[] = [];
+  let current: ListNode | null = node;
+  while (current !== null) {
+    xs.push(current.val);
+    current = current.next;
+  }
+
+  return xs;
 }

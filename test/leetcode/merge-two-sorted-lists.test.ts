@@ -5,12 +5,12 @@
 // Return the head of the merged linked list.
 //
 // See https://leetcode.com/problems/merge-two-sorted-lists/
-import { list2node, ListNode } from '../../src/leetcode/merge-two-sorted-lists';
+import { ListNode, list2node, node2list } from '../../src/leetcode/merge-k-sorted-lists';
 
 describe('merge two sorted lists', () => {
   function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
     let head: ListNode | null = null;
-    let current: ListNode | null = null;
+    let tail: ListNode | null = null;
     let left = list1;
     let right = list2;
 
@@ -37,12 +37,12 @@ describe('merge two sorted lists', () => {
         }
       }
 
-      if (current === null) {
-        current = node;
+      if (tail === null) {
+        tail = node;
         head = node;
       } else {
-        current.next = node;
-        current = current.next;
+        tail.next = node;
+        tail = tail.next;
       }
     }
 
@@ -50,10 +50,17 @@ describe('merge two sorted lists', () => {
   }
 
   test('run', async () => {
-    expect(mergeTwoLists(null, null)).toBeNull();
-    expect(mergeTwoLists(new ListNode(1), null)).toStrictEqual(new ListNode(1));
-    expect(mergeTwoLists(null, new ListNode(1))).toStrictEqual(new ListNode(1));
-    expect(mergeTwoLists(new ListNode(1), new ListNode(2))).toMatchSnapshot();
-    expect(mergeTwoLists(list2node([1, 2, 4]), list2node([1, 3, 4]))).toMatchSnapshot();
+    function merge(xs: number[] | null, ys: number[] | null) {
+      const left = list2node(xs);
+      const right = list2node(ys);
+      const merged = mergeTwoLists(left, right);
+      return merged === null ? null : node2list(merged);
+    }
+
+    expect(merge(null, null)).toBeNull();
+    expect(merge([1], null)).toStrictEqual([1]);
+    expect(merge(null, [1])).toStrictEqual([1]);
+    expect(merge([1], [2])).toStrictEqual([1, 2]);
+    expect(merge([1, 2, 4], [1, 3, 4])).toStrictEqual([1, 1, 2, 3, 4, 4]);
   });
 });
