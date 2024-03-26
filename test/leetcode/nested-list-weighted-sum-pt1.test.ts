@@ -16,16 +16,20 @@ describe('nested list weighted sum pt1', () => {
         return value * weight;
       }
 
-      return x
-        .getList()
-        .map(y => compute(y, depth + 1))
-        .reduce((a, b) => a + b);
+      let result = 0;
+      const ys = x.getList();
+      for (let i = 0; i < ys.length; i++) {
+        const y = ys[i];
+        result += compute(y, depth + 1);
+      }
+
+      return result;
     }
 
     const x = new NestedInteger();
-    nestedList.forEach(y => {
-      x.add(y);
-    });
+    for (let i = 0; i < nestedList.length; i++) {
+      x.add(nestedList[i]);
+    }
 
     return compute(x, 0);
   }
