@@ -5,7 +5,7 @@
 //
 // You can return the answer in any order.
 //
-// See https://leetcode.com/problems/two-sum
+// See https://leetcode.com/problems/two-sum/
 describe('two sum', () => {
   function find(xs: number[], target: number) {
     for (let i = 0; i < xs.length; i += 1) {
