@@ -25,6 +25,7 @@ module.exports = {
         varsIgnorePattern: '^_',
       },
     ],
+    '@typescript-eslint/no-use-before-define': 'off',
     // Disabled because there's no reason to enable this except to be pedantic.  Code organization desires may dictate
     // that methods not using this should still be methods.  For example, there are situations where it's desirable to
     // define only instance methods for ease of use, or you would prefer that the caller not have to know or care that
