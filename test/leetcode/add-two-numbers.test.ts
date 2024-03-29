@@ -4,82 +4,51 @@
 // You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 //
 // See https://leetcode.com/problems/add-two-numbers/
-import { ListNode } from '../../src/leetcode/add-two-numbers';
-import * as main from '../../src/leetcode/add-two-numbers';
+import { ListNode, list2node, node2list } from '../../src/leetcode/add-two-numbers';
 
 describe('add two numbers', () => {
-  function addTwoNumbers(x: ListNode, y: ListNode): ListNode {
-    function node2list(node: ListNode): number[] {
-      const xs: number[] = [];
-      let current: ListNode | null = node;
-      while (current !== null) {
-        xs.push(current.val);
-        current = current.next;
-      }
-      return xs;
-    }
-
-    function list2number(xs: number[]): number {
-      let result = 0;
-
-      for (let i = xs.length - 1; i >= 0; i--) {
-        const d = xs[i];
-        result += d * 10 ** i;
+  // A naive solution of converting the nodes to numbers, adding them, and them, and then reconstructing the linked list
+  // does work, but is a bunch more code.
+  //
+  // Since the lists are stored in reverse order, you can add the two head nodes, preserving a carry, and create a new
+  // node, in the same way you would do elementary school addition.
+  function addTwoNumbers(x: ListNode | null, y: ListNode | null): ListNode | null {
+    function add(u: ListNode | null, v: ListNode | null, carry: number) {
+      if (u === null && v === null) {
+        return carry > 0 ? new ListNode(1) : null;
       }
 
-      return result;
+      // Compute the sum and carry for the current node.
+      const a = u?.val ?? 0;
+      const b = v?.val ?? 0;
+      const sum = a + b + carry;
+      const val = sum < 10 ? sum : sum - 10;
+      const node = new ListNode();
+
+      // Compute the sum for the next node and attach it to this one.
+      const uNext = u?.next ?? null;
+      const vNext = v?.next ?? null;
+      const carryNext = sum < 10 ? 0 : 1;
+      node.val = val;
+      node.next = add(uNext, vNext, carryNext);
+      return node;
     }
 
-    function number2list(n: number): number[] {
-      const s = n.toString(10 /* radix */);
-
-      const xs: number[] = [];
-      for (let i = s.length - 1; i >= 0; i--) {
-        const d = parseInt(s.charAt(i), 10 /* radix */);
-        xs.push(d);
-      }
-
-      return xs;
-    }
-
-    function list2node(xs: number[]): ListNode {
-      let root: ListNode | undefined;
-      let current: ListNode | undefined;
-
-      for (let i = 0; i < xs.length; i++) {
-        if (current === undefined) {
-          current = {
-            val: xs[i],
-            next: null,
-          };
-          root = current;
-          continue;
-        }
-
-        current.next = {
-          val: xs[i],
-          next: null,
-        };
-        current = current.next;
-      }
-
-      return root as unknown as ListNode;
-    }
-
-    const a = list2number(node2list(x));
-    const b = list2number(node2list(y));
-    const sum = a + b;
-    return list2node(number2list(sum));
+    return add(x, y, 0);
   }
 
   test('run', async () => {
     function add(a: number[], b: number[]) {
-      const x = main.list2node(a);
-      const y = main.list2node(b);
-      const z = addTwoNumbers(x, y);
-      return main.node2list(z);
+      const x = list2node(a);
+      const y = list2node(b);
+      const z = node2list(addTwoNumbers(x, y));
+      return z;
     }
 
-    expect(add([2, 4, 3], [5, 6, 4])).toStrictEqual([7, 0, 8]);
+    // expect(add([2, 4, 3], [5, 6, 4])).toStrictEqual([7, 0, 8]);
+    expect(add([9, 9, 9, 9, 9, 9, 9], [9, 9, 9, 9])).toStrictEqual([8, 9, 9, 9, 0, 0, 0, 1]);
+    expect(
+      add([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [5, 6, 4]),
+    ).toStrictEqual([6, 6, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]);
   });
 });

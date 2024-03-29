@@ -1,9 +1,19 @@
-export interface ListNode {
+export class ListNode {
   val: number;
+
   next: ListNode | null;
+
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
+  }
 }
 
-export function node2list(node: ListNode): number[] {
+export function node2list(node: ListNode | null): number[] {
+  if (node === null) {
+    return [];
+  }
+
   const xs: number[] = [];
   let current: ListNode | null = node;
   while (current !== null) {
