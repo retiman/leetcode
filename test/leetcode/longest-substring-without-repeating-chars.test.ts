@@ -37,7 +37,8 @@ describe('longest substring without repeating characters', () => {
   // string as we loop through the characters.
   //
   // Instead, we'll maintain a map of character -> index, where the index is the time where we most recently encountered
-  // that character.  We'll use that to
+  // that character.  We'll use that index, along with the current index, to update our knowledge of what the max length
+  // substring is.
   function lengthOfLongestSubstring(text: string): number {
     // Use start as the index of the current substring under consideration.
     let start = 0;
