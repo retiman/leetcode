@@ -2,6 +2,37 @@
 //
 // See https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 describe('longest substring without repeating characters', () => {
+  // The naive way of doing this problem would be to generate all substrings, then check if each of the substrings has
+  // unique characters, updating a max length as we go along.
+  function slowLengthOfLongestSubstring(text: string): number {
+    function isNoRepeats(s: string) {
+      const set = new Set<string>();
+      for (let i = 0; i < s.length; i++) {
+        const c = s.charAt(i);
+        if (set.has(c)) {
+          return false;
+        }
+
+        set.add(c);
+      }
+
+      return true;
+    }
+
+    let max = 0;
+    for (let i = 0; i < text.length; i++) {
+      for (let j = i + 1; j <= text.length; j++) {
+        const substring = text.slice(i, j);
+        const len = j - i;
+        if (isNoRepeats(substring) && len > max) {
+          max = len;
+        }
+      }
+    }
+
+    return max;
+  }
+
   // Since we only need to know the length of the substring, and not exactly what it is, we don't need to build up the
   // string as we loop through the characters.
   //
@@ -41,8 +72,15 @@ describe('longest substring without repeating characters', () => {
       // Finally mark this character's last seen index in our map.
       map.set(c, i);
     }
+
     return max;
   }
+
+  test('run slowly', async () => {
+    expect(slowLengthOfLongestSubstring('abcabcbb')).toBe(3);
+    expect(slowLengthOfLongestSubstring('bbbbb')).toBe(1);
+    expect(slowLengthOfLongestSubstring('pwwkew')).toBe(3);
+  });
 
   test('run', async () => {
     expect(lengthOfLongestSubstring('abcabcbb')).toBe(3);
