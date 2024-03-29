@@ -1,5 +1,5 @@
 export interface ListNode {
-  value: number;
+  val: number;
   next: ListNode | null;
 }
 
@@ -7,20 +7,32 @@ export function node2list(node: ListNode): number[] {
   const xs: number[] = [];
   let current: ListNode | null = node;
   while (current !== null) {
-    xs.push(current.value);
+    xs.push(current.val);
     current = current.next;
   }
   return xs;
 }
 
-export function number2list(x: number): number[] {
-  const s = x.toString(10 /* radix */);
+export function list2node(xs: number[]): ListNode {
+  let root: ListNode | undefined;
+  let current: ListNode | undefined;
 
-  const xs: number[] = [];
-  for (let i = s.length - 1; i >= 0; i--) {
-    const d = parseInt(s.charAt(i), 10 /* radix */);
-    xs.push(d);
+  for (let i = 0; i < xs.length; i++) {
+    if (current === undefined) {
+      current = {
+        val: xs[i],
+        next: null,
+      };
+      root = current;
+      continue;
+    }
+
+    current.next = {
+      val: xs[i],
+      next: null,
+    };
+    current = current.next;
   }
 
-  return xs;
+  return root as unknown as ListNode;
 }
