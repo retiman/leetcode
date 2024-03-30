@@ -4,42 +4,40 @@
 //
 // See https://leetcode.com/problems/longest-common-prefix/
 describe('longest common prefix', () => {
-  // This is a naive way of finding the longest common prefix; we can optimize it a bit by not scanning through the
-  // string array twice for finding the longest string, but it does not improve the asymptotic running time.
   function longestCommonPrefix(all: string[]): string {
     if (all.length === 0) {
       return '';
     }
 
-    // Start by finding the longest string.
-    let longest = all[0];
+    // Start by assuming the first string is the longest prefix; we'll update our assumptions as we go along.
+    let prefix = all[0];
     for (let i = 1; i < all.length; i++) {
       const current = all[i];
-      if (current.length > longest.length) {
-        longest = current;
-      }
-    }
 
-    // Assume that the longest string is also the longest prefix; we'll update our assumptions as we look at the other
-    // strings.
-    let prefix = longest;
-    for (let i = 1; i < all.length; i++) {
-      // Check current string and see how much of the prefix matches; if we find a mismatching character, update the
-      // prefix to be shorter.
-      const current = all[i];
-      for (let j = 0; j < current.length; j++) {
-        if (prefix[j] !== current[j]) {
-          prefix = current.substring(0, j);
-          break;
-        }
+      let j = 0;
+      while (
+        j < current.length &&
+        // If the characters do not match at this index, then stop considering the rest.
+        prefix[j] === current[j] &&
+        // If the characters do match, but we've exceeded the current longest prefix length, there's no point in
+        // checking the rest of the characters either.
+        j < prefix.length
+      ) {
+        j += 1;
       }
+
+      // Update our assumption about the longest common prefix.
+      prefix = current.substring(0, j);
     }
 
     return prefix;
   }
 
   test('run', async () => {
+    expect(longestCommonPrefix(['ab', 'a'])).toBe('a');
+    expect(longestCommonPrefix(['a'])).toBe('a');
     expect(longestCommonPrefix(['flower', 'flow', 'flight'])).toBe('fl');
     expect(longestCommonPrefix(['dog', 'racecar', 'car'])).toBe('');
+    expect(longestCommonPrefix(['', 'car'])).toBe('');
   });
 });
