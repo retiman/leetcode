@@ -75,15 +75,10 @@ module.exports = {
     // Disabled because this is convenient in for loops.  Generally it is disabled because automatic semicolon insertion
     // can inadvertently change semantics.
     //
-    // TODO: Investigate if this is still problematic if prettier inserts semicolons after linting.
+    // It's fine.  I'll live dangerously.
     //
     // See https://eslint.org/docs/latest/rules/no-plusplus
-    'no-plusplus': [
-      'error',
-      {
-        allowForLoopAfterthoughts: true,
-      },
-    ],
+    'no-plusplus': 'off',
     // Disabled because we do want to have underscore prefixed identifiers to indicate a variable is ignored.
     //
     // See https://eslint.org/docs/latest/rules/no-underscore-dangle
