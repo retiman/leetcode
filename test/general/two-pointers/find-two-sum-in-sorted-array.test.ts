@@ -2,12 +2,9 @@ describe('find two sum in sorted array', () => {
   // If the array is not sorted, we can create a map to store the complement of the sum as we iterate through the list.
   // That method will also run in O(1) but requires some extra memory for the map.
   function run(xs: number[], target: number): number[] {
-    let left = 0;
-    let right = xs.length - 1;
-
     // Attempt to find two elements that sum to the target.  Because the list is sorted, we can start with two pointers
-    // at the beginning and end of the list, and move them accordingly as we look for the sum.
-    while (left < right) {
+    // at the beginning and end of the list, and narrow them accordingly as we look for the sum.
+    for (let left = 0, right = xs.length - 1; left < right; ) {
       const current = xs[left] + xs[right];
 
       // If we have found the target, simply return it.
