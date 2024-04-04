@@ -26,7 +26,7 @@ describe('valid number', () => {
       signed: false,
       digits: false,
       decimal: false,
-      exp: false,
+      exp: false
     };
 
     for (let i = 0; i < text.length; i++) {

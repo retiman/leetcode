@@ -66,15 +66,15 @@ describe('merge k sorted lists', () => {
     expect(
       merge([
         [1, 2, 4],
-        [1, 3, 4],
-      ]),
+        [1, 3, 4]
+      ])
     ).toStrictEqual([1, 1, 2, 3, 4, 4]);
     expect(
       merge([
         [1, 4, 5],
         [1, 3, 4],
-        [2, 6],
-      ]),
+        [2, 6]
+      ])
     ).toStrictEqual([1, 1, 2, 3, 4, 4, 5, 6]);
   });
 });

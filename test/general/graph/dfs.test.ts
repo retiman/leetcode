@@ -78,7 +78,7 @@ describe('depth first search', () => {
       ['a', 'e'],
       ['b', 'd'],
       ['b', 'f'],
-      ['c', 'g'],
+      ['c', 'g']
     ];
 
     const [preorder, postorder] = new DepthFirstSearch(graph).run();

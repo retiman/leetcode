@@ -4,11 +4,13 @@ module.exports = {
   bracketSpacing: true,
   endOfLine: 'lf',
   printWidth: 120,
-  proseWrap: 'always',
+  proseWrap: 'never',
   quoteProps: 'as-needed',
   semi: true,
   singleQuote: true,
   tabWidth: 2,
-  trailingComma: 'all',
-  useTabs: false,
+  // Prettier and ESLint will fight over trailing commas.  The latter has more options for configuring trailing commas,
+  // so disable here and let ESLint do all the work.
+  trailingComma: 'none',
+  useTabs: false
 };
