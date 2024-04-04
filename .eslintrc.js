@@ -10,7 +10,7 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json'
   },
-  plugins: ['@typescript-eslint', 'jest'],
+  plugins: ['@typescript-eslint', 'jest', 'unused-imports'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
