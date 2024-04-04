@@ -10,22 +10,39 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
-  plugins: ['jest'],
+  plugins: ['@typescript-eslint', 'jest', 'unused-imports'],
   rules: {
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    // Permits the violation of naming conventions for unused variables with a leading underscore.
+    //
+    // See https://typescript-eslint.io/rules/naming-convention/
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'variable',
+        format: ['camelCase', 'PascalCase', 'snake_case'],
+        leadingUnderscore: 'allow',
+        modifiers: ['unused']
+      },
+      {
+        selector: 'parameter',
+        format: ['camelCase', 'PascalCase', 'snake_case'],
+        leadingUnderscore: 'allow'
+      }
+    ],
     // Enabled because one should not assign the result of a void function.
     //
     // See https://typescript-eslint.io/rules/no-confusing-void-expression/
     '@typescript-eslint/no-confusing-void-expression': 'error',
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        args: 'all',
-        argsIgnorePattern: '^_',
-        vars: 'all',
-        varsIgnorePattern: '^_',
-      },
-    ],
+    '@typescript-eslint/no-meaningless-void-operator': 'error',
+    // Enabled because no-shadow reports spurious errors in TypeScript sometimes.
+    '@typescript-eslint/no-shadow': 'error',
+    '@typescript-eslint/no-unused-expressions': 'error',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
     // Disabled because there's no reason to enable this except to be pedantic.  Code organization desires may dictate
     // that methods not using this should still be methods.  For example, there are situations where it's desirable to
     // define only instance methods for ease of use, or you would prefer that the caller not have to know or care that
@@ -51,11 +68,7 @@ module.exports = {
     // See https://github.com/airbnb/javascript/issues/1365
     // See https://blog.neufund.org/why-we-have-banned-default-exports-and-you-should-do-the-same-d51fdc2cf2ad
     'import/prefer-default-export': 'off',
-    // Enabled because it is useful for some problems.  ESLint disables this by default because it assumes that a single
-    // & or | is a mistyped && or ||.
-    //
-    // See https://eslint.org/docs/latest/rules/no-bitwise
-    'no-bitwise': 'off',
+    'jest/no-disabled-tests': 'off',
     // Disabled because continue ESLint specifically is concerned about continue being used with labels.  Using this
     // with labels is akin to a goto statement, which makes code hard to reason about.  Proper use of the continue
     // statement makes code easier to read.
@@ -67,22 +80,56 @@ module.exports = {
     // See https://eslint.org/docs/latest/rules/no-continue
     // See https://refactoring.com/catalog/replaceNestedConditionalWithGuardClauses.html
     'no-continue': 'off',
+    // Disabled because it is handled by @typescript-eslint rules.
+    'no-shadow': 'off',
+    // Disabled for convenience.  Enable again if this ends up hurting the project.
+    //
+    // See https://eslint.org/docs/latest/rules/no-plusplus
+    'no-plusplus': 'off',
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'ForInStatement',
+        message: 'for..in loops iterate over the prototype chain, which is virtually never what you want'
+      },
+      {
+        selector: 'LabeledStatement',
+        message: 'labels are a form of goto; using them makes code confusing and hard to maintain'
+      },
+      {
+        selector: 'WithStatement',
+        message: 'with is disallowed in strict mode because it makes code impossible to predict and optimize'
+      }
+    ],
+    // Disabled because we do want to have underscore prefixed identifiers to indicate a variable is ignored.
+    //
+    // See https://eslint.org/docs/latest/rules/no-underscore-dangle
+    'no-underscore-dangle': 'off',
+    'no-unused-expressions': 'off',
+    'no-unused-vars': 'off',
+    'no-use-before-define': 'off',
+    'no-useless-constructor': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        argsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+        vars: 'all',
+        varsIgnorePattern: '^_'
+      }
+    ],
+    // Enabled because it is useful for some problems.  ESLint disables this by default because it assumes that a single
+    // & or | is a mistyped && or ||.
+    //
+    // See https://eslint.org/docs/latest/rules/no-bitwise
+    'no-bitwise': 'off',
     // Disabled because some solutions can be implemented more naturally with a while (true) loop.
     'no-constant-condition': 'off',
     // Disabled because some solutions run more optimally if you do mutate the inputs.  This will trigger even if you
     // reassign a field in an object, which makes it more convenient if turned off.
     'no-param-reassign': 'off',
-    // Disabled because this is convenient in for loops.  Generally it is disabled because automatic semicolon insertion
-    // can inadvertently change semantics.
-    //
-    // It's fine.  I'll live dangerously.
-    //
-    // See https://eslint.org/docs/latest/rules/no-plusplus
-    'no-plusplus': 'off',
-    // Disabled because we do want to have underscore prefixed identifiers to indicate a variable is ignored.
-    //
-    // See https://eslint.org/docs/latest/rules/no-underscore-dangle
-    'no-underscore-dangle': 'off',
   },
   ignorePatterns: ['build', 'coverage', 'dist', 'node_modules'],
 };
