@@ -71,7 +71,7 @@ describe('breadth first search', () => {
       ['a', 'e'],
       ['b', 'd'],
       ['b', 'f'],
-      ['c', 'g'],
+      ['c', 'g']
     ];
 
     const result = new BreadthFirstSearch(graph).run();

@@ -5,12 +5,12 @@ module.exports = {
     // Disables rules that are handled by prettier already.
     //
     // See https://github.com/prettier/eslint-config-prettier
-    'prettier',
+    'prettier'
   ],
   parserOptions: {
-    project: './tsconfig.json',
+    project: './tsconfig.json'
   },
-  plugins: ['@typescript-eslint', 'jest', 'unused-imports'],
+  plugins: ['@typescript-eslint', 'jest'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -39,7 +39,16 @@ module.exports = {
     // Enabled because no-shadow reports spurious errors in TypeScript sometimes.
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unused-expressions': 'error',
-    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        argsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+        vars: 'all',
+        varsIgnorePattern: '^_'
+      }
+    ],
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-var-requires': 'off',
@@ -109,17 +118,6 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-use-before-define': 'off',
     'no-useless-constructor': 'off',
-    'unused-imports/no-unused-imports': 'error',
-    'unused-imports/no-unused-vars': [
-      'error',
-      {
-        args: 'all',
-        argsIgnorePattern: '^_',
-        caughtErrorsIgnorePattern: '^_',
-        vars: 'all',
-        varsIgnorePattern: '^_'
-      }
-    ],
     // Enabled because it is useful for some problems.  ESLint disables this by default because it assumes that a single
     // & or | is a mistyped && or ||.
     //
@@ -129,7 +127,7 @@ module.exports = {
     'no-constant-condition': 'off',
     // Disabled because some solutions run more optimally if you do mutate the inputs.  This will trigger even if you
     // reassign a field in an object, which makes it more convenient if turned off.
-    'no-param-reassign': 'off',
+    'no-param-reassign': 'off'
   },
-  ignorePatterns: ['build', 'coverage', 'dist', 'node_modules'],
+  ignorePatterns: ['build', 'coverage', 'dist', 'node_modules']
 };

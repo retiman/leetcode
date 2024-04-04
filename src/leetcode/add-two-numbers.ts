@@ -31,7 +31,7 @@ export function list2node(xs: number[]): ListNode {
     if (current === undefined) {
       current = {
         val: xs[i],
-        next: null,
+        next: null
       };
       root = current;
       continue;
@@ -39,7 +39,7 @@ export function list2node(xs: number[]): ListNode {
 
     current.next = {
       val: xs[i],
-      next: null,
+      next: null
     };
     current = current.next;
   }
