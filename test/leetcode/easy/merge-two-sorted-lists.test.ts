@@ -5,7 +5,7 @@
 // Return the head of the merged linked list.
 //
 // See https://leetcode.com/problems/merge-two-sorted-lists/
-import { ListNode, list2node, node2list } from '../../src/leetcode/merge-k-sorted-lists';
+import { ListNode, list2node, node2list } from '../../../src/leetcode/hard/merge-k-sorted-lists';
 
 describe('merge two sorted lists', () => {
   function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {

@@ -4,7 +4,7 @@
 // You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 //
 // See https://leetcode.com/problems/add-two-numbers/
-import { ListNode, list2node, node2list } from '../../src/leetcode/add-two-numbers';
+import { ListNode, list2node, node2list } from '../../../src/leetcode/medium/add-two-numbers';
 
 describe('add two numbers', () => {
   // A naive solution of converting the nodes to numbers, adding them, and them, and then reconstructing the linked list
