@@ -9,41 +9,32 @@
 //
 // See https://leetcode.com/problems/product-of-array-except-self/
 describe('product of array except self', () => {
+  // If we could use division, we could just compute the product of the array (excluding zeroes), then we can divide the
+  // non-zero product by the current element if there were no zeroes, return the non-zero product if there were zeroes,
+  // or just return zero if there were multiple zeroes.
+  //
+  // Without using division we'll have to compute partial products and combine them for each element.
   function productExceptSelf(xs: number[]): number[] {
-    // Getting the product of the entire array, and then dividing by each element works, unless the array has any
-    // zeroes.
-    //
-    // So instead, get the product of the non-zero elements and record how many zeroes we saw.
-    let zeroes = 0;
-    const product = xs.reduce((a, b) => {
-      if (b === 0) {
-        zeroes++;
-        return a;
-      }
+    if (xs.length === 0) {
+      return [];
+    }
 
-      return a * b;
-    }, 1 /* initialValue */);
+    // Compute the product up to the ith index.
+    const prefixes = Array(xs.length).fill(1);
+    for (let i = 1; i < xs.length; i++) {
+      prefixes[i] = prefixes[i - 1] * xs[i - 1];
+    }
 
-    const result: number[] = [];
+    // Compute the product after the ith index.
+    const suffixes = Array(xs.length).fill(1);
+    for (let i = xs.length - 2; i >= 0; i--) {
+      suffixes[i] = suffixes[i + 1] * xs[i + 1];
+    }
+
+    // Compute the product except for the element at the ith index.
+    const result = Array(xs.length).fill(0);
     for (let i = 0; i < xs.length; i++) {
-      const x = xs[i];
-
-      // Without any zeroes in the input array, the product except self is just the product divided by self.
-      if (zeroes === 0) {
-        result.push(product / x);
-        continue;
-      }
-
-      // If there is a single zero in the, the product except self is zero, unless the element itself is zero.
-      if (zeroes === 1) {
-        result.push(x === 0 ? product : 0);
-      }
-
-      // If multiple elements are zero, then the product except self will always be zero no matter what.
-      if (zeroes > 1) {
-        result.push(0);
-        continue;
-      }
+      result[i] = prefixes[i] * suffixes[i];
     }
 
     return result;
