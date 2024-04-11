@@ -1,3 +1,5 @@
+// CATEGORY: Bit Manipulation, Math
+//
 // Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
 //
 // See https://leetcode.com/problems/powx-n/
