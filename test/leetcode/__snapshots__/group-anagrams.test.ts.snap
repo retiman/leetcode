@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`group anagrams run 1`] = `
+[
+  [
+    "eat",
+    "tea",
+    "ate",
+  ],
+  [
+    "tan",
+    "nat",
+  ],
+  [
+    "bat",
+  ],
+]
+`;
