@@ -3,7 +3,7 @@
 // Merge all the linked-lists into one sorted linked-list and return it.
 //
 // See https://leetcode.com/problems/merge-k-sorted-lists/
-import { ListNode, list2node, node2list } from '../../src/leetcode/merge-k-sorted-lists';
+import { ListNode, list2node, node2list } from '../../../src/leetcode/hard/merge-k-sorted-lists';
 
 describe('merge k sorted lists', () => {
   function mergeKLists(lists: Array<ListNode | null>): ListNode | null {

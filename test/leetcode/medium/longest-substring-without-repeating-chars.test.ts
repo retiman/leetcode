@@ -1,6 +1,6 @@
 // Given a string s, find the length of the longest substring without repeating characters.
 //
-// See https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+// See https://leetcode.com/problems/longest-substring-without-repeating-characters/
 describe('longest substring without repeating characters', () => {
   // The naive way of doing this problem would be to generate all substrings, then check if each of the substrings has
   // unique characters, updating a max length as we go along.
