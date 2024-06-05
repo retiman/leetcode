@@ -52,13 +52,13 @@ describe('letter combinations of a phone number', () => {
     return generate(digits);
   }
 
-  test('run', async () => {
-    function run(digits: string): Set<string> {
-      return new Set(letterCombinations(digits));
-    }
+  function __run(digits: string): Set<string> {
+    return new Set(letterCombinations(digits));
+  }
 
-    expect(run('')).toStrictEqual(new Set());
-    expect(run('2')).toStrictEqual(new Set(['a', 'b', 'c']));
-    expect(run('23')).toStrictEqual(new Set(['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']));
+  test('run', async () => {
+    expect(__run('')).toStrictEqual(new Set());
+    expect(__run('2')).toStrictEqual(new Set(['a', 'b', 'c']));
+    expect(__run('23')).toStrictEqual(new Set(['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']));
   });
 });
