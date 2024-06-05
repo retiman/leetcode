@@ -6,7 +6,7 @@
 describe('longest substring without repeating characters', () => {
   // The naive way of doing this problem would be to generate all substrings, then check if each of the substrings has
   // unique characters, updating a max length as we go along.
-  function slowLengthOfLongestSubstring(text: string): number {
+  function __naiveLengthOfLongestSubstring(text: string): number {
     function isNoRepeats(s: string) {
       const set = new Set<string>();
       for (let i = 0; i < s.length; i++) {
@@ -79,13 +79,13 @@ describe('longest substring without repeating characters', () => {
     return max;
   }
 
-  test('run slowly', async () => {
-    expect(slowLengthOfLongestSubstring('abcabcbb')).toBe(3);
-    expect(slowLengthOfLongestSubstring('bbbbb')).toBe(1);
-    expect(slowLengthOfLongestSubstring('pwwkew')).toBe(3);
+  test('naive length of longest substring', async () => {
+    expect(__naiveLengthOfLongestSubstring('abcabcbb')).toBe(3);
+    expect(__naiveLengthOfLongestSubstring('bbbbb')).toBe(1);
+    expect(__naiveLengthOfLongestSubstring('pwwkew')).toBe(3);
   });
 
-  test('run', async () => {
+  test('length of longest substring', async () => {
     expect(lengthOfLongestSubstring('abcabcbb')).toBe(3);
     expect(lengthOfLongestSubstring('bbbbb')).toBe(1);
     expect(lengthOfLongestSubstring('pwwkew')).toBe(3);

@@ -54,29 +54,38 @@ describe('merge k sorted lists', () => {
     return head;
   }
 
-  test('run', async () => {
-    function merge(xs: (number[] | null)[]) {
-      const lists = xs.map(x => list2node(x));
-      const merged = mergeKLists(lists);
-      return merged === null ? null : node2list(merged);
-    }
+  function __merge(xs: (number[] | null)[]) {
+    const lists = xs.map(x => list2node(x));
+    const merged = mergeKLists(lists);
+    return merged === null ? null : node2list(merged);
+  }
 
-    expect(merge([null, null])).toBeNull();
-    expect(merge([[1], null])).toStrictEqual([1]);
-    expect(merge([null, [1]])).toStrictEqual([1]);
-    expect(merge([[1], [2]])).toStrictEqual([1, 2]);
-    expect(
-      merge([
-        [1, 2, 4],
-        [1, 3, 4]
-      ])
-    ).toStrictEqual([1, 1, 2, 3, 4, 4]);
-    expect(
-      merge([
-        [1, 4, 5],
-        [1, 3, 4],
-        [2, 6]
-      ])
-    ).toStrictEqual([1, 1, 2, 3, 4, 4, 5, 6]);
+  test('merge trivial', async () => {
+    expect(__merge([null, null])).toBeNull();
+    expect(__merge([[1], null])).toStrictEqual([1]);
+    expect(__merge([null, [1]])).toStrictEqual([1]);
+  });
+
+  test('merge single', async () => {
+    expect(__merge([[1], [2]])).toStrictEqual([1, 2]);
+  });
+
+  test('merge case 1', async () => {
+    const lists = [
+      [1, 2, 4],
+      [1, 3, 4]
+    ];
+    const merged = [1, 1, 2, 3, 4, 4];
+    expect(__merge(lists)).toStrictEqual(merged);
+  });
+
+  test('merge case 2', async () => {
+    const lists = [
+      [1, 4, 5],
+      [1, 3, 4],
+      [2, 6]
+    ];
+    const merged = [1, 1, 2, 3, 4, 4, 5, 6];
+    expect(__merge(lists)).toStrictEqual(merged);
   });
 });

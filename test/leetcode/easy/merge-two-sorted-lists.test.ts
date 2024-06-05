@@ -51,18 +51,18 @@ describe('merge two sorted lists', () => {
     return head;
   }
 
-  test('run', async () => {
-    function merge(xs: number[] | null, ys: number[] | null) {
-      const left = list2node(xs);
-      const right = list2node(ys);
-      const merged = mergeTwoLists(left, right);
-      return merged === null ? null : node2list(merged);
-    }
+  function __merge(xs: number[] | null, ys: number[] | null) {
+    const left = list2node(xs);
+    const right = list2node(ys);
+    const merged = mergeTwoLists(left, right);
+    return merged === null ? null : node2list(merged);
+  }
 
-    expect(merge(null, null)).toBeNull();
-    expect(merge([1], null)).toStrictEqual([1]);
-    expect(merge(null, [1])).toStrictEqual([1]);
-    expect(merge([1], [2])).toStrictEqual([1, 2]);
-    expect(merge([1, 2, 4], [1, 3, 4])).toStrictEqual([1, 1, 2, 3, 4, 4]);
+  test('run', async () => {
+    expect(__merge(null, null)).toBeNull();
+    expect(__merge([1], null)).toStrictEqual([1]);
+    expect(__merge(null, [1])).toStrictEqual([1]);
+    expect(__merge([1], [2])).toStrictEqual([1, 2]);
+    expect(__merge([1, 2, 4], [1, 3, 4])).toStrictEqual([1, 1, 2, 3, 4, 4]);
   });
 });

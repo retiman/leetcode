@@ -125,7 +125,7 @@ describe('valid number', () => {
     return true;
   }
 
-  test('run', async () => {
+  test('is number', async () => {
     expect(isNumber('2')).toBe(true);
     expect(isNumber('0089')).toBe(true);
     expect(isNumber('-0.1')).toBe(true);
@@ -141,7 +141,9 @@ describe('valid number', () => {
     expect(isNumber('46.e3')).toBe(true);
     expect(isNumber('1.e10')).toBe(true);
     expect(isNumber('9.e3')).toBe(true);
+  });
 
+  test('is not number', async () => {
     expect(isNumber('abc')).toBe(false);
     expect(isNumber('1a')).toBe(false);
     expect(isNumber('1e')).toBe(false);
