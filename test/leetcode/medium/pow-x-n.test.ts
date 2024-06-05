@@ -4,9 +4,9 @@
 //
 // See https://leetcode.com/problems/powx-n/
 describe('pow', () => {
-  function slowMyPow(x: number, n: number): number {
+  function __naiveMyPow(x: number, n: number): number {
     if (n < 0) {
-      return slowMyPow(1 / x, -n);
+      return __naiveMyPow(1 / x, -n);
     }
 
     if (n === 0) {
@@ -30,9 +30,9 @@ describe('pow', () => {
   //
   // Exponentiation by squaring is faster because the naive method requires n multiplications, but squaring each
   // time only requires log(n) multiplications.
-  function fasterMyPow(x: number, n: number): number {
+  function __fasterMyPow(x: number, n: number): number {
     if (n < 0) {
-      return fasterMyPow(1 / x, -n);
+      return __fasterMyPow(1 / x, -n);
     }
 
     if (n === 0) {
@@ -40,10 +40,10 @@ describe('pow', () => {
     }
 
     if (n % 2 === 0) {
-      return fasterMyPow(x * x, n / 2);
+      return __fasterMyPow(x * x, n / 2);
     }
 
-    return x * fasterMyPow(x * x, (n - 1) / 2);
+    return x * __fasterMyPow(x * x, (n - 1) / 2);
   }
 
   // We can replace some of the operations with bit shift operations to make things faster, and we can also remove the
@@ -86,23 +86,23 @@ describe('pow', () => {
   }
 
   test('run slowly', async () => {
-    expect(slowMyPow(2, -2)).toBe(0.25);
-    expect(slowMyPow(2, -1)).toBe(0.5);
-    expect(slowMyPow(2, 0)).toBe(1);
-    expect(slowMyPow(2, 1)).toBe(2);
-    expect(slowMyPow(2, 4)).toBe(16);
-    expect(slowMyPow(2, 5)).toBe(32);
-    expect(slowMyPow(2, -2147483648)).toBe(0);
+    expect(__naiveMyPow(2, -2)).toBe(0.25);
+    expect(__naiveMyPow(2, -1)).toBe(0.5);
+    expect(__naiveMyPow(2, 0)).toBe(1);
+    expect(__naiveMyPow(2, 1)).toBe(2);
+    expect(__naiveMyPow(2, 4)).toBe(16);
+    expect(__naiveMyPow(2, 5)).toBe(32);
+    expect(__naiveMyPow(2, -2147483648)).toBe(0);
   });
 
   test('run faster', async () => {
-    expect(fasterMyPow(2, -2)).toBe(0.25);
-    expect(fasterMyPow(2, -1)).toBe(0.5);
-    expect(fasterMyPow(2, 0)).toBe(1);
-    expect(fasterMyPow(2, 1)).toBe(2);
-    expect(fasterMyPow(2, 4)).toBe(16);
-    expect(fasterMyPow(2, 5)).toBe(32);
-    expect(fasterMyPow(2, -2147483648)).toBe(0);
+    expect(__fasterMyPow(2, -2)).toBe(0.25);
+    expect(__fasterMyPow(2, -1)).toBe(0.5);
+    expect(__fasterMyPow(2, 0)).toBe(1);
+    expect(__fasterMyPow(2, 1)).toBe(2);
+    expect(__fasterMyPow(2, 4)).toBe(16);
+    expect(__fasterMyPow(2, 5)).toBe(32);
+    expect(__fasterMyPow(2, -2147483648)).toBe(0);
   });
 
   test('run fastest', async () => {

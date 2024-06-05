@@ -11,28 +11,33 @@ describe('longest common prefix', () => {
       return '';
     }
 
-    // Start by assuming the first string is the longest prefix; we'll update our assumptions as we go along.
-    let prefix = all[0];
+    // Start by assuming the first string is the longest prefix; we'll update our assumptions as we go along.  Note that
+    // the longest prefix can be at most the length of the shortest string, so our updated assumption can only get
+    // shorter.
+    let longest = all[0];
     for (let i = 1; i < all.length; i++) {
       const current = all[i];
 
+      // Compare the current string, character by character, against the longest prefix we've found so far.  The length
+      // of matching characters will be used to update our assumption about the longest prefix afterwards.
       let j = 0;
       while (
-        j < current.length &&
-        // If the characters do not match at this index, then stop considering the rest.
-        prefix[j] === current[j] &&
-        // If the characters do match, but we've exceeded the current longest prefix length, there's no point in
-        // checking the rest of the characters either.
-        j < prefix.length
+        // If the characters at the current position DO NOT match, stop.  The longest prefix will become where we have
+        // stopped.
+        longest[j] === current[j] &&
+        // If the characters at the current position DO match, but we exceeded the length of either the current string
+        // or the longest prefix, we have to stop.  There are no more characters to compare against each other.
+        j < Math.min(current.length, longest.length)
       ) {
         j += 1;
       }
 
-      // Update our assumption about the longest common prefix.
-      prefix = current.substring(0, j);
+      // The length j represents how many characters match between the current prefix and the longest string, so update
+      // that value.
+      longest = current.substring(0, j);
     }
 
-    return prefix;
+    return longest;
   }
 
   test('run', async () => {

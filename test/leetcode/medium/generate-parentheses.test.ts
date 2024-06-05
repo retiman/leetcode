@@ -46,15 +46,27 @@ describe('generate parentheses', () => {
     return result;
   }
 
-  test('run', async () => {
-    function generate(n: number): Set<string> {
-      return new Set(generateParenthesis(n));
-    }
+  function __generate(n: number): Set<string> {
+    return new Set(generateParenthesis(n));
+  }
 
-    expect(generate(0)).toStrictEqual(new Set());
-    expect(generate(1)).toStrictEqual(new Set(['()']));
-    expect(generate(2)).toStrictEqual(new Set(['()()', '(())']));
-    expect(generate(3)).toMatchSnapshot();
-    expect(generate(4)).toMatchSnapshot();
+  test('generate empty', async () => {
+    expect(__generate(0)).toStrictEqual(new Set());
+  });
+
+  test('generate one set', async () => {
+    expect(__generate(1)).toStrictEqual(new Set(['()']));
+  });
+
+  test('generate two sets', async () => {
+    expect(__generate(2)).toStrictEqual(new Set(['()()', '(())']));
+  });
+
+  test('generate three sets', async () => {
+    expect(__generate(3)).toMatchSnapshot();
+  });
+
+  test('generate four sets', async () => {
+    expect(__generate(4)).toMatchSnapshot();
   });
 });
