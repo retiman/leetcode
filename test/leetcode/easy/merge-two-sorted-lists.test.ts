@@ -17,24 +17,24 @@ describe('merge two sorted lists', () => {
     let right = list2;
 
     while (left !== null || right !== null) {
-      const node = new ListNode();
+      let node = null;
 
       if (left === null && right !== null) {
-        node.val = right.val;
+        node = right;
         right = right.next;
       }
 
       if (left !== null && right === null) {
-        node.val = left.val;
+        node = left;
         left = left.next;
       }
 
       if (left !== null && right !== null) {
         if (left.val <= right.val) {
-          node.val = left.val;
+          node = left;
           left = left.next;
         } else {
-          node.val = right.val;
+          node = right;
           right = right.next;
         }
       }
