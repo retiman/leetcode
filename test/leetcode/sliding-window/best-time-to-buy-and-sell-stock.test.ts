@@ -7,7 +7,7 @@
 //
 // Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 //
-// See https://leetcode.com/problems/group-anagrams/
+// See https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 describe('best time to buy and sell stock', () => {
   function maxProfit(prices: number[]): number {
     // We want to buy at the lowest point, and then sell at the highest point.  To do this, keep track of the minimum

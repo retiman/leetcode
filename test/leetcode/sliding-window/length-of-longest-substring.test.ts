@@ -1,5 +1,10 @@
+// DIFFICULTY: Medium
+//
+// Given a string s, find the length of the longest substring without repeating characters.
+//
+// See https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 describe('length of longest substring without repeated characters', () => {
-  function longest(text: string): number {
+  function lengthOfLongestSubstring(text: string): number {
     const seen = new Map<string, number>();
 
     // Use a sliding window approach by moving the right pointer along the string's characters, and updating the left
@@ -26,8 +31,15 @@ describe('length of longest substring without repeated characters', () => {
     return max;
   }
 
-  test('run', async () => {
-    expect(longest('abcabcbb')).toBe(3);
-    expect(longest('')).toBe(0);
+  test('test case 1', async () => {
+    expect(lengthOfLongestSubstring('abcabcbb')).toBe(3);
+  });
+
+  test('test case 2', async () => {
+    expect(lengthOfLongestSubstring('bbbbb')).toBe(1);
+  });
+
+  test('test case 3', async () => {
+    expect(lengthOfLongestSubstring('pwwkew')).toBe(3);
   });
 });
