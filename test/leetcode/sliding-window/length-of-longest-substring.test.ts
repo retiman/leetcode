@@ -2,7 +2,7 @@
 //
 // Given a string s, find the length of the longest substring without repeating characters.
 //
-// See https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+// See https://leetcode.com/problems/longest-substring-without-repeating-characters
 describe('length of longest substring without repeated characters', () => {
   function lengthOfLongestSubstring(text: string): number {
     const seen = new Map<string, number>();
