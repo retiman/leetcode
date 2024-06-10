@@ -1,8 +1,15 @@
-describe('closest three elements to sum', () => {
-  // Finds the 3 elements whose sum is closest to the target number.
-  //
-  // Algorithm is O(n^2) because the sorting is O(nlogn), and we have a nested loop.
-  function run(xs: number[], target: number): number[] {
+// DIFFICULTY: Medium
+//
+// Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is
+// closest to target.
+//
+// Return the sum of the three integers.
+//
+// You may assume that each input would have exactly one solution.
+//
+// See https://leetcode.com/problems/3sum-closest/
+describe('3 sum closest', () => {
+  function threeSumClosest(xs: number[], target: number): number {
     xs.sort((a, b) => a - b);
 
     let closestSum = Infinity;
@@ -25,7 +32,7 @@ describe('closest three elements to sum', () => {
 
         // If we've matched the target sum, just return right away.
         if (closestSum === target) {
-          return closestValues;
+          return closestValues.reduce((a, b) => a + b);
         }
 
         // Update the left and right pointers, and try again.
@@ -37,10 +44,14 @@ describe('closest three elements to sum', () => {
       }
     }
 
-    return closestValues;
+    return closestValues.reduce((a, b) => a + b);
   }
 
-  test('run', async () => {
-    expect(run([-1, 2, 1, -4, 5], 1)).toStrictEqual([-4, -1, 5]);
+  test('test case 1', async () => {
+    expect(threeSumClosest([-1, 2, 1, -4], 1)).toStrictEqual(2);
+  });
+
+  test('test case 2', async () => {
+    expect(threeSumClosest([0, 0, 0], 1)).toStrictEqual(0);
   });
 });
