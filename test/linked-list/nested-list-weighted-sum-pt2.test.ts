@@ -11,7 +11,7 @@
 // Return the sum of each integer in nestedList multiplied by its weight.
 //
 // See https://leetcode.com/problems/nested-list-weight-sum-ii/
-import { NestedInteger } from '../../../src/leetcode/linked-list/nested-list-weighted-sum';
+import { NestedInteger } from '../../src/linked-list/nested-list-weighted-sum';
 
 describe('nested list weighted sum pt2', () => {
   function depthSumInverse(nestedList: NestedInteger[]): number {

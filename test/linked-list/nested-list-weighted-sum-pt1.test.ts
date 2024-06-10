@@ -9,7 +9,7 @@
 // Return the sum of each integer in nestedList multiplied by its depth.
 //
 // See https://leetcode.com/problems/nested-list-weight-sum
-import { NestedInteger } from '../../../src/leetcode/linked-list/nested-list-weighted-sum';
+import { NestedInteger } from '../../src/linked-list/nested-list-weighted-sum';
 
 describe('nested list weighted sum pt1', () => {
   function depthSum(nestedList: NestedInteger[]): number {
