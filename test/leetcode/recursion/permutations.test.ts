@@ -3,7 +3,7 @@
 // Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
 //
 // See https://leetcode.com/problems/permutations
-describe('permutations', () => {
+describe('permute', () => {
   // The general strategy is to split the list into a head and a tail.  Generate all the permutations of the list
   // without the head element, then put the head in front of each of the generated permutations.  Do this recursively
   // for each element in the list will give all permutations.
