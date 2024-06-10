@@ -1,3 +1,3 @@
-# project-blind
+# leetcode
 
-Solutions to Leetcode, Hackerrank, etc. problems.
+Solutions to LeetCode problems.
