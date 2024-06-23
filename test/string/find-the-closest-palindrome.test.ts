@@ -21,25 +21,30 @@ describe('find the closest palindrome', () => {
     // Generate candidate palindromes; if the original number is already a palindrome, this won't work and we'll have
     // to increment or decrement the left side to find the nearest palindrome.  Prepare them and then find the closest.
     const set = new Set<string>();
-    [-1, 0, 1].forEach(delta => {
+    [-1, 0, 1].forEach(i => {
       const u = BigInt(left);
-      const v = u + BigInt(delta);
+      const v = u + BigInt(i);
       const prefix = v.toString();
       const suffix = prefix.split('').reverse().join('');
-      const candidate = prefix + mid + suffix;
-      set.add(candidate);
+      set.add(prefix + mid + suffix);
 
-      // To handle a case like "11911", we need to increment and decrement the mid value (the correct answer is "11811")
-      // in that case.
-      if (mid === '') {
-        return;
-      }
+      // There are cases where the middle digit needs to be incremented or decremented as well.  For example, take the
+      // following cases:
+      //
+      // "11911" => "11811"
+      // "10001" => "11111"
+      //
+      // To handle these cases we'll vary the middle digit as well.
+      [-1, 0, 1].forEach(j => {
+        const updated = BigInt(mid) + BigInt(j);
 
-      // Don't add a -1 to the middle of the string.
-      const dec = BigInt(mid) - BigInt(1);
-      if (dec >= 0) {
-        set.add(prefix + dec.toString() + suffix);
-      }
+        // Only add this middle digit if we have a positive value, so we don't end up with "10-11" or something.
+        if (updated < 0) {
+          return;
+        }
+
+        set.add(prefix + updated + suffix);
+      });
     });
 
     // These candidates will work for the vast majority of numbers, but sometimes we'll get edge cases where simply
@@ -170,5 +175,13 @@ describe('find the closest palindrome', () => {
 
   test('test case 5', async () => {
     expect(nearestPalindromic('100')).toBe('99');
+  });
+
+  test('test case 6', async () => {
+    expect(nearestPalindromic('11011')).toBe('11111');
+  });
+
+  test('test case 7', async () => {
+    expect(nearestPalindromic('111111111')).toBe('111101111');
   });
 });
