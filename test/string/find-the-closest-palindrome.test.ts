@@ -9,6 +9,39 @@
 //
 // See https://leetcode.com/problems/find-the-closest-palindrome/
 describe('find the closest palindrome', () => {
+  // To devise a strategy, first consider a few examples:
+  //
+  // "123"  => "121"
+  // "1234" => "1221"
+  // "1000" => "1001"
+  // "1"    => "0"     <-- It's not "1" because we can't return the number itself.
+  // "999"  => "1001"  <-- It's not "888" because "1001" is "closer" to "999" by 2.
+  // "1221" => "1111"  <-- It's not "1221" because we can't return the number itself.
+  //
+  // Generally, we can either mirror the left side of the number (since that should result in the "closer" number) and
+  // use that, or we may have to do some incrementing/decrementing to get a part of the number we can mirror.  We also
+  // need to handle edge cases like "1" or "0".
+  function nearestPalindromic(text: string): string {
+    // Because the problem states that we could have 18 digit numbers, we may lose precision if we do not use BigInt.
+    const n = BigInt(text);
+
+    // If it's just a single digit, return that digit minus one (since we can't return the original digit).
+    if (text.length === 1) {
+      return String(n - BigInt(1));
+    }
+
+    // Split up the string so we have the left prefix (and middle) in case we need it.
+    const { left, mid } = __findPrefix(text);
+
+    // Find possible candidates for the closest palindrome.
+    const candidates = __findCandidates(text, left, mid);
+
+    // Find the actual closest.
+    const closest = __findClosest(candidates, n);
+
+    return closest;
+  }
+
   function __findPrefix(text: string) {
     // Find the left half of the number, which we may need to mirror.  If the number has an odd number of digits, we
     // don't take the midpoint because we won't want to mirror it anyways.
@@ -118,39 +151,6 @@ describe('find the closest palindrome', () => {
       return a < b ? -1 : 1;
     });
     return list[0].toString();
-  }
-
-  // To devise a strategy, first consider a few examples:
-  //
-  // "123"  => "121"
-  // "1234" => "1221"
-  // "1000" => "1001"
-  // "1"    => "0"     <-- It's not "1" because we can't return the number itself.
-  // "999"  => "1001"  <-- It's not "888" because "1001" is "closer" to "999" by 2.
-  // "1221" => "1111"  <-- It's not "1221" because we can't return the number itself.
-  //
-  // Generally, we can either mirror the left side of the number (since that should result in the "closer" number) and
-  // use that, or we may have to do some incrementing/decrementing to get a part of the number we can mirror.  We also
-  // need to handle edge cases like "1" or "0".
-  function nearestPalindromic(text: string): string {
-    // Because the problem states that we could have 18 digit numbers, we may lose precision if we do not use BigInt.
-    const n = BigInt(text);
-
-    // If it's just a single digit, return that digit minus one (since we can't return the original digit).
-    if (text.length === 1) {
-      return String(n - BigInt(1));
-    }
-
-    // Split up the string so we have the left prefix (and middle) in case we need it.
-    const { left, mid } = __findPrefix(text);
-
-    // Find possible candidates for the closest palindrome.
-    const candidates = __findCandidates(text, left, mid);
-
-    // Find the actual closest.
-    const closest = __findClosest(candidates, n);
-
-    return closest;
   }
 
   test('multiple digits', async () => {
