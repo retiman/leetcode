@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 // DIFFICULTY: Hard
 //
 // You are given an array routes representing bus routes where routes[i] is a bus route that the ith bus repeats
@@ -16,6 +19,11 @@
 //
 // See https://leetcode.com/problems/bus-routes/
 describe('bus routes', () => {
+  // The queue item describes the stop we're currently at, and the number of buses we've taken to get there.
+  type Item = { stop: number; result: number };
+  type Stop = number;
+  type Bus = number;
+
   // This seems to be just a BFS problem.  The fact that buses repeat forever doesn't seem to be relevant because there
   // is no cost associated with waiting at a bus stop until the bus arrives; the only thing we are minimizing is the
   // number of buses we want to take.
@@ -24,10 +32,60 @@ describe('bus routes', () => {
       return 0;
     }
 
+    // Build a graph of stop to bus number.  From there we can use the routing information to get a map of stop to
+    // adjacent stops as well.
+    const graph = __buildGraph(routes);
+
+    // Initialize the queue for BFS.
+    const visitedBuses = new Set<Bus>();
+    const visitedStops = new Set<Stop>();
+    const queue: Item[] = [];
+    queue.push({
+      stop: source,
+      result: 0
+    });
+
+    // Now perform the BFS to see if we can reach the target.
+    while (queue.length > 0) {
+      const { stop, result } = queue.shift()!;
+      if (stop === target) {
+        return result;
+      }
+
+      // Find all the buses associated with this stop and determine the frontier stops.  Filter out any buses we have
+      // already taken.
+      const buses = graph.get(stop) ?? [];
+      for (const bus of buses) {
+        if (visitedBuses.has(bus)) {
+          continue;
+        }
+
+        visitedBuses.add(bus);
+
+        // Find all the stops associated with this bus and determine the frontier stops.  Filter out any stops we have
+        // already taken.
+        for (const next of routes[bus]) {
+          if (visitedStops.has(next)) {
+            continue;
+          }
+
+          queue.push({
+            stop: next,
+            result: result + 1
+          });
+
+          visitedStops.add(stop);
+        }
+      }
+    }
+
+    // If we've exhausted our BFS, this means the path to the target from the source is not possible.
+    return -1;
+  }
+
+  function __buildGraph(routes: number[][]) {
     // Build a map of stop to buses; this is also a map of stops to routes since we have the route information for each
     // bus.
-    type Stop = number;
-    type Bus = number;
     const graph = new Map<Stop, Bus[]>();
     for (let i = 0; i < routes.length; i++) {
       const bus = i;
@@ -43,48 +101,7 @@ describe('bus routes', () => {
       }
     }
 
-    // Perform BFS on the graph, starting at source, and see if we eventually hit the target.  We'll have a queue item
-    // hold the bus number, but also the total number of buses we've taken to get to that one.
-    type Item = { bus: number; total: number };
-    const visited = new Set<number>();
-    const queue: Item[] = [];
-
-    // Initially, we are at the source, so all the buses that could be there go onto the queue.  We initialize the first
-    // bus at one stop, because we've taken one bus to get to that stop.
-    const buses = graph.get(source)!;
-    for (let i = 0; i < buses.length; i++) {
-      const bus = buses[i];
-      queue.push({
-        bus,
-        total: 1
-      });
-    }
-
-    while (queue.length > 0) {
-      const { bus, total } = queue.shift()!;
-      if (visited.has(bus)) {
-        continue;
-      }
-
-      visited.add(bus);
-      const frontier = routes[bus];
-      if (frontier.findIndex(e => e === target) !== -1) {
-        return total;
-      }
-
-      // Convert the frontier stops to buses, and continue the search.
-      frontier.forEach(stop => {
-        const next = graph.get(stop) ?? [];
-        const items = next.map(b => ({
-          bus: b,
-          total: total + 1
-        }));
-        queue.push(...items);
-      });
-    }
-
-    // If we've exhausted our BFS, this means the path to the target from the source is not possible.
-    return -1;
+    return graph;
   }
 
   test('test case 1', async () => {
@@ -99,6 +116,14 @@ describe('bus routes', () => {
 
   test('test case 2', async () => {
     const routes = [[7, 12], [4, 5, 15], [6], [15, 19], [9, 12, 13]];
+
     expect(numBusesToDestination(routes, 15, 12)).toBe(-1);
+  });
+
+  test('test case 3', async () => {
+    const data = fs.readFileSync(path.join(__dirname, '__data__', 'bus-routes.test.json')).toString();
+    const routes = JSON.parse(data);
+
+    expect(numBusesToDestination(routes, 0, 100000)).toBe(-1);
   });
 });
