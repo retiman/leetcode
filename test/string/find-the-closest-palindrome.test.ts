@@ -37,34 +37,54 @@ describe('find the closest palindrome', () => {
 
     // Generate candidate palindromes; if the original number is already a palindrome, this won't work and we'll have
     // to increment or decrement the left side to find the nearest palindrome.  Prepare them and then find the closest.
-    const candidates: string[] = [];
+    const set = new Set<string>();
     [-1, 0, 1].forEach(delta => {
       const u = BigInt(left);
       const v = u + BigInt(delta);
       const prefix = v.toString();
       const suffix = prefix.split('').reverse().join('');
       const candidate = prefix + mid + suffix;
-
-      // Don't use the candidate if it starts with a 0, which can happen if we get something like "101";
-      if (candidate.startsWith('0')) {
-        return;
-      }
-
-      // Don't use the candidate if it's the same as the original number, which can happen if we get something like
-      // "99".
-      if (candidate !== text) {
-        candidates.push(candidate);
-      }
-
+      set.add(candidate);
     });
 
-    console.log(`found candidates: ${[...candidates]}`);
+    // These candidates will work for the vast majority of numbers, but sometimes we'll get edge cases where simply
+    // incrementing or decrementing won't work.  For example:
+    //
+    // "101" => "99"
+    // "99"  => "101"
+    //
+    // In these situations, just special case them by building special numbers like all 9's or 100...001.
+    [text.length, text.length + 1].forEach(size => {
+      const array = Array(size);
+
+      // Add all 9s.
+      set.add(array.fill(9).join(''));
+
+      // Add 100..001.
+      array.fill(0);
+      array[0] = 1;
+      array[array.length - 1] = 1;
+      set.add(array.join(''));
+    });
+
+    // Finally prune the candidate list of numbers that don't make sense.
+    const candidates = [...set].filter(candidate => {
+      if (candidate.startsWith('0')) {
+        return false;
+      }
+
+      if (candidate === text) {
+        return false;
+      }
+
+      return true;
+    });
 
     // Find the closest elements to the original number.  Since we need to find the smallest to break a tie, just map
     // deltas to their candidates.
     type Delta = BigInt;
     type Candidate = BigInt;
-    const map = new Map<Delta, Candidate[]>;
+    const map = new Map<Delta, Candidate[]>();
 
     // Note that BigInt(Infinity) doesn't work; we'll just set the max value to the number itself.
     let lowest = n;
