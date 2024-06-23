@@ -52,7 +52,9 @@ describe('find the closest palindrome', () => {
 
   function __findCandidates(text: string, left: string, mid: string) {
     // Generate candidate palindromes; if the original number is already a palindrome, this won't work and we'll have
-    // to increment or decrement the left side to find the nearest palindrome.  Prepare them and then find the closest.
+    // to increment or decrement the left side to find the nearest palindrome.
+    //
+    // In some cases, we may also have to increment or decrement the middle digit.
     const set = new Set<string>();
     [-1, 0, 1].forEach(i => {
       const u = BigInt(left);
