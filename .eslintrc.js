@@ -109,6 +109,16 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-use-before-define': 'off',
     'no-useless-constructor': 'off',
+    // Disabled because `let [a] = arr;` or `[a] = arr` is just silly sometimes.
+    //
+    // See https://eslint.org/docs/latest/rules/prefer-destructuring
+    'prefer-destructuring': [
+      'error',
+      {
+        object: true,
+        array: false
+      }
+    ],
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
       'error',
