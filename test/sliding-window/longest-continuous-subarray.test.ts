@@ -21,7 +21,7 @@ describe('longest continuous subarray with absolute diff less than or equal to l
     // The current max length of a continuous subarray.
     let result = 0;
 
-    function __last(deque: Index[]) {
+    function last(deque: Index[]) {
       return deque[deque.length - 1];
     }
 
@@ -32,14 +32,14 @@ describe('longest continuous subarray with absolute diff less than or equal to l
 
       // Update the max deque by removing all elements at the end of the deque that are smaller, so we can maintain a
       // deque in descending order.
-      while (nums[__last(maxDeque)] <= value) {
+      while (nums[last(maxDeque)] <= value) {
         maxDeque.pop();
       }
       maxDeque.push(right);
 
       // Update the min deque by removing all elements at the end of the deque that are bigger, so we can maintain a
       // deque in ascending order.
-      while (nums[__last(minDeque)] >= value) {
+      while (nums[last(minDeque)] >= value) {
         minDeque.pop();
       }
       minDeque.push(right);
