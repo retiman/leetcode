@@ -6,6 +6,8 @@
 //
 // See https://leetcode.com/problems/subsets/
 describe('subsets', () => {
+  // To do this, recursively generate all combinations of elements of the set `xs - x`, then take all the subsets
+  // created and add x to them.  This should result in 2^n number of subsets.
   function subsets(nums: number[]) {
     function run(xs: Set<number>): Set<Set<number>> {
       if (xs.size === 0) {
