@@ -13,31 +13,37 @@ describe('product of array except self', () => {
   // non-zero product by the current element if there were no zeroes, return the non-zero product if there were zeroes,
   // or just return zero if there were multiple zeroes.
   //
-  // Without using division we'll have to compute partial products and combine them for each element.
+  // Without using division, we'll have to use more space to compute the product-except-self in each array index.  To
+  // do this, we have to construct two new arrays:
+  //
+  // - One array to hold the partial product of all elements before, but not including element i, called `befores`.
+  // - One array to hold the partial product of all elements after, but not including element i, called `afters`.
+  //
+  // To compute the product-except-self, the ith value will be `befores[i] * afters[i]`.
   function productExceptSelf(xs: number[]): number[] {
     if (xs.length === 0) {
       return [];
     }
 
     // Compute the product up to the ith index.
-    const prefixes = Array(xs.length).fill(1);
+    const befores = Array(xs.length).fill(1);
     for (let i = 1; i < xs.length; i++) {
-      prefixes[i] = prefixes[i - 1] * xs[i - 1];
+      befores[i] = befores[i - 1] * xs[i - 1];
     }
 
     // Compute the product after the ith index.
-    const suffixes = Array(xs.length).fill(1);
+    const afters = Array(xs.length).fill(1);
     for (let i = xs.length - 2; i >= 0; i--) {
-      suffixes[i] = suffixes[i + 1] * xs[i + 1];
+      afters[i] = afters[i + 1] * xs[i + 1];
     }
 
     // Compute the product except for the element at the ith index.
-    const result = Array(xs.length).fill(0);
+    const products = Array(xs.length).fill(0);
     for (let i = 0; i < xs.length; i++) {
-      result[i] = prefixes[i] * suffixes[i];
+      products[i] = befores[i] * afters[i];
     }
 
-    return result;
+    return products;
   }
 
   test('run', async () => {

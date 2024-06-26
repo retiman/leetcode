@@ -31,24 +31,30 @@ describe('max sum of distincts subarray with length k', () => {
     // Build up our window by moving the right pointer.  We'll update the left pointer along the way in case we
     // detect a sub array with duplicate elements.
     while (right < xs.length) {
-      // If the current element is already in the sub array, update the left pointer and move it to the right until we
-      // get rid of the duplicate element.
-      while (uniques.has(xs[right])) {
+      const value = xs[right];
+
+      // If the current element is already in the sub array, advance the left pointer until we no longer have a
+      // duplicate element.  We'll have to decrement the current sum to account for sliding the left pointer forward.
+      while (uniques.has(value)) {
         uniques.delete(xs[left]);
         current -= xs[left];
         left++;
       }
 
-      // Now that the sub array is free of dupes, we can add the current element to the sum.  Note that because the
-      // sub array has no dupes, we can use the size of the set as the size of the sub array.
-      current += xs[right];
-      uniques.add(xs[right]);
+      // Now that the sub array is free of dupes, we can add the current element to the sum.  Let's not update the
+      // right pointer just yet; if we are over k elements, we want to leave the right pointer where it is for the
+      // moment.
+      current += value;
+      uniques.add(value);
 
       // If, by adding this element, we've gone over k elements, shrink the window by moving the left pointer, which
       // should put us at exactly k elements.
       //
-      // Note that these checks for the size of the uniques set are done in order, so that we can fallthrough to the
-      // next condition.
+      // Note that we can check if we've violated the size constraint by checking the size of the `uniques` set, which
+      // forms our contiguous set.  By adding a single element, the most we could've gone over by is one element, so
+      // just check, and if we've done so, slide the left pointer forward again.
+      //
+      // Once within constraints we can fall through to the next block.
       if (uniques.size > k) {
         uniques.delete(xs[left]);
         current -= xs[left];

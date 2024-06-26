@@ -17,6 +17,9 @@ describe('top k frequent elements', () => {
     }
 
     // Sort the map keys by their frequency.
+    //
+    // Note that map.get(a)! - map.get(b)! would sort by increasing frequency; we want the most frequent elements first
+    // instead.
     const keys = Array.from(map.keys());
     const sorted = keys.sort((a, b) => map.get(b)! - map.get(a)!);
 
