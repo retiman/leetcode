@@ -7,6 +7,20 @@
 describe('longest continuous subarray with absolute diff less than or equal to limit', () => {
   // Use a sliding window approach to find the max length subarray.  We'll have to keep track of what the min/max
   // elements in the subarray while adjusting our window size.  To do so we'll use two deques.
+  //
+  // We'll have a right pointer that moves forward through the array as normal.  The left pointer will move forward
+  // through the array only when the subarray constraint (under limit) is violated.  As the pointers move, we'll need
+  // to keep track of the smallest and largest elements; that's what the deques are for.
+  //
+  // We can't simply store the max element or min element by itself; as the pointers move, these elements will change.
+  // Instead, we'll have to use our deques to maintain the max/min elements at every window size.  The `minDeque` will
+  // have elements in increasing order, and the `maxDeque` will have elements in decreasing order.  We keep the deques
+  // organized like this so that the largest element will always be at the front of the `maxDeque`, and the smallest
+  // element will always be at the front of the `minDeque`.
+  //
+  // As we advance the right pointer, we'll have to pop off elements at the back of the deque and then push the right
+  // pointer onto the end of the deque, while maintaining the ascending/descending order.  As we advance the left
+  // pointer, we'll shift off the element at the front of the deque if it is less than what we just passed.
   function longestSubarray(nums: number[], limit: number): number {
     type Index = number;
 
@@ -54,12 +68,14 @@ describe('longest continuous subarray with absolute diff less than or equal to l
       while (Math.abs(nums[max] - nums[min]) > limit) {
         left++;
 
-        // If we've moved past the min value, remove the min value from the front of the deque.
+        // If we've moved past the min index, remove the min index from the front of the deque.  Note that we are
+        // comparing indices here, not actual values.
         if (minDeque[0] < left) {
           minDeque.shift();
         }
 
-        // Alternatively, if we've moved past the max value, remove the max value from the front of the deque.
+        // Alternatively, if we've moved past the max index, remove the max index from the front of the deque.  Note
+        // that we are comparing indices here, not actual values.
         if (maxDeque[0] < left) {
           maxDeque.shift();
         }
