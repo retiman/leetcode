@@ -9,12 +9,51 @@
 import { _Node } from '../../src/tree/construct-quad-tree';
 
 describe('construct quad tree', () => {
+  // To make a quad tree, recursively divide the matrix into quadrants until each quadrant is all 1's or all 0's.
   function construct(_grid: number[][]): _Node | null {
-    return null;
+    if (_grid.length === 0 || _grid[0].length === 0) {
+      return null;
+    }
+
+    return constructInternal(_grid, 0, 0, _grid.length);
   }
 
-  function __serialize(node: _Node) {
-    
+  function constructInternal(grid: number[][], row: number, column: number, size: number): _Node {
+    const node = new _Node();
+
+    // If the grid segment is uniform, we can create a single quad tree node and set the value to all 1's or 0's.
+    if (isUniform(grid, row, column, size)) {
+      node.val = grid[row][column] === 1;
+      node.isLeaf = true;
+      return node;
+    }
+
+    // If the grid segment here isn't uniform, we'll need to create 4 quadrants and construct nodes out of all 4 of
+    // them.
+    //
+    // Setting the `node.val` of this node is irrelevant as it's not a leaf.  We can just use the default value.
+    const half = size / 2;
+    node.isLeaf = false;
+    node.topLeft = constructInternal(grid, row, column, half);
+    node.topRight = constructInternal(grid, row, column + half, half);
+    node.bottomLeft = constructInternal(grid, row + half, column, half);
+    node.bottomRight = constructInternal(grid, row + half, column + half, half);
+
+    return node;
+  }
+
+  // Checks if a quadrant of the grid starting at [row, column] is uniformly all 1's or all 0's.
+  function isUniform(grid: number[][], row: number, column: number, size: number) {
+    const value = grid[row][column];
+    for (let i = row; i < row + size; i++) {
+      for (let j = column; j < column + size; j++) {
+        if (grid[i][j] !== value) {
+          return false;
+        }
+      }
+    }
+
+    return true;
   }
 
   test('test case 1', async () => {
@@ -22,6 +61,21 @@ describe('construct quad tree', () => {
       [0, 1],
       [1, 0]
     ];
-    expect(construct(grid)).toBeNull();
+    expect(construct(grid)).toMatchSnapshot();
+  });
+
+  test('test case 2', async () => {
+    const grid = [
+      [1, 1, 1, 1, 0, 0, 0, 0],
+      [1, 1, 1, 1, 0, 0, 0, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 0, 0, 0, 0],
+      [1, 1, 1, 1, 0, 0, 0, 0],
+      [1, 1, 1, 1, 0, 0, 0, 0],
+      [1, 1, 1, 1, 0, 0, 0, 0]
+    ];
+
+    expect(construct(grid)).toMatchSnapshot();
   });
 });
