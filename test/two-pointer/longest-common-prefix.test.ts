@@ -11,9 +11,9 @@ describe('longest common prefix', () => {
       return '';
     }
 
-    // Start by assuming the first string is the longest prefix; we'll update our assumptions as we go along.  Note that
-    // the longest prefix can be at most the length of the shortest string, so our updated assumption can only get
-    // shorter.
+    // The longest prefix can be at most the length of the shortest string.  Therefore, we can set our best guess of
+    // the longest prefix to the first string.  From there, we can tighten the bounds of the prefix and come up with an
+    // even shorter string as a result.
     let longest = all[0];
     for (let i = 1; i < all.length; i++) {
       const current = all[i];

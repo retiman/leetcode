@@ -51,7 +51,8 @@ describe('three sum', () => {
           result.push([a, b, c]);
 
           // Continue narrowing the left and right pointers to find additional triples with the current index.  When we
-          // narrow, we have to skip over any duplicates since we don't want to represent them twice in the triples array.
+          // narrow, we have to skip over any duplicates since we don't want to represent them twice in the triples
+          // array.
           while (left < right && ys[left + 1] === ys[left]) {
             left++;
           }

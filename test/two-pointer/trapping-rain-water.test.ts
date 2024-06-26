@@ -15,10 +15,10 @@ describe('trapping rain water', () => {
   // advancing the pointers
   function trap(elevationMap: number[]): number {
     // The difference between the lowest height and the smaller of the max height from the left and right sides
-    // contributes to that many units of trapped rainwater.
+    // contributes to that many units of trapped rainwater AT THE CURRENT INDEX.
     //
     // For example, a current elevation of zero with a max elevation of 4 and 6 on the left and right sides respectively
-    // will hold 4 units of trapped rainwater.
+    // will hold 4 units of trapped rainwater.  We'll use this information to compute rainwater at each index.
     let trapped = 0;
 
     // Track the maximum height on the left side and right side, based on where our pointers land.  The smaller of these
