@@ -31,18 +31,18 @@ describe('find the closest palindrome', () => {
     }
 
     // Split up the string so we have the left prefix (and middle) in case we need it.
-    const { left, mid } = __findPrefix(text);
+    const { left, mid } = findPrefix(text);
 
     // Find possible candidates for the closest palindrome.
-    const candidates = __findCandidates(text, left, mid);
+    const candidates = findCandidates(text, left, mid);
 
     // Find the actual closest.
-    const closest = __findClosest(candidates, n);
+    const closest = findClosest(candidates, n);
 
     return closest;
   }
 
-  function __findPrefix(text: string) {
+  function findPrefix(text: string) {
     // Find the left half of the number, which we may need to mirror.  If the number has an odd number of digits, we
     // don't take the midpoint because we won't want to mirror it anyways.
     const left = text.slice(0, text.length / 2);
@@ -50,7 +50,7 @@ describe('find the closest palindrome', () => {
     return { left, mid };
   }
 
-  function __findCandidates(text: string, left: string, mid: string) {
+  function findCandidates(text: string, left: string, mid: string) {
     // Generate candidate palindromes; if the original number is already a palindrome, this won't work and we'll have
     // to increment or decrement the left side to find the nearest palindrome.
     //
@@ -116,7 +116,7 @@ describe('find the closest palindrome', () => {
     });
   }
 
-  function __findClosest(candidates: string[], n: bigint) {
+  function findClosest(candidates: string[], n: bigint) {
     // Find the closest elements to the original number.  Since we need to find the smallest to break a tie, just map
     // deltas to their candidates.  Note that BigInt is the constructor and bigint is the type.  Don't set the type to
     // be BigInt or else you won't be able to store stuff in your map.

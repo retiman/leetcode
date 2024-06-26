@@ -4,6 +4,9 @@
 //
 // See https://leetcode.com/problems/permutations/
 describe('permute', () => {
+  // To do this, recursively generate all permutations of elements without the head.  Then take all permutations created
+  // and add x to the front of the list.  This should result in n! number of arrays.
+  //
   // The general strategy is to split the list into a head and a tail.  Generate all the permutations of the list
   // without the head element, then put the head in front of each of the generated permutations.  Do this recursively
   // for each element in the list will give all permutations.

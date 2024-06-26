@@ -9,6 +9,15 @@
 //
 // See https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 describe('best time to buy and sell stock', () => {
+  // The question is a bit contrived, as in reality this would never happen.  Here, we are assuming we can go backwards
+  // in time to be able to buy at the low point and sell at the high point.  Just keep that in mind: we have a time
+  // machine.
+  //
+  // This type of problem is easily solved with a modified version of the sliding window technique.  We will maintain
+  // a minimum price and update that value whenever we see a lower value, from there we can calculate proposed profit
+  // on any given day.
+  //
+  // By iterating through the array we'll find the maximum profit at the end.
   function maxProfit(prices: number[]): number {
     // We want to buy at the lowest point, and then sell at the highest point.  To do this, keep track of the minimum
     // stock price at any point, and use that minimum stock price to determine our maximum profit.

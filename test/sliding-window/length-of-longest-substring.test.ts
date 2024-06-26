@@ -4,6 +4,14 @@
 //
 // See https://leetcode.com/problems/longest-substring-without-repeating-characters
 describe('length of longest substring without repeated characters', () => {
+  // This can be solved using the sliding window technique by maintaining, always, a window where we have a substring
+  // without repeating characters.
+  //
+  // To ensure we can check this constraint, we'll keep track of the last time we have seen a character, so we can move
+  // the left pointer to the right of the left seen index and maintain our no-repeat constraint.
+  //
+  //  Once we move the left pointer just one step to the right of the last seen index, we'll update that seen index to
+  // the rightmost position we've seen it, so we can leverage the map again next time.
   function lengthOfLongestSubstring(text: string): number {
     const seen = new Map<string, number>();
 

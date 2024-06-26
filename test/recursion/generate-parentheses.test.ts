@@ -11,6 +11,10 @@ describe('generate parentheses', () => {
   // This doesn't work for values like n=4, because you will miss solutions like `(())(())`.  Instead, we'll construct
   // the string as we go along, keeping track of how many open and close parentheses we have used.  In total, the
   // resulting strings will each have length n*2.
+  //
+  // This is because well formed strings have additional constraints; when generating a power set using the naive
+  // method, for example, you don't need to worry about balancing the elements within the sub set.  In contrast to
+  // generating a power set, you would have far fewer resulting elements.
   function generateParenthesis(n: number): string[] {
     if (n === 0) {
       return [];

@@ -72,12 +72,16 @@ describe('pow', () => {
       const isEven = (ni & 1) === 0;
       if (isEven) {
         xi *= xi;
-        // Rather than divide by 2, we can use the right bit shift operator to do a faster division.
+        // Rather than divide by 2, we can use the right bit shift operator to do a faster division.  The `>>>`
+        // operation is an unsigned bit shift to the right.  This means the leftmost bits are filled with 0's regardless
+        // of the sign of the original number.
         ni >>>= 1;
       } else {
         result *= xi;
         xi *= xi;
-        // Rather than divide by 2, we can use the right bit shift operator to do a faster division.
+        // Rather than divide by 2, we can use the right bit shift operator to do a faster division.  The `>>>`
+        // operation is an unsigned bit shift to the right.  This means the leftmost bits are filled with 0's regardless
+        // of the sign of the original number.
         ni >>>= 1;
       }
     }

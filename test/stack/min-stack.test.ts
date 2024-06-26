@@ -21,6 +21,7 @@ describe('min stack', () => {
 
     constructor() {
       this.stack = [];
+
       // This stack will contain the same number of elements as the underlying stack, but each element pushed onto it is
       // the minimum value element at the time.
       this.min = [];
@@ -31,9 +32,11 @@ describe('min stack', () => {
 
       if (this.min.length === 0) {
         this.min.push(x);
-      } else {
-        this.min.push(Math.min(x, this.getMin()));
+        return;
       }
+
+      const smallest = Math.min(x, this.getMin());
+      this.min.push(smallest);
     }
 
     pop(): void {

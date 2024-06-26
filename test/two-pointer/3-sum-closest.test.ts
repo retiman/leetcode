@@ -9,6 +9,8 @@
 //
 // See https://leetcode.com/problems/3sum-closest/
 describe('3 sum closest', () => {
+  // We'll use the two pointer technique to zero in on the target sum while iterating through the array.  To make
+  // calculations easier, we have to sort the array.
   function threeSumClosest(xs: number[], target: number): number {
     xs.sort((a, b) => a - b);
 
@@ -16,7 +18,11 @@ describe('3 sum closest', () => {
     let closestValues: number[] = [];
 
     for (let i = 0; i < xs.length - 2; i++) {
-      // Use the two pointer technique to find the closest triple.
+      // Use the two pointer technique to find the closest triple.  We will move the left pointer forward, or move the
+      // right pointer backwards as we attempt to get close to our target sum.
+      //
+      // Initialize the left pointer to the right of i, and initialize the right pointer at the end of the array.  We
+      // will begin moving the left and right pointers closer to each other as we attempt to compute the triple.
       let left = i + 1;
       let right = xs.length - 1;
 
@@ -35,7 +41,9 @@ describe('3 sum closest', () => {
           return closestValues.reduce((a, b) => a + b);
         }
 
-        // Update the left and right pointers, and try again.
+        // Update the left and right pointers, and try again.  Because we've sorted the array, we can move the pointers
+        // accordingly.  If the sum is too small, move the left pointer forwards.  If the sum is too big, move the
+        // the right pointer backwards.
         if (currentSum < target) {
           left++;
         } else {

@@ -8,17 +8,27 @@
 describe('longest consecutive sequence', () => {
   // Note that the sequence does not need to be consecutive in the array; the numbers in the sequence only need to
   // appear in the array.
+  //
+  // For example, [1, 500, 2, 3, 4] has consecutive elements [1, 2, 3, 4].  The fact that 500 appears in the middle
+  // is okay; the number 500 begins its own consecutive sequence of length 1.  The other elements [1, 2, 3, 4] create
+  // a sequence of length 4.
   function longestConsecutive(xs: number[]) {
+    let longest = 0;
+
+    // Use a set to keep track of all elements in the array; we'll reference it to find out if a predecessor to an
+    // element exists as we iterate through the array.
     const set = new Set(xs);
 
-    let longest = 0;
     for (let i = 0; i < xs.length; i++) {
       let x = xs[i];
 
-      // If the array does not contain x - 1, then x must begin a new consecutive sequence.  If it does, it was part of
-      // some other previous sequence that we've already checked.
+      // Suppose that the predecessor to x, x - 1, is not in the array already.  That must mean that x begins some new
+      // consecutive sequence.  We will now count the length of that sequence by incrementing until we can no longer
+      // find a consecutive value in the array.
+      //
+      // Suppose that the predecessor was found in the set.  This means that it should've been found by the inner while
+      // loop, and it means we've already counted it as part of some other consecutive sequence, so we can skip x.
       if (!set.has(x - 1)) {
-        // Start counting elements in this sequence beginning with the next consecutive number after x.
         let current = 1;
         x++;
 
@@ -27,6 +37,8 @@ describe('longest consecutive sequence', () => {
           x++;
         }
 
+        // Now that we have the length of the longest consecutive sequence that begins at x, we compare it to the
+        // longest sequence we know about.
         longest = Math.max(longest, current);
       }
     }
