@@ -12,6 +12,8 @@
 //   (h[i+1] - h[i]) bricks.
 //
 // Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.
+//
+// See https://leetcode.com/problems/furthest-building-you-can-reach/
 describe('furthest building you can reach', () => {
   // This cannot be solved with the sliding window technique; usually that technique involves finding a fixed size
   // sub-string sub-array with constraints.  Here we need to dynamically adjust our resource (brick/ladder) usage at
