@@ -69,6 +69,7 @@ module.exports = {
     // See https://blog.neufund.org/why-we-have-banned-default-exports-and-you-should-do-the-same-d51fdc2cf2ad
     'import/prefer-default-export': 'off',
     'jest/no-disabled-tests': 'off',
+    'max-classes-per-file': 'off',
     // Disabled because continue ESLint specifically is concerned about continue being used with labels.  Using this
     // with labels is akin to a goto statement, which makes code hard to reason about.  Proper use of the continue
     // statement makes code easier to read.
