@@ -67,132 +67,34 @@ describe('furthest building you can reach', () => {
     return heights.length - 1;
   }
 
-  // TypeScript doesn't have a priority queue implementation; a naive implementation can just be backed by an array and
-  // be sorted on insert.  However!  This causes LeetCode time limits to be exceeded.  We'll need a real implmentation
-  // here instead.
-  class Node {
-    value: number;
-    left: Node | null = null;
-    right: Node | null = null;
-    parent: Node | null = null;
-
-    constructor(value: number) {
-      this.value = value;
-    }
-  }
-
+  // TypeScript doesn't have a heap implementation.  We'll have to implement it ourselves.
   class MinHeap {
-    private root: Node | null = null;
+    private list: number[] = [];
 
-    private length: number = 0;
+    // The simplest way to do this is to push onto the array and then sort.  This exceeds LeetCode's time limitations.
+    // Instead, we can insert via binary search.
+    public push(value: number) {
+      let left = 0;
+      let right = this.list.length;
 
-    push(value: number): void {
-      const newNode = new Node(value);
-      if (this.root === null) {
-        this.root = newNode;
-      } else {
-        this.insertNode(this.root, newNode);
-      }
-      this.length++;
-      this.heapifyUp(newNode);
-    }
-
-    private insertNode(root: Node, newNode: Node): void {
-      const queue: (Node | null)[] = [root];
-      while (queue.length > 0) {
-        const node = queue.shift()!;
-        if (node.left === null) {
-          node.left = newNode;
-          newNode.parent = node;
-          return;
-        }
-        if (node.right === null) {
-          node.right = newNode;
-          newNode.parent = node;
-          return;
-        }
-        queue.push(node.left);
-        queue.push(node.right);
-      }
-    }
-
-    private heapifyUp(node: Node): void {
-      while (node.parent !== null && node.parent.value > node.value) {
-        [node.value, node.parent.value] = [node.parent.value, node.value];
-        node = node.parent;
-      }
-    }
-
-    pop(): number | undefined {
-      if (this.root === null) {
-        return undefined;
-      }
-      const min = this.root.value;
-      const lastNode = this.getLastNode();
-      if (lastNode === this.root) {
-        this.root = null;
-      } else {
-        this.root.value = lastNode!.value;
-        this.removeLastNode();
-        this.heapifyDown(this.root);
-      }
-      this.length--;
-      return min;
-    }
-
-    private getLastNode(): Node | null {
-      const queue: (Node | null)[] = [this.root];
-      let lastNode: Node | null = null;
-      while (queue.length > 0) {
-        lastNode = queue.shift()!;
-        if (lastNode!.left !== null) queue.push(lastNode!.left);
-        if (lastNode!.right !== null) queue.push(lastNode!.right);
-      }
-      return lastNode;
-    }
-
-    private removeLastNode(): void {
-      const queue: (Node | null)[] = [this.root];
-      let lastNodeParent: Node | null = null;
-      let lastNode: Node | null = null;
-      while (queue.length > 0) {
-        lastNodeParent = queue.shift()!;
-        if (lastNodeParent!.left !== null) {
-          queue.push(lastNodeParent!.left);
-          lastNode = lastNodeParent!.left;
-        }
-        if (lastNodeParent!.right !== null) {
-          queue.push(lastNodeParent!.right);
-          lastNode = lastNodeParent!.right;
+      while (left < right) {
+        const mid = Math.floor((left + right) / 2);
+        if (this.list[mid] < value) {
+          left = mid + 1;
+        } else {
+          right = mid;
         }
       }
-      if (lastNodeParent!.right === lastNode) {
-        lastNodeParent!.right = null;
-      } else {
-        lastNodeParent!.left = null;
-      }
+
+      this.list.splice(left /* position */, 0 /* deleteCount */, value /* items */);
     }
 
-    private heapifyDown(node: Node): void {
-      while (node.left !== null) {
-        let smallestChild = node.left;
-        if (node.right !== null && node.right.value < node.left.value) {
-          smallestChild = node.right;
-        }
-        if (node.value < smallestChild.value) {
-          break;
-        }
-        [node.value, smallestChild.value] = [smallestChild.value, node.value];
-        node = smallestChild;
-      }
+    public pop() {
+      return this.list.shift();
     }
 
-    peek(): number | undefined {
-      return this.root?.value;
-    }
-
-    size(): number {
-      return this.length;
+    public size() {
+      return this.list.length;
     }
   }
 
