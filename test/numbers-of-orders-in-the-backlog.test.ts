@@ -149,7 +149,7 @@ describe('number of orders in the backlog', () => {
 
       // Do an insert via binary search.
       let left = 0;
-      let right = this.items.length - 1;
+      let right = this.items.length;
       while (left < right) {
         const mid = Math.floor((left + right) / 2);
         const [p, _] = this.items[mid];
@@ -192,7 +192,7 @@ describe('number of orders in the backlog', () => {
 
       // Do an insert via binary search.
       let left = 0;
-      let right = this.items.length - 1;
+      let right = this.items.length;
       while (left < right) {
         const mid = Math.floor((left + right) / 2);
         const [p, _] = this.items[mid];
@@ -268,5 +268,21 @@ describe('number of orders in the backlog', () => {
     ];
 
     expect(getNumberOfBacklogOrders(orders)).toBe(34);
+  });
+
+  test('test case 5', async () => {
+    const orders = [
+      [1, 29, 1],
+      [22, 7, 1],
+      [24, 1, 0],
+      [25, 15, 1],
+      [18, 8, 1],
+      [8, 22, 0],
+      [25, 15, 1],
+      [30, 1, 1],
+      [27, 30, 0]
+    ];
+
+    expect(getNumberOfBacklogOrders(orders)).toBe(22);
   });
 });
