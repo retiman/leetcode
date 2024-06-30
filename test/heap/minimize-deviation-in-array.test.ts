@@ -19,6 +19,8 @@
 // Return the minimum deviation the array can have after performing some number of operations.
 //
 // See https://leetcode.com/problems/minimize-deviation-in-array/
+import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
+
 describe('minimize deviation in array', () => {
   // To solve this problem, we have to multiply elements to make them bigger, or divide elements to make them smaller.
   // We continue to do this until the minimum and maximum elements are as close as possible.
@@ -26,7 +28,18 @@ describe('minimize deviation in array', () => {
   // To make this problem easier, we try to minimize the deviation by making bigger numbers smaller, instead of
   // simultaneously trying to make numbers bigger and smaller.  To do this, we multiply all odd numbers by 2, so that
   // they all become even.  Afterwards, we can choose to perform a division or not to make it smaller.
+  //
+  // Our simple MaxHeap implementation will not suffice and we'll either have to implement our own heap or use an
+  // imported library.  LeetCode offers the following library availability:
+  //
+  // See https://github.com/datastructures-js/priority-queue
+  //
+  // Note that using the import form does not work on both CodeSignal and LeetCode, so you cannot use a typed version of
+  // the priority queue.  Also, the version is limited to 5.4.0, so you cannot push or pop.
   function minimumDeviation(nums: number[]): number {
+    // Initialize a max heap of all the numbers in this array.
+    const heap = new MaxPriorityQueue();
+
     // Normalize all the numbers so that they are even.  Now we can consider only division as a way to make numbers
     // smaller and closer to each other.  If a previously odd number was too big, we will eventually resize it smaller
     // by division if necessary.
@@ -34,10 +47,10 @@ describe('minimize deviation in array', () => {
       if (nums[i] % 2 === 1) {
         nums[i] *= 2;
       }
+
+      heap.enqueue(nums[i]);
     }
 
-    // Initialize a max heap of all the numbers in this array.
-    const heap = new MaxHeap(nums);
     let min = Math.min(...nums);
     let deviation = Infinity;
 
@@ -45,7 +58,7 @@ describe('minimize deviation in array', () => {
     // the heap.  Then repeat to bring the deviation down more and more.
     while (true) {
       // Calculate current deviation.
-      const max = heap.pop()!;
+      const max = heap.dequeue()!.element as number;
       deviation = Math.min(deviation, max - min);
 
       // Oh no!  If the max value was odd, we can't halve it and re-insert it into the heap.  This means whatever the
@@ -56,46 +69,13 @@ describe('minimize deviation in array', () => {
 
       // Halve the max value and return it into the heap for re-processing.
       const value = max / 2;
-      heap.push(value);
+      heap.enqueue(value);
 
       // Update the minimum value in case we've changed the minimum value by manipulating the max value.
       min = Math.min(value, min);
     }
 
     return deviation;
-  }
-
-  class MaxHeap {
-    private readonly values: number[] = [];
-
-    constructor(values: number[]) {
-      values.forEach(value => {
-        this.push(value);
-      });
-    }
-
-    public push(value: number) {
-      let left = 0;
-      let right = this.values.length;
-      while (left < right) {
-        const mid = Math.floor((left + right) / 2);
-        if (value > this.values[mid]) {
-          right = mid;
-        } else {
-          left = mid + 1;
-        }
-      }
-
-      this.values.splice(left, 0, value);
-    }
-
-    public pop() {
-      return this.values.shift();
-    }
-
-    public size() {
-      return this.values.length;
-    }
   }
 
   test('test case 1', async () => {
