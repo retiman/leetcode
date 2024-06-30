@@ -25,7 +25,8 @@ describe('bag of tokens', () => {
   // highest power tokens.
   //
   // To start with, we'll try to play the highest power tokens face down first, then use that power to score as much as
-  // we can with the lower power tokens.
+  // we can with the lower power tokens.  This problem is suited for the two pointer technique since we are going to
+  // keep track of the high/low power tokens simultaneously.
   function bagOfTokensScore(tokens: number[], power: number): number {
     // First sort the tokens, so we can consume tokens from the ends to maximize score.
     tokens.sort((a, b) => a - b);
