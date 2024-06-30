@@ -28,6 +28,7 @@
     "test": "test"
   },
   "dependencies": {
+    "@datastructures-js/priority-queue": "5.4.0",
     "winston": "^3.10.0"
   },
   "devDependencies": {
