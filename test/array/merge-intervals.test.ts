@@ -22,7 +22,7 @@ describe('merge intervals', () => {
 
     function shouldMerge(a: number[], b: number[]) {
       // If the intervals are disjoint, then a[1] is going to be strictly less than b[0].  In every other case, we
-      // should merge.
+      // should merge.  We can make this assumption because we know the intervals are sorted, and a <= b.
       if (a[1] < b[0]) {
         return false;
       }
@@ -31,7 +31,7 @@ describe('merge intervals', () => {
     }
 
     function mergeInternal(a: number[], b: number[]) {
-      // Because the intervals are sorted, a[0] is always going to be smaller or the same as b[0].
+      // Because the intervals are sorted (a <= b), a[0] is always going to be smaller or the same as b[0].
       return [a[0], Math.max(a[1], b[1])];
     }
 
