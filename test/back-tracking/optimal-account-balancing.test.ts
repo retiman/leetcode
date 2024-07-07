@@ -76,6 +76,9 @@ describe('optimal account balancing', () => {
 
         // The minimum number of transactions, if we've settled the ith balance, is 1 + the minimum after settling the
         // i+1th balance.
+        //
+        // As a further optimization we can use dynamic programming to avoid redundant calculations.  To do so we'll
+        // need to use a bit mask to keep track of balance state.
         min = Math.min(min, 1 + settle(left + 1));
 
         // Backtrack by restoring the balances.
