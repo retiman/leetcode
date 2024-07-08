@@ -7,7 +7,7 @@
 // roughly at the same time.
 //
 // See https://leetcode.com/problems/design-hit-counter/
-describe('group anagrams', () => {
+describe('design hit counter', () => {
   interface HitEvent {
     timestamp: number;
     hits: number;
