@@ -122,7 +122,7 @@ module.exports = {
     ],
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
-      'error',
+      'warn',
       {
         args: 'all',
         argsIgnorePattern: '^_',
