@@ -8,40 +8,52 @@
 //
 // See https://leetcode.com/problems/design-hit-counter/
 describe('group anagrams', () => {
+  interface HitEvent {
+    timestamp: number;
+    hits: number;
+  }
+
   // To do this efficiently we'll have to use a circular array buffer.  This is the same technique used by time series
   // databases.
   class HitCounter {
-    private readonly hits: number[];
-
-    private readonly timestamps: number[];
+    private readonly events: HitEvent[];
 
     constructor() {
       // Our granularity is seconds, so in theory, we only need to store only the last 300 seconds.  Keep track of both
       // hits by timestamp.
-      this.hits = Array(300).fill(0);
-      this.timestamps = Array(300).fill(0);
+      this.events = [];
+
+      // Don't use Array.fill() here; you'll fill the array with 300 copies of the same object.
+      for (let i = 0; i < 300; i++) {
+        this.events[i] = {
+          timestamp: 0,
+          hits: 0
+        };
+      }
     }
 
     hit(timestamp: number): void {
-      const i = timestamp % 300;
+      // Find the event in our circular buffer that would correspond to this timestamp.
+      const index = timestamp % 300;
+      const event = this.events[index];
 
-      // If we've already recorded a hit at this timestamp, increment it.
-      if (this.timestamps[i] === timestamp) {
-        this.hits[i]++;
+      // If we've already recorded hits at this timestamp, increment it.
+      if (event.timestamp === timestamp) {
+        event.hits++;
         return;
       }
 
-      // Otherwise record this timestamp and set the current hit counter to 1.
-      this.timestamps[i] = timestamp;
-      this.hits[i] = 1;
+      // Otherwise, we haven't, so set the hits to 1.
+      event.timestamp = timestamp;
+      event.hits = 1;
     }
 
     getHits(timestamp: number): number {
       let count = 0;
 
-      for (let i = 0; i < this.hits.length; i++) {
-        if (timestamp - this.timestamps[i] < 300) {
-          count += this.hits[i];
+      for (const event of this.events) {
+        if (timestamp - event.timestamp < 300) {
+          count += event.hits;
         }
       }
 
