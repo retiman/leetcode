@@ -12,7 +12,7 @@ describe('valid palindrome ii', () => {
   // the characters.
   function validPalindrome(s: string): boolean {
     // Check if a string is a palindrome starting using the supplied left/right pointers.
-    function isPalindrome(s: string, left: number, right: number) {
+    function isPalindrome(left: number, right: number) {
       while (left < right) {
         if (s[left] !== s[right]) {
           return false;
@@ -37,10 +37,10 @@ describe('valid palindrome ii', () => {
       }
 
       // Characters didn't match; check if deleting/skipping the left character results in a palindrome.
-      const isSkipLeftOk = isPalindrome(s, left + 1, right);
+      const isSkipLeftOk = isPalindrome(left + 1, right);
 
       // Characters didn't match; check if deleting/skipping the right character results in a palindrome.
-      const isSkipRightOk = isPalindrome(s, left, right - 1);
+      const isSkipRightOk = isPalindrome(left, right - 1);
 
       // If deleting either was okay, we still have a "valid" palindrome.
       return isSkipLeftOk || isSkipRightOk;
