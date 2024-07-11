@@ -52,5 +52,5 @@ describe('valid palindrome ii', () => {
 
   test('test case 1', async () => {
     expect(validPalindrome('aba')).toBe(true);
-  })
+  });
 });
