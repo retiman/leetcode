@@ -208,7 +208,7 @@ describe('all O`one data structure', () => {
     expect(allone.getMinKey()).toBe('leet');
   });
 
-  test('allone - test case 2', async () => {
+  test('test case 2', async () => {
     const allone = new AllOne();
     allone.inc('a');
     allone.inc('b');
@@ -219,15 +219,11 @@ describe('all O`one data structure', () => {
     allone.dec('b');
     allone.dec('b');
 
-    console.log(allone.toString());
-    /*
     expect(allone.getMinKey()).toBe('a');
 
     allone.dec('a');
 
     expect(allone.getMaxKey()).toBe('c');
     expect(allone.getMinKey()).toBe('c');
-    */
-    expect(true).toBe(true);
   });
 });
