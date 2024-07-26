@@ -138,7 +138,7 @@ describe('all O`one data structure', () => {
         return '';
       }
 
-      return this.any(this.tail.previous.keys);
+      return this.tail.previous.keys.values().next().value!;
     }
 
     getMinKey(): string {
@@ -146,7 +146,7 @@ describe('all O`one data structure', () => {
         return '';
       }
 
-      return this.any(this.head.next.keys);
+      return this.head.next.keys.values().next().value!;
     }
 
     private insertKeyBetween(previous: OneNode, key: string, next: OneNode): OneNode {
@@ -162,10 +162,6 @@ describe('all O`one data structure', () => {
 
       this.insertNodeBetween(previous, node, next);
       return node;
-    }
-
-    private any(set: Set<string>): string {
-      return set.values().next().value!;
     }
 
     private insertNodeBetween(previous: OneNode, node: OneNode, next: OneNode) {
