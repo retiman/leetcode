@@ -12,18 +12,29 @@ describe('three sum', () => {
   function threeSum(xs: number[]) {
     const result: number[][] = [];
 
+    // Sorting will help us more efficiently use the sliding window approach to find the triplets that sum to 0.
+    //
     // Note that xs.sort() will sort by string value.  So if you have negative numbers, something like [-1, -2, 0] is
     // considered "sorted".  To fix this, make sure to explicitly provide a compare function.
     xs.sort((a, b) => a - b);
 
+    // For each of the elements we will use a sliding window approach to find the other two elements that will sum up
+    // to 0.
+    //
+    // There are two ways we can think of this: we can think of our current element as element b, then set the left
+    // point to 0 and the right pointer to the length of the array - 1.  However, if we do this, we will reconsider
+    // elements we've already seen as the pointer advances.
+    //
+    // Instead, we'll consider the current element as a, then b starts at left = i + 1, and c starts at
+    // right = length - 1.
     for (let i = 0; i < xs.length - 2; i++) {
       // Because we can't have duplicate triples in the result, we should just skip over any duplicates.
       if (i > 0 && xs[i] === xs[i - 1]) {
         continue;
       }
 
-      // For each element b, use the two pointers technique to find (a, c) such that a + b + c = 0.
-      const b = xs[i];
+      // For each element a, use the two pointers technique to find (b, c) such that a + b + c = 0.
+      const a = xs[i];
 
       // We cannot have duplicate triples in the result.  We can do this by setting the left pointer to 0, and the right
       // pointer to the last element, tightening the bounds as we consider sums.  However, this will reconsider
@@ -33,7 +44,7 @@ describe('three sum', () => {
       let left = i + 1;
       let right = xs.length - 1;
       while (left < right) {
-        const a = xs[left];
+        const b = xs[left];
         const c = xs[right];
         const sum = a + b + c;
 
