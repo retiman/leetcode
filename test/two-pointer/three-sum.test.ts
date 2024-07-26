@@ -48,32 +48,37 @@ describe('three sum', () => {
         const c = xs[right];
         const sum = a + b + c;
 
-        // If the sum isn't the target of 0, narrow the left or right pointers.
+        // If the sum is less than 0, that means we need to increase the sum, so advance the left pointer.
         if (sum < 0) {
           left++;
           continue;
         }
 
+        // If the sum is greater than 0, that means we need to decrease the sum, so advance the right pointer.
         if (sum > 0) {
           right--;
           continue;
         }
 
-        // If the sum is the target of 0, add the triple to the result array.
+        // If the sum is the target of 0, add the triple to the result array.  However, there may yet still be more
+        // triplets we haven't found with our pointers!
+        //
+        // To find them, we should keep advancing the pointers past any dupes (as long as they are in range).
         if (sum === 0) {
           result.push([a, b, c]);
 
-          // Continue narrowing the left and right pointers to find additional triples with the current index.  When we
-          // narrow, we have to skip over any duplicates since we don't want to represent them twice in the triples
-          // array.
-          while (left < right && xs[left + 1] === xs[left]) {
+          // Advance the left pointer to skip any dupes of b.
+          while (xs[left + 1] === xs[left] && left < right) {
             left++;
           }
 
-          while (left < right && xs[right - 1] === xs[right]) {
+          // Advance the right pointer to skip any dupes of c.
+          while (xs[right - 1] === xs[right] && left < right) {
             right--;
           }
 
+          // Advance both pointers to consider the next potential sum.  We need to advance here and not before doing
+          // the while loops because advancing could have put us into a dupe!
           left++;
           right--;
         }
