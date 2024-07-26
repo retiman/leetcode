@@ -7,21 +7,23 @@
 //
 // See https://leetcode.com/problems/3sum/
 describe('three sum', () => {
+  // The two sum problem can be solved with a two pointer approach.  This can be solved with a similar approach, but
+  // you'll need to apply the two pointer approach to every element in the array.
   function threeSum(xs: number[]) {
     const result: number[][] = [];
 
     // Note that xs.sort() will sort by string value.  So if you have negative numbers, something like [-1, -2, 0] is
     // considered "sorted".  To fix this, make sure to explicitly provide a compare function.
-    const ys = [...xs].sort((a, b) => a - b);
+    xs.sort((a, b) => a - b);
 
-    for (let i = 0; i < ys.length - 2; i++) {
+    for (let i = 0; i < xs.length - 2; i++) {
       // Because we can't have duplicate triples in the result, we should just skip over any duplicates.
-      if (i > 0 && ys[i] === ys[i - 1]) {
+      if (i > 0 && xs[i] === xs[i - 1]) {
         continue;
       }
 
       // For each element b, use the two pointers technique to find (a, c) such that a + b + c = 0.
-      const b = ys[i];
+      const b = xs[i];
 
       // We cannot have duplicate triples in the result.  We can do this by setting the left pointer to 0, and the right
       // pointer to the last element, tightening the bounds as we consider sums.  However, this will reconsider
@@ -29,10 +31,10 @@ describe('three sum', () => {
       //
       // Starting the left pointer at i + 1 avoids this problem.
       let left = i + 1;
-      let right = ys.length - 1;
+      let right = xs.length - 1;
       while (left < right) {
-        const a = ys[left];
-        const c = ys[right];
+        const a = xs[left];
+        const c = xs[right];
         const sum = a + b + c;
 
         // If the sum isn't the target of 0, narrow the left or right pointers.
@@ -53,11 +55,11 @@ describe('three sum', () => {
           // Continue narrowing the left and right pointers to find additional triples with the current index.  When we
           // narrow, we have to skip over any duplicates since we don't want to represent them twice in the triples
           // array.
-          while (left < right && ys[left + 1] === ys[left]) {
+          while (left < right && xs[left + 1] === xs[left]) {
             left++;
           }
 
-          while (left < right && ys[right - 1] === ys[right]) {
+          while (left < right && xs[right - 1] === xs[right]) {
             right--;
           }
 
@@ -70,7 +72,7 @@ describe('three sum', () => {
     return result;
   }
 
-  test('run', async () => {
+  test('three sum test case 1', async () => {
     expect(threeSum([-1, 0, 1, 2, -1, -4])).toMatchSnapshot();
     expect(threeSum([-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4])).toMatchSnapshot();
   });
