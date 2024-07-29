@@ -190,7 +190,7 @@ describe('all O`one data structure', () => {
     }
   }
 
-  test('test case 1', async () => {
+  test('all one data structure - test case 1', async () => {
     const allone = new AllOne();
     allone.inc('hello');
     allone.inc('hello');
@@ -204,7 +204,7 @@ describe('all O`one data structure', () => {
     expect(allone.getMinKey()).toBe('leet');
   });
 
-  test('test case 2', async () => {
+  test('all one data structure - test case 2', async () => {
     const allone = new AllOne();
     allone.inc('a');
     allone.inc('b');

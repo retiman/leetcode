@@ -46,18 +46,26 @@ describe('add two numbers', () => {
     return z;
   }
 
-  test('add three digit number', async () => {
-    expect(__add([2, 4, 3], [5, 6, 4])).toStrictEqual([7, 0, 8]);
+  test('add two numbers - test case 1', async () => {
+    const x = list2node([2, 4, 3]);
+    const y = list2node([5, 6, 4]);
+
+    expect(node2list(addTwoNumbers(x, y))).toStrictEqual([7, 0, 8]);
   });
 
-  test('add big numbers', async () => {
-    expect(__add([9, 9, 9, 9, 9, 9, 9], [9, 9, 9, 9])).toStrictEqual([8, 9, 9, 9, 0, 0, 0, 1]);
+  test('add two numbers - test case 2', async () => {
+    const x = list2node([9, 9, 9, 9, 9, 9, 9]);
+    const y = list2node([9, 9, 9, 9]);
+
+    expect(node2list(addTwoNumbers(x, y))).toStrictEqual([8, 9, 9, 9, 0, 0, 0, 1]);
   });
 
-  test('add huge numbers', async () => {
-    const x = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
-    const y = [5, 6, 4];
-    const z = [6, 6, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
-    expect(__add(x, y)).toStrictEqual(z);
+  test('add two numbers - test case 3', async () => {
+    const x = list2node([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]);
+    const y = list2node([5, 6, 4]);
+
+    expect(node2list(addTwoNumbers(x, y))).toStrictEqual([
+      6, 6, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+    ]);
   });
 });
