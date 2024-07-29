@@ -95,21 +95,21 @@ describe('binary tree level order traversal', () => {
     return root;
   }
 
-  test('test case 1', async () => {
+  test('level order - test case 1', async () => {
     const array = [3, 9, 20, null, null, 15, 7];
     const tree = __deserialize(array);
 
     expect(levelOrder(tree)).toStrictEqual([[3], [9, 20], [15, 7]]);
   });
 
-  test('test case 2', async () => {
+  test('level order - test case 2', async () => {
     const array = [1];
     const tree = __deserialize(array);
 
     expect(levelOrder(tree)).toStrictEqual([[1]]);
   });
 
-  test('test case 1', async () => {
+  test('level order - test case 3', async () => {
     const array: (number | null)[] = [];
     const tree = __deserialize(array);
 

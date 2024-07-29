@@ -56,15 +56,16 @@ describe('construct quad tree', () => {
     return true;
   }
 
-  test('test case 1', async () => {
+  test('quad tree - test case 1', async () => {
     const grid = [
       [0, 1],
       [1, 0]
     ];
+
     expect(construct(grid)).toMatchSnapshot();
   });
 
-  test('test case 2', async () => {
+  test('quad tree - test case 2', async () => {
     const grid = [
       [1, 1, 1, 1, 0, 0, 0, 0],
       [1, 1, 1, 1, 0, 0, 0, 0],

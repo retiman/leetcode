@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`three sum three sum test case 1 1`] = `
+exports[`three sum three sum - test case 1 1`] = `
 [
   [
     -1,
@@ -15,7 +15,7 @@ exports[`three sum three sum test case 1 1`] = `
 ]
 `;
 
-exports[`three sum three sum test case 1 2`] = `
+exports[`three sum three sum - test case 2 1`] = `
 [
   [
     -4,

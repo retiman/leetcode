@@ -39,15 +39,15 @@ describe('length of longest substring without repeated characters', () => {
     return max;
   }
 
-  test('test case 1', async () => {
+  test('length of longest substring - test case 1', async () => {
     expect(lengthOfLongestSubstring('abcabcbb')).toBe(3);
   });
 
-  test('test case 2', async () => {
+  test('length of longest substring - test case 2', async () => {
     expect(lengthOfLongestSubstring('bbbbb')).toBe(1);
   });
 
-  test('test case 3', async () => {
+  test('length of longest substring - test case 3', async () => {
     expect(lengthOfLongestSubstring('pwwkew')).toBe(3);
   });
 });

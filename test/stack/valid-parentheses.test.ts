@@ -41,9 +41,15 @@ describe('valid parentheses', () => {
     return stack.length === 0;
   }
 
-  test('run', async () => {
+  test('valid parentheses - test case 1', async () => {
     expect(isValid('()')).toBe(true);
+  });
+
+  test('valid parentheses - test case 2', async () => {
     expect(isValid('()[]{}')).toBe(true);
+  });
+
+  test('valid parentheses - test case 3', async () => {
     expect(isValid('(}')).toBe(false);
   });
 });

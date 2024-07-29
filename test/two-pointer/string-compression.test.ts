@@ -50,7 +50,7 @@ describe('string compression', () => {
     return write;
   }
 
-  test('test case 1', async () => {
+  test('string compression - test case 1', async () => {
     const cs = ['a', 'a', 'b', 'b', 'c', 'c', 'c'];
 
     const count = compress(cs);

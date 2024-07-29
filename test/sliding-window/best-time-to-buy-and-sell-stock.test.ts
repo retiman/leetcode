@@ -42,11 +42,11 @@ describe('best time to buy and sell stock', () => {
     return profit;
   }
 
-  test('test case 1', async () => {
+  test('max profit - test case 1', async () => {
     expect(maxProfit([7, 1, 5, 3, 6, 4])).toBe(5);
   });
 
-  test('test case 2', async () => {
+  test('max profit - test case 2', async () => {
     expect(maxProfit([7, 6, 4, 3, 1])).toBe(0);
   });
 });

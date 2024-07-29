@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`permute test case 1 1`] = `
+exports[`permute permute - test case 2 1`] = `
 [
   [
     1,
@@ -35,7 +35,7 @@ exports[`permute test case 1 1`] = `
 ]
 `;
 
-exports[`permute test case 2 1`] = `
+exports[`permute permute - test case 3 1`] = `
 [
   [
     0,

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`construct quad tree test case 1 1`] = `
+exports[`construct quad tree quad tree - test case 1 1`] = `
 _Node {
   "bottomLeft": _Node {
     "bottomLeft": null,
@@ -39,7 +39,7 @@ _Node {
 }
 `;
 
-exports[`construct quad tree test case 2 1`] = `
+exports[`construct quad tree quad tree - test case 2 1`] = `
 _Node {
   "bottomLeft": _Node {
     "bottomLeft": null,
