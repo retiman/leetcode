@@ -13,7 +13,7 @@
 // See https://leetcode.com/problems/nested-list-weight-sum-ii/
 import { NestedInteger } from '../../src/linked-list/nested-list-weighted-sum';
 
-describe('nested list weighted sum pt2', () => {
+describe('nested list weighted sum ii', () => {
   function depthSumInverse(nestedList: NestedInteger[]): number {
     type Integer = number;
     type Depth = number;
@@ -60,8 +60,11 @@ describe('nested list weighted sum pt2', () => {
     return result;
   }
 
-  test('run', async () => {
+  test('nested list weighted sum ii - test case 1', async () => {
     expect(depthSumInverse([new NestedInteger(10)])).toBe(10);
+  });
+
+  test('nested list weighted sum ii - test case 2', async () => {
     expect(depthSumInverse([new NestedInteger(10), new NestedInteger(20)])).toBe(30);
   });
 });

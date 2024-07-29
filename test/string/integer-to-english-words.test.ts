@@ -148,19 +148,19 @@ describe('integer to english words', () => {
     return result.trim();
   }
 
-  test('test case 1', async () => {
+  test('integer to english words - test case 1', async () => {
     expect(numberToWords(123)).toBe('One Hundred Twenty Three');
   });
 
-  test('test case 2', async () => {
+  test('integer to english words - test case 2', async () => {
     expect(numberToWords(12345)).toBe('Twelve Thousand Three Hundred Forty Five');
   });
 
-  test('test case 3', async () => {
+  test('integer to english words - test case 3', async () => {
     expect(numberToWords(1234567)).toBe('One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven');
   });
 
-  test('test case 4', async () => {
+  test('integer to english words - test case 4', async () => {
     expect(numberToWords(50868)).toBe('Fifty Thousand Eight Hundred Sixty Eight');
   });
 });

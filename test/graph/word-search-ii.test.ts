@@ -121,7 +121,7 @@ describe('word search ii', () => {
     }
   }
 
-  test('test case 1', async () => {
+  test('word search ii - test case 1', async () => {
     const board = [
       ['o', 'a', 'a', 'n'],
       ['e', 't', 'a', 'e'],
@@ -133,7 +133,7 @@ describe('word search ii', () => {
     expect(findWords(board, words)).toMatchSnapshot();
   });
 
-  test('test case 2', async () => {
+  test('word search ii - test case 2', async () => {
     const board = [
       ['a', 'b'],
       ['c', 'd']
@@ -143,14 +143,14 @@ describe('word search ii', () => {
     expect(findWords(board, words)).toStrictEqual([]);
   });
 
-  test('test case 3', async () => {
+  test('word search ii - test case 3', async () => {
     const board = [['a', 'a']];
     const words = ['aaa'];
 
     expect(findWords(board, words)).toStrictEqual([]);
   });
 
-  test('test case 4', async () => {
+  test('word search ii - test case 4', async () => {
     const board = [
       ['o', 'a', 'a', 'n'],
       ['e', 't', 'a', 'e'],

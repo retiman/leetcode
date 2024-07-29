@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`subsets test case 1 1`] = `
+exports[`subsets subsets - test case 2 1`] = `
 [
   [],
   [
@@ -32,7 +32,7 @@ exports[`subsets test case 1 1`] = `
 ]
 `;
 
-exports[`subsets test case 2 1`] = `
+exports[`subsets subsets - test case 3 1`] = `
 [
   [],
   [

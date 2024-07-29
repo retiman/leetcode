@@ -21,13 +21,13 @@ describe('valid word square', () => {
     return true;
   }
 
-  test('test case 1', async () => {
+  test('valid word square - test case 1', async () => {
     const words = ['abcd', 'bnrt', 'crmy', 'dtye'];
 
     expect(validWordSquare(words)).toBe(true);
   });
 
-  test('test case 1', async () => {
+  test('valid word square - test case 2', async () => {
     const words = ['abcd', 'bnrt', 'crm', 'dt'];
 
     expect(validWordSquare(words)).toBe(true);

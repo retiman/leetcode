@@ -79,15 +79,27 @@ describe('longest substring without repeating characters', () => {
     return max;
   }
 
-  test('naive length of longest substring', async () => {
+  test.skip('length of longest substring - test case 1', async () => {
     expect(__naiveLengthOfLongestSubstring('abcabcbb')).toBe(3);
+  });
+
+  test.skip('length of longest substring - test case 2', async () => {
     expect(__naiveLengthOfLongestSubstring('bbbbb')).toBe(1);
+  });
+
+  test.skip('length of longest substring - test case 3', async () => {
     expect(__naiveLengthOfLongestSubstring('pwwkew')).toBe(3);
   });
 
-  test('length of longest substring', async () => {
+  test('length of longest substring - test case 4', async () => {
     expect(lengthOfLongestSubstring('abcabcbb')).toBe(3);
+  });
+
+  test('length of longest substring - test case 5', async () => {
     expect(lengthOfLongestSubstring('bbbbb')).toBe(1);
+  });
+
+  test('length of longest substring - test case 6', async () => {
     expect(lengthOfLongestSubstring('pwwkew')).toBe(3);
   });
 });

@@ -60,17 +60,23 @@ describe('merge k sorted lists', () => {
     return merged === null ? null : node2list(merged);
   }
 
-  test('merge trivial', async () => {
+  test('merge k sorted lists - test case 1', async () => {
     expect(__merge([null, null])).toBeNull();
+  });
+
+  test('merge k sorted lists - test case 2', async () => {
     expect(__merge([[1], null])).toStrictEqual([1]);
+  });
+
+  test('merge k sorted lists - test case 3', async () => {
     expect(__merge([null, [1]])).toStrictEqual([1]);
   });
 
-  test('merge single', async () => {
+  test('merge k sorted lists - test case 4', async () => {
     expect(__merge([[1], [2]])).toStrictEqual([1, 2]);
   });
 
-  test('merge case 1', async () => {
+  test('merge k sorted lists - test case 5', async () => {
     const lists = [
       [1, 2, 4],
       [1, 3, 4]
@@ -79,7 +85,7 @@ describe('merge k sorted lists', () => {
     expect(__merge(lists)).toStrictEqual(merged);
   });
 
-  test('merge case 2', async () => {
+  test('merge k sorted lists - test case 6', async () => {
     const lists = [
       [1, 4, 5],
       [1, 3, 4],

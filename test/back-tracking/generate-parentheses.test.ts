@@ -50,27 +50,33 @@ describe('generate parentheses', () => {
     return result;
   }
 
-  function __generate(n: number): Set<string> {
-    return new Set(generateParenthesis(n));
-  }
+  test('generate parenthesis - test case 1', async () => {
+    const set = new Set(generateParenthesis(0));
 
-  test('generate empty', async () => {
-    expect(__generate(0)).toStrictEqual(new Set());
+    expect(set).toStrictEqual(new Set());
   });
 
-  test('generate one set', async () => {
-    expect(__generate(1)).toStrictEqual(new Set(['()']));
+  test('generate parenthesis - test case 2', async () => {
+    const set = new Set(generateParenthesis(1));
+
+    expect(set).toStrictEqual(new Set(['()']));
   });
 
-  test('generate two sets', async () => {
-    expect(__generate(2)).toStrictEqual(new Set(['()()', '(())']));
+  test('generate parenthesis - test case 3', async () => {
+    const set = new Set(generateParenthesis(2));
+
+    expect(set).toStrictEqual(new Set(['()()', '(())']));
   });
 
-  test('generate three sets', async () => {
-    expect(__generate(3)).toMatchSnapshot();
+  test('generate parenthesis - test case 4', async () => {
+    const set = new Set(generateParenthesis(3));
+
+    expect(set).toMatchSnapshot();
   });
 
-  test('generate four sets', async () => {
-    expect(__generate(4)).toMatchSnapshot();
+  test('generate parenthesis - test case 5', async () => {
+    const set = new Set(generateParenthesis(4));
+
+    expect(set).toMatchSnapshot();
   });
 });

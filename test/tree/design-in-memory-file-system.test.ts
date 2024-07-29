@@ -112,7 +112,7 @@ describe('design in memory file system', () => {
     }
   }
 
-  test('test case 1', async () => {
+  test('design in memory file system - test case 1', async () => {
     const fs = new FileSystem();
 
     expect(fs.ls('/')).toStrictEqual([]);

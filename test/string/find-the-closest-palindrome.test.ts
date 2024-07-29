@@ -155,19 +155,19 @@ describe('find the closest palindrome', () => {
     return list[0].toString();
   }
 
-  test('multiple digits', async () => {
+  test('nearest palindromic - test case 1', async () => {
     expect(nearestPalindromic('1234')).toBe('1221');
   });
 
-  test('test case 1', async () => {
+  test('nearest palindromic - test case 2', async () => {
     expect(nearestPalindromic('123')).toBe('121');
   });
 
-  test('test case 2', async () => {
+  test('nearest palindromic - test case 3', async () => {
     expect(nearestPalindromic('1')).toBe('0');
   });
 
-  test('test case 3', async () => {
+  test('nearest palindromic - test case 4', async () => {
     expect(nearestPalindromic('10')).toBe('9');
   });
 

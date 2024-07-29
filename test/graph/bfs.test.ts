@@ -6,7 +6,7 @@
 import { BreadthFirstSearch, Edge } from '../../src/graph/bfs';
 
 describe('breadth first search', () => {
-  test('run', async () => {
+  test('breadth first search - test case 1', async () => {
     const graph: Edge[] = [
       ['a', 'b'],
       ['a', 'c'],

@@ -57,7 +57,7 @@ describe('valid triangle number', () => {
     return result;
   }
 
-  test('triangle number test case 1', async () => {
+  test('valid triangle number - test case 1', async () => {
     expect(triangleNumber([2, 2, 3, 4])).toBe(3);
   });
 });

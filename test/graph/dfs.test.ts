@@ -6,7 +6,7 @@
 import { DepthFirstSearch, Edge } from '../../src/graph/dfs';
 
 describe('depth first search', () => {
-  test('run', async () => {
+  test('depth first search - test case 1', async () => {
     const graph: Edge[] = [
       ['a', 'b'],
       ['a', 'c'],

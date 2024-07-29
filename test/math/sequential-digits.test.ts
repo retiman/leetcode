@@ -44,11 +44,11 @@ describe('sequential digits', () => {
     return results;
   }
 
-  test('test case 1', async () => {
+  test('sequential digits - test case 1', async () => {
     expect(sequentialDigits(100, 300)).toMatchSnapshot();
   });
 
-  test('test case 2', async () => {
+  test('sequential digits - test case 2', async () => {
     expect(sequentialDigits(1000, 13000)).toMatchSnapshot();
   });
 });

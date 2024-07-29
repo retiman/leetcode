@@ -61,7 +61,7 @@ describe('design hit counter', () => {
     }
   }
 
-  test('test case 1', async () => {
+  test('design hit counter - test case 1', async () => {
     const counter = new HitCounter();
 
     counter.hit(1);

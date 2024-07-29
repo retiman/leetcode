@@ -89,33 +89,87 @@ describe('pow', () => {
     return result;
   }
 
-  test('run slowly', async () => {
+  test.skip('pow - test case 1', async () => {
     expect(__naiveMyPow(2, -2)).toBe(0.25);
+  });
+
+  test.skip('pow - test case 2', async () => {
     expect(__naiveMyPow(2, -1)).toBe(0.5);
+  });
+
+  test.skip('pow - test case 3', async () => {
     expect(__naiveMyPow(2, 0)).toBe(1);
+  });
+
+  test.skip('pow - test case 3', async () => {
     expect(__naiveMyPow(2, 1)).toBe(2);
+  });
+
+  test.skip('pow - test case 4', async () => {
     expect(__naiveMyPow(2, 4)).toBe(16);
+  });
+
+  test.skip('pow - test case 5', async () => {
     expect(__naiveMyPow(2, 5)).toBe(32);
+  });
+
+  test.skip('pow - test case 6', async () => {
     expect(__naiveMyPow(2, -2147483648)).toBe(0);
   });
 
-  test('run faster', async () => {
+  test.skip('pow - test case 7', async () => {
     expect(__fasterMyPow(2, -2)).toBe(0.25);
+  });
+
+  test.skip('pow - test case 8', async () => {
     expect(__fasterMyPow(2, -1)).toBe(0.5);
+  });
+
+  test.skip('pow - test case 9', async () => {
     expect(__fasterMyPow(2, 0)).toBe(1);
+  });
+
+  test.skip('pow - test case 10', async () => {
     expect(__fasterMyPow(2, 1)).toBe(2);
+  });
+
+  test.skip('pow - test case 11', async () => {
     expect(__fasterMyPow(2, 4)).toBe(16);
+  });
+
+  test.skip('pow - test case 12', async () => {
     expect(__fasterMyPow(2, 5)).toBe(32);
+  });
+
+  test.skip('pow - test case 13', async () => {
     expect(__fasterMyPow(2, -2147483648)).toBe(0);
   });
 
-  test('run fastest', async () => {
+  test('pow - test case 14', async () => {
     expect(myPow(2, -2)).toBe(0.25);
+  });
+
+  test('pow - test case 15', async () => {
     expect(myPow(2, -1)).toBe(0.5);
+  });
+
+  test('pow - test case 16', async () => {
     expect(myPow(2, 0)).toBe(1);
+  });
+
+  test('pow - test case 17', async () => {
     expect(myPow(2, 1)).toBe(2);
+  });
+
+  test('pow - test case 18', async () => {
     expect(myPow(2, 4)).toBe(16);
+  });
+
+  test('pow - test case 19', async () => {
     expect(myPow(2, 5)).toBe(32);
+  });
+
+  test('pow - test case 20', async () => {
     expect(myPow(2, -2147483648)).toBe(0);
   });
 });

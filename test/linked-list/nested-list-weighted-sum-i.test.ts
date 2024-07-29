@@ -11,7 +11,7 @@
 // See https://leetcode.com/problems/nested-list-weight-sum
 import { NestedInteger } from '../../src/linked-list/nested-list-weighted-sum';
 
-describe('nested list weighted sum pt1', () => {
+describe('nested list weighted sum i', () => {
   function depthSum(nestedList: NestedInteger[]): number {
     function compute(x: NestedInteger, depth: number): number {
       if (x.isInteger()) {
@@ -38,8 +38,11 @@ describe('nested list weighted sum pt1', () => {
     return compute(x, 0);
   }
 
-  test('run', async () => {
+  test('nested list weighted sum i - test case 1', async () => {
     expect(depthSum([new NestedInteger(10)])).toBe(10);
+  });
+
+  test('nested list weighted sum i - test case 2', async () => {
     expect(depthSum([new NestedInteger(10), new NestedInteger(20)])).toBe(30);
   });
 });

@@ -44,15 +44,15 @@ describe('subsets', () => {
     return [...result].map(xs => [...xs]);
   }
 
-  test('test case null', async () => {
+  test('subsets - test case 1', async () => {
     expect(subsets([])).toStrictEqual([[]]);
   });
 
-  test('test case 1', async () => {
+  test('subsets - test case 2', async () => {
     expect(subsets([1, 2, 3])).toMatchSnapshot();
   });
 
-  test('test case 2', async () => {
+  test('subsets - test case 3', async () => {
     expect(subsets([0])).toMatchSnapshot();
   });
 });
