@@ -47,7 +47,7 @@ describe('maximum subarray', () => {
     return max;
   }
 
-  test('maximum subarray test case 1', async () => {
+  test('maximum subarray - test case 1', async () => {
     expect(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])).toBe(6);
   });
 });

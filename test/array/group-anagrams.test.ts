@@ -27,7 +27,7 @@ describe('group anagrams', () => {
     return Array.from(map.values());
   }
 
-  test('run', async () => {
+  test('group anagrams - test case 1', async () => {
     expect(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat'])).toMatchSnapshot();
   });
 });

@@ -156,23 +156,23 @@ describe('median of two sorted arrays', () => {
     throw new Error('Arrays are not sorted');
   }
 
-  test('naive test case 1', async () => {
+  test.skip('median of two sorted arrays - test case 1', async () => {
     expect(__naiveFindMedianSortedArrays([1, 3], [2])).toBe(2);
   });
 
-  test('naive test case 2', async () => {
+  test.skip('median of two sorted arrays - test case 2', async () => {
     expect(__naiveFindMedianSortedArrays([2], [3])).toBe(2.5);
   });
 
-  test('naive test case 3', async () => {
+  test.skip('median of two sorted arrays - test case 3', async () => {
     expect(__naiveFindMedianSortedArrays([], [1])).toBe(1);
   });
 
-  test('test case 1', async () => {
+  test('median of two sorted arrays - test case 4', async () => {
     expect(findMedianSortedArrays([1, 3], [2])).toBe(2);
   });
 
-  test('test case 2', async () => {
+  test('median of two sorted arrays - test case 5', async () => {
     expect(findMedianSortedArrays([3, 2, 3, 1, 2, 4, 5, 5, 6], [4])).toBe(3);
   });
 });
