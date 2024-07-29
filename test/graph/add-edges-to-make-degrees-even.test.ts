@@ -127,7 +127,7 @@ describe('add edges to make degrees of all nodes even', () => {
     return false;
   }
 
-  test('test case 1', async () => {
+  test('add edges to make degrees even - test case 1', async () => {
     const n = 5;
     const edges = [
       [1, 2],
@@ -141,7 +141,7 @@ describe('add edges to make degrees of all nodes even', () => {
     expect(isPossible(n, edges)).toBe(true);
   });
 
-  test('test case 2', async () => {
+  test('add edges to make degrees even - test case 2', async () => {
     const n = 4;
     const edges = [
       [1, 2],
@@ -151,7 +151,7 @@ describe('add edges to make degrees of all nodes even', () => {
     expect(isPossible(n, edges)).toBe(true);
   });
 
-  test('test case 3', async () => {
+  test('add edges to make degrees even - test case 3', async () => {
     const n = 4;
     const edges = [
       [1, 2],
@@ -162,7 +162,7 @@ describe('add edges to make degrees of all nodes even', () => {
     expect(isPossible(n, edges)).toBe(false);
   });
 
-  test('test case 4', async () => {
+  test('add edges to make degrees even - test case 4', async () => {
     const n = 4;
     const edges = [
       [1, 2],
