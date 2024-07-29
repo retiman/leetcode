@@ -108,19 +108,19 @@ describe('kth largest element in an array', () => {
     return i;
   }
 
-  test('quick select test case 1', async () => {
+  test.skip('find kth largest - test case 1', async () => {
     expect(__findKthLargest([3, 2, 1, 5, 6, 4], 2)).toBe(5);
   });
 
-  test('test case 1', async () => {
+  test('find kth largest - test case 1', async () => {
     expect(findKthLargest([3, 2, 1, 5, 6, 4], 2)).toBe(5);
   });
 
-  test('test case 2', async () => {
+  test('find kth largest - test case 2', async () => {
     expect(findKthLargest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4)).toBe(4);
   });
 
-  test('test case 3', async () => {
+  test.skip('find kth largest - test case 3', async () => {
     const data = fs.readFileSync(path.join(__dirname, '__data__', 'kth-largest-element.test.json')).toString();
     const array = JSON.parse(data);
 

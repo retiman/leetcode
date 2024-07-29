@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`word search ii test case 1 1`] = `
+exports[`word search ii word search ii - test case 1 1`] = `
 [
   "oath",
   "eat",
 ]
 `;
 
-exports[`word search ii test case 4 1`] = `
+exports[`word search ii word search ii - test case 4 1`] = `
 [
   "oath",
   "eat",

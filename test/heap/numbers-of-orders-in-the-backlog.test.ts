@@ -23,8 +23,9 @@
 // Return the total amount of orders in the backlog after placing all the orders from the input. Since this number can
 // be large, return it modulo 10^9 + 7.
 //
-
 // See https://leetcode.com/problems/number-of-orders-in-the-backlog/
+import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue';
+
 describe('number of orders in the backlog', () => {
   // This problem looks like it can be solved by maintaining a sorted list of buy orders and sell orders (aka heaps).
   // For a sell order, you want buy orders in largest to smallest (max heap).  For a buy order, you want sell orders
@@ -32,23 +33,24 @@ describe('number of orders in the backlog', () => {
   //
   // TypeScript does not implement min or max heaps for us; we'll have to do it ourselves.
   function getNumberOfBacklogOrders(orders: number[][]): number {
-    const buys = new MaxHeap();
-    const sells = new MinHeap();
+    type Order = [number, number];
+    const buys = new MaxPriorityQueue();
+    const sells = new MinPriorityQueue();
 
     function handleBuy(price: number, amount: number) {
       while (amount > 0) {
         // No more sellers, push buy order to the backlog.
         if (sells.size() === 0) {
-          buys.push([price, amount]);
+          buys.enqueue([price, amount], price);
           return;
         }
 
-        const order = sells.peek()!;
+        const order = sells.front().element as Order;
 
         // If the buy price is lower than the minimum selling price, we cannot find a match, so let's just put the buy
         // order on the backlog.
         if (price < order[0]) {
-          buys.push([price, amount]);
+          buys.enqueue([price, amount], price);
           return;
         }
 
@@ -59,7 +61,7 @@ describe('number of orders in the backlog', () => {
 
         // If the sell order has been exhausted, pop it from the heap.
         if (order[1] === 0) {
-          sells.pop();
+          sells.dequeue();
         }
 
         // If the buy order has been exhausted, we've processed the buy order, so return.
@@ -73,15 +75,15 @@ describe('number of orders in the backlog', () => {
       while (amount > 0) {
         // No more buyers, push sell order to the backlog.
         if (buys.size() === 0) {
-          sells.push([price, amount]);
+          sells.enqueue([price, amount], price);
           return;
         }
 
-        const order = buys.peek()!;
+        const order = buys.front().element as Order;
 
         // If the sell price is higher than the maximum buy price, we cannot find a buyer, so push onto the backlog.
         if (price > order[0]) {
-          sells.push([price, amount]);
+          sells.enqueue([price, amount], price);
           return;
         }
 
@@ -92,7 +94,7 @@ describe('number of orders in the backlog', () => {
 
         // If the buy order has been exhausted, pop it from the heap.
         if (order[1] === 0) {
-          buys.pop();
+          buys.dequeue();
         }
 
         // If the buy order has been exhausted, we've processed the buy order, so return.
@@ -127,104 +129,20 @@ describe('number of orders in the backlog', () => {
     const modulus = 1e9 + 7;
     let total = 0;
 
-    for (const [_, amount] of buys.all()) {
+    for (const item of buys.toArray()) {
+      const [_, amount] = item.element as Order;
       total = (total + amount) % modulus;
     }
 
-    for (const [_, amount] of sells.all()) {
+    for (const item of sells.toArray()) {
+      const [_, amount] = item.element as Order;
       total = (total + amount) % modulus;
     }
 
     return total;
   }
 
-  class MinHeap {
-    private readonly items: Array<[price: number, amount: number]> = [];
-
-    public push(item: [price: number, amount: number]) {
-      const [price, amount] = item;
-      if (amount === 0) {
-        return;
-      }
-
-      // Do an insert via binary search.
-      let left = 0;
-      let right = this.items.length;
-      while (left < right) {
-        const mid = Math.floor((left + right) / 2);
-        const [p, _] = this.items[mid];
-        if (price > p) {
-          left = mid + 1;
-        } else {
-          right = mid;
-        }
-      }
-
-      // Add after the left element.
-      this.items.splice(left, 0, item);
-    }
-
-    public pop() {
-      return this.items.shift();
-    }
-
-    public peek() {
-      return this.items.length === 0 ? undefined : this.items[0];
-    }
-
-    public size() {
-      return this.items.length;
-    }
-
-    public all() {
-      return this.items;
-    }
-  }
-
-  class MaxHeap {
-    private readonly items: Array<[price: number, amount: number]> = [];
-
-    public push(item: [price: number, amount: number]) {
-      const [price, amount] = item;
-      if (amount === 0) {
-        return;
-      }
-
-      // Do an insert via binary search.
-      let left = 0;
-      let right = this.items.length;
-      while (left < right) {
-        const mid = Math.floor((left + right) / 2);
-        const [p, _] = this.items[mid];
-        if (price > p) {
-          right = mid;
-        } else {
-          left = mid + 1;
-        }
-      }
-
-      // Add after the left element.
-      this.items.splice(left, 0, item);
-    }
-
-    public pop() {
-      return this.items.shift();
-    }
-
-    public peek() {
-      return this.items.length === 0 ? undefined : this.items[0];
-    }
-
-    public size() {
-      return this.items.length;
-    }
-
-    public all() {
-      return this.items;
-    }
-  }
-
-  test('test case 1', async () => {
+  test('number of backlog orders - test case 1', async () => {
     const orders = [
       [10, 5, 0],
       [15, 2, 1],
@@ -235,7 +153,7 @@ describe('number of orders in the backlog', () => {
     expect(getNumberOfBacklogOrders(orders)).toBe(6);
   });
 
-  test('test case 2', async () => {
+  test('number of backlog orders - test case 2', async () => {
     const orders = [
       [7, 1000000000, 1],
       [15, 3, 0],
@@ -246,7 +164,7 @@ describe('number of orders in the backlog', () => {
     expect(getNumberOfBacklogOrders(orders)).toBe(999999984);
   });
 
-  test('test case 3', async () => {
+  test('number of backlog orders - test case 3', async () => {
     const orders = [
       [19, 28, 0],
       [9, 4, 1],
@@ -256,7 +174,7 @@ describe('number of orders in the backlog', () => {
     expect(getNumberOfBacklogOrders(orders)).toBe(39);
   });
 
-  test('test case 4', async () => {
+  test('number of backlog orders - test case 4', async () => {
     const orders = [
       [26, 7, 0],
       [16, 1, 1],
@@ -270,7 +188,7 @@ describe('number of orders in the backlog', () => {
     expect(getNumberOfBacklogOrders(orders)).toBe(34);
   });
 
-  test('test case 5', async () => {
+  test('number of backlog orders - test case 5', async () => {
     const orders = [
       [1, 29, 1],
       [22, 7, 1],
