@@ -1,6 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generate parentheses generate four sets 1`] = `
+exports[`generate parentheses generate parenthesis - test case 4 1`] = `
+Set {
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()",
+}
+`;
+
+exports[`generate parentheses generate parenthesis - test case 5 1`] = `
 Set {
   "(((())))",
   "((()()))",
@@ -16,15 +26,5 @@ Set {
   "()(())()",
   "()()(())",
   "()()()()",
-}
-`;
-
-exports[`generate parentheses generate three sets 1`] = `
-Set {
-  "((()))",
-  "(()())",
-  "(())()",
-  "()(())",
-  "()()()",
 }
 `;
