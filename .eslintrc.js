@@ -116,7 +116,7 @@ module.exports = {
     'prefer-destructuring': [
       'error',
       {
-        object: true,
+        object: false,
         array: false
       }
     ],

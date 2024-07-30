@@ -8,7 +8,7 @@
 // Return the final string after all such duplicate removals have been made. It can be proven that the answer is unique.
 //
 // See https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
-describe('remove all adjacent duplicates', () => {
+describe('remove all adjacent duplicates i', () => {
   function removeDuplicates(s: string) {
     const stack: string[] = [];
 
@@ -27,7 +27,7 @@ describe('remove all adjacent duplicates', () => {
     return stack.join('');
   }
 
-  test('remove all adjacent duplicates - test case 1', async () => {
+  test('remove all adjacent duplicates i - test case 1', async () => {
     expect(removeDuplicates('abbaca')).toBe('ca');
   });
 });
