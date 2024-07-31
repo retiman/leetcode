@@ -19,6 +19,7 @@
 describe('key value store with nested transactions', () => {
   class KeyValueStore {
     private readonly stack: Map<string, number | null>[];
+
     private readonly map: Map<string, number>;
 
     constructor() {
@@ -197,5 +198,4 @@ describe('key value store with nested transactions', () => {
     expect(store.get('a')).toBe(1);
     expect(store.get('b')).toBe(2);
   });
-
 });
