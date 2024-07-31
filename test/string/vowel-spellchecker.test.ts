@@ -24,6 +24,8 @@
 // - When the query matches a word up to vowel errors, you should return the first such match in the wordlist.
 // - If the query has no matches in the wordlist, you should return the empty string.
 // - Given some queries, return a list of words answer, where answer[i] is the correct word for query = queries[i].
+//
+// See https://leetcode.com/problems/vowel-spellchecker/
 describe('vowel spellchecker', () => {
   function spellchecker(wordlist: string[], queries: string[]): string[] {
     const set = new Set(wordlist);
