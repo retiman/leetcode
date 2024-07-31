@@ -81,6 +81,8 @@ module.exports = {
     // See https://eslint.org/docs/latest/rules/no-continue
     // See https://refactoring.com/catalog/replaceNestedConditionalWithGuardClauses.html
     'no-continue': 'off',
+    // Disabled because prettier can fix this.
+    'no-irregular-whitespace': 'off',
     // Disabled because it is handled by @typescript-eslint rules.
     'no-shadow': 'off',
     // Disabled for convenience.  Enable again if this ends up hurting the project.
