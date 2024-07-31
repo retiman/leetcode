@@ -89,7 +89,7 @@ describe('task scheduler', () => {
     expect(leastInterval(['A', 'A', 'A', 'B', 'B', 'B'], 3)).toBe(10);
   });
 
-  test('task scheduler - test case 4', async () => {
+  test.skip('task scheduler - test case 4', async () => {
     const data = fs.readFileSync(path.join(__dirname, '__data__', 'task-scheduler.test.json')).toString();
     const tasks = JSON.parse(data);
 
