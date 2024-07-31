@@ -6,7 +6,7 @@
 // Note that the same word in the dictionary may be reused multiple times in the segmentation.
 //
 // See https://leetcode.com/problems/word-break/
-describe('word break', () => {
+describe('word break i', () => {
   // Note that this problem is significantly easier than word break ii because we don't need to do any backtracking to
   // generate all of the possible sentences.
   //
@@ -52,7 +52,7 @@ describe('word break', () => {
     return map.has(`[0,${s.length})`);
   }
 
-  test('word break - test case 1', () => {
+  test('word break i - test case 1', () => {
     const s = 'leetcode';
     const wordDict = ['leet', 'code'];
 
