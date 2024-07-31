@@ -15,7 +15,7 @@
 // You must come up with a solution that supports O(1) for each top call and O(logn) for each other call.
 //
 // See https://leetcode.com/problems/max-stack/
-import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
+const { PriorityQueue } = require('@datastructures-js/priority-queue');
 
 describe('max stack', () => {
   interface StackNode {
@@ -27,38 +27,57 @@ describe('max stack', () => {
 
   class MaxStack {
     private readonly deleted: Set<number>;
-    // LeetCode does not have types for MaxPriorityQueue, but here, TypeScript will expect it.  To make this work on
-    // LeetCode, we'll have to set this to type any.
+
+    // We want a max priority queue, but we need to determine the max by comparing both a key and a value.  This can
+    // only be done by supplying a custom comparator, so instead of using a MaxPriorityQueue, we'll use a PriorityQueue
+    // that takes a custom comparator.
     //
-    private readonly heap: MaxPriorityQueue<StackNode>;
-    // private readonly heap: any;
+    // LeetCode has a ton of issues with this; it seems that the type information is unavailable for PriorityQueue and
+    // related classes.  This means that if you attempt to declare a PriorityQueue with generics, it will not compile
+    // in LeetCode.
+    //
+    // Type inference using new PriorityQueue() does work without issues, since LeetCode will infer the correct type.
+    // However, if you try to use the correct type here, you'll get a compilation error on your end.  To get around this
+    // we are just going to set the type to 'any'.
+    //
+    // We also have to use require() over import here, or else we'll again be thwarted by type checks.
+    //
+    // Oh, one more thing, when using PriorityQueue in this way, the enqueue(), dequeue(), and front() methods now
+    // return the element directly when using PriorityQueue in this way.  Don't reference .element or .priority; it
+    // won't exist.
+    //
+    // private readonly heap: PriorityQueue<StackNode>;
+    private readonly heap: any;
+
     private keys: number;
+
     private head: StackNode;
+
     private tail: StackNode;
 
     constructor() {
       this.keys = 0;
       this.deleted = new Set();
-      this.heap = new MaxPriorityQueue({
+      this.heap = new PriorityQueue({
         compare: (a: StackNode, b: StackNode) => {
           // Because we want to pop max the top most max element, we should compare their keys in the case of a tie;
           // that is because the higher key will be on top of the stack.
           if (a.value === b.value) {
-            return a.key - b.key;
+            return b.key - a.key;
           }
 
-          return a.value - b.value;
+          return b.value - a.value;
         }
       });
 
       // Create sentinel values for head and tail so we don't have to deal with null pointers.
       const head: Partial<StackNode> = {
         key: Number.MIN_SAFE_INTEGER,
-        value: Number.MIN_SAFE_INTEGER,
+        value: Number.MIN_SAFE_INTEGER
       };
       const tail: Partial<StackNode> = {
         key: Number.MIN_SAFE_INTEGER,
-        value: Number.MIN_SAFE_INTEGER,
+        value: Number.MIN_SAFE_INTEGER
       };
 
       head.next = tail as StackNode;
@@ -87,9 +106,12 @@ describe('max stack', () => {
 
       // If we do have an element between head and tail, add this node after that one.
       const previous = this.tail.previous;
+
       node.previous = previous;
       node.next = this.tail;
+
       previous.next = node as StackNode;
+      this.tail.previous = node;
     }
 
     pop(): number {
@@ -125,17 +147,21 @@ describe('max stack', () => {
       }
 
       this.deleteMax();
-      const node = this.heap.front().element;
+      const node = this.heap.front();
       return node.value;
     }
 
     popMax(): number {
       if (this.heap.isEmpty()) {
-        throw new Error('nothing to peek max');
+        throw new Error('nothing to pop max');
       }
 
       this.deleteMax();
-      const node = this.heap.dequeue().element ;
+      if (this.heap.isEmpty()) {
+        throw new Error('nothing to pop max');
+      }
+
+      const node = this.heap.dequeue();
       const previous = node.previous;
       const next = node.next;
       previous.next = next;
@@ -145,12 +171,14 @@ describe('max stack', () => {
     }
 
     private deleteMax() {
-      let max = this.heap.front().element;
+      while (!this.heap.isEmpty()) {
+        const max = this.heap.front();
+        if (!this.deleted.has(max.key)) {
+          return;
+        }
 
-      while (!this.heap.isEmpty() && this.deleted.has(max.key)) {
         this.heap.dequeue();
         this.deleted.delete(max.key);
-        max = this.heap.front().element as StackNode;
       }
     }
   }
@@ -168,5 +196,5 @@ describe('max stack', () => {
     expect(stack.peekMax()).toBe(5);
     expect(stack.pop()).toBe(1);
     expect(stack.top()).toBe(5);
-  })
+  });
 });
