@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`word break ii word break ii - test case 1 1`] = `
+[
+  "cat sand dog",
+  "cats and dog",
+]
+`;
+
+exports[`word break ii word break ii - test case 2 1`] = `
+[
+  "pine apple pen apple",
+  "pine applepen apple",
+  "pineapple pen apple",
+]
+`;
