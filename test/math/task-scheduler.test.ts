@@ -28,7 +28,6 @@ describe('task scheduler', () => {
   // however, doesn't quite work if there are a huge number of tasks; if there are 10 task A's and 9 task B's, but 50
   // other uniquely named tasks, then we will still take 50 cycles if (10 - 1) * n is a smaller number.
   function leastInterval(tasks: string[], n: number): number {
-    // Calculate tasks to frequency map.
     type Task = string;
     type Frequency = number;
     const map = new Map<Task, Frequency>();
