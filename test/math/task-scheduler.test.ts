@@ -37,7 +37,6 @@ describe('task scheduler', () => {
       map.set(task, freq + 1);
     }
 
-
     const heap = new MaxPriorityQueue();
     for (const [_, freq] of map) {
       heap.enqueue(freq);
