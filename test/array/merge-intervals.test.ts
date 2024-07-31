@@ -58,7 +58,7 @@ describe('merge intervals', () => {
     return merged;
   }
 
-  test('test case 1', async () => {
+  test('merge intervals - test case 1', async () => {
     expect(
       merge([
         [1, 3],

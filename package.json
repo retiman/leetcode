@@ -19,7 +19,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "snapshot:update": "npm run test -- -u",
-    "test": "jest --collectCoverage --coverageDirectory coverage --config test/jest.config.js",
+    "test": "jest --config test/jest.config.js",
     "all": "npm run clean && npm run fix && npm run build && npm run test"
   },
   "main": "dist/index.js",

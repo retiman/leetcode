@@ -26,7 +26,7 @@ describe('word search ii', () => {
     // visited matrix once and then mutating it over each DFS visitation.
     const result = new Set<string>();
 
-    function __createdVisitedMatrix(matrix: string[][]) {
+    function createdVisitedMatrix(matrix: string[][]) {
       const visited: boolean[][] = Array(matrix.length);
       for (let i = 0; i < matrix.length; i++) {
         visited[i] = Array(matrix[i].length).fill(false);
@@ -34,7 +34,7 @@ describe('word search ii', () => {
       return visited;
     }
 
-    function __dfs(node: TrieNode, visited: boolean[][], word: string, row: number, column: number) {
+    function dfs(node: TrieNode, visited: boolean[][], word: string, row: number, column: number) {
       // If we've reached the end of a word, do not return right away; we might be able to reach a longer word if we
       // keep going.  Record the one we've seen so far though.
       if (node.isTerminated) {
@@ -76,7 +76,7 @@ describe('word search ii', () => {
         // cells (unlike regular DFS) because a different direction may yield different words, so we'll want reconsider
         // these previously visited cells.
         visited[x][y] = true;
-        __dfs(next, visited, word + c, x, y);
+        dfs(next, visited, word + c, x, y);
         visited[x][y] = false;
       }
     }
@@ -89,12 +89,12 @@ describe('word search ii', () => {
           continue;
         }
 
-        const visited = __createdVisitedMatrix(board);
+        const visited = createdVisitedMatrix(board);
         const node = root.children.get(c)!;
 
         // Note that the DFS function won't mark the current cell as visited; we'll have to do that manually.
         visited[i][j] = true;
-        __dfs(node, visited, c, i, j);
+        dfs(node, visited, c, i, j);
       }
     }
 
@@ -121,7 +121,7 @@ describe('word search ii', () => {
     }
   }
 
-  test('test case 1', async () => {
+  test('word search ii - test case 1', async () => {
     const board = [
       ['o', 'a', 'a', 'n'],
       ['e', 't', 'a', 'e'],
@@ -133,7 +133,7 @@ describe('word search ii', () => {
     expect(findWords(board, words)).toMatchSnapshot();
   });
 
-  test('test case 2', async () => {
+  test('word search ii - test case 2', async () => {
     const board = [
       ['a', 'b'],
       ['c', 'd']
@@ -143,14 +143,14 @@ describe('word search ii', () => {
     expect(findWords(board, words)).toStrictEqual([]);
   });
 
-  test('test case 3', async () => {
+  test('word search ii - test case 3', async () => {
     const board = [['a', 'a']];
     const words = ['aaa'];
 
     expect(findWords(board, words)).toStrictEqual([]);
   });
 
-  test('test case 4', async () => {
+  test('word search ii - test case 4', async () => {
     const board = [
       ['o', 'a', 'a', 'n'],
       ['e', 't', 'a', 'e'],

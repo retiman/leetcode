@@ -7,21 +7,34 @@
 //
 // See https://leetcode.com/problems/3sum/
 describe('three sum', () => {
+  // The two sum problem can be solved with a two pointer approach.  This can be solved with a similar approach, but
+  // you'll need to apply the two pointer approach to every element in the array.
   function threeSum(xs: number[]) {
     const result: number[][] = [];
 
+    // Sorting will help us more efficiently use the sliding window approach to find the triplets that sum to 0.
+    //
     // Note that xs.sort() will sort by string value.  So if you have negative numbers, something like [-1, -2, 0] is
     // considered "sorted".  To fix this, make sure to explicitly provide a compare function.
-    const ys = [...xs].sort((a, b) => a - b);
+    xs.sort((a, b) => a - b);
 
-    for (let i = 0; i < ys.length - 2; i++) {
+    // For each of the elements we will use a sliding window approach to find the other two elements that will sum up
+    // to 0.
+    //
+    // There are two ways we can think of this: we can think of our current element as element b, then set the left
+    // point to 0 and the right pointer to the length of the array - 1.  However, if we do this, we will reconsider
+    // elements we've already seen as the pointer advances.
+    //
+    // Instead, we'll consider the current element as a, then b starts at left = i + 1, and c starts at
+    // right = length - 1.
+    for (let i = 0; i < xs.length - 2; i++) {
       // Because we can't have duplicate triples in the result, we should just skip over any duplicates.
-      if (i > 0 && ys[i] === ys[i - 1]) {
+      if (i > 0 && xs[i] === xs[i - 1]) {
         continue;
       }
 
-      // For each element b, use the two pointers technique to find (a, c) such that a + b + c = 0.
-      const b = ys[i];
+      // For each element a, use the two pointers technique to find (b, c) such that a + b + c = 0.
+      const a = xs[i];
 
       // We cannot have duplicate triples in the result.  We can do this by setting the left pointer to 0, and the right
       // pointer to the last element, tightening the bounds as we consider sums.  However, this will reconsider
@@ -29,38 +42,43 @@ describe('three sum', () => {
       //
       // Starting the left pointer at i + 1 avoids this problem.
       let left = i + 1;
-      let right = ys.length - 1;
+      let right = xs.length - 1;
       while (left < right) {
-        const a = ys[left];
-        const c = ys[right];
+        const b = xs[left];
+        const c = xs[right];
         const sum = a + b + c;
 
-        // If the sum isn't the target of 0, narrow the left or right pointers.
+        // If the sum is less than 0, that means we need to increase the sum, so advance the left pointer.
         if (sum < 0) {
           left++;
           continue;
         }
 
+        // If the sum is greater than 0, that means we need to decrease the sum, so advance the right pointer.
         if (sum > 0) {
           right--;
           continue;
         }
 
-        // If the sum is the target of 0, add the triple to the result array.
+        // If the sum is the target of 0, add the triple to the result array.  However, there may yet still be more
+        // triplets we haven't found with our pointers!
+        //
+        // To find them, we should keep advancing the pointers past any dupes (as long as they are in range).
         if (sum === 0) {
           result.push([a, b, c]);
 
-          // Continue narrowing the left and right pointers to find additional triples with the current index.  When we
-          // narrow, we have to skip over any duplicates since we don't want to represent them twice in the triples
-          // array.
-          while (left < right && ys[left + 1] === ys[left]) {
+          // Advance the left pointer to skip any dupes of b.
+          while (xs[left + 1] === xs[left] && left < right) {
             left++;
           }
 
-          while (left < right && ys[right - 1] === ys[right]) {
+          // Advance the right pointer to skip any dupes of c.
+          while (xs[right - 1] === xs[right] && left < right) {
             right--;
           }
 
+          // Advance both pointers to consider the next potential sum.  We need to advance here and not before doing
+          // the while loops because advancing could have put us into a dupe!
           left++;
           right--;
         }
@@ -70,8 +88,11 @@ describe('three sum', () => {
     return result;
   }
 
-  test('run', async () => {
+  test('three sum - test case 1', async () => {
     expect(threeSum([-1, 0, 1, 2, -1, -4])).toMatchSnapshot();
+  });
+
+  test('three sum - test case 2', async () => {
     expect(threeSum([-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4])).toMatchSnapshot();
   });
 });

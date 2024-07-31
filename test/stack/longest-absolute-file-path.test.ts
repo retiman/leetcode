@@ -89,7 +89,7 @@ describe('longest absolute file path', () => {
     return max;
   }
 
-  test('test case 1', async () => {
+  test('longest absolute file path - test case 1', async () => {
     expect(lengthLongestPath('dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext')).toBe(20);
   });
 });

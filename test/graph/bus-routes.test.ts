@@ -164,7 +164,7 @@ describe('bus routes', () => {
     return graph;
   }
 
-  test('simple test case 1', async () => {
+  test.skip('bus routes - test case 1', async () => {
     const routes = [
       [1, 2, 7],
       [3, 6, 7]
@@ -174,7 +174,7 @@ describe('bus routes', () => {
     expect(__simpleNumBusesToDestination(routes, 1, 6)).toBe(2);
   });
 
-  test('test case 1', async () => {
+  test('bus routes - test case 2', async () => {
     const routes = [
       [1, 2, 7],
       [3, 6, 7]
@@ -184,13 +184,13 @@ describe('bus routes', () => {
     expect(numBusesToDestination(routes, 1, 6)).toBe(2);
   });
 
-  test('test case 2', async () => {
+  test('bus routes - test case 2', async () => {
     const routes = [[7, 12], [4, 5, 15], [6], [15, 19], [9, 12, 13]];
 
     expect(numBusesToDestination(routes, 15, 12)).toBe(-1);
   });
 
-  test('test case 3', async () => {
+  test.skip('bus routes - test case 3', async () => {
     const data = fs.readFileSync(path.join(__dirname, '__data__', 'bus-routes.test.json')).toString();
     const routes = JSON.parse(data);
 

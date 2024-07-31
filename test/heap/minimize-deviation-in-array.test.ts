@@ -58,7 +58,7 @@ describe('minimize deviation in array', () => {
     // the heap.  Then repeat to bring the deviation down more and more.
     while (true) {
       // Calculate current deviation.
-      const max = heap.dequeue()!.element as number;
+      const max = heap.dequeue().element as number;
       deviation = Math.min(deviation, max - min);
 
       // Oh no!  If the max value was odd, we can't halve it and re-insert it into the heap.  This means whatever the
@@ -78,19 +78,19 @@ describe('minimize deviation in array', () => {
     return deviation;
   }
 
-  test('test case 1', async () => {
+  test('minimum deviation - test case 1', async () => {
     const xs = [1, 2, 3, 4];
 
     expect(minimumDeviation(xs)).toBe(1);
   });
 
-  test('test case 2', async () => {
+  test('minimum deviation - test case 2', async () => {
     const xs = [4, 1, 5, 20, 3];
 
     expect(minimumDeviation(xs)).toBe(3);
   });
 
-  test('test case 3', async () => {
+  test('minimum deviation - test case 3', async () => {
     const xs = [2, 10, 8];
 
     expect(minimumDeviation(xs)).toBe(3);

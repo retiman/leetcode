@@ -31,7 +31,7 @@ describe('max chunks to make sorted ii', () => {
     return chunks;
   }
 
-  test('test case 1', async () => {
+  test('max chunks to make sorted - test case 1', async () => {
     expect(maxChunksToSorted([4, 3, 2, 1, 0])).toBe(1);
   });
 });

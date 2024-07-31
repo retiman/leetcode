@@ -154,7 +154,7 @@ describe('lru cache', () => {
     ) {}
   }
 
-  test('test case 1', async () => {
+  test('lru cache - test case 1', async () => {
     const cache = new LRUCache(2);
 
     cache.put(1, 1);
@@ -173,7 +173,7 @@ describe('lru cache', () => {
     expect(cache.get(4)).toBe(4);
   });
 
-  test('test case 2', async () => {
+  test('lru cache - test case 2', async () => {
     const cache = new LRUCache(2);
 
     expect(cache.get(2)).toBe(-1);
@@ -190,7 +190,7 @@ describe('lru cache', () => {
     expect(cache.get(2)).toBe(6);
   });
 
-  test('test case 3', async () => {
+  test('lru cache - test case 3', async () => {
     const cache = new LRUCache(3);
 
     cache.put(1, 1);

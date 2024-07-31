@@ -8,7 +8,7 @@
 // You may assume that each input would have exactly one solution.
 //
 // See https://leetcode.com/problems/3sum-closest/
-describe('3 sum closest', () => {
+describe('three sum closest', () => {
   // We'll use the two pointer technique to zero in on the target sum while iterating through the array.  To make
   // calculations easier, we have to sort the array.
   function threeSumClosest(xs: number[], target: number): number {
@@ -55,11 +55,11 @@ describe('3 sum closest', () => {
     return closestValues.reduce((a, b) => a + b);
   }
 
-  test('test case 1', async () => {
+  test('three sum closest - test case 1', async () => {
     expect(threeSumClosest([-1, 2, 1, -4], 1)).toStrictEqual(2);
   });
 
-  test('test case 2', async () => {
+  test('three sum closest - test case 2', async () => {
     expect(threeSumClosest([0, 0, 0], 1)).toStrictEqual(0);
   });
 });

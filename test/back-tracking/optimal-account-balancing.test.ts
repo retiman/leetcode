@@ -92,7 +92,7 @@ describe('optimal account balancing', () => {
     return settle(0);
   }
 
-  test('test case 1', async () => {
+  test('min transfers - test case 1', async () => {
     expect(
       minTransfers([
         [0, 1, 10],
@@ -101,7 +101,7 @@ describe('optimal account balancing', () => {
     ).toBe(2);
   });
 
-  test('test case 2', async () => {
+  test('min transfers - test case 2', async () => {
     expect(
       minTransfers([
         [0, 1, 10],
@@ -112,7 +112,7 @@ describe('optimal account balancing', () => {
     ).toBe(1);
   });
 
-  test('test case 3', async () => {
+  test('min transfers - test case 3', async () => {
     expect(
       minTransfers([
         [0, 1, 1],

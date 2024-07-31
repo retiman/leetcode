@@ -39,19 +39,19 @@ describe('permute', () => {
     return result;
   }
 
-  test('test case null', async () => {
+  test('permute - test case 1', async () => {
     expect(permute([])).toStrictEqual([[]]);
   });
 
-  test('test case 1', async () => {
+  test('permute - test case 2', async () => {
     expect(permute([1, 2, 3])).toMatchSnapshot();
   });
 
-  test('test case 2', async () => {
+  test('permute - test case 3', async () => {
     expect(permute([0, 1])).toMatchSnapshot();
   });
 
-  test('test case 2', async () => {
+  test('permute - test case 4', async () => {
     expect(permute([1])).toStrictEqual([[1]]);
   });
 });

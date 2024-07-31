@@ -14,13 +14,15 @@
 // Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.
 //
 // See https://leetcode.com/problems/furthest-building-you-can-reach/
+import { MinPriorityQueue } from '@datastructures-js/priority-queue';
+
 describe('furthest building you can reach', () => {
   // This cannot be solved with the sliding window technique; usually that technique involves finding a fixed size
   // sub-string sub-array with constraints.  Here we need to dynamically adjust our resource (brick/ladder) usage at
   // each step, making a greedy algorithm better to solve the problem.
   function furthestBuilding(heights: number[], bricks: number, ladders: number): number {
     // Use a heap/priority queue to store the number of jumps we need to make with either bricks or ladders.
-    const heap = new MinHeap();
+    const heap = new MinPriorityQueue();
 
     for (let i = 0; i < heights.length - 1; i++) {
       const delta = heights[i + 1] - heights[i];
@@ -35,7 +37,7 @@ describe('furthest building you can reach', () => {
       //
       // We should use ladders on the biggest deltas, so if we greedily consume the smallest deltas from the heap, as
       // long as we have enough ladders to cover the remaining length of the heap, we can continue.
-      heap.push(delta);
+      heap.enqueue(delta);
 
       // As mentioned, the heap stores how many jumps that consume ladders or bricks at this point.  Because ladders
       // can represent any number of bricks, this means that we "buy" elements in the heap, or that the heap may have
@@ -55,7 +57,7 @@ describe('furthest building you can reach', () => {
       // If, at this point, we've run out of ladders, we'll need to pop off the smallest element and use bricks to cross
       // the delta.  This will cause the largest element to be different, but the ladder doesn't care how big the
       // largest element is.
-      const smallest = heap.pop()!;
+      const smallest = heap.dequeue().element as number;
       bricks -= smallest;
 
       // If we've run out of bricks, it's okay.  But if we've gone negative into bricks, we can't cross this gap and
@@ -69,48 +71,17 @@ describe('furthest building you can reach', () => {
     return heights.length - 1;
   }
 
-  // TypeScript doesn't have a heap implementation.  We'll have to implement it ourselves.
-  class MinHeap {
-    private list: number[] = [];
-
-    // The simplest way to do this is to push onto the array and then sort.  This exceeds LeetCode's time limitations.
-    // Instead, we can insert via binary search.
-    public push(value: number) {
-      let left = 0;
-      let right = this.list.length;
-
-      while (left < right) {
-        const mid = Math.floor((left + right) / 2);
-        if (this.list[mid] < value) {
-          left = mid + 1;
-        } else {
-          right = mid;
-        }
-      }
-
-      this.list.splice(left /* position */, 0 /* deleteCount */, value /* items */);
-    }
-
-    public pop() {
-      return this.list.shift();
-    }
-
-    public size() {
-      return this.list.length;
-    }
-  }
-
-  test('test case 1', async () => {
+  test('furthest building - test case 1', async () => {
     const heights = [4, 2, 7, 6, 9, 14, 12];
     expect(furthestBuilding(heights, 5, 1)).toBe(4);
   });
 
-  test('test case 2', async () => {
+  test('furthest building - test case 2', async () => {
     const heights = [4, 12, 2, 7, 3, 18, 20, 3, 19];
     expect(furthestBuilding(heights, 10, 2)).toBe(7);
   });
 
-  test('test case 3', async () => {
+  test('furthest building - test case 3', async () => {
     const heights = [14, 3, 19, 3];
     expect(furthestBuilding(heights, 17, 0)).toBe(3);
   });

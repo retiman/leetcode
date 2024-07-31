@@ -57,7 +57,7 @@ describe('min stack', () => {
     }
   }
 
-  test('run', async () => {
+  test('min stack - test case 1', async () => {
     const stack = new MinStack();
     stack.push(-2);
     stack.push(0);

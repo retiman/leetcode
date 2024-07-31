@@ -58,9 +58,15 @@ describe('letter combinations of a phone number', () => {
     return new Set(letterCombinations(digits));
   }
 
-  test('run', async () => {
+  test('letter combinations - test case 1', async () => {
     expect(__run('')).toStrictEqual(new Set());
+  });
+
+  test('letter combinations - test case 2', async () => {
     expect(__run('2')).toStrictEqual(new Set(['a', 'b', 'c']));
+  });
+
+  test('letter combinations - test case 3', async () => {
     expect(__run('23')).toStrictEqual(new Set(['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']));
   });
 });

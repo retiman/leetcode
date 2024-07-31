@@ -58,11 +58,23 @@ describe('merge two sorted lists', () => {
     return merged === null ? null : node2list(merged);
   }
 
-  test('run', async () => {
+  test('merge two sorted lists - test case 1', async () => {
     expect(__merge(null, null)).toBeNull();
+  });
+
+  test('merge two sorted lists - test case 2', async () => {
     expect(__merge([1], null)).toStrictEqual([1]);
+  });
+
+  test('merge two sorted lists - test case 3', async () => {
     expect(__merge(null, [1])).toStrictEqual([1]);
+  });
+
+  test('merge two sorted lists - test case 4', async () => {
     expect(__merge([1], [2])).toStrictEqual([1, 2]);
+  });
+
+  test('merge two sorted lists - test case 5', async () => {
     expect(__merge([1, 2, 4], [1, 3, 4])).toStrictEqual([1, 1, 2, 3, 4, 4]);
   });
 });

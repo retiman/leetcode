@@ -43,7 +43,7 @@ describe('meeting rooms', () => {
     return true;
   }
 
-  test('run', async () => {
+  test('meeting rooms - test case 1', async () => {
     expect(
       canAttendMeetings([
         [0, 30],

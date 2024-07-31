@@ -88,15 +88,15 @@ describe('maximum number of operations with the same score', () => {
     return maxes.reduce((a, b) => Math.max(a, b));
   }
 
-  test('test case 1', async () => {
+  test('max operations - test case 1', async () => {
     expect(maxOperations([3, 2, 1, 2, 3, 4])).toBe(3);
   });
 
-  test('test case 2', async () => {
+  test('max operations - test case 2', async () => {
     expect(maxOperations([3, 2, 6, 1, 4])).toBe(2);
   });
 
-  test('test case 3', async () => {
+  test('max operations - test case 3', async () => {
     expect(maxOperations([3, 2, 1, 4, 1])).toBe(2);
   });
 });
