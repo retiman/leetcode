@@ -8,7 +8,7 @@
 // Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 //
 // See https://leetcode.com/problems/best-time-to-buy-and-sell-stock
-describe('best time to buy and sell stock', () => {
+describe('best time to buy and sell stock i', () => {
   // The question is a bit contrived, as in reality this would never happen.  Here, we are assuming we can go backwards
   // in time to be able to buy at the low point and sell at the high point.  Just keep that in mind: we have a time
   // machine.
@@ -42,11 +42,11 @@ describe('best time to buy and sell stock', () => {
     return profit;
   }
 
-  test('max profit - test case 1', async () => {
+  test('max profit i - test case 1', async () => {
     expect(maxProfit([7, 1, 5, 3, 6, 4])).toBe(5);
   });
 
-  test('max profit - test case 2', async () => {
+  test('max profit i - test case 2', async () => {
     expect(maxProfit([7, 6, 4, 3, 1])).toBe(0);
   });
 });
