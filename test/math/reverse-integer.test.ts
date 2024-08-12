@@ -10,7 +10,7 @@ describe('reverse integer', () => {
   // You can do this by reversing a string, but you can also just do this with arithmetic.
   function reverse(x: number) {
     // There is no builtin const for this, but you can calculate the min 32 bit value like this (31 bits due to sign).
-    const min = -1 * (2 ** 31);
+    const min = -1 * 2 ** 31;
     // There is no builtin const for this, but you can calculate the min 32 bit value like this (31 bits due to sign).
     // Minus 1 to account for 0.
     const max = 2 ** 31 - 1;
