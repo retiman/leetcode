@@ -2,7 +2,7 @@
 //
 // Given an integer array nums, find the subarray with the largest sum, and return its sum.
 //
-// https://leetcode.com/problems/maximum-subarray/
+// See https://leetcode.com/problems/maximum-subarray/
 describe('maximum subarray', () => {
   // Kadane's algorithm finds a solution in O(n) with O(1) extra space.
   //

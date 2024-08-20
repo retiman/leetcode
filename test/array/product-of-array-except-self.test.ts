@@ -16,8 +16,12 @@ describe('product of array except self', () => {
   // Without using division, we'll have to use more space to compute the product-except-self in each array index.  To
   // do this, we have to construct two new arrays:
   //
-  // - One array to hold the partial product of all elements before, but not including element i, called `befores`.
-  // - One array to hold the partial product of all elements after, but not including element i, called `afters`.
+  // - One array to hold the partial product of all elements before, but not including element i, called `prefix`.
+  //   This array is a "prefix product", analogous to the "prefix sum" computational technique used preprocess an array
+  //   for quick range queries.
+  // - One array to hold the partial product of all elements after, but not including element i, called `suffix`.
+  //   This array is a "suffix product", analogous to the "suffix sum" computational technique used to preprocess an
+  //   array for quick range queries.
   //
   // To compute the product-except-self, the ith value will be `befores[i] * afters[i]`.
   function productExceptSelf(xs: number[]): number[] {
@@ -26,21 +30,21 @@ describe('product of array except self', () => {
     }
 
     // Compute the product up to the ith index.
-    const befores = Array(xs.length).fill(1);
+    const prefix = Array(xs.length).fill(1);
     for (let i = 1; i < xs.length; i++) {
-      befores[i] = befores[i - 1] * xs[i - 1];
+      prefix[i] = prefix[i - 1] * xs[i - 1];
     }
 
     // Compute the product after the ith index.
-    const afters = Array(xs.length).fill(1);
+    const suffix = Array(xs.length).fill(1);
     for (let i = xs.length - 2; i >= 0; i--) {
-      afters[i] = afters[i + 1] * xs[i + 1];
+      suffix[i] = suffix[i + 1] * xs[i + 1];
     }
 
     // Compute the product except for the element at the ith index.
     const products = Array(xs.length).fill(0);
     for (let i = 0; i < xs.length; i++) {
-      products[i] = befores[i] * afters[i];
+      products[i] = prefix[i] * suffix[i];
     }
 
     return products;
