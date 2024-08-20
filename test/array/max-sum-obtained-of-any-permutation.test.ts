@@ -6,7 +6,7 @@
 //
 // Return the maximum total sum of all requests among all permutations of nums.
 //
-// Since the answer may be too large, return it modulo 109 + 7.
+// Since the answer may be too large, return it modulo 10^9 + 7.
 //
 // See https://leetcode.com/problems/maximum-sum-obtained-of-any-permutation/
 describe('maximum sum obtained of any permutation', () => {
