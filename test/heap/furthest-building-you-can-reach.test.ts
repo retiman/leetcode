@@ -22,7 +22,7 @@ describe('furthest building you can reach', () => {
   // each step, making a greedy algorithm better to solve the problem.
   function furthestBuilding(heights: number[], bricks: number, ladders: number): number {
     // Use a heap/priority queue to store the number of jumps we need to make with either bricks or ladders.
-    const heap = new MinPriorityQueue();
+    const heap = new MinPriorityQueue<number>();
 
     for (let i = 0; i < heights.length - 1; i++) {
       const delta = heights[i + 1] - heights[i];
@@ -57,7 +57,7 @@ describe('furthest building you can reach', () => {
       // If, at this point, we've run out of ladders, we'll need to pop off the smallest element and use bricks to cross
       // the delta.  This will cause the largest element to be different, but the ladder doesn't care how big the
       // largest element is.
-      const smallest = heap.dequeue().element as number;
+      const smallest = heap.dequeue().element;
       bricks -= smallest;
 
       // If we've run out of bricks, it's okay.  But if we've gone negative into bricks, we can't cross this gap and

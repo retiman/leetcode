@@ -38,7 +38,7 @@ describe('minimize deviation in array', () => {
   // the priority queue.  Also, the version is limited to 5.4.0, so you cannot push or pop.
   function minimumDeviation(nums: number[]): number {
     // Initialize a max heap of all the numbers in this array.
-    const heap = new MaxPriorityQueue();
+    const heap = new MaxPriorityQueue<number>();
 
     // Normalize all the numbers so that they are even.  Now we can consider only division as a way to make numbers
     // smaller and closer to each other.  If a previously odd number was too big, we will eventually resize it smaller
@@ -58,7 +58,7 @@ describe('minimize deviation in array', () => {
     // the heap.  Then repeat to bring the deviation down more and more.
     while (true) {
       // Calculate current deviation.
-      const max = heap.dequeue().element as number;
+      const max = heap.dequeue().element;
       deviation = Math.min(deviation, max - min);
 
       // Oh no!  If the max value was odd, we can't halve it and re-insert it into the heap.  This means whatever the
