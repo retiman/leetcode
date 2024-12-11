@@ -2,16 +2,18 @@
 
 Problems and solutions for LeetCode.
 
+
 ## Priority Queue
 
 Several problems require access to a priority queue; however, TypeScript itself does not have such a built-in data structure.
+
 
 ### LeetCode
 
 However, several libraries are available for use [within leetcode](https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages).
 
 - [datastructures-js/priority-queue](https://github.com/datastructures-js/priority-queue) at 5.4.0
--
+
 
 ### CoderPad
 
