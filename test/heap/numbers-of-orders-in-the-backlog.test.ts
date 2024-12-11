@@ -34,8 +34,8 @@ describe('number of orders in the backlog', () => {
   // TypeScript does not implement min or max heaps for us; we'll have to do it ourselves.
   function getNumberOfBacklogOrders(orders: number[][]): number {
     type Order = [number, number];
-    const buys = new MaxPriorityQueue();
-    const sells = new MinPriorityQueue();
+    const buys = new MaxPriorityQueue<Order>();
+    const sells = new MinPriorityQueue<Order>();
 
     function handleBuy(price: number, amount: number) {
       while (amount > 0) {
@@ -45,7 +45,7 @@ describe('number of orders in the backlog', () => {
           return;
         }
 
-        const order = sells.front().element as Order;
+        const order = sells.front().element;
 
         // If the buy price is lower than the minimum selling price, we cannot find a match, so let's just put the buy
         // order on the backlog.
@@ -79,7 +79,7 @@ describe('number of orders in the backlog', () => {
           return;
         }
 
-        const order = buys.front().element as Order;
+        const order = buys.front().element;
 
         // If the sell price is higher than the maximum buy price, we cannot find a buyer, so push onto the backlog.
         if (price > order[0]) {
@@ -130,12 +130,12 @@ describe('number of orders in the backlog', () => {
     let total = 0;
 
     for (const item of buys.toArray()) {
-      const [_, amount] = item.element as Order;
+      const [_, amount] = item.element;
       total = (total + amount) % modulus;
     }
 
     for (const item of sells.toArray()) {
-      const [_, amount] = item.element as Order;
+      const [_, amount] = item.element;
       total = (total + amount) % modulus;
     }
 
