@@ -12,42 +12,45 @@
 // See https://leetcode.com/problems/merge-sorted-array/
 describe('merge sorted array', () => {
   function merge(nums1: number[], m: number, nums2: number[], n: number): void {
-    let [i, j, k] = [0, 0, m + n - 1];
+    // Do the comparisons from the logical end of each array to the beginning of each array.  This ensures that you will
+    // have enough space at the end of nums1 to fit each element.
+    //
+    // If you start from the beginning and work your way to the logical end, you may have an issue where you jam all the
+    // elements from the second array into the first array, and now the first array's initial elements need to be
+    // judiciously swapped to maintain the correct order.
+    //
+    // The problem does not state this but we assume using no extra memory either.
+    let i = m - 1;
+    let j = n - 1;
+    let last = m + n - 1;
 
-    while (i < m || j < n) {
+    // Send the largest elements from both arrays to the end of the array nums1.
+    while (i >= 0 && j >= 0) {
       const a = nums1[i];
       const b = nums2[j];
 
-      // If we've reached the end of the first array, just jam the second array's items in without comparison.
-      if (i === m) {
-        nums1[k] = b;
-        k--;
-        j++;
-        continue;
-      }
-
-      // If we've reached the end of the second array, just jam the first array's items in without comparison.
-      if (j === n) {
-        nums1[k] = a;
-        k--;
-        i++;
-        continue;
-      }
-
-      // Otherwise, jam the least element in.  We can simplify this logic, but this is more straightforward.
       if (a < b) {
-        nums1[k] = a;
-        k--;
-        i++;
-        continue;
+        nums1[last] = nums2[j];
+        j--;
+        last--;
+      } else {
+        nums1[last] = nums1[i];
+        i--;
+        last--;
       }
-
-      nums1[k] = b;
-      k--;
-      j++;
     }
 
-    nums1.reverse();
+    // Now we have consumed all elements in one of the arrays.
+    //
+    // If there are remaining elements in nums2, we should add them to the array nums1.
+    while (j >= 0) {
+      nums1[last] = nums2[j];
+      j--;
+      last--;
+    }
+
+    // On the other hand, if there are remaining elements in nums2, there's nothing to be done because that slice of the
+    // array is already sorted.
   }
 
   test('merge sorted array - test case 1', async () => {
@@ -59,5 +62,16 @@ describe('merge sorted array', () => {
     merge(nums1, m, nums2, n);
 
     expect(nums1).toStrictEqual([1, 2, 2, 3, 5, 6]);
+  });
+
+  test('merge sorted array - test case 2', async () => {
+    const nums1 = [4, 5, 6, 0, 0, 0];
+    const m = 3;
+    const nums2 = [1, 2, 3];
+    const n = 3;
+
+    merge(nums1, m, nums2, n);
+
+    expect(nums1).toStrictEqual([1, 2, 3, 4, 5, 6]);
   });
 });
