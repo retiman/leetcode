@@ -9,7 +9,7 @@
 // See https://leetcode.com/problems/valid-palindrome/
 describe('valid palindrome', () => {
   function isPalindrome(s: string): boolean {
-    const text = s.replace(/[^a-zA-Z0-9]/, '');
+    const text = s.replace(/[^a-zA-Z0-9]/g, '');
 
     let i = 0;
     let j = text.length - 1;
