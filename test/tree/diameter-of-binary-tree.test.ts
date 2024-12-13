@@ -19,25 +19,18 @@ describe('diameter of binary tree', () => {
         return 0;
       }
 
-      // Figure out the max depth of the left subtree.
-      let left = 0;
-      if (node.left !== null) {
-        left = 1 + traverse(node.left);
-      }
+      // Figure out the max depth of the left and right subtrees.
+      const left = traverse(node.left);
+      const right = traverse(node.right);
 
-      // Figure out the max depth of the right subtree.
-      let right = 0;
-      if (node.right !== null) {
-        right = 1 + traverse(node.right);
-      }
-
-      // Summing the max depth of the left and right subtree will give you max diameter for this node.  Compare this
-      // with the global max.
+      // The left and right depths summed will give you the diameter assuming this is the root node.  Compare this with
+      // the global max.
       const diameter = left + right;
       max = Math.max(diameter, max);
 
-      // This node's contribution to the depth is whatever the max of the left and right subtree depths are.
-      return Math.max(left, right);
+      // This node's contribution to the depth is whatever the max of the left and right subtree depths are, plus one
+      // for it's own edge to the subtree.
+      return Math.max(left, right) + 1;
     }
 
     traverse(root);
