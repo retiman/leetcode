@@ -1,3 +1,5 @@
+import { minimumDeviation } from '../../src/heap/minimize-deviation-in-array';
+
 describe('minimize deviation in array', () => {
   test('minimum deviation - test case 1', async () => {
     const xs = [1, 2, 3, 4];
