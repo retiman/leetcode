@@ -1,12 +1,3 @@
-// DIFFICULTY: Medium
-//
-// Given an integer array nums and an integer k, return the kth largest element in the array.
-//
-// Note that it is the kth largest element in the sorted order, not the kth distinct element.
-//
-// Can you solve it without sorting?
-//
-// See https://leetcode.com/problems/kth-largest-element-in-an-array/
 import fs from 'fs';
 import path from 'path';
 import { findKthLargest, findKthLargestBinarySearch, findKthLargestSimple } from '../../src/heap/kth-largest-element';
