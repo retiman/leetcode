@@ -8,9 +8,7 @@
 //
 // See {@link https://leetcode.com/problems/kth-largest-element-in-an-array/}
 import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
-import { BinarySearchMaxHeap } from './common/binary-search-max-heap';
-import { SimpleMaxHeap } from './common/simple-max-heap';
-export { findKthLargest, findKthLargestBinarySearch, findKthLargestSimple };
+export { findKthLargest };
 
 // SOLUTION:
 //
@@ -18,6 +16,11 @@ export { findKthLargest, findKthLargestBinarySearch, findKthLargestSimple };
 // a heap to do this almost as efficiently.  This does not sort the array, but it is a bit slower than quick select.
 //
 // That said, the leetcode questions seem to be crafted to ruin poor pivot index choices.
+//
+// COMPLEXITY:
+//
+// The heap can be created in O(n * log(n)) time.  Removing k elements from the heap is O(k * log(n)), so the total
+// complexity is still O(n * log(n)).
 function findKthLargest(nums: number[], k: number): number {
   const heap = new MaxPriorityQueue<number>();
   for (const num of nums) {
@@ -30,36 +33,6 @@ function findKthLargest(nums: number[], k: number): number {
   }
 
   // The kth largest element will be at the top of the queue.
-  const result = heap.front();
-  return result;
-}
-
-// You can use a simple heap that sorts in a pinch.
-function findKthLargestSimple(nums: number[], k: number): number {
-  const heap = new SimpleMaxHeap<number>();
-  for (const num of nums) {
-    heap.enqueue(num);
-  }
-
-  for (let i = 0; i < k - 1; i++) {
-    heap.dequeue();
-  }
-
-  const result = heap.front();
-  return result;
-}
-
-// You can use a simple heap that does binary search insert in a pinch.
-function findKthLargestBinarySearch(nums: number[], k: number): number {
-  const heap = new BinarySearchMaxHeap<number>();
-  for (const num of nums) {
-    heap.enqueue(num);
-  }
-
-  for (let i = 0; i < k - 1; i++) {
-    heap.dequeue();
-  }
-
   const result = heap.front();
   return result;
 }

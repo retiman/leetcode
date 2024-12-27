@@ -30,6 +30,10 @@ export { minimumDeviation };
 // To make this problem easier, we try to minimize the deviation by making bigger numbers smaller, instead of
 // simultaneously trying to make numbers bigger and smaller.  To do this, we multiply all odd numbers by 2, so that
 // they all become even.  Afterwards, we can choose to perform a division or not to make it smaller.
+//
+// COMPLEXITY:
+//
+// Runs in O(n * log(n)) time due to the heap operations.
 function minimumDeviation(nums: number[]): number {
   // Initialize a max heap of all the numbers in this array.
   const heap = new MaxPriorityQueue<number>();

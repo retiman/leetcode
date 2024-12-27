@@ -32,6 +32,10 @@ export { getNumberOfBacklogOrders };
 // This problem looks like it can be solved by maintaining a sorted list of buy orders and sell orders (aka heaps).
 // For a sell order, you want buy orders in largest to smallest (max heap).  For a buy order, you want sell orders
 // from smallest to largest (min heap).
+//
+// COMPLEXITY:
+//
+// The time complexity is O(n * log(n)) because we are using heaps to maintain the order of the orders.
 function getNumberOfBacklogOrders(orders: number[][]): number {
   // Order = [price, amount].
   type Order = [number, number];
