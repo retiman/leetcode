@@ -10,7 +10,8 @@
 // - It is the empty string, contains only lowercase characters, or
 // - It can be written as AB (A concatenated with B), where A and B are valid strings, or
 // - It can be written as (A), where A is a valid string.
-//
+export { minRemoveToMakeValid };
+
 // SOLUTION:
 //
 // Use a stack to keep track of the parentheses.  If we find a mismatching closing parenthesis, mark it for removal.
@@ -55,4 +56,3 @@ function minRemoveToMakeValid(s: string): string {
   return result;
 }
 
-export { minRemoveToMakeValid };
