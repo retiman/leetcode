@@ -15,7 +15,7 @@
 // You must come up with a solution that supports O(1) for each top call and O(logn) for each other call.
 //
 // See {@link https://leetcode.com/problems/max-stack/}
-import { PriorityQueue } from '@datastructures-js/priority-queue';
+const { MaxPriorityQueue } = require('@datastructures-js/priority-queue');
 export { MaxStack };
 
 // SOLUTION:
@@ -31,17 +31,8 @@ interface StackNode {
 }
 
 class MaxStack {
-  // LeetCode has a ton of issues with this; it seems that the type information is unavailable for PriorityQueue and
-  // related classes.  This means that if you attempt to declare a PriorityQueue with generics, it will not compile
-  // in LeetCode.
-  //
-  // Type inference using new PriorityQueue() does work without issues, since LeetCode will infer the correct type.
-  // However, if you try to use the correct type here, you'll get a compilation error on your end.  To get around this
-  // we have to set the type to be 'any' in LeetCode.  We also have to use require() instead of import as LeetCode
-  // seems to not permit module imports.
-  //
-  // In other words, this code only works here, but not in LeetCode.
-  private readonly heap: PriorityQueue<StackNode>;
+  // MaxPriorityQueue is exported as a value and not a type in version 5.4.0.
+  private readonly heap: InstanceType<typeof MaxPriorityQueue>;
 
   private readonly compare: (a: StackNode, b: StackNode) => number;
 
@@ -65,7 +56,9 @@ class MaxStack {
 
       return b.value - a.value;
     };
-    this.heap = new PriorityQueue<StackNode>(this.compare);
+    this.heap = new MaxPriorityQueue({
+      compare: this.compare
+    });
 
     // Create sentinel values for head and tail so we don't have to deal with null pointers.
     const head: Partial<StackNode> = {

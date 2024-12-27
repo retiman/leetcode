@@ -7,7 +7,7 @@
 // Can you solve it without sorting?
 //
 // See {@link https://leetcode.com/problems/kth-largest-element-in-an-array/}
-import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
+const { MaxPriorityQueue } = require('@datastructures-js/priority-queue');
 export { findKthLargest };
 
 // SOLUTION:
@@ -22,7 +22,7 @@ export { findKthLargest };
 // The heap can be created in O(n * log(n)) time.  Removing k elements from the heap is O(k * log(n)), so the total
 // complexity is still O(n * log(n)).
 function findKthLargest(nums: number[], k: number): number {
-  const heap = new MaxPriorityQueue<number>();
+  const heap = new MaxPriorityQueue();
   for (const num of nums) {
     heap.enqueue(num);
   }
@@ -33,6 +33,6 @@ function findKthLargest(nums: number[], k: number): number {
   }
 
   // The kth largest element will be at the top of the queue.
-  const result = heap.front();
+  const result = heap.front().element;
   return result;
 }

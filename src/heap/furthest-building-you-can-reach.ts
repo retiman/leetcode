@@ -14,7 +14,7 @@
 // Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.
 //
 // See {@link https://leetcode.com/problems/furthest-building-you-can-reach/}
-import { MinPriorityQueue } from '@datastructures-js/priority-queue';
+const { MinPriorityQueue } = require('@datastructures-js/priority-queue');
 export { furthestBuilding };
 
 // SOLUTION:
@@ -29,7 +29,7 @@ export { furthestBuilding };
 // O(n * log(n)) time complexity.
 function furthestBuilding(heights: number[], bricks: number, ladders: number): number {
   // Use a heap/priority queue to store the number of jumps we need to make with either bricks or ladders.
-  const heap = new MinPriorityQueue<number>();
+  const heap = new MinPriorityQueue();
 
   for (let i = 0; i < heights.length - 1; i++) {
     const delta = heights[i + 1] - heights[i];
@@ -64,7 +64,7 @@ function furthestBuilding(heights: number[], bricks: number, ladders: number): n
     // If, at this point, we've run out of ladders, we'll need to pop off the smallest element and use bricks to cross
     // the delta.  This will cause the largest element to be different, but the ladder doesn't care how big the
     // largest element is.
-    const smallest = heap.dequeue();
+    const smallest = heap.dequeue().element;
     bricks -= smallest;
 
     // If we've run out of bricks, it's okay.  But if we've gone negative into bricks, we can't cross this gap and
