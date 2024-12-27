@@ -33,9 +33,12 @@
 import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue';
 
 export function getNumberOfBacklogOrders(orders: number[][]): number {
+  // Order = [price, amount].
   type Order = [number, number];
-  const buys = new MaxPriorityQueue<Order>(order => order[1]);
-  const sells = new MinPriorityQueue<Order>(order => order[1]);
+
+  // Order by [price, _] for buys and sells.
+  const buys = new MaxPriorityQueue<Order>(order => order[0]);
+  const sells = new MinPriorityQueue<Order>(order => order[0]);
 
   function handleBuy(price: number, amount: number) {
     while (amount > 0) {
