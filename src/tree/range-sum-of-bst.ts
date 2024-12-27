@@ -1,46 +1,35 @@
-// This class definition comes from the problem itself and we cannot change it, or else our submission will not be
-// accepted.
-export class TreeNode {
-  val: number;
+// DIFFICULTY: Easy
+//
+// Given the root node of a binary search tree and two integers low and high, return the sum of values of all nodes
+// with a value in the inclusive range [low, high].
+//
+// See https://leetcode.com/problems/range-sum-of-bst/
+import { TreeNode } from './common/tree-node';
+export { rangeSumBST };
 
-  left: TreeNode | null;
+// SOLUTION:
+//
+// A simple recursive solution will work.
+//
+// COMPLEXITY:
+//
+// The time complexity is O(n) where n is the number of nodes in the tree.
+function rangeSumBST(root: TreeNode | null, low: number, high: number): number {
+  let sum = 0;
 
-  right: TreeNode | null;
-
-  constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-    this.val = val === undefined ? 0 : val;
-    this.left = left === undefined ? null : left;
-    this.right = right === undefined ? null : right;
-  }
-}
-
-export function convert(xs: Array<number | null>): TreeNode | null {
-  if (xs.length === 0 || xs[0] === null) {
-    return null;
-  }
-
-  const root = new TreeNode(xs[0]);
-  const queue: Array<TreeNode | null> = [root];
-
-  let i = 1;
-  while (i < xs.length) {
-    const current = queue.shift();
-    if (current === null) {
-      continue;
+  function traverse(node: TreeNode | null) {
+    if (node === null) {
+      return;
     }
 
-    if (i < xs.length && xs[i] !== null) {
-      current!.left = new TreeNode(xs[i]!);
-      queue.push(current!.left);
+    if (node.val >= low && node.val <= high) {
+      sum += node.val;
     }
-    i++;
 
-    if (i < xs.length && xs[i] !== null) {
-      current!.right = new TreeNode(xs[i]!);
-      queue.push(current!.right);
-    }
-    i++;
+    traverse(node.left);
+    traverse(node.right);
   }
 
-  return root;
+  traverse(root);
+  return sum;
 }
