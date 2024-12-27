@@ -8,7 +8,8 @@
 // Find and return the maximum profit you can achieve.
 //
 // See https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii
-//
+export { maxProfit };
+
 // SOLUTION:
 //
 // The question is a bit contrived, as in reality this would never happen.  Here, we are assuming we can go backwards
@@ -20,7 +21,7 @@
 //
 // This actually makes the problem much easier because can simulate buying on every day and add to our profit if there
 // is any.  Honestly, this should be easy and the other one should be medium.
-export function maxProfit(prices: number[]): number {
+function maxProfit(prices: number[]): number {
   let profit = 0;
 
   // If we only have one day of price data, we can't make any profits at all.
