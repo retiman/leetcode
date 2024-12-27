@@ -1,4 +1,4 @@
-import { groupAnagrams } from "../../src/array/group-anagrams";
+import { groupAnagrams } from '../../src/array/group-anagrams';
 
 describe('group anagrams', () => {
   test('group anagrams - test case 1', async () => {
