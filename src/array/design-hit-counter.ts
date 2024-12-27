@@ -13,6 +13,10 @@ export { HitCounter };
 //
 // To do this efficiently we'll have to use a circular array buffer.  This is the same technique used by time series
 // databases.
+//
+// COMPLEXITY:
+//
+// Both methods run in O(1) time since we fix the array size at 300.
 interface HitEvent {
   timestamp: number;
   hits: number;

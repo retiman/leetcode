@@ -18,6 +18,12 @@ export { longestConsecutive };
 //
 // Conceptually, we'll do this by throwing all the array elements into a set.  Then, for each element `x`, we can figure
 // out if it's part of a sequence by repeatedly checking its predecessor `x - 1` in the set.
+//
+// COMPLEXITY:
+//
+// Runs in O(n) time.  It may appear that the inner loop runs multiple times, but each element in the array is only
+// processed once; the inner loop will skip `x - 1` if it was already part of some other sequence from a previous
+// iteration.
 function longestConsecutive(xs: number[]) {
   let longest = 0;
 
