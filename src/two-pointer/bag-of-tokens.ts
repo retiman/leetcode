@@ -13,7 +13,8 @@
 // Return the maximum possible score you can achieve after playing any number of tokens.
 //
 // See https://leetcode.com/problems/bag-of-tokens/
-//
+export { bagOfTokensScore };
+
 // SOLUTION:
 //
 // You basically are allowed to gain power at the cost of score, or gain score at the cost of power.  You want to
@@ -29,7 +30,7 @@
 // To start with, we'll try to play the highest power tokens face down first, then use that power to score as much as
 // we can with the lower power tokens.  This problem is suited for the two pointer technique since we are going to
 // keep track of the high/low power tokens simultaneously.
-export function bagOfTokensScore(tokens: number[], power: number): number {
+function bagOfTokensScore(tokens: number[], power: number): number {
   // First sort the tokens, so we can consume tokens from the ends to maximize score.
   tokens.sort((a, b) => a - b);
 

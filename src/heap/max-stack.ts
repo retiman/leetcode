@@ -16,13 +16,14 @@
 //
 // See https://leetcode.com/problems/max-stack/
 //
+import { PriorityQueue } from '@datastructures-js/priority-queue';
+export { MaxStack };
+
 // SOLUTION:
 //
 // We want a max priority queue, but we need to determine the max by comparing both a key and a value.  This can
 // only be done by supplying a custom comparator, so instead of using a MaxPriorityQueue, we'll use a PriorityQueue
 // that takes a custom comparator.
-import { PriorityQueue } from '@datastructures-js/priority-queue';
-
 interface StackNode {
   key: number;
   value: number;
@@ -30,7 +31,7 @@ interface StackNode {
   next: StackNode;
 }
 
-export class MaxStack {
+class MaxStack {
   // LeetCode has a ton of issues with this; it seems that the type information is unavailable for PriorityQueue and
   // related classes.  This means that if you attempt to declare a PriorityQueue with generics, it will not compile
   // in LeetCode.

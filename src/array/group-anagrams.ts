@@ -6,12 +6,13 @@
 // the original letters exactly once.
 //
 // See https://leetcode.com/problems/group-anagrams/
-//
+export { groupAnagrams };
+
 // SOLUTION:
 //
 // Each anagram can be rearranged into canonical form by sorting the letters.  Then simply map the canonical form to
 // each anagram.
-export function groupAnagrams(texts: string[]): string[][] {
+function groupAnagrams(texts: string[]): string[][] {
   type Canonical = string;
   type Anagram = string;
   const map = new Map<Canonical, Anagram[]>();

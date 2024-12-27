@@ -5,7 +5,8 @@
 // You must write an algorithm that runs in O(n) time.
 //
 // See https://leetcode.com/problems/longest-consecutive-sequence/
-//
+export { longestConsecutive };
+
 // SOLUTION:
 //
 // The problem is phrased in a very confusing way.  The sequence doesn't ACTUALLY need to be consecutive within the
@@ -17,7 +18,7 @@
 //
 // Conceptually, we'll do this by throwing all the array elements into a set.  Then, for each element `x`, we can figure
 // out if it's part of a sequence by repeatedly checking its predecessor `x - 1` in the set.
-export function longestConsecutive(xs: number[]) {
+function longestConsecutive(xs: number[]) {
   let longest = 0;
 
   // Use a set to keep track of all elements in the array; we'll reference it to find out if a predecessor to an
