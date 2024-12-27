@@ -5,15 +5,15 @@
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "./build",
     "sourceMap": true,
     "strict": true,
-    "target": "ES6",
+    "target": "ES2024",
     "typeRoots": ["node_modules/@types"],
     "types": ["jest", "node"]
   },
-  "include": ["script", "src", "test", "test/jest.config.mjs"],
+  "include": ["script", "src", "test"],
   "exclude": ["build", "dist", "node_modules"]
 }
