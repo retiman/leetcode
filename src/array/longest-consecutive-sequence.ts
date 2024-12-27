@@ -25,26 +25,27 @@ export function longestConsecutive(xs: number[]) {
   const set = new Set(xs);
 
   for (let i = 0; i < xs.length; i++) {
+    // Let us consider if element x is part of some sequence.  We can do this by considering its predecessor, x - 1.
     let x = xs[i];
 
-    // Suppose that the predecessor to x, x - 1, is not in the array already.  That must mean that x begins some new
-    // consecutive sequence.  We will now count the length of that sequence by incrementing until we can no longer
-    // find a consecutive value in the array.
-    //
-    // Suppose that the predecessor was found in the set.  This means that it should've been found by the inner while
-    // loop, and it means we've already counted it as part of some other consecutive sequence, so we can skip x.
+    // If x - 1 is not in the set, x must begin some new sequence.  Let's find out how long it is by incrementing x
+    // until we can't find any more consecutive elements.
     if (!set.has(x - 1)) {
-      let current = 1;
+      let length = 1;
       x++;
 
+      // Continue to increment x and look for consecutive elements in the set.
       while (set.has(x)) {
-        current++;
+        length++;
         x++;
       }
 
-      // Now that we have the length of the longest consecutive sequence that begins at x, we compare it to the
-      // longest sequence we know about.
-      longest = Math.max(longest, current);
+      // Once we run out of elements, we have determined the length of the sequence between at x.  We'll compare it to
+      // the longest sequence we've found so far.
+      longest = Math.max(longest, length);
+    } else {
+      // If x - 1 is in the set, we know it is part of some sequence.  However, this sequence must've already been
+      // found by the inner loop above, so we can skip this element.
     }
   }
 
