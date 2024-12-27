@@ -33,7 +33,7 @@ function verticalOrder(root: TreeNode | null): number[][] {
     node: TreeNode;
     row: Row;
     column: Column;
-  }
+  };
 
   // Keep a map of column to nodes with their row values, so we can order by row later.
   const map: Map<Column, ExtendedNode[]> = new Map();
@@ -86,4 +86,4 @@ function verticalOrder(root: TreeNode | null): number[][] {
   }
 
   return result;
-};
+}
