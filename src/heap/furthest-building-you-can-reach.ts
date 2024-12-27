@@ -13,7 +13,7 @@
 //
 // Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.
 //
-// See https://leetcode.com/problems/furthest-building-you-can-reach/
+// See {@link https://leetcode.com/problems/furthest-building-you-can-reach/}
 import { MinPriorityQueue } from '@datastructures-js/priority-queue';
 export { furthestBuilding };
 

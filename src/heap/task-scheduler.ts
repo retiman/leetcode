@@ -6,7 +6,7 @@
 //
 // ​Return the minimum number of intervals required to complete all tasks.
 //
-// See https://leetcode.com/problems/task-scheduler/
+// See {@link https://leetcode.com/problems/task-scheduler/}
 import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
 export { leastInterval };
 

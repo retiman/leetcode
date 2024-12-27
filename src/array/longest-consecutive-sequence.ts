@@ -4,7 +4,7 @@
 //
 // You must write an algorithm that runs in O(n) time.
 //
-// See https://leetcode.com/problems/longest-consecutive-sequence/
+// See {@link https://leetcode.com/problems/longest-consecutive-sequence/}
 export { longestConsecutive };
 
 // SOLUTION:

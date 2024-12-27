@@ -6,7 +6,7 @@
 //
 // Can you solve it without sorting?
 //
-// See https://leetcode.com/problems/kth-largest-element-in-an-array/
+// See {@link https://leetcode.com/problems/kth-largest-element-in-an-array/}
 import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
 import { BinarySearchMaxHeap } from './common/binary-search-max-heap';
 import { SimpleMaxHeap } from './common/simple-max-heap';
