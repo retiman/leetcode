@@ -12,6 +12,11 @@ export { groupAnagrams };
 //
 // Each anagram can be rearranged into canonical form by sorting the letters.  Then simply map the canonical form to
 // each anagram.
+//
+// COMPLEXITY:
+//
+// Runs in O(n * m * log(m)) time, where n is the number of strings and m is the length of the longest string.  This
+// is because we have to sort each string's characters in O(m * log(m)), and there are n strings.
 function groupAnagrams(texts: string[]): string[][] {
   type Canonical = string;
   type Anagram = string;

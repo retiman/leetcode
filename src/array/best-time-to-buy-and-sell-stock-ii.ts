@@ -21,6 +21,10 @@ export { maxProfit };
 //
 // This actually makes the problem much easier because can simulate buying on every day and add to our profit if there
 // is any.  Honestly, this should be easy and the other one should be medium.
+//
+// COMPLEXITY:
+//
+// Runs in O(n) time.
 function maxProfit(prices: number[]): number {
   let profit = 0;
 
