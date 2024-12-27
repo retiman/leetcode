@@ -7,8 +7,11 @@
 // ​Return the minimum number of intervals required to complete all tasks.
 //
 // See https://leetcode.com/problems/task-scheduler/
-//
+import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
+export { leastInterval };
+
 // SOLUTION:
+//
 // It's not necessary to return an execution order, only the minimum number of cycles/intervals required to complete
 // all of the tasks.
 //
@@ -24,10 +27,7 @@
 // Here, even though task B appears 9 times, we can fit task B comfortably in between the 9 cycles of task A.  This,
 // however, doesn't quite work if there are a huge number of tasks; if there are 10 task A's and 9 task B's, but 50
 // other uniquely named tasks, then we will still take 50 cycles if (10 - 1) * n is a smaller number.
-
-import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
-
-export function leastInterval(tasks: string[], n: number): number {
+function leastInterval(tasks: string[], n: number): number {
   type Task = string;
   type Frequency = number;
   const map = new Map<Task, Frequency>();

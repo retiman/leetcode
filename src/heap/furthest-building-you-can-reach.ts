@@ -14,15 +14,15 @@
 // Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.
 //
 // See https://leetcode.com/problems/furthest-building-you-can-reach/
-//
+import { MinPriorityQueue } from '@datastructures-js/priority-queue';
+export { furthestBuilding };
+
 // SOLUTION:
 //
 // This cannot be solved with the sliding window technique; usually that technique involves finding a fixed size
 // sub-string sub-array with constraints.  Here we need to dynamically adjust our resource (brick/ladder) usage at
 // each step, making a greedy algorithm better to solve the problem.
-import { MinPriorityQueue } from '@datastructures-js/priority-queue';
-
-export function furthestBuilding(heights: number[], bricks: number, ladders: number): number {
+function furthestBuilding(heights: number[], bricks: number, ladders: number): number {
   // Use a heap/priority queue to store the number of jumps we need to make with either bricks or ladders.
   const heap = new MinPriorityQueue<number>();
 

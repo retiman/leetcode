@@ -25,14 +25,15 @@
 //
 // See https://leetcode.com/problems/number-of-orders-in-the-backlog/
 //
+import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue';
+export { getNumberOfBacklogOrders };
+
 // SOLUTION:
 //
 // This problem looks like it can be solved by maintaining a sorted list of buy orders and sell orders (aka heaps).
 // For a sell order, you want buy orders in largest to smallest (max heap).  For a buy order, you want sell orders
 // from smallest to largest (min heap).
-import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue';
-
-export function getNumberOfBacklogOrders(orders: number[][]): number {
+function getNumberOfBacklogOrders(orders: number[][]): number {
   // Order = [price, amount].
   type Order = [number, number];
 

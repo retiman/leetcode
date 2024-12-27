@@ -7,7 +7,8 @@
 // roughly at the same time.
 //
 // See https://leetcode.com/problems/design-hit-counter/
-//
+export { HitCounter };
+
 // SOLUTION:
 //
 // To do this efficiently we'll have to use a circular array buffer.  This is the same technique used by time series
@@ -17,7 +18,7 @@ interface HitEvent {
   hits: number;
 }
 
-export class HitCounter {
+class HitCounter {
   private readonly events: HitEvent[];
 
   constructor() {
