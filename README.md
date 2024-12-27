@@ -12,6 +12,8 @@ Several problems require access to a priority queue; however, TypeScript itself 
 
 LeetCode provides support for [heaps](https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages) via [datastructures-js/priority-queue](https://github.com/datastructures-js/priority-queue) at version `5.4.0`.  This is the library used, because this repository is for LeetCode submissions.
 
+Note that LeetCode uses `require` style imports and not `import`.  Practically that means `MaxPriorityQueue` does accept parameterized types.
+
 
 ### CoderPad
 

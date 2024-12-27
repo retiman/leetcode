@@ -15,7 +15,7 @@
 // You must come up with a solution that supports O(1) for each top call and O(logn) for each other call.
 //
 // See {@link https://leetcode.com/problems/max-stack/}
-import { PriorityQueue } from '@datastructures-js/priority-queue';
+import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
 export { MaxStack };
 
 // SOLUTION:
@@ -41,7 +41,7 @@ class MaxStack {
   // seems to not permit module imports.
   //
   // In other words, this code only works here, but not in LeetCode.
-  private readonly heap: PriorityQueue<StackNode>;
+  private readonly heap: MaxPriorityQueue<StackNode>;
 
   private readonly compare: (a: StackNode, b: StackNode) => number;
 
@@ -65,7 +65,9 @@ class MaxStack {
 
       return b.value - a.value;
     };
-    this.heap = new PriorityQueue<StackNode>(this.compare);
+    this.heap = new MaxPriorityQueue<StackNode>({
+      compare: this.compare
+    });
 
     // Create sentinel values for head and tail so we don't have to deal with null pointers.
     const head: Partial<StackNode> = {
@@ -144,7 +146,7 @@ class MaxStack {
     }
 
     this.deleteMax();
-    const node = this.heap.front();
+    const node = this.heap.front().element;
     return node.value;
   }
 
@@ -158,7 +160,7 @@ class MaxStack {
       throw new Error('nothing to pop max');
     }
 
-    const node = this.heap.dequeue();
+    const node = this.heap.dequeue().element;
     const previous = node.previous;
     const next = node.next;
     previous.next = next;
@@ -169,7 +171,7 @@ class MaxStack {
 
   private deleteMax() {
     while (!this.heap.isEmpty()) {
-      const max = this.heap.front();
+      const max = this.heap.front().element;
       if (!this.deleted.has(max.key)) {
         return;
       }

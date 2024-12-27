@@ -41,6 +41,8 @@ export default tselint.config({
     // See https://typescript-eslint.io/rules/no-confusing-void-expression/
     '@typescript-eslint/no-confusing-void-expression': 'error',
     '@typescript-eslint/no-meaningless-void-operator': 'error',
+    // Disabled because LeetCode imports datastructures-js/priority-queue via require and not import.
+    '@typescript-eslint/no-require-imports': 'off',
     '@typescript-eslint/no-this-alias': 'off',
     '@typescript-eslint/no-unused-expressions': 'error',
     '@typescript-eslint/no-unused-vars': 'off',

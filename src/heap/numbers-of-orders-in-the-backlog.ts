@@ -41,8 +41,8 @@ function getNumberOfBacklogOrders(orders: number[][]): number {
   type Order = [number, number];
 
   // Order by [price, _] for buys and sells.
-  const buys = new MaxPriorityQueue<Order>(order => order[0]);
-  const sells = new MinPriorityQueue<Order>(order => order[0]);
+  const buys = new MaxPriorityQueue<Order>({ priority: order => order[0] });
+  const sells = new MinPriorityQueue<Order>({ priority: order => order[0] });
 
   function handleBuy(price: number, amount: number) {
     while (amount > 0) {
@@ -52,7 +52,7 @@ function getNumberOfBacklogOrders(orders: number[][]): number {
         return;
       }
 
-      const order = sells.front();
+      const order = sells.front().element;
 
       // If the buy price is lower than the minimum selling price, we cannot find a match, so let's just put the buy
       // order on the backlog.
@@ -86,7 +86,7 @@ function getNumberOfBacklogOrders(orders: number[][]): number {
         return;
       }
 
-      const order = buys.front();
+      const order = buys.front().element;
 
       // If the sell price is higher than the maximum buy price, we cannot find a buyer, so push onto the backlog.
       if (price > order[0]) {
@@ -137,12 +137,12 @@ function getNumberOfBacklogOrders(orders: number[][]): number {
   let total = 0;
 
   for (const item of buys.toArray()) {
-    const [_, amount] = item;
+    const [_, amount] = item.element;
     total = (total + amount) % modulus;
   }
 
   for (const item of sells.toArray()) {
-    const [_, amount] = item;
+    const [_, amount] = item.element;
     total = (total + amount) % modulus;
   }
 

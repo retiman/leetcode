@@ -56,7 +56,7 @@ function minimumDeviation(nums: number[]): number {
   // the heap.  Then repeat to bring the deviation down more and more.
   while (true) {
     // Calculate current deviation.
-    const max = heap.dequeue();
+    const max = heap.dequeue().element;
     deviation = Math.min(deviation, max - min);
 
     // Oh no!  If the max value was odd, we can't halve it and re-insert it into the heap.  This means whatever the

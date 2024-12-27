@@ -56,7 +56,7 @@ function leastInterval(tasks: string[], n: number): number {
     }
 
     if (!heap.isEmpty()) {
-      let freq = heap.dequeue();
+      let freq = heap.dequeue().element;
       freq--;
 
       if (freq !== 0) {
