@@ -22,6 +22,11 @@ export { furthestBuilding };
 // This cannot be solved with the sliding window technique; usually that technique involves finding a fixed size
 // sub-string sub-array with constraints.  Here we need to dynamically adjust our resource (brick/ladder) usage at
 // each step, making a greedy algorithm better to solve the problem.
+//
+// COMPLEXITY:
+//
+// We iterate through n heights in O(n).  Each iteration, we may push onto the heap, which is O(log(n)).  This results in
+// O(n * log(n)) time complexity.
 function furthestBuilding(heights: number[], bricks: number, ladders: number): number {
   // Use a heap/priority queue to store the number of jumps we need to make with either bricks or ladders.
   const heap = new MinPriorityQueue<number>();
