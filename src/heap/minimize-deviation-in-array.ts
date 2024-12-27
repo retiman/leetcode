@@ -18,8 +18,7 @@
 //
 // Return the minimum deviation the array can have after performing some number of operations.
 //
-// See https://leetcode.com/problems/minimize-deviation-in-array/
-//
+// See {@link https://leetcode.com/problems/minimize-deviation-in-array/}
 import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
 export { minimumDeviation };
 

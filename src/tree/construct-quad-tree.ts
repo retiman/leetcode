@@ -4,8 +4,8 @@
 //
 // Return the root of the Quad-Tree representing grid.
 //
-// See https://leetcode.com/problems/construct-quad-tree/
-// See https://en.wikipedia.org/wiki/Quadtree
+// See {@link https://en.wikipedia.org/wiki/Quadtree}
+// See {@link https://leetcode.com/problems/construct-quad-tree/}
 import { _Node } from './common/quad-tree';
 export { construct };
 

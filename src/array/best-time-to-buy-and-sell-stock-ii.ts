@@ -7,7 +7,7 @@
 //
 // Find and return the maximum profit you can achieve.
 //
-// See https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii
+// See {@link https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii}
 export { maxProfit };
 
 // SOLUTION:

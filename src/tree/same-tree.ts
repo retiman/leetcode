@@ -4,7 +4,7 @@
 //
 // Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
 //
-// See https://leetcode.com/problems/same-tree/
+// See {@link https://leetcode.com/problems/same-tree/}
 import { TreeNode } from './common/tree-node';
 export { isSameTree };
 

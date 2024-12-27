@@ -6,7 +6,7 @@
 // made to the system in chronological order (i.e., timestamp is monotonically increasing). Several hits may arrive
 // roughly at the same time.
 //
-// See https://leetcode.com/problems/design-hit-counter/
+// See {@link https://leetcode.com/problems/design-hit-counter/}
 export { HitCounter };
 
 // SOLUTION:

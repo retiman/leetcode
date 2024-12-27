@@ -6,7 +6,7 @@
 //
 // Given a string s, return true if it is a palindrome, or false otherwise.
 //
-// See https://leetcode.com/problems/valid-palindrome/
+// See {@link https://leetcode.com/problems/valid-palindrome/}
 export { isPalindrome };
 
 // SOLUTION:

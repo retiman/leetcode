@@ -23,8 +23,7 @@
 // Return the total amount of orders in the backlog after placing all the orders from the input. Since this number can
 // be large, return it modulo 10^9 + 7.
 //
-// See https://leetcode.com/problems/number-of-orders-in-the-backlog/
-//
+// See {@link https://leetcode.com/problems/number-of-orders-in-the-backlog/}
 import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue';
 export { getNumberOfBacklogOrders };
 

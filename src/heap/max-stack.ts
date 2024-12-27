@@ -14,8 +14,7 @@
 //
 // You must come up with a solution that supports O(1) for each top call and O(logn) for each other call.
 //
-// See https://leetcode.com/problems/max-stack/
-//
+// See {@link https://leetcode.com/problems/max-stack/}
 import { PriorityQueue } from '@datastructures-js/priority-queue';
 export { MaxStack };
 

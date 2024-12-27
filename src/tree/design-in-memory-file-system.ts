@@ -19,7 +19,7 @@
 // - String readContentFromFile(String filePath)
 //   Returns the content in the file at filePath.
 //
-// See https://leetcode.com/problems/design-in-memory-file-system/
+// See {@link https://leetcode.com/problems/design-in-memory-file-system/}
 export { FileSystem };
 
 // SOLUTION:

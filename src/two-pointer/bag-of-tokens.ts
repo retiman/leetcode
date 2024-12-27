@@ -12,7 +12,7 @@
 //
 // Return the maximum possible score you can achieve after playing any number of tokens.
 //
-// See https://leetcode.com/problems/bag-of-tokens/
+// See {@link https://leetcode.com/problems/bag-of-tokens/}
 export { bagOfTokensScore };
 
 // SOLUTION:

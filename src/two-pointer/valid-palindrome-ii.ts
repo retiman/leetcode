@@ -2,7 +2,7 @@
 //
 // Given a string s, return true if the s can be palindrome after deleting at most one character from it.
 //
-// See https://leetcode.com/problems/valid-palindrome-ii/
+// See {@link https://leetcode.com/problems/valid-palindrome-ii/}
 export { validPalindrome };
 
 // SOLUTION:

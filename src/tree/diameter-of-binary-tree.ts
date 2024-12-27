@@ -7,7 +7,7 @@
 //
 // The length of a path between two nodes is represented by the number of edges between them.
 //
-// See https://leetcode.com/problems/diameter-of-binary-tree
+// See {@link https://leetcode.com/problems/diameter-of-binary-tree}
 import { TreeNode } from './common/tree-node';
 export { diameterOfBinaryTree };
 
