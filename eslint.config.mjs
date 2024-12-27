@@ -1,16 +1,21 @@
-module.exports = {
-  extends: [
-    'airbnb-base',
-    'airbnb-typescript/base',
-    // Disables rules that are handled by prettier already.
-    //
-    // See https://github.com/prettier/eslint-config-prettier
-    'prettier'
-  ],
-  parserOptions: {
-    project: './tsconfig.json'
+import eslint from '@eslint/js';
+import tselint from 'typescript-eslint';
+import uimports from 'eslint-plugin-unused-imports';
+
+export default tselint.config({
+  extends: [eslint.configs.recommended, tselint.configs.recommended],
+  files: ['**/*.ts'],
+  languageOptions: {
+    parserOptions: {
+      project: './tsconfig.json',
+      tsconfigRootDir: import.meta.dirname,
+      ecmaVersion: 2020,
+      sourceType: 'module'
+    }
   },
-  plugins: ['@typescript-eslint', 'jest', 'unused-imports'],
+  plugins: {
+    'unused-imports': uimports
+  },
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -36,8 +41,7 @@ module.exports = {
     // See https://typescript-eslint.io/rules/no-confusing-void-expression/
     '@typescript-eslint/no-confusing-void-expression': 'error',
     '@typescript-eslint/no-meaningless-void-operator': 'error',
-    // Enabled because no-shadow reports spurious errors in TypeScript sometimes.
-    '@typescript-eslint/no-shadow': 'error',
+    '@typescript-eslint/no-this-alias': 'off',
     '@typescript-eslint/no-unused-expressions': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-useless-constructor': 'error',
@@ -143,6 +147,5 @@ module.exports = {
     // Disabled because some solutions run more optimally if you do mutate the inputs.  This will trigger even if you
     // reassign a field in an object, which makes it more convenient if turned off.
     'no-param-reassign': 'off'
-  },
-  ignorePatterns: ['build', 'coverage', 'dist', 'node_modules']
-};
+  }
+});

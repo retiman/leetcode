@@ -12,7 +12,7 @@ describe('valid word square', () => {
           if (words[i][j] !== words[j][i]) {
             return false;
           }
-        } catch (error) {
+        } catch {
           return false;
         }
       }

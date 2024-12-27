@@ -18,7 +18,7 @@ describe('subsets', () => {
       }
 
       // Find the first element of xs and call it x; remove it from the list.
-      const x = xs.values().next().value;
+      const x = xs.values().next().value!;
 
       // Generate all subsets without x.
       const rest = new Set(xs);
