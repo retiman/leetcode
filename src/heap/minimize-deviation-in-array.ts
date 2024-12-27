@@ -19,7 +19,7 @@
 // Return the minimum deviation the array can have after performing some number of operations.
 //
 // See {@link https://leetcode.com/problems/minimize-deviation-in-array/}
-import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
+const { MaxPriorityQueue } = require('@datastructures-js/priority-queue');
 export { minimumDeviation };
 
 // SOLUTION:
@@ -36,7 +36,7 @@ export { minimumDeviation };
 // Runs in O(n * log(n)) time due to the heap operations.
 function minimumDeviation(nums: number[]): number {
   // Initialize a max heap of all the numbers in this array.
-  const heap = new MaxPriorityQueue<number>();
+  const heap = new MaxPriorityQueue();
 
   // Normalize all the numbers so that they are even.  Now we can consider only division as a way to make numbers
   // smaller and closer to each other.  If a previously odd number was too big, we will eventually resize it smaller

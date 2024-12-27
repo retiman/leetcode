@@ -7,7 +7,7 @@
 // ​Return the minimum number of intervals required to complete all tasks.
 //
 // See {@link https://leetcode.com/problems/task-scheduler/}
-import { MaxPriorityQueue } from '@datastructures-js/priority-queue';
+const { MaxPriorityQueue } = require('@datastructures-js/priority-queue');
 export { leastInterval };
 
 // SOLUTION:
@@ -36,7 +36,7 @@ function leastInterval(tasks: string[], n: number): number {
     map.set(task, freq + 1);
   }
 
-  const heap = new MaxPriorityQueue<number>();
+  const heap = new MaxPriorityQueue();
   for (const [_, freq] of map) {
     heap.enqueue(freq);
   }

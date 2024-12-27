@@ -24,7 +24,7 @@
 // be large, return it modulo 10^9 + 7.
 //
 // See {@link https://leetcode.com/problems/number-of-orders-in-the-backlog/}
-import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue';
+const { MaxPriorityQueue, MinPriorityQueue } = require('@datastructures-js/priority-queue');
 export { getNumberOfBacklogOrders };
 
 // SOLUTION:
@@ -41,8 +41,8 @@ function getNumberOfBacklogOrders(orders: number[][]): number {
   type Order = [number, number];
 
   // Order by [price, _] for buys and sells.
-  const buys = new MaxPriorityQueue<Order>({ priority: order => order[0] });
-  const sells = new MinPriorityQueue<Order>({ priority: order => order[0] });
+  const buys = new MaxPriorityQueue({ priority: (order: Order) => order[0] });
+  const sells = new MinPriorityQueue({ priority: (order: Order) => order[0] });
 
   function handleBuy(price: number, amount: number) {
     while (amount > 0) {
