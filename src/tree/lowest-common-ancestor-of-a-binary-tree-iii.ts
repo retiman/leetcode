@@ -4,6 +4,8 @@
 //
 // According to the definition of LCA on Wikipedia: "The lowest common ancestor of two nodes p and q in a tree T is the
 // lowest node that has both p and q as descendants (where we allow a node to be a descendant of itself)."
+//
+// See {@link https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii}
 import { _Node } from './common/parent-node';
 export { lowestCommonAncestor };
 
@@ -13,7 +15,8 @@ export { lowestCommonAncestor };
 // for one node and collect ancestors.  Then we traverse up to the root for the other node and check if any parent is in
 // the ancestor set.  If it is, then we have found the lowest common ancestor.
 //
-// This problem becomes much more difficult if we are not given parent nodes.
+// This problem becomes much more difficult if we are not given parent nodes.  See the first version of this problem for
+// a solution to that.
 //
 // COMPLEXITY:
 //
