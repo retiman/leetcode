@@ -2,15 +2,10 @@
 // accepted.
 export class _Node {
   val: boolean;
-
   isLeaf: boolean;
-
   topLeft: _Node | null;
-
   topRight: _Node | null;
-
   bottomLeft: _Node | null;
-
   bottomRight: _Node | null;
 
   constructor(
