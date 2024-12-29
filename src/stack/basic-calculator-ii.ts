@@ -22,9 +22,13 @@ export { calculate };
 //
 // Note that the - operator can be a unary operator.
 function calculate(s: string): number {
-  const ops = new Set(['+', '-', '*', '/']);
-  function isDigit(c: string): boolean {
-    return !ops.has(c);
+  function isDigit(c: string) {
+    // Number(' ') gives you 0, but that's totally not a digit.
+    if (c === ' ') {
+      return false;
+    }
+
+    return !Number.isNaN(Number(c));
   }
 
   // Keep a stack of numbers to add up; the multiply and divide operations will be applied immediately since they have
