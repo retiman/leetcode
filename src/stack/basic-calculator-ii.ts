@@ -22,9 +22,8 @@ export { calculate };
 //
 // Note that the - operator can be a unary operator.
 function calculate(s: string): number {
-  const ops = new Set(['+', '-', '*', '/']);
-  function isDigit(c: string): boolean {
-    return !ops.has(c);
+  function isOperator(c: string) {
+    return c === '+' || c === '-' || c === '*' || c === '/';
   }
 
   // Keep a stack of numbers to add up; the multiply and divide operations will be applied immediately since they have
@@ -45,12 +44,19 @@ function calculate(s: string): number {
     //
     // Do not continue to the next character just yet, since we may be at the end of the string and will need to resolve
     // this number immediately.
-    if (isDigit(c)) {
+    const isDigit = !isOperator(c) && c !== ' ';
+    if (isDigit) {
       text += c;
     }
 
-    // So if we are at the end of the string, or if we find an operator, we should resolve the number we've built up.
-    if (!isDigit(c) || i === s.length - 1) {
+    // If it's not a digit, then it's a space or an operator.  If it's an operator, we'll want to resolve the current
+    // number and operator.
+    //
+    // If it's a space, we'll generally just ignore it.
+    //
+    // However, regardless of what the character is (even if it's a space), if we are at the end of the string, we'll
+    // have to resolve the current number and last operator.
+    if (isOperator(c) || i === s.length - 1) {
       // Convert the number string we've built up to an actual number.
       const num = Number.parseInt(text, 10 /* radix */);
 
