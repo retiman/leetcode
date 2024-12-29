@@ -34,7 +34,7 @@
 // Note that the testcases are generated such that the file system is valid and no file or directory name has length 0.
 //
 // See {@link https://leetcode.com/problems/longest-absolute-file-path/}
-export { lengthLongestPath}
+export { lengthLongestPath };
 
 // SOLUTION:
 //
