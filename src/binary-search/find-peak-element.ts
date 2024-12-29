@@ -9,6 +9,8 @@
 // than a neighbor that is outside the array.
 //
 // You must write an algorithm that runs in O(log(n)) time.
+//
+// See {@link https://leetcode.com/problems/find-peak-element/}
 export { findPeakElement };
 
 // SOLUTION:
