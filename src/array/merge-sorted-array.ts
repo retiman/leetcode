@@ -30,6 +30,10 @@ export { merge };
 // up all the elements in nums2, you don't need to do anything with the remaining elements of nums1 since they are
 // already sorted.
 //
+// Pro tip: when asked to do something in place, and you have extra space, consider doing backwards iteration instead of
+// forwards to avoid collisions and overwriting elements.  Secondly, if you started with forwards iteration and realize
+// you might have to shift elements, consider a backwards iteration approach to see if it might work better.
+//
 // The problem doesn't state this, but we assume using no extra memory either.
 function merge(nums1: number[], m: number, nums2: number[], n: number): void {
   let i = m - 1;
