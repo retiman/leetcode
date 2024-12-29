@@ -1,4 +1,4 @@
-import { findPeakElement } from '../../src/array/find-peak-element';
+import { findPeakElement } from '../../src/binary-search/find-peak-element';
 
 describe('find peak element', () => {
   test('find peak element - test case 1', async () => {
