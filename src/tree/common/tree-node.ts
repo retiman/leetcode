@@ -14,7 +14,7 @@ export class TreeNode {
 
 // The LeetCode test input is given as an array, but the exact code to construct the tree is not given.  This is likely
 // how they've implemented it.
-export function deserialize(array: (number | null)[]): TreeNode | null {
+export function array2tree(array: (number | null)[]): TreeNode | null {
   if (array.length === 0) {
     return null;
   }
