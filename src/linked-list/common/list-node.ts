@@ -25,12 +25,15 @@ export function list2array(node: ListNode | null): number[] {
   return xs;
 }
 
-export function array2list(xs: number[]): ListNode {
-  let root: ListNode | undefined;
-  let current: ListNode | undefined;
+export function array2list(xs: number[] | null): ListNode | null {
+  if (xs === null) {
+    return null;
+  }
 
+  let root: ListNode | null = null;
+  let current: ListNode | null = null;
   for (let i = 0; i < xs.length; i++) {
-    if (current === undefined) {
+    if (current === null) {
       current = {
         val: xs[i],
         next: null
@@ -46,5 +49,5 @@ export function array2list(xs: number[]): ListNode {
     current = current.next;
   }
 
-  return root as unknown as ListNode;
+  return root;
 }
