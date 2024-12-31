@@ -1,4 +1,4 @@
-import { wordBreak } from '../../src/dynamic-programming/word-break-i.test';
+import { wordBreak } from '../../src/dynamic-programming/word-break-i';
 
 describe('word break i', () => {
   test('word break i - test case 1', () => {
