@@ -2,7 +2,7 @@
 //
 // Given an integer array nums, find the subarray with the largest sum, and return its sum.
 //
-// See https://leetcode.com/problems/maximum-subarray/
+// See {@link https://leetcode.com/problems/maximum-subarray/}
 export { maxSubArray };
 
 // SOLUTION:
