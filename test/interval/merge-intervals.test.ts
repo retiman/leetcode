@@ -1,4 +1,4 @@
-import { merge } from "../../src/interval/merge-intervals";
+import { merge } from '../../src/interval/merge-intervals';
 
 describe('merge intervals', () => {
   test('merge intervals - test case 1', async () => {
