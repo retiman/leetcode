@@ -8,11 +8,16 @@
 // You can return the answer in any order.
 //
 // See {@link https://leetcode.com/problems/two-sum/}
-export { find };
+export { twoSum };
 
 // SOLUTION:
-function find(xs: number[], target: number) {
-  // Do the same as before but use a hashmap to keep track of values we've already seen.
+//
+// Use a hashmap to keep track of values we've already seen.  This lets us avoid the O(n^2) solution of checking every
+// possible pair of values.
+//
+// When iterating, you can check if the complement nums[j] = target - nums[i] already exists in the hashmap.  If it
+// does then we've found the solution and can return the indices immediately.
+function twoSum(xs: number[], target: number) {
   type Index = number;
   type Complement = number;
   const m = new Map<Complement, Index>();
@@ -21,20 +26,14 @@ function find(xs: number[], target: number) {
     const x = xs[i];
     const y = target - x;
 
-    // If our map has the complentary value that would make up the target, we can return it immediately.
+    // If our map has the complementary value that would make up the target, we can return it immediately.
     if (m.has(y)) {
       return [i, m.get(y)];
     }
 
-    // Otherwise, loop through the list as usual.
-    for (let j = i + 1; j < xs.length; j += 1) {
-      const z = xs[j];
-      m.set(z, j);
-
-      if (x + z === target) {
-        return [i, j];
-      }
-    }
+    // Otherwise, store the number and its index in the map.  If we find the complement later, then this index will be
+    // the complement's complement and we can return the indices as normal.
+    m.set(x, i);
   }
 
   return [];

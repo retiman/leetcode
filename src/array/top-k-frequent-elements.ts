@@ -7,6 +7,8 @@
 export { topKFrequent };
 
 // SOLUTION:
+//
+// Just map each number to its frequency then sort by frequency.  Return the first k elements.
 function topKFrequent(xs: number[], k: number) {
   type Frequency = number;
   const map = new Map<number, Frequency>();
@@ -20,8 +22,8 @@ function topKFrequent(xs: number[], k: number) {
 
   // Sort the map keys by their frequency.
   //
-  // Note that map.get(a)! - map.get(b)! would sort by increasing frequency; we want the most frequent elements first
-  // instead.
+  // Note that map.get(a)! - map.get(b)! would sort by increasing frequency; we want decreasing frequency because we
+  // want the top k elements.
   const keys = Array.from(map.keys());
   const sorted = keys.sort((a, b) => map.get(b)! - map.get(a)!);
 
