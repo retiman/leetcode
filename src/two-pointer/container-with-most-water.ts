@@ -25,6 +25,7 @@ function maxArea(xs: number[]): number {
   let left = 0;
   let right = xs.length - 1;
 
+  // Use left < right because there's no need to process left === right (that's a container with no area).
   while (left < right) {
     // Set the width to be the difference between left and right pointers.  The height should be the smaller of the
     // two heights referenced by the pointers.

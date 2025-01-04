@@ -20,7 +20,7 @@ function isPalindrome(s: string): boolean {
   // Replace all non-alphanumeric characters with an empty string.
   const text = s.replace(/[^a-zA-Z0-9]/g, '');
 
-  // Use the two pointer technique to check if we have a palindrome.
+  // Use left < right here because it's not necessary to check if the middle character matches itself.
   let left = 0;
   let right = text.length - 1;
   while (left < right) {
