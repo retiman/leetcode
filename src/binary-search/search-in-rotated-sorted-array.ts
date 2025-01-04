@@ -17,6 +17,7 @@ export { search };
 // SOLUTION:
 //
 // You can still use binary search for this; you just have to recognize when you have looped around in the array.
+// This uses the standard binary search algorithm, but with recursion.
 function search(xs: number[], target: number): number {
   function searchInternal(ys: number[], start: number, end: number, t: number) {
     const mid = Math.floor((end + start) / 2);

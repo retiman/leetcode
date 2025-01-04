@@ -25,6 +25,7 @@ function smallestDivisor(nums: number[], threshold: number): number {
     return xs.map(x => Math.ceil(x / divisor)).reduce((a, b) => a + b);
   }
 
+  // Use binary search left-most duplicate approach.
   const max = Math.max(...nums);
   let left = 1;
   let right = max;

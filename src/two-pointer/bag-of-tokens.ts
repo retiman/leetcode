@@ -45,7 +45,7 @@ function bagOfTokensScore(tokens: number[], power: number): number {
   let score = 0;
   let max = 0;
 
-  // Choosing left < right will miss out on a token possibly.
+  // Use left <= right here because you must process each token.
   while (left <= right) {
     // Since we are attempting to maximize score, let's try to eat the smaller tokens first to build score.
     if (power >= tokens[left]) {

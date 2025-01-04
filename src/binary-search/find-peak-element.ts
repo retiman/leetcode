@@ -33,8 +33,10 @@ function findPeakElement(nums: number[]): number {
     return 0;
   }
 
+  // Use binary search left-most duplicate approach.  Note that setting right = nums.length or nums.length - 1 does not
+  // matter.  We set it to nums.length - 1 for consistency with the two pointer technique solutions.
   let left = 0;
-  let right = nums.length - 1;
+  let right = nums.length;
   while (left < right) {
     const mid = Math.floor((left + right) / 2);
     const prev = mid === 0 ? -Infinity : nums[mid - 1];
