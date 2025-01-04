@@ -50,7 +50,7 @@ function findMedianSortedArrays(xs: number[], ys: number[]) {
   const m = xs.length;
   const n = ys.length;
 
-  // Now let's perform our modified binary search algorithm.
+  // Note that this is a variation of the standard binary search algorithm.
   let left = 0;
   let right = m;
   while (left <= right) {
