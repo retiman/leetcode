@@ -44,7 +44,8 @@ function removeDuplicates(nums: number[]): number {
     i++;
   }
 
-  // The first k elements are unique, says the problem.  However, the array is zero indexed, so we need to add 1.
+  // The index j tracks the last unique element, so the number of unique elements is j + 1.  Contrast this to the remove
+  // element problem.
   const k = j + 1;
   return k;
 }
