@@ -1,4 +1,4 @@
-import { isPalindrome } from "../../src/string/palindrome-number";
+import { isPalindrome } from '../../src/string/palindrome-number';
 
 describe('palindrome-number', () => {
   test('palindrome number - test case 1', () => {
