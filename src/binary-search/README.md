@@ -4,7 +4,7 @@ There are multiple ways of doing binary search.  Two major ways are used in this
 
 ## Standard Algorithm
 
-Looks for a specific element.  Left and right indexes are always within bounds.  Exiting the loop means the element was not found.
+Use this to check if an element exists in the array.  The `left` and `right` pointers are always within bounds.  Exiting the while loop indicates the element was not found.
 
 ```
 let left = 0, right = xs.length - 1;
@@ -23,7 +23,7 @@ return -1;
 
 ### Left-most Duplicate
 
-Looks for an insertion point or exact match, handles duplicates giving you the left-most dulicate.
+Use this to check where an element can be inserted into the array.  The `left` and `right` pointers are not always within bounds (because the element could be inserted at the end of the array).  Exiting the while loop indicates the element was found or you've found a good place to insert.
 
 ```
 let left = 0, right = xs.length;
