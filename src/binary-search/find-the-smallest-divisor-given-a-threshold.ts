@@ -25,23 +25,24 @@ function smallestDivisor(nums: number[], threshold: number): number {
     return xs.map(x => Math.ceil(x / divisor)).reduce((a, b) => a + b);
   }
 
-  // Use binary search left-most duplicate approach.
-  const max = Math.max(...nums);
+  // Use the insert point binary search approach to find the divisor we want.
   let left = 1;
-  let right = max;
+  let right = Math.max(...nums);
   while (left < right) {
     const mid = Math.floor((left + right) / 2);
     const divisor = mid;
     const value = sum(nums, divisor);
 
     // If the value is too large, our divisor was too small, so we should shift our left value to be mid + 1.
-    // Otherwise, we should shift our right value to mid.
     if (value > threshold) {
       left = mid + 1;
-    } else {
+    }
+    // Otherwise, we should shift our right value to mid.
+    else {
       right = mid;
     }
   }
 
+  // Found the divisor at the "insertion point".
   return left;
 }
