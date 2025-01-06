@@ -1,4 +1,4 @@
-// DIFFICULTY: Easy
+// DIFFICULTY: EASY
 //
 // A string can be abbreviated by replacing any number of non-adjacent, non-empty substrings with their lengths. The
 // lengths should not have leading zeros.
