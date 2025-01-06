@@ -1,6 +1,9 @@
 # Binary Search
 
-There are multiple ways of doing binary search.  The standard way is mostly used in this repository.
+There are multiple ways of doing binary search.  Hint:
+
+- Use the standard algorithm to find an exact match; you throw away the `left` pointer at the end.
+- Use the left-most duplicate algorithm to find an insertion point; you make use of the `left` pointer (which could be out of bounds at the end of the array) at the end.
 
 ## Standard Algorithm
 
