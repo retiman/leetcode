@@ -34,12 +34,15 @@ function findPeakElement(nums: number[]): number {
   }
 
   // Use binary search left-most duplicate approach.
+  //
+  // Note that the loop can exit where left is out-of-bounds (since right === nums.length).  This indicates that left is
+  // a good insertion point for the element.
   let left = 0;
   let right = nums.length;
   while (left < right) {
     const mid = Math.floor((left + right) / 2);
     const prev = mid === 0 ? -Infinity : nums[mid - 1];
-    const next = mid === nums.length - 1 ? -Infinity : nums[mid + 1];
+    const next = mid >= nums.length - 1 ? -Infinity : nums[mid + 1];
 
     // If we've found a peak, we can simply return it.
     if (nums[mid] > prev && nums[mid] > next) {
@@ -69,7 +72,7 @@ function findPeakElement(nums: number[]): number {
   // that cause this to happen.
   const mid = left;
   const prev = mid === 0 ? -Infinity : nums[mid - 1];
-  const next = mid === nums.length - 1 ? -Infinity : nums[mid + 1];
+  const next = mid >= nums.length - 1 ? -Infinity : nums[mid + 1];
   if (nums[mid] > prev && nums[mid] > next) {
     return mid;
   }
