@@ -1,4 +1,4 @@
-// DIFFICULTY: Medium
+// DIFFICULTY: MEDIUM
 //
 // Given a list tasks and their dependencies ['A:B,C', 'B:D,C,E', 'F:G'], return a list of parallelizable tasks in
 // order.  For example, in this situation [(D, C, E, F), (B, G), (A)] would be a valid order because all parallelizable

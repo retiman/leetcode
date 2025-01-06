@@ -1,4 +1,4 @@
-// DIFFICULTY: Medium
+// DIFFICULTY: MEDIUM
 //
 // Given a wordlist, we want to implement a spellchecker that converts a query word into a correct word.
 //

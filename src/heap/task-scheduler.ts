@@ -1,4 +1,4 @@
-// DIFFICULTY: Medium
+// DIFFICULTY: MEDIUM
 //
 // You are given an array of CPU tasks, each represented by letters A to Z, and a cooling time, n. Each cycle or
 // interval allows the completion of one task. Tasks can be completed in any order, but there's a constraint: identical

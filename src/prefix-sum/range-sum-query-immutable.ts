@@ -1,4 +1,4 @@
-// DIFFICULTY: Easy
+// DIFFICULTY: EASY
 //
 // Given an integer array nums, handle multiple queries of the following type:
 //

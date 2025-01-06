@@ -1,4 +1,4 @@
-// DIFFICULTY: Hard
+// DIFFICULTY: HARD
 //
 // There is an undirected graph consisting of n nodes numbered from 1 to n. You are given the integer n and a 2D array
 // edges where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi. The graph can be disconnected.

@@ -1,4 +1,4 @@
-// DIFFICULTY: Hard
+// DIFFICULTY: HARD
 //
 // A valid number can be split up into these components (in order):
 //

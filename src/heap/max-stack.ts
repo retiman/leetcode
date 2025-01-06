@@ -1,4 +1,4 @@
-// DIFFICULTY: Hard
+// DIFFICULTY: HARD
 //
 // Design a max stack data structure that supports the stack operations and supports finding the stack's maximum element.
 //

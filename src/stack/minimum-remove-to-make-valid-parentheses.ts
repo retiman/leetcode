@@ -1,4 +1,4 @@
-// DIFFICULTY: Medium
+// DIFFICULTY: MEDIUM
 //
 // Given a string s of '(' , ')' and lowercase English characters.
 //

@@ -1,4 +1,4 @@
-// DIFFICULTY: Hard
+// DIFFICULTY: HARD
 //
 // Design a data structure that simulates an in-memory file system.
 //

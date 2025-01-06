@@ -1,4 +1,4 @@
-// DIFFICULTY: Easy
+// DIFFICULTY: EASY
 //
 // Given the roots of two binary trees p and q, write a function to check if they are the same or not.
 //

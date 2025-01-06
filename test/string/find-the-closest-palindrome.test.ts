@@ -1,4 +1,4 @@
-// DIFFICULTY: Hard
+// DIFFICULTY: HARD
 //
 // Given a string n representing an integer, return the closest integer (not including itself), which is a palindrome.
 // If there is a tie, return the smaller one.
