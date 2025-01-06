@@ -40,12 +40,9 @@ class Solution {
     // Pick a random number between 0 and the total.  Doesn't have to be an integer.
     const target = Math.random() * this.total;
 
-    // Use binary search left-most duplicate approach.  Note that setting right = xs.length or xs.length - 1 does not
-    // matter.  We set it to nums.length - 1 for consistency with the two pointer technique solutions.
-    //
-    // This finds the index that corresponds to the random number.
+    // Use binary search left-most duplicate approach.  This finds the index that corresponds to the random number.
     let left = 0;
-    let right = this.prefixSum.length - 1;
+    let right = this.prefixSum.length;
     while (left < right) {
       const mid = Math.floor((left + right) / 2);
       if (this.prefixSum[mid] < target) {
