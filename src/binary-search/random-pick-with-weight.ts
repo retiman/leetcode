@@ -40,7 +40,7 @@ class Solution {
     // Pick a random number between 0 and the total.  Doesn't have to be an integer.
     const target = Math.random() * this.total;
 
-    // Use binary search left-most duplicate approach.  This finds the index that corresponds to the random number.
+    // Use insertion point binary search.  This finds the index that corresponds to the random number.
     let left = 0;
     let right = this.prefixSum.length;
     while (left < right) {
@@ -52,6 +52,7 @@ class Solution {
       }
     }
 
+    // The "insertion point" is the index that corresponds to the random number.
     return left;
   }
 }
