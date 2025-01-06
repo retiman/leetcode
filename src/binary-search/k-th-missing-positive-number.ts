@@ -19,7 +19,7 @@ export { findKthPositive };
 // scan the entire array.  We can calculate how many missing numbers exist at each index, and use that information to
 // determine if we should go left or right.
 function findKthPositive(arr: number[], k: number): number {
-  // Use binary search left-most duplicate approach.
+  // Use insertion point binary search to find the k-th missing element.
   let left = 0;
   let right = arr.length;
   while (left < right) {
@@ -39,7 +39,7 @@ function findKthPositive(arr: number[], k: number): number {
       left = mid + 1;
     }
     // If there are too many missing numbers, then the k-th missing number must be to the left, so update the right
-    // pointer to be mid;
+    // pointer to be mid - 1;
     else {
       right = mid;
     }

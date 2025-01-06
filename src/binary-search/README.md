@@ -1,10 +1,12 @@
 # Binary Search
 
-There are multiple ways of doing binary search.  Two major ways are used in this repository.
+There are multiple ways of doing binary search.  The standard way is mostly used in this repository.
 
 ## Standard Algorithm
 
-Use this to check if an element exists in the array.  The `left` and `right` pointers are always within bounds.  Exiting the while loop indicates the element was not found.
+Use this to check if an element exists in the array.  The `left` and `right` pointers are always within bounds.  Exiting the loop means the element was not found.
+
+Note that this can be used like left most duplicate to find a good insertion point as well.
 
 ```
 let left = 0, right = xs.length - 1;

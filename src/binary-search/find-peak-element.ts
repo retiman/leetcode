@@ -33,14 +33,13 @@ function findPeakElement(nums: number[]): number {
     return 0;
   }
 
-  // Use both exact match and insertion point binary search work here.  This uses exact match to find the peak.  Note
-  // that left and right pointers cannot be out of bounds.
+  // Use insertion point binary search to find the peak.
   let left = 0;
-  let right = nums.length - 1;
-  while (left <= right) {
+  let right = nums.length;
+  while (left < right) {
     const mid = Math.floor((left + right) / 2);
     const prev = mid === 0 ? -Infinity : nums[mid - 1];
-    const next = mid == nums.length - 1 ? -Infinity : nums[mid + 1];
+    const next = mid === nums.length - 1 ? -Infinity : nums[mid + 1];
 
     // If we've found a peak, we can simply return it.
     if (nums[mid] > prev && nums[mid] > next) {
@@ -55,7 +54,7 @@ function findPeakElement(nums: number[]): number {
     // Likewise, if the left side number is larger, then a peak must exist somewhere on the left, so update the right
     // boundary.
     else if (prev > nums[mid]) {
-      right = mid - 1;
+      right = mid;
     }
     // Oh, wait, what if we have a plateau?  Like [..., 10, 10, 10, ...].  We don't know which direction to go, and in
     // fact, binary search would NOT even work here.  Well, the problem doesn't tell you this, but this can never
