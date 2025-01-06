@@ -1,4 +1,4 @@
-// DIFFICULTY: Medium
+// DIFFICULTY: MEDIUM
 //
 // You are given a binary string s. In one second, all occurrences of "01" are simultaneously replaced with "10". This
 // process repeats until no occurrences of "01" exist.

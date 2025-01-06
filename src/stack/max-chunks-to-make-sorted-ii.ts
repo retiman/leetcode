@@ -1,4 +1,4 @@
-// DIFFICULTY: Medium
+// DIFFICULTY: MEDIUM
 //
 // You are given an integer array arr.
 //

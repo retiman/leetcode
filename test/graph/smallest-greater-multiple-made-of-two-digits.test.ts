@@ -1,4 +1,4 @@
-// DIFFICULTY: Medium
+// DIFFICULTY: MEDIUM
 //
 // Given three integers, k, digit1, and digit2, you want to find the smallest integer that is:
 //

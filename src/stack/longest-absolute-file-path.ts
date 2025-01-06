@@ -1,4 +1,4 @@
-// DIFFICULTY: Medium
+// DIFFICULTY: MEDIUM
 //
 // Suppose we have a file system that stores both files and directories. An example of one system is represented in the
 // following picture:

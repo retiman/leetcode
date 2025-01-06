@@ -1,4 +1,4 @@
-// DIFFICULTY: Medium
+// DIFFICULTY: MEDIUM
 //
 // Given an array of integers called nums, you can perform any of the following operation while nums contains at least
 // 2 elements:
