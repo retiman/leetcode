@@ -7,6 +7,7 @@
 // assume all four edges of the grid are all surrounded by water.
 //
 // See {@link https://leetcode.com/problems/number-of-islands/}
+export { numIslands };
 
 // SOLUTION:
 //
@@ -16,45 +17,45 @@
 // We can either store the coordinates (i, j) in a set to avoid visiting the same cell twice, or we can simply write
 // to the cell '0' for a visited land mass.  The latter will also avoid visiting the same cell twice.  We do the
 // latter because that's what most interviewers want to see.
-  function numIslands(grid: string[][]) {
-    let count = 0;
+function numIslands(grid: string[][]) {
+  let count = 0;
 
-    // Use DFS to find all connected land masses.  Avoid doing DFS calls to any coordinates that are out of bounds, and
-    // mark cells as visited by writing '0' (water) to them.
-    function dfs(m: string[][], i: number, j: number) {
-      if (m[i][j] === '0') {
-        return;
-      }
-
-      m[i][j] = '0';
-
-      if (j + 1 < m[i].length) {
-        dfs(m, i, j + 1);
-      }
-
-      if (j - 1 >= 0) {
-        dfs(m, i, j - 1);
-      }
-
-      if (i - 1 >= 0) {
-        dfs(m, i - 1, j);
-      }
-
-      if (i + 1 < m.length) {
-        dfs(m, i + 1, j);
-      }
+  // Use DFS to find all connected land masses.  Avoid doing DFS calls to any coordinates that are out of bounds, and
+  // mark cells as visited by writing '0' (water) to them.
+  function dfs(m: string[][], i: number, j: number) {
+    if (m[i][j] === '0') {
+      return;
     }
 
-    for (let i = 0; i < grid.length; i++) {
-      for (let j = 0; j < grid[i].length; j++) {
-        if (grid[i][j] === '0') {
-          continue;
-        }
+    m[i][j] = '0';
 
-        dfs(grid, i, j);
-        count++;
-      }
+    if (j + 1 < m[i].length) {
+      dfs(m, i, j + 1);
     }
 
-    return count;
+    if (j - 1 >= 0) {
+      dfs(m, i, j - 1);
+    }
+
+    if (i - 1 >= 0) {
+      dfs(m, i - 1, j);
+    }
+
+    if (i + 1 < m.length) {
+      dfs(m, i + 1, j);
+    }
   }
+
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      if (grid[i][j] === '0') {
+        continue;
+      }
+
+      dfs(grid, i, j);
+      count++;
+    }
+  }
+
+  return count;
+}

@@ -1,3 +1,5 @@
+import { numIslands } from '../../src/graph/number-of-islands';
+
 describe('number of islands', () => {
   test('number of islands - test case 1', async () => {
     const grid = [
