@@ -26,9 +26,7 @@ export { numBusesToDestination };
 // Building a graph and then running BFS on it naively seems to exceed execution time so we'll have to do something
 // more clever and dirty.
 function numBusesToDestination(routes: number[][], source: number, target: number): number {
-  type Bus = number;
   type Stop = number;
-  type Item = { stop: number; result: number };
 
   if (source === target) {
     return 0;
