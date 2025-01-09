@@ -17,19 +17,19 @@ describe('find the closest palindrome', () => {
     expect(nearestPalindromic('10')).toBe('9');
   });
 
-  test('test case 4', async () => {
+  test('nearest palindromic - test case 5', async () => {
     expect(nearestPalindromic('11911')).toBe('11811');
   });
 
-  test('test case 5', async () => {
+  test('nearest palindromic - test case 6', async () => {
     expect(nearestPalindromic('100')).toBe('99');
   });
 
-  test('test case 6', async () => {
+  test('nearest palindromic - test case 7', async () => {
     expect(nearestPalindromic('11011')).toBe('11111');
   });
 
-  test('test case 7', async () => {
+  test('nearest palindromic - test case 8', async () => {
     expect(nearestPalindromic('111111111')).toBe('111101111');
   });
 });
