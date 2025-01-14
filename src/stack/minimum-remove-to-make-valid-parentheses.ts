@@ -16,11 +16,46 @@ export { minRemoveToMakeValid };
 
 // SOLUTION:
 //
-// Use a stack to keep track of the parentheses.  If we find a mismatching closing parenthesis, mark it for removal.
+// Imagine if we were just asked to validate the parentheses.  This can be done with a stack pretty easily.  In this
+// problem, we can push open parens onto the stack, then pop off close parens when we encounter them.  If we ever
+// encounter a close parens while the stack is empty, OR if we have remaining open parens on the stack, then we know
+// the parentheses are invalid.
+//
+// Here, though, we are asked to remove invalid parentheses.  This means that instead of failing immediately, every time
+// we encounter a close without an open we need to mark it for removal.  In addition, any open parens left on the stack
+// at the end should also be marked for removal.
+//
+// Once we have indices that are marked for removal, we'll go through the string again, and copy it to a new string, but
+// avoid any indices that are marked for removal.
+//
+// COMPLEXITY:
+//
+// Time complexity is O(n) for each pass through the string.  Two passes means O(n) overall.
+//
+// Space complexity is O(n) because we are using the stack (which is size of the string) and the removable set, which
+// is also size of the string.
 function minRemoveToMakeValid(s: string): string {
-  const stack: number[] = [];
-  const remove = new Set<number>();
+  type Index = number;
 
+  // For the validate parens problem, we'll have a stack of '(' strings.  However, notice that in that case we never
+  // push any ')' onto the stack; as soon as ')' we pop the item off the stack or we fail.  That is, in the validation
+  // problem, we only ever have '(' characters on the stack.
+  //
+  // Therefore we can reclaim that space by pushing the index of the '(' character onto the stack.  It is not necessary
+  // to declare both:
+  //
+  // const stack: string[] = [];
+  // const opens = new Set<number>();
+  //
+  // One array data structure is enough to handle both.  Note that having a set would cause problems because we'd at
+  // some point need to pop the last open paren off the stack, and we'd have to search the set for it (or convert the
+  // set into an array).
+  const stack: Index[] = [];
+
+  // These are the indexes we are meant to remove at the end.
+  const removable = new Set<Index>();
+
+  // Do a first pass to check the string for parens that you want to remove.
   for (let i = 0; i < s.length; i++) {
     const c = s[i];
 
@@ -30,25 +65,28 @@ function minRemoveToMakeValid(s: string): string {
       continue;
     }
 
-    // If we encounter close paren, we need to match it with an open paren.
-    if (c === ')') {
-      // If we have one or more elements on the stack, we can match the close with an open paren.  If we don't, then
-      // it's a mismatching paren and we need to remove it.
-      if (stack.length !== 0) {
-        stack.pop();
-      } else {
-        remove.add(i);
-      }
+    // If we encounter a non-close paren, just skip it.  It's not relevant for the removal process.
+    if (c !== ')') {
+      continue;
     }
+
+    // If we have a matched close paren, pop the associated open from the stack and just continue.
+    if (stack.length !== 0) {
+      stack.pop();
+      continue;
+    }
+
+    // Uh oh!  At this point, we have an unmatched close paren, so mark this index for removal.
+    removable.add(i);
   }
 
   // It's possible we are left with some unmatched open parens, so mark them for removal as well.
-  stack.forEach(i => remove.add(i));
+  stack.forEach(i => removable.add(i));
 
   // Construct the result string by skipping marked indices.
   let result = '';
   for (let i = 0; i < s.length; i++) {
-    if (remove.has(i)) {
+    if (removable.has(i)) {
       continue;
     }
 
