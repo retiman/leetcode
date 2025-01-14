@@ -53,8 +53,8 @@ function findKthLargest(nums: number[], k: number): number {
     }
   }
 
-  // This is a min heap, so the smallest element is at the front.  However, there are k elements and we
-  // the kth smallest element, so it's at the top!
+  // This is a min heap, so the smallest element is at the front.  However, there are (k - 1) larger elements in
+  // elsewhere in the heap.  That makes the front element the kth largest element.
   const result = heap.front().element;
   return result;
 }
