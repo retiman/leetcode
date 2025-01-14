@@ -4,7 +4,7 @@ import uimports from 'eslint-plugin-unused-imports';
 
 export default tselint.config({
   extends: [eslint.configs.recommended, tselint.configs.recommended],
-  files: ['**/*.ts'],
+  files: ['src/**/*.ts', 'test/**/*.ts', 'script/**/*.js'],
   languageOptions: {
     parserOptions: {
       project: './tsconfig.json',
