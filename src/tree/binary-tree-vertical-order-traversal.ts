@@ -10,23 +10,19 @@ export { verticalOrder };
 
 // SOLUTION:
 //
-// You can use a level order traversal, or a BFS, to traverse the tree.  This won't give you the vertical order, but
-// with proper bookkeeping, we can get the vertical order afterwards.
+// There is no straightforward vertical order traversal.  However, a standard level order traversal can be used to get
+// part of the way there.  If we assume that the root is at row 0 and column 0, we can do some bookkeeping while we
+// traverse the nodes to assign a coordinate to every single node.
 //
-// What we need to keep track of is each node's row and column; the root starts at (0, 0) and we can update the position
-// as we enqueue the children.
-//
-// Afterwards, we can sort the nodes by row index for each column to get the vertical order.
+// While doing the traversal, we can keep track of a Map<Column, TreeNode[]> where each column is mapped to an array of
+// nodes in the order they were encountered.  By doing a level order traversal (or BFS), we can ensure that nodes in
+// the same "row" are encountered from left to right.
 //
 // COMPLEXITY:
 //
 // The BFS will run in O(n) time, and the sorting will run in O(n * log(n)) time.  We could, in theory, have a very
 // imbalanced tree where the sorting dominates the time complexity.
 function verticalOrder(root: TreeNode | null): number[][] {
-  if (root === null) {
-    return [];
-  }
-
   type Row = number;
   type Column = number;
   type ExtendedNode = {
@@ -35,8 +31,12 @@ function verticalOrder(root: TreeNode | null): number[][] {
     column: Column;
   };
 
+  if (root === null) {
+    return [];
+  }
+
   // Keep a map of column to nodes with their row values, so we can order by row later.
-  const map: Map<Column, ExtendedNode[]> = new Map();
+  const map = new Map<Column, ExtendedNode[]>();
   const queue: ExtendedNode[] = [{ node: root, row: 0, column: 0 }];
 
   // Keep track of the min and max columns so we can iterate over them later.
