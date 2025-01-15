@@ -17,13 +17,28 @@ export { shortestPathBinaryMatrix };
 // SOLUTION:
 //
 // Can be solved using BFS.  Just start from the top left cell and explore adjacent cells that have 0 value.
+//
+// Note the following:
+//
+// - We can explore all 8 directions, so we can go backwards.
+// - We might not find a path.
+// - The first cell might not even be visitable.
+// - With BFS the first path that reaches the end is guaranteed to be the shortest.
+// - If we had used DFS, we'd need to explicitly keep track of the shortest path because the first path to finish may
+//   not be the shortest.
+//
+// COMPLEXITY:
+//
+// Each cell is visited at most once.  On each visited a max of 8 directions are considered.  With there being n rows
+// and n columns, the time complexity is O(n^2).
+//
+// The space complexity is O(n^2) to store the visited cells and the queue.
 function shortestPathBinaryMatrix(grid: number[][]): number {
   // The problem says that you MUST start at the top left, so if the top left cell is 1, you have nowhere to go.
   if (grid[0][0] === 1) {
     return -1;
   }
 
-  let shortest = Infinity;
   const visited = new Set<string>();
   const queue = [
     {
@@ -35,19 +50,24 @@ function shortestPathBinaryMatrix(grid: number[][]): number {
     const cell = queue.shift()!;
     const [x, y] = cell.position;
 
-    // Store the cell as a string in a set, since we can't store the object directly.
-    const key = `${x},${y}`;
+    // First check if this cell has been visited, and if it has, simply skip it.  Store the cell as a string in a set,
+    // since we can't store the object directly.
+    const key = `[${x},${y}]`;
     if (visited.has(key)) {
       continue;
     }
 
-    // If we are at the very last cell, update the minimum path length.
+    // Note that if we're at the very last cell, we can return it immediately.  Because we are using BFS, the very first
+    // path that reaches the end is guaranteed to be the shortest.
+    //
+    // We don't have to store the path or otherwise distinguish between paths because all shortest paths have the same
+    // length.
     if (x === grid.length - 1 && y === grid[0].length - 1) {
-      shortest = Math.min(shortest, cell.length);
+      return cell.length;
     }
 
-    // Since we can explore all 8 directions, we'll have to generate coordinates and filter out the ones that don't
-    // make sense before we jam them onto the queue.
+    // Note that we can actually move backwards (and we might be required to) since we can explore all 8 directions.
+    // Generate the coordinates of the 8 directions, then filter out the ones that are out of bounds.
     const coordinates = [
       [x - 1, y],
       [x, y - 1],
@@ -59,7 +79,11 @@ function shortestPathBinaryMatrix(grid: number[][]): number {
       [x + 1, y - 1]
     ];
     const frontier = coordinates
-      .filter(([x, y]) => x >= 0 && x < grid.length && y >= 0 && y < grid[0].length && grid[x][y] === 0)
+      .filter(([x, y]) => {
+        return x >= 0 && x < grid.length    // Check the x bounds.
+            && y >= 0 && y < grid[0].length // Check the y bounds; note that it's n x n so grid.length works too.
+            && grid[x][y] === 0;            // Check if the cell can actually be moved into.
+      })
       .map(p => {
         return {
           position: p,
@@ -72,5 +96,6 @@ function shortestPathBinaryMatrix(grid: number[][]): number {
     queue.push(...frontier);
   }
 
-  return shortest === Infinity ? -1 : shortest;
+  // If we've exhausted all paths without reaching the end, that means we couldn't do it.
+  return -1;
 }
