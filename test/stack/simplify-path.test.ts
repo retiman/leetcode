@@ -6,6 +6,6 @@ describe('simplify path', () => {
   });
 
   test('simplify path - test case 2', () => {
-    expect(simplifyPath('/../')).toEqual('/home');
+    expect(simplifyPath('/../')).toEqual('/');
   });
 });
