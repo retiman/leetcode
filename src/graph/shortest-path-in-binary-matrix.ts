@@ -80,9 +80,13 @@ function shortestPathBinaryMatrix(grid: number[][]): number {
     ];
     const frontier = coordinates
       .filter(([x, y]) => {
-        return x >= 0 && x < grid.length    // Check the x bounds.
-            && y >= 0 && y < grid[0].length // Check the y bounds; note that it's n x n so grid.length works too.
-            && grid[x][y] === 0;            // Check if the cell can actually be moved into.
+        return (
+          x >= 0 &&
+          x < grid.length && // Check the x bounds.
+          y >= 0 &&
+          y < grid[0].length && // Check the y bounds; note that it's n x n so grid.length works too.
+          grid[x][y] === 0
+        ); // Check if the cell can actually be moved into.
       })
       .map(p => {
         return {
