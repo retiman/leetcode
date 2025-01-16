@@ -9,20 +9,30 @@
 // Return the sum of each integer in nestedList multiplied by its depth.
 //
 // See {@link https://leetcode.com/problems/nested-list-weight-sum}
-import { NestedInteger } from './common/nested-integer';
+import { NestedInteger } from '../linked-list/common/nested-integer';
 export { depthSum };
 
 // SOLUTION:
 //
-// A simple recursive algorithm works here.
+// This is essentially a depth first search problem.  However, because it a nested list, there's no need to keep track
+// of visited elements.  Instead we'll just keep track of the depth as we traverse the list.
+//
+// COMPLEXITY:
+//
+// Time complexity is O(n) where n is the number of total integers and lists in the data structure.
+//
+// Space complexity is O(d) where d is the depth of the nested list, since we need a stack frame for each level of
+// recursion.
 function depthSum(nestedList: NestedInteger[]): number {
   function compute(x: NestedInteger, depth: number): number {
+    // If we've encountered an integer, compute the weighted value according to the depth.
     if (x.isInteger()) {
       const value = x.getInteger() ?? 0;
       const weight = depth;
       return value * weight;
     }
 
+    // Otherwise, we have a list, so we'll recursively compute the weighted sum of the list.
     let result = 0;
     const ys = x.getList();
     for (let i = 0; i < ys.length; i++) {

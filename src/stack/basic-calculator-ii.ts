@@ -45,6 +45,11 @@ export { calculate };
 // have '3-2', when we see '2', the last operator is '-', so we push '-2' onto the stack.
 //
 // Similarly, if we just have '-2', we will see the '2' and push '-2' onto the stack, since the last operator is '-'.
+//
+// COMPLEXITY:
+//
+// Time and space complexity are both O(n); we do not need to traverse the string more than once, and we also do not
+// need to store more than n values (where n is the length of the string) onto the stack.
 function calculate(s: string): number {
   function isDigit(c: string) {
     return c >= '0' && c <= '9';
