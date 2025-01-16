@@ -24,6 +24,12 @@ export { myPow };
 //    is, we half the exponent minus 1 to make it even (so we can do our squaring), then multiply the result by x.
 //
 // This can be done even faster if we use bit shift operations and convert the recursive solution to an iterative one.
+//
+// COMPLEXITY:
+//
+// Time complexity is O(log n) because we are halving the exponent each time.
+//
+// Space complexity is O(1) because we are not using any extra space.
 function myPow(x: number, n: number) {
   if (n === 0) {
     return 1;
