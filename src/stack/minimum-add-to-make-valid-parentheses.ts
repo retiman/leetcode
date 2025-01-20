@@ -11,6 +11,8 @@
 // "())))".
 //
 // Return the minimum number of moves required to make s valid.
+//
+// @see {@link https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/}
 export { minAddToMakeValid };
 
 // SOLUTION:
