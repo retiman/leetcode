@@ -9,6 +9,11 @@ export { topKFrequent };
 // SOLUTION:
 //
 // Just map each number to its frequency then sort by frequency.  Return the first k elements.
+//
+// COMPLEXITY:
+//
+// Time complexity dominated by the sort, which is O(n log n).  Space complexity is O(n) because we are using a map to
+// to store frequency.
 function topKFrequent(xs: number[], k: number) {
   type Frequency = number;
   const map = new Map<number, Frequency>();
