@@ -47,9 +47,19 @@ return left < xs.length && xs[left] === target ? left : -1;
 
 These phrases indicate binary search might be useful:
 
-- sorted array
-- find the position or index
+- 'sorted array'
+- 'find the position or index'
 
 ## Boundaries
 
 See the two pointer technique for a discussion of how to set boundary conditions.
+
+## Notable Problems
+
+### Longest Increasing Subsequence
+
+The [longest increasing subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) (medium) problem can be solved naively with dynamic programming, or optimally with binary search.
+
+The above resembles the [longest continuous increasing subsequence](https://leetcode.com/problems/longest-continuous-increasing-subsequence/) (easy) problem, which can be solved in a straightforward way via array iteration.
+
+The above also resembles the [longest consecutive sequence](https://leetcode.com/problems/longest-consecutive-sequence/) (medium) problem, which can be solved with a set.

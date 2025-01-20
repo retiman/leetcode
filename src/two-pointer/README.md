@@ -21,4 +21,3 @@ Use the `left < right` condition if it's not necessary to process every element.
 Use the `left <= right` condition when it is necessary to process every element.  For example:
 
 - bag of tokens, because you must consider the ramifications of processing the token at `left === right`.
-
