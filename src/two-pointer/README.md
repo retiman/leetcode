@@ -4,10 +4,10 @@
 
 These phrases indicate the two pointer technique might be useful:
 
-- sorted array, sorted list
-- find pairs, find triplets
-- maximize delta, minimize delta
-- subarray with condition
+- 'non-fixed size subarray with condition'
+- 'sorted array', 'sorted list'
+- 'find pairs', 'find triplets'
+- 'maximize delta', 'minimize delta'
 
 ## Boundaries
 
@@ -21,3 +21,4 @@ Use the `left < right` condition if it's not necessary to process every element.
 Use the `left <= right` condition when it is necessary to process every element.  For example:
 
 - bag of tokens, because you must consider the ramifications of processing the token at `left === right`.
+
