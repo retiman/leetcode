@@ -3,7 +3,7 @@
 // Given the head of a linked list, remove the nth node from the end of the list and return its head.
 //
 // @see {@link https://leetcode.com/problems/remove-nth-node-from-end-of-list/}
-import { ListNode } from "./common/list-node";
+import { ListNode } from './common/list-node';
 export { removeNthFromEnd };
 
 // SOLUTION:
