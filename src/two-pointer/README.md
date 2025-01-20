@@ -4,10 +4,10 @@
 
 These phrases indicate the two pointer technique might be useful:
 
-- sorted array, sorted list
-- find pairs, find triplets
-- maximize delta, minimize delta
-- subarray with condition
+- 'non-fixed size subarray with condition'
+- 'sorted array', 'sorted list'
+- 'find pairs', 'find triplets'
+- 'maximize delta', 'minimize delta'
 
 ## Boundaries
 
