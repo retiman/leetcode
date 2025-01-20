@@ -3,6 +3,7 @@
 // Given an integer array nums, return the length of the longest strictly increasing subsequence.
 //
 // @see {@link https://leetcode.com/problems/longest-increasing-subsequence/}
+export { lengthOfLIS };
 
 // SOLUTION:
 //
@@ -54,4 +55,4 @@ function lengthOfLIS(nums: number[]): number {
 
   // The length of tails is the length of the longest increasing subsequence.
   return tails.length;
-};
+}
