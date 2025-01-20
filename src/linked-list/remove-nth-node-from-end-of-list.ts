@@ -4,6 +4,7 @@
 //
 // @see {@link https://leetcode.com/problems/remove-nth-node-from-end-of-list/}
 import { ListNode } from "./common/list-node";
+export { removeNthFromEnd };
 
 // SOLUTION:
 //
