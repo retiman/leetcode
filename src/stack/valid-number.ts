@@ -26,6 +26,10 @@ export { isNumber };
 //
 // I don't know that this is a particularly hard problem, but it is a bit tricky to get all the edge cases right.  It
 // doesn't seem like a particularly fair problem to ask in a 45m interview though.
+//
+// COMPLEXITY:
+//
+// Runs in O(n) time complexity because we have to scan the entire string.  Uses O(1) space complexity.
 function isNumber(text: string): boolean {
   // Defining this set will probably be faster than testing a regex over and over.
   const set = new Set(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']);
