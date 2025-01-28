@@ -22,17 +22,20 @@ export { LRUCache };
 // This class definition is provided by LeetCode and must be implemented by you.  An LRU cache can be implemented
 // using a hashmap and a linked list.
 class LRUCache {
-  private head?: Node;
-
-  private last?: Node;
-
   private map: Map<number, Node>;
-
   private capacity: number;
+  private head: Node;
+  private tail: Node;
 
   constructor(capacity: number) {
     this.map = new Map();
     this.capacity = capacity;
+
+    // These are sentinel nodes that will never be directly accessed, but help us avoid certain undefined checks.
+    this.head = new Node(-1, -1);
+    this.tail = new Node(-1, -1);
+    this.head.next = this.tail;
+    this.tail.previous = this.head;
   }
 
   get(key: number): number {
@@ -44,18 +47,7 @@ class LRUCache {
     // storing the key on the node, we can just delete the last element from the list and then check for an undefined
     // value here in case we deleted the key from being at capacity.
     const node = this.map.get(key)!;
-
-    // If the node is already at the front of the list, just remove it and return the value.
-    if (node.key === this.head?.key) {
-      return node.value;
-    }
-
-    // Detach the node from its position in the list, and connect the previous and next nodes to each other instead.
-    this.unlink(node);
-
-    // Move the node to the front of the list.
-    this.unshift(node);
-
+    this.moveToHead(node);
     return node.value;
   }
 
@@ -63,86 +55,53 @@ class LRUCache {
     // If we already have this value in the map, just update it and don't bother mucking with the capacity.
     if (this.map.has(key)) {
       const node = this.map.get(key)!;
+      this.moveToHead(node);
       node.value = value;
-
-      // Call get to update timestamp on the node, but throw away the result.
-      const _ = this.get(key);
       return;
-    }
-
-    // If there's no capacity, we don't have to do anything.
-    if (this.capacity <= 0) {
-      return;
-    }
-
-    // If we are at capacity, we will first have to evict an entry from the cache by finding the last accessed element
-    // from our list.
-    if (this.map.size === this.capacity) {
-      this.pop();
     }
 
     const node = new Node(key, value);
     this.map.set(key, node);
+    this.addToHead(node);
 
-    // I am assuming that a put will also update the last accessed timestamp of the node, so move it to the front of
-    // the list.
-    this.unshift(node);
-  }
-
-  // Remove a node that is NOT the head node.
-  private unlink(node: Node) {
-    // If this was the last node, update the last pointer.
-    if (node.key === this.last?.key) {
-      this.last = node.previous!;
-      this.last.next = undefined;
-      return;
-    }
-
-    // Otherwise, this is not the last node and not the head node, so stitch the previous and next nodes together.
-    const left = node.previous!;
-    const right = node.next;
-    left.next = right;
-    if (right !== undefined) {
-      right.previous = left;
+    // If we've exceed capacity, we have to remove the least used element, aka the tail.  At this point, there is
+    // guaranteed to be at least one other element in the list because we just added one.  Also, unless the capacity
+    // is 0, we will always at least have another.
+    //
+    // So we can safely access this.tail.previous!
+    if (this.map.size > this.capacity) {
+      const tail = this.tail.previous!;
+      this.removeNode(tail);
+      this.map.delete(tail.key);
     }
   }
 
-  // Unshift a node that is NOT the head node.
-  private unshift(node: Node) {
-    node.previous = undefined;
+  private addToHead(node: Node): void {
+    const a = this.head;
+    const b = node;
+    const c = this.head.next;
 
-    if (this.head === undefined) {
-      this.head = node;
-    } else {
-      this.head.previous = node;
-      node.next = this.head;
-      this.head = node;
-    }
+    // Updates the pointers for the node itself.
+    b.next = c;
+    b.previous = a;
 
-    if (this.last === undefined) {
-      this.last = node;
-    }
+    // Inserts the node at the front of the list.
+    a.next = b;
+    c!.previous = b;
   }
 
-  // Unlink the last node (also possibly the head node) and remove it from the map.
-  private pop() {
-    const node = this.last;
+  private moveToHead(node: Node): void {
+    this.removeNode(node);
+    this.addToHead(node);
+  }
 
-    if (node === undefined) {
-      return;
-    }
+  private removeNode(node: Node): void {
+    const b = node;
+    const a = b.previous!;
+    const c = b.next!;
 
-    this.map.delete(node.key);
-
-    // If this was the head node, just set both nodes to undefined and be done with it.
-    if (node.key === this.head?.key) {
-      this.head = undefined;
-      this.last = undefined;
-      return;
-    }
-
-    // Otherwise, unlink the last node.
-    this.unlink(node);
+    a.next = c;
+    c.previous = a;
   }
 }
 
