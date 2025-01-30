@@ -72,6 +72,12 @@ function checkSubarraySum(nums: number[], k: number): boolean {
       remainder += k;
     }
 
+    // It's possible that the prefix sum already is a multiple of k.  And it's possible that the remainder 0 isn't in
+    // the remainders map yet.  In this case, just check if we have a subarray of length 2 or more.
+    if (remainder === 0 && i >= 1) {
+      return true;
+    }
+
     // If this is a previously seen remainder, we can check if we have a "good" subarray.
     if (remainders.has(remainder)) {
       const j = remainders.get(remainder)!;
@@ -85,7 +91,5 @@ function checkSubarraySum(nums: number[], k: number): boolean {
     }
   }
 
-  // At this point, it's still possible that the ENTIRE array sums to a multiple of k.  For example, we could have
-  // something like [1, 1] and k = 2.  In this case, we should return true.
-  return prefixSum % k === 0;
+  return false;
 }
