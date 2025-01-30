@@ -1,5 +1,5 @@
 import { NestedInteger } from '../../src/linked-list/common/nested-integer';
-import { depthSum } from '../../src/linked-list/nested-list-weight-sum';
+import { depthSum } from '../../src/graph/nested-list-weighted-sum';
 
 describe('nested list weighted sum', () => {
   test('nested list weighted sum - test case 1', async () => {

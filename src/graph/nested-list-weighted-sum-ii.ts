@@ -11,7 +11,7 @@
 // Return the sum of each integer in nestedList multiplied by its weight.
 //
 // See {@link https://leetcode.com/problems/nested-list-weight-sum-ii/}
-import { NestedInteger } from './common/nested-integer';
+import { NestedInteger } from '../linked-list/common/nested-integer';
 export { depthSumInverse };
 
 // SOLUTION:
@@ -19,6 +19,15 @@ export { depthSumInverse };
 // Unlike the previous problem where we just multiply the integer by its depth, we need to multiply by the weight of the
 // of the integer.  Since we won't know the weight until after we've traversed the entire list, we'll need to keep track
 // of depth to integers, then calculate the weight and sum up at the end.
+//
+// However, like before, this is still going to be a DFS search, except we don't need to keep track of visited nodes.
+//
+// COMPLEXITY:
+//
+// Similar to before, the time complexity is O(n) where n is the number of total integers and lists in the data
+// structure.
+//
+// Similar to before, the space complexity is O(d) where d is the depth of the nested list.
 function depthSumInverse(nestedList: NestedInteger[]): number {
   type Integer = number;
   type Depth = number;

@@ -14,6 +14,8 @@ export { merge };
 
 // SOLUTION:
 //
+// TLDR: Work backwards.  Send the largest elements from the smaller array to the end of the bigger array.
+//
 // This would be VERY easy, if you could use extra memory.  To merge without using extra memory, we do need to merge
 // into the bigger array, nums1.
 //

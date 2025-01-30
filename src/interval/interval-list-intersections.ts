@@ -18,6 +18,12 @@ export { intervalIntersection };
 // This is a very straightforward problem except there's a very strange wrinkle in that intersections can be empty
 // intervals.  Because of this we can't just advance both pointers when we find an intersection.  Instead, we have to
 // only advance the one with the smaller endpoint.
+//
+// COMPLEXITY:
+//
+// Time complexity is O(m + n) since it iterates through both lists once each.
+//
+// Space complexity is O(min(m, n)) since the intersections array is limited by the size of the smaller list.
 function intervalIntersection(firstList: number[][], secondList: number[][]): number[][] {
   // The two intervals will intersect if we have a situation like this:
   //

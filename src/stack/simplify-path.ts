@@ -27,6 +27,14 @@ export { simplifyPath };
 //
 // Just iterate through the path and use a stack to keep track of directories.  The only one we need to be careful with
 // is the '..' name; this means we need to pop the last directory from the stack to "go up" one level.
+//
+// COMPLEXITY:
+//
+// Splitting the path, traversing segments, and joining the path are all O(n) time complexity.  Where n is the length of
+// the input string.
+//
+// The space complexity is O(n) to store the string segments on the stack.  Worst case we have to store the length of
+// the string.
 function simplifyPath(path: string): string {
   const stack: string[] = [];
   const names = path.split('/');
@@ -37,17 +45,22 @@ function simplifyPath(path: string): string {
       continue;
     }
 
-    // Go up a level.
+    // If we are going up a level, we need to pop the last directory from the stack.
     //
-    // The instructions don't explain what to do if you are already at the root directory and pop.  Let's assume it
-    // never happens.
+    // Wait, what happens if we are already at the root directory and we can't go up a directory anymore?  The
+    // instructions are not clear, but we definitely do get inputs like '/../' and the result should be '/', indicating
+    // that the desired behavior is to do nothing.
     if (name === '..') {
-      stack.pop();
+      // Technically we don't actually need this check; stack.pop() does nothing if the array is empty.
+      if (stack.length > 0) {
+        stack.pop();
+      }
+
+      continue;
     }
-    // Otherwise, just keep on going on.
-    else {
-      stack.push(name);
-    }
+
+    // Otherwise we should just push the directory onto the stack as normal.
+    stack.push(name);
   }
 
   return '/' + stack.join('/');

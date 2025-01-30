@@ -1,5 +1,5 @@
 import { array2list, list2array } from '../../src/linked-list/common/list-node';
-import { mergeKLists } from '../../src/linked-list/merge-k-sorted-lists';
+import { mergeKLists } from '../../src/heap/merge-k-sorted-lists';
 
 describe('merge k sorted lists', () => {
   test('merge k sorted lists - test case 1', async () => {
