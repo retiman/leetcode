@@ -24,42 +24,37 @@ class Solution:
         -1 if the element is not found.
         """
         def searchInternal(ys: list[int], start: int, end: int, t: int) -> int:
-            mid = (start + end) // 2
-            if ys[mid] == t:
-                return mid
-
             # If we've looped back around ourselves, that means the number wasn't found, and we can stop.
             if start > end:
                 return -1
 
-            # If the left portion is sorted, and our target is within that portion, update the start/end indexes to be
-            # strictly within the left side of the pivot, and perform binary search there.
-            #
-            # Otherwise, it is in the right portion of the array, which contains a rotation.  Call this function again,
-            # with an updated restriction on the sub array to search.
-            isLeftSorted = ys[start] < ys[mid]
-            isWithinLeftPortion = t >= ys[start] and t <= ys[mid - 1]
+            mid = (start + end) // 2
+            if ys[mid] == t:
+                return mid
 
-            if isLeftSorted and isWithinLeftPortion:
-                return searchInternal(ys, start, mid - 1, t)
+            isLeftSorted = ys[start] <= ys[mid]
+            if isLeftSorted:
+                # If the left portion is sorted, and our target is within that portion, update the start/end indexes to
+                # be strictly within the left side of the pivot, and perform binary search there.
+                if ys[start] <= t <= ys[mid]:
+                    return searchInternal(ys, start, mid - 1, t)
+                # Otherwise, it is in the right portion of the array, which contains a rotation.  Call this function
+                # again, with an updated restriction on the sub array to search.
+                else:
+                    return searchInternal(ys, mid + 1, end, t)
 
-            if isLeftSorted and not isWithinLeftPortion:
-                return searchInternal(ys, mid + 1, end, t)
-
-            # If the right portion is sorted, and our target is within that portion, update the start/end indexes to be
-            # strictly within the right side of the pivot, and perform binary search there.
-            #
-            # Otherwise, it is in the left portion of the array, which contains a rotation.  Call this function again,
-            # with an updated restriction on the sub array to search.
             isRightSorted = not isLeftSorted
-            isWithinRightPortion = t >= ys[mid + 1] and t <= ys[end]
+            if isRightSorted:
+                # If the right portion is sorted, and our target is within that portion, update the start/end indexes to
+                # be  strictly within the right side of the pivot, and perform binary search there.
+                if ys[mid + 1] <= t <= ys[end]:
+                    return searchInternal(ys, mid + 1, end, t)
+                # Otherwise, it is in the left portion of the array, which contains a rotation.  Call this function
+                # again, with an updated restriction on the sub array to search.
+                else:
+                    return searchInternal(ys, start, mid - 1, t)
 
-            if isRightSorted and isWithinRightPortion:
-                return searchInternal(ys, mid + 1, end, t)
-
-            if isRightSorted and not isWithinRightPortion:
-                return searchInternal(ys, start, mid - 1, t)
-
+            # Otherwise, the value wasn't found at all
             return -1
 
         return searchInternal(xs, 0, len(xs) - 1, target)
