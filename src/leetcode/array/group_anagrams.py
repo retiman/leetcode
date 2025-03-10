@@ -19,8 +19,10 @@ class Solution:
 
         COMPLEXITY:
 
-        Runs in O(n * m * log m) time, where n is the number of strings and m is the length of the longest string.  This
-        is because we have to sort each string's characters in O(m * log m), and there are n strings.
+        Time complexity is O(n * m * log m) where n is the number of strings, and m is the length of the longest string.
+        This is because we have to sort each string's characters in O(m * log m), and there are n strings.
+
+        Space complexity is O(m * n).
         """
         # Define a map of canonical representation -> list of anagrams.
         map: dict[str, list[str]] = defaultdict(list)

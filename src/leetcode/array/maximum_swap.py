@@ -10,8 +10,8 @@ class Solution:
         """
         SOLUTION:
 
-        The simple idea of swapping the largest number with the first digit doesn't always work.  It works a lot of the time,
-        but a couple of cases mess up this algorithm:
+        The simple idea of swapping the largest number with the first digit doesn't always work.  It works a lot of the
+        time, but a couple of cases mess up this algorithm:
 
         - 98368 would stay 98368; we need to swap the 3 and 8 to get 98863.
         - 1993 could become 9193, but we need to swap the 1 and other 9 to get 9913.
@@ -23,11 +23,11 @@ class Solution:
 
         COMPLEXITY:
 
-        The time complexity is O(n) where n is the number of digits.  We iterate through the digits once to create our array
-        and map.  We iterate through the digits a second time to find the swap point.  There is a nested loop, but the inner
-        loop is bounded by the 10 digits, so it doesn't cause O(n^2) time complexity.
+        Time complexity is O(n) where n is the number of digits.  We iterate through the digits once to create our array
+        and map.  We iterate through the digits a second time to find the swap point.  There is a nested loop, but the
+        inner loop is bounded by the 10 digits, so it doesn't cause O(n^2) time complexity.
 
-        The space complexity is O(n) because we store an array and map of the digits.
+        Space complexity is O(n) because we store an array and map of the digits.
         """
         # First convert the number to an array of digits.
         digits = list(str(num))

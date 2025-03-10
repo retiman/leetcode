@@ -19,20 +19,21 @@ class Solution:
 
         The request for "k-closest" indicates you'll want a heap.  Using a either a min heap or max heap will work.
 
-        With a min heap, just jam all the points on the heap and then slice the first k elements.  This requires storing all
-        the points on the heap.
+        With a min heap, just jam all the points on the heap and then slice the first k elements.  This requires storing
+        all the points on the heap.
 
-        With a max heap, you can jam points on the heap until you have k elements.  Then, when you have a new point, compare
-        it to the max element on the heap.  If it's closer, pop off the max element and jam it on the heap; otherwise, ignore
-        it.
+        With a max heap, you can jam points on the heap until you have k elements.  Then, when you have a new point,
+        compare it to the max element on the heap.  If it's closer, pop off the max element and jam it on the heap;
+        otherwise, ignore it.
 
         The max heap approach can be more efficient, so we'll go that route.
 
         COMPLEXITY:
 
-        With a min heap, it will be O(n * log(n)) to insert all the points on the heap.
+        Time complexity is O(n log k) with a max heap, which will be faster when k is much smaller than n.  If we go
+        with the min heap approach, it's O(n log n).
 
-        With a max heap, if k is much smaller than n, it will be O(n * log(k)) to insert all the points on the heap.
+        Space complexity is O(n).
         """
 
         # Calculates the distance to the origin.  Technically, since we're only using the distance to do comparison, we

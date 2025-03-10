@@ -20,7 +20,9 @@ class Solution:
 
         COMPLEXITY:
 
-        Runs in O(n).
+        Time complexity is O(n).
+
+        Space complexity is O(1).
         """
         chunks = 0
         max_chunks = 0

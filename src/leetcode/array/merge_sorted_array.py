@@ -17,27 +17,34 @@ class Solution:
 
         TLDR: Work backwards.  Send the largest elements from the smaller array to the end of the bigger array.
 
-        This would be VERY easy, if you could use extra memory.  To merge without using extra memory, we do need to merge
-        into the bigger array, nums1.
+        This would be VERY easy, if you could use extra memory.  To merge without using extra memory, we do need to
+        merge into the bigger array, xs.
 
         You could go about this in two different ways:
 
         1. Start from the logical beginning of both arrays and swap elements as needed to maintain the correct order.
-        2. Start from the logical end of both arrays and add largest elements to the end of nums1.
+        2. Start from the logical end of both arrays and add largest elements to the end of xs.
 
-        Going with option 1 is more natural, but it's more error prone and more work.  There may be elements at the end of
-        nums1 that need to be shifted to the right to make room.
+        Going with option 1 is more natural, but it's more error prone and more work.  There may be elements at the end
+        of xs that need to be shifted to the right to make room.
 
-        Going with option 2 is less natural, but it ensures you have enough space.  Since nums1 has size m + n, and nums2 has
-        size n, you can reliably fit all of nums2 into nums1 without any collisions or shifting.  Additionally, if you use
-        up all the elements in nums2, you don't need to do anything with the remaining elements of nums1 since they are
-        already sorted.
+        Going with option 2 is less natural, but it ensures you have enough space.  Since nums1 has size m + n, and ys
+        has size n, you can reliably fit all of nums2 into nums1 without any collisions or shifting.  Additionally, if
+        you use up all the elements in ys, you don't need to do anything with the remaining elements of ys since they
+        are already sorted.
 
-        Pro tip: when asked to do something in place, and you have extra space, consider doing backwards iteration instead of
-        forwards to avoid collisions and overwriting elements.  Secondly, if you started with forwards iteration and realize
-        you might have to shift elements, consider a backwards iteration approach to see if it might work better.
+        Pro tip: when asked to do something in place, and you have extra space, consider doing backwards iteration
+        instead of forwards to avoid collisions and overwriting elements.  Secondly, if you started with forwards
+        iteration and realize you might have to shift elements, consider a backwards iteration approach to see if it
+        might work better.
 
         The problem doesn't state this, but we assume using no extra memory either.
+
+        COMPLEXITY:
+
+        Time complexity is O(m + n).
+
+        Space complexity is O(1) as per problem requirements.
         """
         i = m - 1
         j = n - 1

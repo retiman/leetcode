@@ -22,9 +22,11 @@ class Solution:
 
         COMPLEXITY:
 
-        Runs in O(n) time.  It may appear that the inner loop runs multiple times, but each element in the array is only
-        processed once; the inner loop will skip `x - 1` if it was already part of some other sequence from a previous
-        iteration.
+        Time complexity is O(n).  It may appear that the inner loop runs multiple times, but each element in the array
+        is only processed once; the inner loop will skip `x - 1` if it was already part of some other sequence from a
+        previous iteration.
+
+        Space complexity is O(n).
         """
         longest = 0
 

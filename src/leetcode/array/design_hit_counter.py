@@ -17,7 +17,9 @@ class HitCounter:
 
         COMPLEXITY:
 
-        Both methods run in O(1) time since we fix the array size at 300.
+        Time complexity is O(1) for both methods since we fix the array size at 300.
+
+        Space complexity is O(1) for both methods because we fix the array size at 300.
         """
         # Each event is a [timestamp, hit_count].  Since our granularity is in seconds, we only need to track the last
         # 300 seconds.

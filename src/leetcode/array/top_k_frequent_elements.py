@@ -16,8 +16,9 @@ class Solution:
 
         COMPLEXITY:
 
-        Time complexity dominated by the sort, which is O(n log n).  Space complexity is O(n) because we are using a map
-        to store frequency.
+        Time complexity dominated by the sort, which is O(n log n).
+
+        Space complexity is O(n) because we are using a map to store frequency.
         """
         # Create a map of number -> frequency.
         map: dict[int, int] = defaultdict(int)

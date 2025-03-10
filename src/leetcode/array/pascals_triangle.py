@@ -7,6 +7,17 @@
 # See https://leetcode.com/problems/pascals-triangle
 class Solution:
     def generate(self, numRows: int) -> list[list[int]]:
+        """
+        SOLUTION:
+
+        A simple straightforward algorithm works.
+
+        COMPLEXITY:
+
+        Time complexity is O(n).
+
+        Space complexity is O(n).
+        """
         triangle: list[list[int]] = []
 
         for i in range(numRows):

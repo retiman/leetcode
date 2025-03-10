@@ -25,8 +25,10 @@ class SparseVector:
 
         COMPLEXITY:
 
-        Best case both vectors are sparse and we get O(k) where k is the number of non-zero elements.  But in the worst
-        case scenario, it could still be O(n) if both vectors are dense.
+        Time complexity is O(k) in the best case, where k is the number of non-zero elements.  In the worst case,
+        though, it could still be O(n) if both vectors are dense.
+
+        Space complexity is O(k) in the best case, where k is the number of non-zero elements.
         """
         # This compresses the vector so that non-zero values are mapped.
         self.map: dict[int, int] = {i: num for i, num in enumerate(nums) if num != 0}
