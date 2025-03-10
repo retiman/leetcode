@@ -31,9 +31,15 @@ class MaxStack:
         """
         SOLUTION:
 
-        We want a max priority queue, but we need to determine the max by comparing both a key and a value.  This can
-        only be done by supplying a custom comparator, so instead of using a MaxPriorityQueue, we'll use a PriorityQueue
-        that takes a custom comparator.
+        Use a heap and a doubly linked list to represent the max stack.  Most operations can be performed in O(1) or
+        O(log n).  The only challenge is that when popping from the stack, it's easy to remove from the end of the
+        linked list, but it's not easy to remove from the middle of the max heap.
+
+        Instead of removing from the max heap immediately, defer the deletion until we perform a peekMax or popMax, and
+        check if processing the deferred deletions are required.  If so, perform them there.
+
+        For the purposes of this solution, we won't consider edge cases like popping from an empty stack.  This keeps
+        the solution simple.
 
         COMPLEXITY:
 
