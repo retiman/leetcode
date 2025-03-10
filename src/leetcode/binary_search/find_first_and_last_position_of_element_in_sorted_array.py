@@ -33,7 +33,7 @@ class Solution:
         #
         # Otherwise if the middle element is greater than or equal to the target, we move to the left (guaranteeing that
         # if we find a duplicate target, we will keep moving left).
-        def binarySearchLeft():
+        def binarySearchLeft() -> int:
             left = 0
             right = len(xs)
 
@@ -55,7 +55,7 @@ class Solution:
         #
         # Otherwise if the middle element is less than or equal to the target, we move to the right (guaranteeing that
         # if we find a duplicate target, we will keep moving right).
-        def binarySearchRight():
+        def binarySearchRight() -> int:
             left = 0
             right = len(xs)
 

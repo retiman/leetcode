@@ -33,7 +33,7 @@ class Solution:
         Space complexity is O(1).
         """
 
-        def countLessThanOrEqualTo(matrix: list[list[int]], target: int):
+        def countLessThanOrEqualTo(matrix: list[list[int]], target: int) -> int:
             # We can leverage the properties of the matrix to count how many elements are less than or equal to the
             # target.  Use a modified two pointer technique to count up elements.
             count = 0

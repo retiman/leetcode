@@ -8,7 +8,7 @@
 #
 # See https://leetcode.com/problems/design-hit-counter
 class HitCounter:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         SOLUTION:
 
