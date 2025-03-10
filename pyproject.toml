@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "leetcode"
+version = "0.1.0"
+description = "Problems and solutions for LeetCode"
+authors = ["Min Huang <min.huang@alumni.usc.edu>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.scripts]
+all = "scripts:run_all"
+format = "scripts:run_format"
+lint = "scripts:run_lint"
+test = "scripts:run_tests"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+flake8 = "^7.1.1"
+mypy = "^1.13.0"
+pytest = "^8.3.4"
+snapshottest = "^1.0.0a0"
+
+[tool.black]
+line-length = 120
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
