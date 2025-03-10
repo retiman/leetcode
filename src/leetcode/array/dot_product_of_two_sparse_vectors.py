@@ -35,7 +35,7 @@ class SparseVector:
 
     def dotProduct(self, vec: "SparseVector") -> int:
         # Get the vectors in order of size; we'll iterate over the smaller vector.
-        smaller, larger = self.__ordered(self.map, vec.map)
+        (smaller, larger) = (self.map, vec.map) if len(self.map) < len(vec.map) else (vec.map, self.map)
 
         result = 0
         for i, value in smaller.items():
@@ -43,9 +43,3 @@ class SparseVector:
                 result += value * larger[i]
 
         return result
-
-    def __ordered(self, a: dict[int, int], b: dict[int, int]) -> tuple[dict[int, int], dict[int, int]]:
-        if len(a) < len(b):
-            return (a, b)
-        else:
-            return (b, a)

@@ -23,6 +23,7 @@ class Solution:
         The standard approach is used because we are looking for an exact match for an element in the array, and return
         -1 if the element is not found.
         """
+
         def searchInternal(ys: list[int], start: int, end: int, t: int) -> int:
             # If we've looped back around ourselves, that means the number wasn't found, and we can stop.
             if start > end:
