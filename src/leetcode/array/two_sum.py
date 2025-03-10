@@ -26,17 +26,17 @@ class Solution:
         Space complexity is O(n).
         """
         # Map number complement -> index where it appears.
-        m: dict[int, int] = {}
+        map: dict[int, int] = {}
 
         for i, x in enumerate(xs):
             complement = target - x
 
             # If our map has the complementary value that would make up the target, we can return it immediately.
-            if complement in m:
-                return [i, m[complement]]
+            if complement in map:
+                return [i, map[complement]]
 
             # Otherwise, store the number and its index in the map.  If we find the complement later, then this index
             # will be the complement's complement and we can return the indices as normal.
-            m[x] = i
+            map[x] = i
 
         return []
