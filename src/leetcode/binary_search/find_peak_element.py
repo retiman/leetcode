@@ -32,6 +32,10 @@ class Solution:
         assume peaks always exist!
 
         COMPLEXITY:
+
+        Time complexity is O(log n).
+
+        Space complexity is O(1).
         """
         if len(xs) == 1:
             return 0
