@@ -29,6 +29,13 @@ class Solution:
         Note that we can have [2, 4, 6, 8], and there are subsequences [2, 4, 6, 8] (the entire array) and [2, 4, 6],
         which is part of the array.  Also note that [7, 7, 7, 7] has a total of 16 subsequences because every
         subsequence is arithmetic (they can overlap).
+
+        COMPLEXITY:
+
+        Time complexity is O(n^2) due to iterating over all pairs (i, j).
+
+        Space complexity is O(n^2) due to storing a dictionary for each index (and each dictionary having at most O(n)
+        entries).
         """
         if len(xs) < 3:
             # An arithmetic subsequence must have at least length 3, so if we have fewer, then there are no
