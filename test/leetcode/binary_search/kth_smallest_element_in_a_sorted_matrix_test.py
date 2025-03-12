@@ -1,5 +1,4 @@
-from leetcode.binary_search.kth_smallest_element_in_a_sorted_matrix import \
-    Solution
+from leetcode.binary_search.kth_smallest_element_in_a_sorted_matrix import Solution
 
 soln = Solution()
 

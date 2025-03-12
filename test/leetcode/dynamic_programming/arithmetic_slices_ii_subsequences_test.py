@@ -1,5 +1,4 @@
-from leetcode.dynamic_programming.arithmetic_slices_ii_subsequences import \
-    Solution
+from leetcode.dynamic_programming.arithmetic_slices_ii_subsequences import Solution
 
 soln = Solution()
 

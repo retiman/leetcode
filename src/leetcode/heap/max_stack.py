@@ -19,11 +19,15 @@ from heapq import heappop, heappush
 
 
 class StackNode:
+    # The problem itself states that the smallest value we can get is -10^7.  This definition avoids having to declare
+    # the type of a node key/value to be float for float("-inf").
+    MIN_INT_VALUE = -(10**7) - 1
+
     def __init__(self, key: int, value: int):
         self.key = key
         self.value = value
-        self.previous: "StackNode" | None = None
-        self.next: "StackNode" | None = None
+        self.previous: "StackNode | None" = None
+        self.next: "StackNode | None" = None
 
 
 class MaxStack:
@@ -54,8 +58,8 @@ class MaxStack:
         # want to support dupes, so have the heap order by value first, then the key.
         self.max_heap = []
         # Setup sentinel values for the head and tail so we don't have to check for nulls.
-        self.head = StackNode(float("-inf"), float("-inf"))
-        self.tail = StackNode(float("-inf"), float("-inf"))
+        self.head = StackNode(StackNode.MIN_INT_VALUE, StackNode.MIN_INT_VALUE)
+        self.tail = StackNode(StackNode.MIN_INT_VALUE, StackNode.MIN_INT_VALUE)
         self.head.next = self.tail
         self.tail.previous = self.head
 
@@ -75,8 +79,10 @@ class MaxStack:
         self.__insert_node(a, b, c)
 
     def pop(self) -> int:
-        # Remove the last element of the linked list.
         node = self.tail.previous
+        assert node is not None
+
+        # Remove the last element of the linked list.
         self.__delete_node(node)
 
         # We also need to remove this element from the heap, but this will be difficult as we can't remove arbitrary
@@ -85,6 +91,7 @@ class MaxStack:
         return node.value
 
     def top(self) -> int:
+        assert self.tail.previous is not None
         return self.tail.previous.value
 
     def peekMax(self) -> int:
@@ -106,7 +113,9 @@ class MaxStack:
         self.__delete_node(node)
         return node.value
 
-    def __delete_node(self, b: StackNode):
+    def __delete_node(self, b: StackNode | None):
+        assert b is not None
+
         a = b.previous
         c = b.next
 
@@ -115,7 +124,11 @@ class MaxStack:
             a.next = c
             c.previous = a
 
-    def __insert_node(self, a: StackNode, b: StackNode, c: StackNode):
+    def __insert_node(self, a: StackNode | None, b: StackNode, c: StackNode | None):
+        assert a is not None
+        assert b is not None
+        assert c is not None
+
         # Update the pointers around the node.
         a.next = b
         c.previous = b

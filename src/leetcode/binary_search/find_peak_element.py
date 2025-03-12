@@ -43,6 +43,7 @@ class Solution:
         # Use insertion point binary search to find the peak.
         left = 0
         right = len(xs)
+        mid = -1
 
         while left < right:
             mid = (left + right) // 2
