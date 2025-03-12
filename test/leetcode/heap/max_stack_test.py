@@ -1,7 +1,7 @@
-import leetcode.heap.max_stack as lc
+from leetcode.heap.max_stack import MaxStack
 
 
-stack = lc.MaxStack()
+stack = MaxStack()
 
 
 def test_case_1():

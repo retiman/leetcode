@@ -1,7 +1,7 @@
-import leetcode.recursion.generate_parentheses as lc
+from leetcode.recursion.generate_parentheses import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

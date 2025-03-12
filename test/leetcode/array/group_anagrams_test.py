@@ -1,7 +1,7 @@
-import leetcode.array.group_anagrams as lc
+from leetcode.array.group_anagrams import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1(snapshot):

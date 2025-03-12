@@ -1,7 +1,7 @@
-import leetcode.binary_search.median_of_two_sorted_arrays as lc
+from leetcode.binary_search.median_of_two_sorted_arrays import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

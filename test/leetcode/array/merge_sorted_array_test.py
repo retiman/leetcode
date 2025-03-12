@@ -1,7 +1,7 @@
-import leetcode.array.merge_sorted_array as lc
+from leetcode.array.merge_sorted_array import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

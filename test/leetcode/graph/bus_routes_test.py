@@ -1,9 +1,9 @@
 import json
 import pathlib
-import leetcode.graph.bus_routes as lc
+from leetcode.graph.bus_routes import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

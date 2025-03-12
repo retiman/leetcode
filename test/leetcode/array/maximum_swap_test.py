@@ -1,7 +1,7 @@
-import leetcode.array.maximum_swap as lc
+from leetcode.array.maximum_swap import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

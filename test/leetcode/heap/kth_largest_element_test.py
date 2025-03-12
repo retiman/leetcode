@@ -1,7 +1,7 @@
-import leetcode.heap.kth_largest_element as lc
+from leetcode.heap.kth_largest_element import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

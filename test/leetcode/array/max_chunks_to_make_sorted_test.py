@@ -1,7 +1,7 @@
-import leetcode.array.max_chunks_to_make_sorted as lc
+from leetcode.array.max_chunks_to_make_sorted import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

@@ -1,7 +1,7 @@
-import leetcode.binary_search.search_in_rotated_sorted_array as lc
+from leetcode.binary_search.search_in_rotated_sorted_array import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

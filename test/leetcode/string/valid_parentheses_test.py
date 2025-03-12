@@ -1,7 +1,7 @@
-import leetcode.stack.valid_parentheses as lc
+from leetcode.stack.valid_parentheses import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

@@ -1,7 +1,7 @@
-import leetcode.binary_search.find_peak_element as lc
+from leetcode.binary_search.find_peak_element import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

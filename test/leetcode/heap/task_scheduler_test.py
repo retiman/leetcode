@@ -1,7 +1,7 @@
-import leetcode.heap.task_scheduler as lc
+from leetcode.heap.task_scheduler import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():

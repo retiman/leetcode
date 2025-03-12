@@ -1,7 +1,7 @@
-import leetcode.two_pointers.bag_of_tokens as lc
+from leetcode.two_pointers.bag_of_tokens import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():
