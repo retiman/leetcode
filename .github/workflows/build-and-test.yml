@@ -51,6 +51,9 @@ jobs:
       - name: Run format
         run: poetry run format
 
+      - name: Run lint
+        run: poetry run lint
+
       - name: Commit
         if: ${{ github.ref != 'refs/heads/main' }}
         id: commit
@@ -59,10 +62,6 @@ jobs:
           author_name: github-actions[bot]
           author_email: github-actions[bot]@github.com
           message: Automatic commit via GitHub Actions
-
-      - name: Run lint
-        if: ${{ steps.commit.outputs.committed == 'false' }}
-        run: poetry run lint
 
       - name: Test
         if: ${{ steps.commit.outputs.committed == 'false' }}
