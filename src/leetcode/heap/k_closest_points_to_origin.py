@@ -9,7 +9,7 @@
 #
 # See https://leetcode.com/problems/k-closest-points-to-origin
 from heapq import heappop, heappush
-from math import sqrt
+import math
 
 
 class Solution:
@@ -41,7 +41,7 @@ class Solution:
         # leaving it here for correctness.
         def distance(p: list[int]) -> float:
             [x, y] = p
-            return sqrt(x**2 + y**2)
+            return math.sqrt(x**2 + y**2)
 
         # Store max heap of (distance, point).  LeetCode gives us the points as list of [x, y].
         max_heap: list[tuple[float, list[int]]] = []

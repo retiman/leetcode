@@ -20,7 +20,7 @@
 #
 # See https://leetcode.com/problems/minimize-deviation-in-array
 from heapq import heappop, heappush
-from sys import maxsize
+import math
 
 
 class Solution:
@@ -55,7 +55,7 @@ class Solution:
             heappush(heap, -value)
 
         minimum = min(nums)
-        deviation = maxsize
+        deviation = math.inf
 
         # Calculate the current deviation using the max element of the array, then half the max element and return it to
         # theheap.  Then repeat to keep bringing the deviation down.
@@ -75,4 +75,4 @@ class Solution:
             # Update the minimum value in case we've changed the minimum value by manipulating the maximum value.
             minimum = min(value, minimum)
 
-        return deviation
+        return int(deviation)

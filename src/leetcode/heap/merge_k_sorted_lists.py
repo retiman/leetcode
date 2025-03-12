@@ -14,12 +14,13 @@ class Solution:
         """
         SOLUTION:
 
-        Instead of only 2 lists, we have to merge k lists.  The naive way is to do a linear scan of the head of every list
-        to find the smallest element then create a new list node with that element and append it to the result list.
+        Instead of only 2 lists, we have to merge k lists.  The naive way is to do a linear scan of the head of every
+        list to find the smallest element then create a new list node with that element and append it to the result
+        list.
 
         However, we can do better by using a heap to store the head of each list so we can always find the minimum value
-        without a linear scan.  Additionally, the problem does not say we cannot reuse the input lists, so we do not have to
-        create new list nodes.
+        without a linear scan.  Additionally, the problem does not say we cannot reuse the input lists, so we do not
+        have to create new list nodes.
 
         COMPLEXITY:
 

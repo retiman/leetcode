@@ -5,6 +5,9 @@
 # The overall run time complexity should be O(log (m+n)).
 #
 # See https://leetcode.com/problems/median-of-two-sorted-arrays
+import math
+
+
 class Solution:
     def findMedianSortedArrays(self, xs: list[int], ys: list[int]) -> float:
         """
@@ -94,10 +97,10 @@ class Solution:
             #
             # xs = []       with lmax1 = -Infinity because there is no value, and everything is > lmax1.
             # xs = [1,2,3|] with rmax1 = +Infinity because there is no value, and everything is < rmin1.
-            lmax1 = float("-inf") if p1 == 0 else xs[p1 - 1]  # If xs partition is empty, lmax1 value is unused.
-            rmin1 = float("inf") if p1 == m else xs[p1]  # If xs partition is full, rmin1 value is unused.
-            lmax2 = float("-inf") if p2 == 0 else ys[p2 - 1]  # If ys partition is empty, lmax2 value is unused.
-            rmin2 = float("inf") if p2 == n else ys[p2]  # If ys partition is full, rmin2 value is unused.
+            lmax1 = -math.inf if p1 == 0 else xs[p1 - 1]  # If xs partition is empty, lmax1 value is unused.
+            rmin1 = math.inf if p1 == m else xs[p1]  # If xs partition is full, rmin1 value is unused.
+            lmax2 = -math.inf if p2 == 0 else ys[p2 - 1]  # If ys partition is empty, lmax2 value is unused.
+            rmin2 = math.inf if p2 == n else ys[p2]  # If ys partition is full, rmin2 value is unused.
 
             # If our inequalities hold, we have found the median.  The value differs depending on if we have an odd
             # sized "merged" array or even.

@@ -10,7 +10,7 @@
 # The test cases are generated so that there will be an answer.
 #
 # See https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold
-from math import ceil
+import math
 
 
 class Solution:
@@ -29,7 +29,7 @@ class Solution:
             # We do math.ceil because the problem asks us to round up.
             #
             # Note: there's no way to chain map -> reduce.  Mind boggling.
-            return sum(ceil(x / divisor) for x in xs)
+            return sum(math.ceil(x / divisor) for x in xs)
 
         # Use the insert point binary search approach to find the divisor we want.
         left = 1

@@ -1,7 +1,7 @@
-import leetcode.array.buildings_with_an_ocean_view as lc
+from leetcode.array.buildings_with_an_ocean_view import Solution
 
 
-soln = lc.Solution()
+soln = Solution()
 
 
 def test_case_1():
