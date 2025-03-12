@@ -1,6 +1,7 @@
-from leetcode.array.design_hit_counter import HitCounter
+import leetcode.array.design_hit_counter as lc
 
-hc = HitCounter()
+
+hc = lc.HitCounter()
 
 
 def test_case_1():

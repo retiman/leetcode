@@ -1,6 +1,7 @@
-from leetcode.dynamic_programming.max_subarray import Solution
+import leetcode.dynamic_programming.max_subarray as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

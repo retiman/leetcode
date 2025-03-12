@@ -1,6 +1,7 @@
-from leetcode.binary_search.kth_smallest_element_in_a_sorted_matrix import Solution
+import leetcode.binary_search.kth_smallest_element_in_a_sorted_matrix as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

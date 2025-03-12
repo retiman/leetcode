@@ -1,6 +1,7 @@
-from leetcode.array.top_k_frequent_elements import Solution
+import leetcode.array.top_k_frequent_elements as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

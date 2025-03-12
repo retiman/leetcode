@@ -1,6 +1,7 @@
-from leetcode.heap.number_of_orders_in_the_backlog import Solution
+import leetcode.heap.number_of_orders_in_the_backlog as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

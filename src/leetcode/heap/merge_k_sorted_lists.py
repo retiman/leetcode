@@ -6,7 +6,6 @@
 #
 # See https://leetcode.com/problems/merge-k-sorted-lists
 from heapq import heappop, heappush
-
 from leetcode.heap.common.list_node import ListNode
 
 

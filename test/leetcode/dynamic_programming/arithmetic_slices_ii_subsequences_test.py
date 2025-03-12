@@ -1,6 +1,7 @@
-from leetcode.dynamic_programming.arithmetic_slices_ii_subsequences import Solution
+import leetcode.dynamic_programming.arithmetic_slices_ii_subsequences as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

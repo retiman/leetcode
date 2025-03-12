@@ -1,6 +1,7 @@
-from leetcode.heap.furthest_building_you_can_reach import Solution
+import leetcode.heap.furthest_building_you_can_reach as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

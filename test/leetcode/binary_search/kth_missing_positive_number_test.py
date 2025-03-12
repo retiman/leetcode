@@ -1,6 +1,7 @@
-from leetcode.binary_search.kth_missing_positive_number import Solution
+import leetcode.binary_search.kth_missing_positive_number as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

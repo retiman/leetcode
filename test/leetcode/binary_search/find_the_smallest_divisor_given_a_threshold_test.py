@@ -1,6 +1,7 @@
-from leetcode.binary_search.find_the_smallest_divisor_given_a_threshold import Solution
+import leetcode.binary_search.find_the_smallest_divisor_given_a_threshold as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

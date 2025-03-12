@@ -1,6 +1,7 @@
-from leetcode.heap.minimize_deviation_in_array import Solution
+import leetcode.heap.minimize_deviation_in_array as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

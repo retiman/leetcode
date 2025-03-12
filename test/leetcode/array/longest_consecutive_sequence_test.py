@@ -1,6 +1,7 @@
-from leetcode.array.longest_consecutive_sequence import Solution
+import leetcode.array.longest_consecutive_sequence as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

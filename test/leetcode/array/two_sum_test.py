@@ -1,6 +1,7 @@
-from leetcode.array.two_sum import Solution
+import leetcode.array.two_sum as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

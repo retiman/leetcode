@@ -1,6 +1,7 @@
-from leetcode.string.valid_word_abbreviation import Solution
+import leetcode.string.valid_word_abbreviation as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

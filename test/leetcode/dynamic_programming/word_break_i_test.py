@@ -1,6 +1,7 @@
-from leetcode.dynamic_programming.word_break_i import Solution
+import leetcode.dynamic_programming.word_break_i as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_i():

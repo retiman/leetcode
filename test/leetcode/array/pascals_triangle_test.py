@@ -1,6 +1,7 @@
-from leetcode.array.pascals_triangle import Solution
+import leetcode.array.pascals_triangle as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1(snapshot):

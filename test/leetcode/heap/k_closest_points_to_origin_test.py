@@ -1,6 +1,7 @@
-from leetcode.heap.k_closest_points_to_origin import Solution
+import leetcode.heap.k_closest_points_to_origin as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

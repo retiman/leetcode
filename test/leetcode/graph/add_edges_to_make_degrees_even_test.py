@@ -1,6 +1,7 @@
-from leetcode.graph.add_edges_to_make_degrees_even import Solution
+import leetcode.graph.add_edges_to_make_degrees_even as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():

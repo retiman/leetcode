@@ -1,6 +1,7 @@
-from leetcode.binary_search.longest_increasing_subsequence import Solution
+import leetcode.binary_search.longest_increasing_subsequence as lc
 
-soln = Solution()
+
+soln = lc.Solution()
 
 
 def test_case_1():
