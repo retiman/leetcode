@@ -1,4 +1,5 @@
-from leetcode.binary_search.find_the_smallest_divisor_given_a_threshold import Solution
+from leetcode.binary_search.find_the_smallest_divisor_given_a_threshold import \
+    Solution
 
 soln = Solution()
 
