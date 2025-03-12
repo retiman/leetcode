@@ -1,6 +1,5 @@
 from leetcode.heap.max_stack import MaxStack
 
-
 stack = MaxStack()
 
 

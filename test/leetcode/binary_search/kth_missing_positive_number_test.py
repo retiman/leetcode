@@ -1,6 +1,5 @@
 from leetcode.binary_search.kth_missing_positive_number import Solution
 
-
 soln = Solution()
 
 

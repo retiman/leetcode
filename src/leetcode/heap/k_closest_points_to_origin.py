@@ -8,7 +8,7 @@
 # You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
 #
 # See https://leetcode.com/problems/k-closest-points-to-origin
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 from math import sqrt
 
 

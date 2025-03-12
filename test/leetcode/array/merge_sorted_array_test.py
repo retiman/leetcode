@@ -1,6 +1,5 @@
 from leetcode.array.merge_sorted_array import Solution
 
-
 soln = Solution()
 
 

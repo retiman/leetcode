@@ -1,6 +1,5 @@
 from leetcode.binary_search.find_peak_element import Solution
 
-
 soln = Solution()
 
 

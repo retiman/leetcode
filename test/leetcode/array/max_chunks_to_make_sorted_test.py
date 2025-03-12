@@ -1,6 +1,5 @@
 from leetcode.array.max_chunks_to_make_sorted import Solution
 
-
 soln = Solution()
 
 

@@ -1,6 +1,5 @@
 from leetcode.heap.minimize_deviation_in_array import Solution
 
-
 soln = Solution()
 
 

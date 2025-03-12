@@ -1,6 +1,5 @@
 from leetcode.binary_search.longest_increasing_subsequence import Solution
 
-
 soln = Solution()
 
 

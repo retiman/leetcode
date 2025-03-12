@@ -1,6 +1,5 @@
 from leetcode.array.two_sum import Solution
 
-
 soln = Solution()
 
 

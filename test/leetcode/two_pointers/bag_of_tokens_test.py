@@ -1,6 +1,5 @@
 from leetcode.two_pointers.bag_of_tokens import Solution
 
-
 soln = Solution()
 
 

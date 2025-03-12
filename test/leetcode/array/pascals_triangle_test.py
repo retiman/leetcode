@@ -1,6 +1,5 @@
 from leetcode.array.pascals_triangle import Solution
 
-
 soln = Solution()
 
 

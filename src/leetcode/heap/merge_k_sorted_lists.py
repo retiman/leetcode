@@ -5,8 +5,9 @@
 # Merge all the linked-lists into one sorted linked-list and return it.
 #
 # See https://leetcode.com/problems/merge-k-sorted-lists
-from leetcode.heap.common.list_node import ListNode
 from heapq import heappop, heappush
+
+from leetcode.heap.common.list_node import ListNode
 
 
 class Solution:

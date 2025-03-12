@@ -1,6 +1,5 @@
 from leetcode.dynamic_programming.max_subarray import Solution
 
-
 soln = Solution()
 
 

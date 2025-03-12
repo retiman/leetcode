@@ -1,6 +1,5 @@
 from leetcode.heap.task_scheduler import Solution
 
-
 soln = Solution()
 
 

@@ -1,6 +1,5 @@
 from leetcode.stack.valid_parentheses import Solution
 
-
 soln = Solution()
 
 

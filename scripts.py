@@ -12,12 +12,13 @@ def run_all():
 
 
 def run_lint():
-    run_cmd("poetry run flake8 src test")
-    run_cmd("poetry run mypy src test")
+    run_cmd("poetry run ruff check . --fix")
+    run_cmd("poetry run pyright .")
 
 
 def run_format():
-    run_cmd("poetry run black src test")
+    run_cmd("poetry run black .")
+    run_cmd("poetry run isort .")
 
 
 def run_tests():

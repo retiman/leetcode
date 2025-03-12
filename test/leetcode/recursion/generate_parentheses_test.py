@@ -1,6 +1,5 @@
 from leetcode.recursion.generate_parentheses import Solution
 
-
 soln = Solution()
 
 

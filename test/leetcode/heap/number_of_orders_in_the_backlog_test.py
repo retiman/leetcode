@@ -1,6 +1,5 @@
 from leetcode.heap.number_of_orders_in_the_backlog import Solution
 
-
 soln = Solution()
 
 

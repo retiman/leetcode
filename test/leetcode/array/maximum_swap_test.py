@@ -1,6 +1,5 @@
 from leetcode.array.maximum_swap import Solution
 
-
 soln = Solution()
 
 

@@ -1,6 +1,5 @@
 from leetcode.array.design_hit_counter import HitCounter
 
-
 hc = HitCounter()
 
 

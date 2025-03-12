@@ -49,7 +49,7 @@ class Solution:
         #
         # Each dict is a map of difference -> count.
         subsequences: list[dict[int, int]] = []
-        for i in range(len(xs)):
+        for _ in range(len(xs)):
             subsequences.append(defaultdict(int))
 
         # Since we are considering pairs of elements, start at 1 to ensure that there is at least another element before

@@ -1,6 +1,5 @@
 from leetcode.heap.furthest_building_you_can_reach import Solution
 
-
 soln = Solution()
 
 

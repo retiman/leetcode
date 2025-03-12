@@ -1,6 +1,5 @@
 from leetcode.dynamic_programming.word_break_i import Solution
 
-
 soln = Solution()
 
 

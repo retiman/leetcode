@@ -1,6 +1,5 @@
 from leetcode.array.group_anagrams import Solution
 
-
 soln = Solution()
 
 

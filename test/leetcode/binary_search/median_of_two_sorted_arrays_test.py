@@ -1,6 +1,5 @@
 from leetcode.binary_search.median_of_two_sorted_arrays import Solution
 
-
 soln = Solution()
 
 

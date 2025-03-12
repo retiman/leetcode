@@ -1,6 +1,5 @@
 from leetcode.binary_search.search_in_rotated_sorted_array import Solution
 
-
 soln = Solution()
 
 

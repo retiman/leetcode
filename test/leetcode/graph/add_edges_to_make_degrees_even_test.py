@@ -1,6 +1,5 @@
 from leetcode.graph.add_edges_to_make_degrees_even import Solution
 
-
 soln = Solution()
 
 
