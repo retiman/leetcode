@@ -13,7 +13,8 @@ from heapq import heappop, heappush
 class Solution:
     def findKthLargest(self, nums: list[int], k: int) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         You can do this with quick select, similar to quick sort.  The idea is to eliminate half of the search space at
         each step.  You pick a pivot element (using heuristics, or even randomly), then partition the array into two

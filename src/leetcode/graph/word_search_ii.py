@@ -23,7 +23,8 @@ class TrieNode:
 class Solution:
     def findWords(self, board: list[list[str]], words: list[str]) -> list[str]:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         This problem looks like it can be solved with a prefix trie.
 
@@ -34,7 +35,8 @@ class Solution:
 
         Easy peasy.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(w * k + m * n * 4^k) where w is the number of words, k is the maximum word length, m and n
         are the dimensions of the board.  Building the trie takes O(w * k).  For DFS, we perform DFS on every cell (of

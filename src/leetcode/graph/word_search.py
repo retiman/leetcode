@@ -9,13 +9,15 @@
 class Solution:
     def exist(self, board: list[list[str]], word: str) -> bool:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         This is just DFS; no need to build a prefix trie, in comparison to word search ii.  BFS isn't going to work as
         well because BFS will generate all possible words incrementally, whereas we want to just stop if we've found our
         word.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(m * n * 4^k) where m and n are the dimensions of the board, and k is the length of the
         longest word.

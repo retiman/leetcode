@@ -20,7 +20,8 @@ from heapq import heappop, heappush
 class Solution:
     def furthestBuilding(self, heights: list[int], bricks: int, ladders: int) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         You can't do this problem using sliding window or two pointer technique easily.
 
@@ -32,7 +33,8 @@ class Solution:
 
         A greedy algorithm would be better suited to solve this problem.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n log n) time where n is number of buildings.
 

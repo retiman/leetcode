@@ -26,7 +26,8 @@ import math
 class Solution:
     def minimumDeviation(self, nums: list[int]):
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         To solve this problem, we have to multiply elements to make them bigger, or divide elements to make them
         smaller. We continue to do this until the minimum and maximum elements are as close as possible.
@@ -35,7 +36,8 @@ class Solution:
         simultaneously trying to make numbers bigger and smaller.  To do this, we multiply all odd numbers by 2, so that
         they all become even.  Afterwards, we can choose to perform a division or not to make it smaller.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n log m) where n is the number of elements in nums, and m is the number of times we have to
         halve a value.

@@ -23,7 +23,8 @@
 class Solution:
     def validWordAbbreviation(self, word: str, abbr: str) -> bool:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         To do this, we'll use two pointers, but not to iterate through a single string.  Instead, each pointer iterates
         through its own string.  If we see an numerical abbreviation, we'll advance through the other string a the
@@ -31,7 +32,8 @@ class Solution:
 
         At each stage of advancement we'll check if the characters match.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(max(m, n)) where m is the length of word, and n is the length of abbr.
 

@@ -15,13 +15,21 @@
 class Solution:
     def search(self, xs: list[int], target: int) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         You can still use binary search for this; you just have to recognize when you have looped around in the array.
         This uses the standard binary search algorithm, but with recursion.
 
         The standard approach is used because we are looking for an exact match for an element in the array, and return
         -1 if the element is not found.
+
+        COMPLEXITY
+        ----------
+
+        Time complexity is O(log n).
+
+        Space complexity is O(log n).
         """
 
         def searchInternal(ys: list[int], start: int, end: int, t: int) -> int:

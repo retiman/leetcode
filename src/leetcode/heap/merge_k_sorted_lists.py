@@ -12,7 +12,8 @@ from leetcode.heap.common.list_node import ListNode
 class Solution:
     def mergeKLists(self, lists: list[ListNode | None]) -> ListNode | None:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         Instead of only 2 lists, we have to merge k lists.  The naive way is to do a linear scan of the head of every
         list to find the smallest element then create a new list node with that element and append it to the result
@@ -22,7 +23,8 @@ class Solution:
         without a linear scan.  Additionally, the problem does not say we cannot reuse the input lists, so we do not
         have to create new list nodes.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n log k), where n is the number of nodes and there are k lists, so each enqueuing operation
         will take O(log k) time.  However, we are going to do this for every node in the list, so the total time

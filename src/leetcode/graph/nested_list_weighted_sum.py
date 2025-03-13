@@ -15,12 +15,14 @@ from leetcode.graph.common.nested_integer import NestedInteger
 class Solution:
     def depthSum(self, nestedList: list[NestedInteger]) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         This is essentially a depth first search problem.  However, because it a nested list, there's no need to keep
         track of visited elements.  Instead we'll just keep track of the depth as we traverse the list.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n) where n is the number of total integers and lists in the data structure.
 

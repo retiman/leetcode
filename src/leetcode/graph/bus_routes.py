@@ -18,7 +18,8 @@
 class Solution:
     def numBusesToDestination(self, routes: list[list[int]], source: int, target: int) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         This seems to be just a BFS problem.  The fact that buses repeat forever doesn't seem to be relevant because
         there is no cost associated with waiting at a bus stop until the bus arrives; the only thing we are minimizing
@@ -27,7 +28,8 @@ class Solution:
         Building a graph and then running BFS on it naively seems to exceed execution time so we'll have to do something
         more clever and dirty.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n * m) where n is the number of bus routes, and m is the number of stops per route.
 

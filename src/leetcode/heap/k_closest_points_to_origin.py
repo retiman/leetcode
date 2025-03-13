@@ -15,7 +15,8 @@ import math
 class Solution:
     def kClosest(self, points: list[list[int]], k: int) -> list[list[int]]:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         The request for "k-closest" indicates you'll want a heap.  Using a either a min heap or max heap will work.
 
@@ -28,7 +29,8 @@ class Solution:
 
         The max heap approach can be more efficient, so we'll go that route.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n log k) with a max heap, which will be faster when k is much smaller than n.  If we go
         with the min heap approach, it's O(n log n).

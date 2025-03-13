@@ -16,7 +16,8 @@ from collections import defaultdict
 class Solution:
     def isPossible(self, n: int, edges: list[list[int]]) -> bool:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         When you add an edge between two nodes, you change the degree of those two nodes.  We don't need to modify edges
         for any even degree nodes; they are already good.  Instead we want to find nodes with an odd degree.
@@ -24,7 +25,8 @@ class Solution:
         If we join any two odd degree nodes with an edge, both of them will become even degree nodes.  Since we can only
         add at most two edges, this can only be possible if we have 0, 2, or 4 nodes with an odd degree.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(m + n).  Each node and edge must be examined.
 

@@ -12,11 +12,13 @@
 class Solution:
     def isValid(self, text: str) -> bool:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         Simple stack based solution.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n) where n is the number of characters in the string.
 

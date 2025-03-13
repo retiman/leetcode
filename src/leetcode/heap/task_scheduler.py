@@ -14,7 +14,8 @@ from heapq import heappop, heappush
 class Solution:
     def leastInterval(self, tasks: list[str], n: int) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         It's not necessary to return an execution order, only the minimum number of cycles/intervals required to
         complete all of the tasks.
@@ -31,6 +32,15 @@ class Solution:
         Here, even though task B appears 9 times, we can fit task B comfortably in between the 9 cycles of task A.
         This, however, doesn't quite work if there are a huge number of tasks; if there are 10 task A's and 9 task B's,
         but 50 other uniquely named tasks, then we will still take 50 cycles if (10 - 1) * n is a smaller number.
+
+        COMPLEXITY
+        ----------
+
+        Time complexity is O(m + n) where m is the total number of tasks.  While we do perform O(k log k) operations to
+        build the heap, k is always at most 26 characters, so that is still effectively constant time.  Likewise, any
+        log k operations are effectively constant time as well.
+
+        Space complexity is O(n).
         """
         # Create a map of task to frequency.
         map: dict[str, int] = defaultdict(int)

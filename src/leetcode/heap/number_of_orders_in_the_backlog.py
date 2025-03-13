@@ -30,13 +30,15 @@ from heapq import heappop, heappush
 class Solution:
     def getNumberOfBacklogOrders(self, orders: list[list[int]]) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         This problem looks like it can be solved by maintaining a sorted list of buy orders and sell orders (aka heaps).
         For a sell order, you want buy orders in largest to smallest (max heap).  For a buy order, you want sell orders
         from smallest to largest (min heap).
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n log n) because we are using heaps to maintain the order of the orders.
 

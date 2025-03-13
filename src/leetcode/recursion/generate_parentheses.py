@@ -6,7 +6,8 @@
 class Solution:
     def generateParenthesis(self, n: int) -> list[int]:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         A naive way to do this would be to do something like generate all the parentheses for n-1, then add more
         parentheses to each of the elements generated.  For example, by transforming each element of the n-1 solution to
@@ -20,7 +21,8 @@ class Solution:
         method, for example, you don't need to worry about balancing the elements within the sub set.  In contrast to
         generating a power set, you would have far fewer resulting elements.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is uh... we'll just go with O(4^n) since we can generate all possible 2 * n length strings using
         characters '(' and ')'.  With 2 characters, it's 2^(2 * n) = 4^n.

@@ -18,7 +18,8 @@ from leetcode.graph.common.nested_integer import NestedInteger
 class Solution:
     def depthSumInverse(self, nestedList: list[NestedInteger]) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         Unlike the previous problem where we just multiply the integer by its depth, we need to multiply by the weight
         of the integer.  Since we won't know the weight until after we've traversed the entire list, we'll need to keep
@@ -27,7 +28,8 @@ class Solution:
         However, like before, this is still going to be a DFS search, except we don't need to keep track of visited
         nodes.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n) where n is the number of total integers and lists in the data structure.
 

@@ -16,7 +16,8 @@
 class Solution:
     def bagOfTokensScore(self, tokens: list[int], power: int) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         You basically are allowed to gain power at the cost of score, or gain score at the cost of power.  You want to
         maximize the score.  The problem does not tell you this, but:
@@ -29,7 +30,8 @@ class Solution:
         amount of power for score.  That is, sacrifice smaller power tokens face up for score, play higher power tokens
         for their raw (power) value.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is dominated by sorting, making it O(n log n).
 
