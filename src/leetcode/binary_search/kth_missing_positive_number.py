@@ -8,7 +8,8 @@
 class Solution:
     def findKthPositive(self, xs: list[int], k: int) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         There are multiple naive ways to do this.  One way is to throw all elements into a set, then iterate from 1 to
         the max set element, and check if the element is in the set.  Do this k times to find the k-th missing element.
@@ -22,7 +23,8 @@ class Solution:
         to scan the entire array.  We can calculate how many missing numbers exist at each index, and use that
         information to determine if we should go left or right.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(log n).
 

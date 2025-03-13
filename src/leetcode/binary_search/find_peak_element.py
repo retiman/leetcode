@@ -14,7 +14,8 @@
 class Solution:
     def findPeakElement(self, xs: list[int]) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         This problem is not hard, but the wording is incredibly tricky.  First off, let's talk about linear scan versus
         binary search.  There are only 1000 elements max in the array, so either would work.  However, the problem says
@@ -31,7 +32,8 @@ class Solution:
         the inputs are invalid (e.g. have no peaks), or that all inputs are valid.  However, it does apply to pass if we
         assume peaks always exist!
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(log n).
 

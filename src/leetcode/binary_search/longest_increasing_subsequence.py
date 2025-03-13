@@ -6,7 +6,8 @@
 class Solution:
     def lengthOfLIS(self, xs: list[int]) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         The naive way is to do this with dynamic programming and two nested loops.
 
@@ -21,7 +22,8 @@ class Solution:
         As we iterate through the array, we will keep the tails array updated.  At the end of iteration, the length of
         the tails array will tell us the longest increasing subsequence.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n log n) because we are doing a binary search for each element in the array.
 

@@ -7,7 +7,8 @@
 # NOTE: This is not a LeetCode question but was asked by Cruise.
 #
 # See https://leetcode.com/discuss/interview-question/353830/google-phone-screen-parallel-job-scheduling
-from collections import defaultdict, deque
+from collections import defaultdict
+
 
 class Solution:
     def parallelize(self, jobs: list[str]) -> list[list[str]]:

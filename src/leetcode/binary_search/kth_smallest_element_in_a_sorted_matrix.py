@@ -11,7 +11,8 @@
 class Solution:
     def kthSmallest(self, matrix: list[list[int]], k: int) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         We can't flatten the list because that would take O(n^2) memory.
 
@@ -21,7 +22,8 @@ class Solution:
         We can use the mid element to tell us how close or far we are from the kth smallest element.  The matrix is
         sorted, so for any mid === matrix[i][j] we can figure out how many elements are less than or equal to mid.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n log m).  We are using binary search on a range between the smallest and largest elements
         in the matrix, call it m.  We will do O(log m) iterations, but in each iteration, we do have to count how many

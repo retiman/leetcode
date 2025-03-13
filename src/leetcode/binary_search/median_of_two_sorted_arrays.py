@@ -11,7 +11,8 @@ import math
 class Solution:
     def findMedianSortedArrays(self, xs: list[int], ys: list[int]) -> float:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         This is not a reasonable question to ask in an interview.  It's quite algorithmically complex.
 
@@ -45,7 +46,8 @@ class Solution:
 
         Continue updating the left and right pointers until we have found the median.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(log (m + n)).
 

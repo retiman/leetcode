@@ -11,15 +11,17 @@
 class Solution:
     def twoSum(self, xs: list[int], target: int) -> list[int]:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
-        Use a hashmap to keep track of values we've already seen.  This lets us avoid the O(n^2) solution of checking every
-        possible pair of values.
+        Use a hashmap to keep track of values we've already seen.  This lets us avoid the O(n^2) solution of checking
+        every possible pair of values.
 
         When iterating, you can check if the complement nums[j] = target - nums[i] already exists in the hashmap.  If it
         does then we've found the solution and can return the indices immediately.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n).
 

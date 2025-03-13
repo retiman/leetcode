@@ -10,7 +10,8 @@
 class Solution:
     def searchRange(self, xs: list[int], target: int) -> list[int]:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         The problem stipulates it must run in O(log n) time complexity, so that means we can't just do a standard binary
         search and then a linear scan for the start and end ranges.
@@ -21,7 +22,8 @@ class Solution:
         Technically we could combine both the left and right searches into one binary search, using a flag to denote the
         direction we are searching in.  But that would be a bit more complex and harder to understand.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(log n) time complexity because of max two binary searches.
 
