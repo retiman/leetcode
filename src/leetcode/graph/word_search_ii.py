@@ -28,11 +28,20 @@ class Solution:
         This problem looks like it can be solved with a prefix trie.
 
         1. Construct a prefix trie from the list of words.
-        2. Run DFS from each board cell, choosing to continue the search if the sequence seen so far is a valid prefix in
-        the trie.
+        2. Run DFS from each board cell, choosing to continue the search if the sequence seen so far is a valid prefix
+           in the trie.
         3. Collect valid words from each DFS and return the result.
 
         Easy peasy.
+
+        COMPLEXITY:
+
+        Time complexity is O(w * k + m * n * 4^k) where w is the number of words, k is the maximum word length, m and n
+        are the dimensions of the board.  Building the trie takes O(w * k).  For DFS, we perform DFS on every cell (of
+        which there are m * n cells), and the length of each word in a DFS call is L, but there is a branching factor of
+        4.
+
+        Space complexity is O(w * k + k) due to the trie storage and the DFS stack.
         """
         # Construct the prefix trie for efficient lookup.
         root = TrieNode()
