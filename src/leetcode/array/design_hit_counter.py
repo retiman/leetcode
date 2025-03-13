@@ -10,12 +10,14 @@
 class HitCounter:
     def __init__(self) -> None:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         To do this efficiently we'll have to use a circular array buffer.  This is the same technique used by time
         series databases.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(1) for both methods since we fix the array size at 300.
 

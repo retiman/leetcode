@@ -13,7 +13,8 @@
 class Solution:
     def merge(self, xs: list[int], m: int, ys: list[int], n: int) -> None:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         TLDR: Work backwards.  Send the largest elements from the smaller array to the end of the bigger array.
 
@@ -40,7 +41,8 @@ class Solution:
 
         The problem doesn't state this, but we assume using no extra memory either.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(m + n).
 

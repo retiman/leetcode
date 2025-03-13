@@ -11,7 +11,8 @@
 class Solution:
     def maxProfit(self, prices: list[int]) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         The question is a bit contrived, as in reality this would never happen.  Here, we are assuming we can go
         backwards in time to be able to buy at the low point and sell at the high point.  Just keep that in mind: we
@@ -23,7 +24,8 @@ class Solution:
         This actually makes the problem much easier because can simulate buying on every day and add to our profit if
         there is any.  Honestly, this should be easy and the other one should be medium.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n).
 

@@ -11,14 +11,16 @@
 class Solution:
     def maxChunksToSorted(self, xs: list[int]) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         Because we know the elements in the array are a permutation of numbers less than n, we can use a greedy approach
         by keeping track of the max element seen so far.
 
         Unlike the other problem, this does not require using a stack.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n).
 

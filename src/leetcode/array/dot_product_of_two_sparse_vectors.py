@@ -14,7 +14,8 @@
 class SparseVector:
     def __init__(self, nums: list[int]) -> None:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         If the vector is sparse, just store the non-zero values in a map of index to value.  That will compress for
         storage; to compute the dot product you can either decompress and then do the dot product, or you can do the
@@ -23,7 +24,8 @@ class SparseVector:
         Doing it without decompression is more efficient, and we should start with the smaller vector to minimize the
         number of operations.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(k) in the best case, where k is the number of non-zero elements.  In the worst case,
         though, it could still be O(n) if both vectors are dense.

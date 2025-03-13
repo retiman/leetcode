@@ -8,7 +8,8 @@
 class Solution:
     def maximumSwap(self, num: int) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         The simple idea of swapping the largest number with the first digit doesn't always work.  It works a lot of the
         time, but a couple of cases mess up this algorithm:
@@ -21,7 +22,8 @@ class Solution:
         1. Find the FIRST digit that can be made bigger (larger digits appear later).
         2. Swap it with the LAST occurrence of the largest digit.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n) where n is the number of digits.  We iterate through the digits once to create our array
         and map.  We iterate through the digits a second time to find the swap point.  There is a nested loop, but the

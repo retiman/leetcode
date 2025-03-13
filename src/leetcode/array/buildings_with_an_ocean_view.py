@@ -12,13 +12,15 @@
 class Solution:
     def findBuildings(self, heights: list[int]) -> list[int]:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         This is easier to do iterating from right to left (since the ocean is to the right).  We can keep track of the
         tallest building we've seen so far, and if we encounter a building that is taller, we can add it to the list
         with ocean views.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n) because we are iterating through the list of buildings once, and reversing once.
 
@@ -33,4 +35,6 @@ class Solution:
                 tallest = height
                 result.append(i)
 
+        # Because we want the buildings in increasing order and we iterated in reverse, reverse the result list.  We
+        # could have used a deque, but converting the deque to a list will be O(n) anyways.
         return result[::-1]

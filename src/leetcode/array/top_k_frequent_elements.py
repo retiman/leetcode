@@ -10,11 +10,13 @@ from collections import defaultdict
 class Solution:
     def topKFrequent(self, xs: list[int], k: int) -> list[int]:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         Just map each number to its frequency then sort by frequency.  Return the first k elements.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity dominated by the sort, which is O(n log n).
 

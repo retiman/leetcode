@@ -12,12 +12,14 @@ from collections import defaultdict
 class Solution:
     def groupAnagrams(self, texts: list[str]) -> list[list[str]]:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         Each anagram can be rearranged into canonical form by sorting the letters.  Then simply map the canonical form to
         each anagram.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n * m * log m) where n is the number of strings, and m is the length of the longest string.
         This is because we have to sort each string's characters in O(m * log m), and there are n strings.

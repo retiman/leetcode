@@ -12,7 +12,8 @@ class Solution:
 
         A simple straightforward algorithm works.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n).
 

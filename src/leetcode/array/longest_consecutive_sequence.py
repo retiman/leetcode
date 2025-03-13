@@ -8,7 +8,8 @@
 class Solution:
     def longestConsecutive(self, xs: list[int]) -> int:
         """
-        SOLUTION:
+        SOLUTION
+        --------
 
         The problem is phrased in a very confusing way.  The sequence doesn't ACTUALLY need to be consecutive within the
         array; it only needs to be consecutive if you plucked the sequence out of the array and sorted it.
@@ -20,7 +21,8 @@ class Solution:
         Conceptually, we'll do this by throwing all the array elements into a set.  Then, for each element `x`, we can
         figure out if it's part of a sequence by repeatedly checking its predecessor `x - 1` in the set.
 
-        COMPLEXITY:
+        COMPLEXITY
+        ----------
 
         Time complexity is O(n).  It may appear that the inner loop runs multiple times, but each element in the array
         is only processed once; the inner loop will skip `x - 1` if it was already part of some other sequence from a
