@@ -8,7 +8,9 @@ def test_case_1(snapshot):
     board = [["o", "a", "a", "n"], ["e", "t", "a", "e"], ["i", "h", "k", "r"], ["i", "f", "l", "v"]]
     words = ["oath", "pea", "eat", "rain"]
 
-    snapshot.assert_match(soln.findWords(board, words))
+    result = soln.findWords(board, words)
+
+    snapshot.assert_match(sorted(result))
 
 
 def test_case_2():
@@ -29,4 +31,6 @@ def test_case_4(snapshot):
     board = [["o", "a", "a", "n"], ["e", "t", "a", "e"], ["i", "h", "k", "r"], ["i", "f", "l", "v"]]
     words = ["oath", "pea", "eat", "rain", "hklf", "hf"]
 
-    snapshot.assert_match(board, words)
+    result = soln.findWords(board, words)
+
+    snapshot.assert_match(sorted(result))
