@@ -25,58 +25,42 @@ class Solution:
         if len(word) == 0:
             return False
 
-        found = False
-
-        def dfs(row: int, column: int, i: int) -> None:
-            nonlocal found
-
-            if found:
-                return
+        def dfs(row: int, column: int, i: int) -> bool:
+            if i == len(word):
+                return True
 
             # Only continue down this path if the row is within bounds.
             if not (0 <= row < len(board)):
-                return
+                return False
 
             # Only continue down this path if the column is within bounds.
-            if not (0 <= column <= len(board[row])):
-                return
+            if not (0 <= column < len(board[row])):
+                return False
 
-            # Only continue down this path if we've not visited this cell before.  Instead of using a visited set, we'll
-            # modify the board itself to set a visited cell to "#".
-            if board[row][column] == "#":
-                return
-
-            # Only continue down this path if our current string has fewer characters than our target.
-            if i == len(word):
-                return
-
-            # Only continue down this path if the current character is one that we want.
+            # Only continue down this path if there's a match.
             c = board[row][column]
-            want = word[i]
-            if c is not want:
-                return
-
-            # If we have reached the last index, check if we've found our target.
-            if i == len(word) - 1:
-                found = True
-                return
+            if c != word[i]:
+                return False
 
             # Save this row/column's value so we can mark it as visited; we'll use a sentinel value to do so.
             board[row][column] = "#"
 
-            dfs(row, column - 1, i + 1)
-            dfs(row, column + 1, i + 1)
-            dfs(row - 1, column, i + 1)
-            dfs(row + 1, column, i + 1)
+            found = (
+                dfs(row, column - 1, i + 1)
+                or dfs(row, column + 1, i + 1)
+                or dfs(row - 1, column, i + 1)
+                or dfs(row + 1, column, i + 1)
+            )
 
             board[row][column] = c
+
+            return found
 
         for i in range(len(board)):
             for j in range(len(board[i])):
                 #  Only start a DFS search if the word begins with the character we are looking at.
                 if board[i][j] == word[0]:
-                    dfs(i, j, 0)
-                if found:
-                    return True
+                    if dfs(i, j, 0):
+                        return True
 
         return False

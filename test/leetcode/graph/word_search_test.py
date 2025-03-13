@@ -9,3 +9,10 @@ def test_case_1():
     word = "ABCCED"
 
     assert soln.exist(board, word)
+
+
+def test_case_2():
+    board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
+    word = "SEE"
+
+    assert soln.exist(board, word)
