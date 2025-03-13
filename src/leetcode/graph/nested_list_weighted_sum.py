@@ -14,7 +14,8 @@ from leetcode.graph.common.nested_integer import NestedInteger
 
 class Solution:
     def depthSum(self, nestedList: list[NestedInteger]) -> int:
-        """SOLUTION:
+        """
+        SOLUTION:
 
         This is essentially a depth first search problem.  However, because it a nested list, there's no need to keep track
         of visited elements.  Instead we'll just keep track of the depth as we traverse the list.
@@ -26,6 +27,9 @@ class Solution:
         Space complexity is O(d) where d is the depth of the nested list, since we need a stack frame for each level of
         recursion.
         """
+        x = NestedInteger()
+        for e in nestedList:
+            x.add(e)
 
         def compute(x: NestedInteger, depth: int) -> int:
             # If we've encountered an integer, compute the weighted value according to the depth.
@@ -35,9 +39,5 @@ class Solution:
 
             # Otherwise, we have a list, so we'll recursively compute the weighted sum of the list.
             return sum(compute(y, depth + 1) for y in x.getList())
-
-        x = NestedInteger()
-        for e in nestedList:
-            x.add(e)
 
         return compute(x, 0)
