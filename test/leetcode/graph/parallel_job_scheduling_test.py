@@ -5,8 +5,14 @@ soln = Solution()
 
 
 def test_case_1(snapshot):
-    snapshot.assert_match(sorted(soln.parallelize(["A:B,C", "B:D,E,F"])))
+    result = soln.parallelize(["A:B,C", "B:D,E,F"])
+
+    expected = [sorted(xs) for xs in result]
+    snapshot.assert_match(sorted(expected))
 
 
 def test_case_2(snapshot):
-    snapshot.assert_match(sorted(soln.parallelize(["A:B,C", "B:D,E", "F:G"])))
+    result = soln.parallelize(["A:B,C", "B:D,E", "F:G"])
+
+    expected = [sorted(xs) for xs in result]
+    snapshot.assert_match(sorted(expected))
