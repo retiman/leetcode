@@ -42,7 +42,7 @@ class Solution:
             # We do math.ceil because the problem asks us to round up.
             #
             # Note: there's no way to chain map -> reduce.  Mind boggling.
-            value = sum(math.ceil(x / divisor for x in xs))
+            value = sum(math.ceil(x / divisor) for x in xs)
 
             # If the value is too large, our divisor was too small, so we should shift our left value to be mid + 1.
             if value > threshold:
