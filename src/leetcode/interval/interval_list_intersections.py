@@ -68,7 +68,7 @@ class Solution:
         j = 0
         while i < len(firstList) and j < len(secondList):
             a = firstList[i]
-            b = firstList[j]
+            b = secondList[j]
             ax, ay = a[0], a[1]
             bx, by = b[0], b[1]
 
