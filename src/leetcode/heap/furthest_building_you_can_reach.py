@@ -40,7 +40,7 @@ class Solution:
 
         Space complexity is O(n) in worst case.
         """
-        heap: list[int] = []
+        min_heap: list[int] = []
 
         for i in range(len(heights) - 1):
             # Calculate the delta that we need to "jump" across.
@@ -51,17 +51,17 @@ class Solution:
                 continue
 
             # A non-negative delta means we must use either bricks or a ladder to jump across.
-            heappush(heap, delta)
+            heappush(min_heap, delta)
 
             # Because the ladders can traverse any height, we'll "save" the ladders here to use on the the biggest
             # deltas.  As long as we have ladders remaining we can maintain a heap size of deltas that we'll
             # eventually use ladders on.
-            if len(heap) <= ladders:
+            if len(min_heap) <= ladders:
                 continue
 
             # If we have more elements on the heap than we do ladders, then SOME of these deltas need to be traversed
             # using bricks instead of ladders.  Let's pop the smallest delta out and use bricks on it.
-            smallest = heappop(heap)
+            smallest = heappop(min_heap)
             bricks -= smallest
 
             # If we've run out of bricks, that's it.  We can can only reach the building at position i.

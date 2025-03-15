@@ -8,8 +8,20 @@
 # You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
 #
 # See https://leetcode.com/problems/k-closest-points-to-origin
-from heapq import heappop, heappush
+import heapq as hq
 import math
+
+
+def heappush(max_heap: list[tuple[float, list[int]]], item: tuple[float, list[int]]) -> None:
+    # Simulate a max heap by negating the distance.  When storing a tuple in the heap, Python will sort by tuple
+    # ordering, so will first sort by the first element, then the second.
+    d, p = item
+    hq.heappush(max_heap, (-d, p))
+
+
+def heappop(max_heap: list[tuple[float, list[int]]]) -> tuple[float, list[int]]:
+    d, p = hq.heappop(max_heap)
+    return (-d, p)
 
 
 class Solution:
@@ -48,11 +60,8 @@ class Solution:
         # Store max heap of (distance, point).  LeetCode gives us the points as list of [x, y].
         max_heap: list[tuple[float, list[int]]] = []
         for p in points:
-            # Simulate a max heap by negating the distance.  When storing a tuple in the heap, Python will sort by tuple
-            # ordering, so will first sort by the first element, then the second.  Sorting by the first element
-            # (distance) is all we need.
             d = distance(p)
-            heappush(max_heap, (-d, p))
+            heappush(max_heap, (d, p))
 
             # If we have more than k elements, remove the farthest point.
             if len(max_heap) > k:

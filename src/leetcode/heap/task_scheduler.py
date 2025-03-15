@@ -8,7 +8,16 @@
 #
 # See https://leetcode.com/problems/task-scheduler
 from collections import defaultdict, deque
-from heapq import heappop, heappush
+import heapq as hq
+
+
+def heappush(max_heap: list[int], item: int) -> None:
+    # Simulate a max heap by negating the value.
+    hq.heappush(max_heap, -item)
+
+
+def heappop(max_heap: list[int]) -> int:
+    return -hq.heappop(max_heap)
 
 
 class Solution:
@@ -47,10 +56,10 @@ class Solution:
         for task in tasks:
             map[task] += 1
 
-        # Create a max heap of frequency.  To simulate max heap, negate the value.
+        # Create a max heap of frequency.
         max_heap: list[int] = []
         for freq in map.values():
-            heappush(max_heap, -freq)
+            heappush(max_heap, freq)
 
         # Create a queue of [freq, cycle] for cooldown tasks.
         queue: deque[tuple[int, int]] = deque()
@@ -62,12 +71,10 @@ class Solution:
                 (f, c) = queue[0]
                 if c == cycle:
                     queue.popleft()
-                    # Negate frequency because it's a max heap.
-                    heappush(max_heap, -f)
+                    heappush(max_heap, f)
 
             if max_heap:
-                # Negate frequency because it's a max heap.
-                f = -heappop(max_heap)
+                f = heappop(max_heap)
                 f -= 1
 
                 if f != 0:

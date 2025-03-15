@@ -15,7 +15,18 @@
 # You must come up with a solution that supports O(1) for each top call and O(logn) for each other call.
 #
 # See https://leetcode.com/problems/max-stack
-from heapq import heappop, heappush
+import heapq as hq
+
+
+def heappush(max_heap: list[tuple[int, int, "StackNode"]], item: tuple[int, int, "StackNode"]) -> None:
+    # Simulate a max heap by negating the values.  When storing a tuple in the heap, Python will sort by tuple ordering.
+    value, key, node = item
+    hq.heappush(max_heap, (-value, -key, node))
+
+
+def heappop(max_heap: list[tuple[int, int, "StackNode"]]) -> tuple[int, int, "StackNode"]:
+    value, key, node = hq.heappop(max_heap)
+    return (-value, -key, node)
 
 
 class StackNode:
@@ -72,9 +83,9 @@ class MaxStack:
         node = StackNode(self.keys, value)
         self.keys += 1
 
-        # Push onto the heap, but because this is a max heap, negate the value.  Because the stack might have dupes,
-        # we'll want the heap to be ordered by first the value, then the key.
-        heappush(self.max_heap, (-value, -node.key, node))
+        # Push onto the heap; we want to store the node only, but Python sorts by tuple ordering, so order by the value
+        # first, then the key as a tie breaker.
+        heappush(self.max_heap, (value, node.key, node))
 
         # Now add this node to the end of the linked list.
         a = self.tail.previous

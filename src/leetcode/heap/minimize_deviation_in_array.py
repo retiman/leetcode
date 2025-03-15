@@ -19,8 +19,17 @@
 # Return the minimum deviation the array can have after performing some number of operations.
 #
 # See https://leetcode.com/problems/minimize-deviation-in-array
-from heapq import heappop, heappush
+import heapq as hq
 import math
+
+
+def heappush(max_heap: list[int], item: int) -> None:
+    # Simulate a max heap by negating the value.
+    hq.heappush(max_heap, -item)
+
+
+def heappop(max_heap: list[int]) -> int:
+    return -hq.heappop(max_heap)
 
 
 class Solution:
@@ -44,7 +53,7 @@ class Solution:
 
         Space complexity is O(n).
         """
-        heap: list[int] = []
+        max_heap: list[int] = []
 
         # Normalize all the numbers so that they are even.  Now we can consider only division as a way to make numbers
         # smaller and closer to each other.  If a previously odd number was too big, we will eventually resize it smaller
@@ -54,7 +63,7 @@ class Solution:
                 value *= 2
                 nums[i] = value
 
-            heappush(heap, -value)
+            heappush(max_heap, value)
 
         minimum = min(nums)
         deviation = math.inf
@@ -62,7 +71,7 @@ class Solution:
         # Calculate the current deviation using the max element of the array, then half the max element and return it to
         # theheap.  Then repeat to keep bringing the deviation down.
         while True:
-            maximum = -heappop(heap)
+            maximum = heappop(max_heap)
             deviation = min(deviation, maximum - minimum)
 
             # Oh no!  If the max value was odd, we can't halve it and re-insert into the heap.  This means that whatever
@@ -72,7 +81,7 @@ class Solution:
 
             # Halve the max value and return it to the heap for re-processing.
             value = int(maximum / 2)
-            heappush(heap, -value)
+            heappush(max_heap, value)
 
             # Update the minimum value in case we've changed the minimum value by manipulating the maximum value.
             minimum = min(value, minimum)
