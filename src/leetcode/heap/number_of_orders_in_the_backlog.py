@@ -46,9 +46,9 @@ class Solution:
         """
         # We want to match sellers with the largest price in the buy orders, so we want a max heap.  Pro-tip: Negate the
         # values here.
-        buys: list[tuple[int, int]] = []
+        buys_max_heap: list[tuple[int, int]] = []
         # We want to match buyers with the lowest price in the sell orders, so we want a min heap.
-        sells: list[tuple[int, int]] = []
+        sells_min_heap: list[tuple[int, int]] = []
         MOD = 10**9 + 7
 
         def handleBuy(buy_price: int, buy_amount: int):
@@ -57,17 +57,17 @@ class Solution:
                 # backlog.
                 #
                 # Note that the buys backlog is a max heap, so we have to negate the price.
-                if not sells:
-                    heappush(buys, (-buy_price, buy_amount))
+                if not sells_min_heap:
+                    heappush(buys_max_heap, (-buy_price, buy_amount))
                     return
 
                 # If we do have a seller, we can check the lowest sale price.  If the lowest sale price is still too
                 # high, we can't match up a sale.  So we should push the order into the buys backlog anyways.
                 #
                 # Note that the buys backlog is a max heap, so we have to negate the price.
-                sell_price, sell_amount = sells[0]
+                sell_price, sell_amount = sells_min_heap[0]
                 if buy_price < sell_price:
-                    heappush(buys, (-buy_price, buy_amount))
+                    heappush(buys_max_heap, (-buy_price, buy_amount))
                     return
 
                 # Here the buyer and seller have agreed to a sale, so let's execute the order.  We can buy only as many
@@ -75,11 +75,11 @@ class Solution:
                 delta = min(buy_amount, sell_amount)
                 buy_amount -= delta
                 sell_amount -= delta
-                sells[0] = (sell_price, sell_amount)
+                sells_min_heap[0] = (sell_price, sell_amount)
 
                 # If the seller isn't offering any more shares, then pop their order from the sells backlog.
                 if sell_amount == 0:
-                    heappop(sells)
+                    heappop(sells_min_heap)
 
                 # If the buyer doesn't want any more shares, we can stop processing the loop.
                 if buy_amount == 0:
@@ -88,18 +88,18 @@ class Solution:
         def handleSell(sell_price: int, sell_amount: int):
             while sell_amount > 0:
                 # If we don't have any buyers, we can't match up a sale.  So we should push the order into the sells backlog.
-                if not buys:
-                    heappush(sells, (sell_price, sell_amount))
+                if not buys_max_heap:
+                    heappush(sells_min_heap, (sell_price, sell_amount))
                     return
 
                 # If we do have a buyer, we can check the highest buy price.  If the highest buy price is still too low,
                 # we can't match up a sale.  So we should push the order into the buys backlog anyways.
                 #
                 # Note that this is a max heap so we need to negate the value.
-                buy_price, buy_amount = buys[0]
+                buy_price, buy_amount = buys_max_heap[0]
                 buy_price *= -1
                 if sell_price > buy_price:
-                    heappush(sells, (sell_price, sell_amount))
+                    heappush(sells_min_heap, (sell_price, sell_amount))
                     return
 
                 # Here the buyer nad seller have agreed to a sale, so let's execute the order.  We can only buy as many shares
@@ -107,11 +107,11 @@ class Solution:
                 delta = min(buy_amount, sell_amount)
                 buy_amount -= delta
                 sell_amount -= delta
-                buys[0] = (-buy_price, buy_amount)
+                buys_max_heap[0] = (-buy_price, buy_amount)
 
                 # If the buyer isn't willing to buy any more shares, then pop their order from the buys backlog.
                 if buy_amount == 0:
-                    heappop(buys)
+                    heappop(buys_max_heap)
 
                 # If the seller doesn't want any more shares, stop processing the loop.
                 if sell_amount == 0:
@@ -127,8 +127,8 @@ class Solution:
                 handleSell(price, amount)
 
         total = 0
-        for _, amount in buys:
+        for _, amount in buys_max_heap:
             total = (total + amount) % MOD
-        for _, amount in sells:
+        for _, amount in sells_min_heap:
             total = (total + amount) % MOD
         return total
