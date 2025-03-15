@@ -51,7 +51,7 @@ class Solution:
         sells: list[tuple[int, int]] = []
         MOD = 10**9 + 7
 
-        def handle_buy(buy_price: int, buy_amount: int):
+        def handleBuy(buy_price: int, buy_amount: int):
             while buy_amount > 0:
                 # If we don't have any sellers, we can't match up a sale.  So we should push the order into the buys
                 # backlog.
@@ -85,7 +85,7 @@ class Solution:
                 if buy_amount == 0:
                     return
 
-        def handle_sell(sell_price: int, sell_amount: int):
+        def handleSell(sell_price: int, sell_amount: int):
             while sell_amount > 0:
                 # If we don't have any buyers, we can't match up a sale.  So we should push the order into the sells backlog.
                 if not buys:
@@ -122,9 +122,9 @@ class Solution:
                 continue
 
             if order_type == 0:
-                handle_buy(price, amount)
+                handleBuy(price, amount)
             else:
-                handle_sell(price, amount)
+                handleSell(price, amount)
 
         total = 0
         for _, amount in buys:

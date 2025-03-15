@@ -80,14 +80,14 @@ class MaxStack:
         a = self.tail.previous
         b = node
         c = self.tail
-        self.__insert_node(a, b, c)
+        self.__insertNode(a, b, c)
 
     def pop(self) -> int:
         node = self.tail.previous
         assert node is not None
 
         # Remove the last element of the linked list.
-        self.__delete_node(node)
+        self.__deleteNode(node)
 
         # We also need to remove this element from the heap, but this will be difficult as we can't remove arbitrary
         # elements from the middle of the heap.  Instead, we will note the deletion and defer it.
@@ -100,7 +100,7 @@ class MaxStack:
 
     def peekMax(self) -> int:
         # Since peekMax is allowed to run in O(log n), perform the deferred heap deletions from any previous pops.
-        self.__delete_max()
+        self.__deleteMax()
 
         # Return the front of the of heap.
         (_, _, node) = self.max_heap[0]
@@ -108,16 +108,16 @@ class MaxStack:
 
     def popMax(self) -> int:
         # Since popMax is allowed to run in O(log n), perform the deferred heap deletions from any previous pops.
-        self.__delete_max()
+        self.__deleteMax()
 
         # Pop off the front of the heap, which is efficient to do so here (we don't have to delete from the middle).
         (_, _, node) = heappop(self.max_heap)
 
         # Delete from the linked list, which is also efficient to do here.
-        self.__delete_node(node)
+        self.__deleteNode(node)
         return node.value
 
-    def __delete_node(self, b: StackNode | None):
+    def __deleteNode(self, b: StackNode | None):
         assert b is not None
 
         a = b.previous
@@ -128,7 +128,7 @@ class MaxStack:
             a.next = c
             c.previous = a
 
-    def __insert_node(self, a: StackNode | None, b: StackNode, c: StackNode | None):
+    def __insertNode(self, a: StackNode | None, b: StackNode, c: StackNode | None):
         assert a is not None
         assert b is not None
         assert c is not None
@@ -141,7 +141,7 @@ class MaxStack:
         b.previous = a
         b.next = c
 
-    def __delete_max(self):
+    def __deleteMax(self):
         while self.max_heap:
             (_, _, node) = self.max_heap[0]
 
