@@ -1,3 +1,6 @@
+# DIFFICULTY: MEDIUM
+# ------------------
+#
 # Given two sparse vectors, compute their dot product.
 #
 # Implement class SparseVector:
