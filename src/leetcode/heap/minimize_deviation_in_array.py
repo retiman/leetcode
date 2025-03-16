@@ -1,4 +1,5 @@
-# DIFFICULTY: Hard
+# DIFFICULTY: HARD
+# ----------------
 #
 # You are given an array nums of n positive integers.
 #

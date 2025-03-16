@@ -1,4 +1,5 @@
 # DIFFICULTY: HARD
+# ----------------
 #
 # Design a data structure to store the strings' count with the ability to return the strings with minimum and maximum
 # counts.

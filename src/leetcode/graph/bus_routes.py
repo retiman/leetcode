@@ -1,4 +1,5 @@
 # DIFFICULTY: HARD
+# ----------------
 #
 # You are given an array routes representing bus routes where routes[i] is a bus route that the ith bus repeats
 # forever.
