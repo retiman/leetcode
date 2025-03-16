@@ -1,4 +1,5 @@
 # DIFFICULTY: MEDIUM
+# ------------------
 #
 # On an infinite plane, a robot initially stands at (0, 0) and faces north. Note that:
 #

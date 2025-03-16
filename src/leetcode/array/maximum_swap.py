@@ -1,4 +1,5 @@
 # DIFFICULTY: MEDIUM
+# ------------------
 #
 # You are given an integer num. You can swap two digits at most once to get the maximum valued number.
 #

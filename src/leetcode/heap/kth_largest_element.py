@@ -1,4 +1,5 @@
-# DIFFICULTY: Medium
+# DIFFICULTY: MEDIUM
+# ------------------
 #
 # Given an integer array nums and an integer k, return the kth largest element in the array.
 #

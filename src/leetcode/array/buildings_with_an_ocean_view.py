@@ -1,4 +1,5 @@
 # DIFFICULTY: MEDIUM
+# ------------------
 #
 # There are n buildings in a line. You are given an integer array heights of size n that represents the heights of the
 # buildings in the line.
