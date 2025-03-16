@@ -6,9 +6,6 @@
 # Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
 #
 # See https://leetcode.com/problems/reverse-integer
-import math
-
-
 class Solution:
     def reverse(self, x: int) -> int:
         """
@@ -42,7 +39,7 @@ class Solution:
                 # Otherwise shift r to the left by 10, then add the last digit we got from n.
                 r = r * 10 + last
 
-            n = math.floor(n / 10)
+            n = n // 10
 
         value = sign * r
         return value if min_value < value < max_value else 0
