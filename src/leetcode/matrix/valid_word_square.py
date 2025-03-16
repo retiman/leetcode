@@ -12,14 +12,14 @@ class Solution:
         """
         SOLUTION
         --------
-
+        
         A naive solution works.
-
+        
         COMPLEXITY
         ----------
-
+        
         Time complexity is O(m * n).
-
+        
         Space complexity is O(1).
         """
         for i in range(len(words)):
