@@ -13,9 +13,9 @@ class Solution:
     """
     SOLUTION
     --------
-    
+
     This is known as a prefix sum.
-    
+
     See https://en.wikipedia.org/wiki/Prefix_sum
 
     COMPLEXITY
@@ -25,5 +25,6 @@ class Solution:
 
     Space complexity is O(n) because we are storing the prefix sum array.
     """
+
     def runningSum(self, nums: list[int]) -> list[int]:
         return list(accumulate(nums))
