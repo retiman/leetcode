@@ -21,26 +21,26 @@ class Solution:
         Space complexity is O(n) because we are storing the subsets in stack frames.
         """
 
-        def generate(xs: set[int]) -> set[set[int]]:
-            if len(xs) == 0:
-                return set(set())
+        # Note that you cannot put a set inside of a set; sets are mutable and cannot be hashed.  However, frozensets
+        # are immutable, so you can use those instead.
+        def generate(xs: set[int]) -> set[frozenset[int]]:
+            if not xs:
+                # Note that set(frozenset()) creates an empty set, not a set with an empty set in it.
+                return {frozenset()}
 
-            # Find the first element of xs and call it x; remove it from the set.
-            x = xs.pop()
+            # Find the first element of xs and call it x; remove it from the set and call it rest.
+            ys = list(xs)
+            x = ys[0]
+            rest = set(ys[1:])
 
-            # Make a copy of xs without x and generate all subsets of that set.
-            rest = set(xs)
+            # Generate all subsets of that set.
             excludeds = generate(rest)
 
             # Now generate all subsets with x by adding x to each excluded subset.
-            includeds: set[set[int]] = set()
-            for excluded in excludeds:
-                included = set(excluded)
-                included.add(x)
-                includeds.add(included)
+            includeds = {subset | {x} for subset in excludeds}
 
             # Combine the excluded and included subsets.
-            return set.union(excludeds, includeds)
+            return excludeds | includeds
 
         result = generate(set(nums))
         return [list(subset) for subset in result]
