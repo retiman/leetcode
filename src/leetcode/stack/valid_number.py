@@ -5,6 +5,7 @@
 # - A decimal number or an integer.
 # - (Optional) An 'e' or 'E', followed by an integer.
 
+
 # A decimal number can be split up into these components (in order):
 # - (Optional) A sign character (either '+' or '-').
 #
@@ -42,44 +43,47 @@ class Solution:
 
         Space complexity is O(1).
         """
+        # Store some flags to keep track of what we have seen so far.
         digits = False
         decimal = False
         exponent = False
 
-        for i, c in enumerate(s.lower()):
+        t = s.strip().lower()
+        for i, c in enumerate(t):
             # Get the previous character, if it exists.
-            p = "" if i == 0 else s[i - 1]
+            p = "" if i == 0 else t[i - 1]
 
             match c:
                 case "+" | "-":
-                    # After seeing the E symbol, signs are only valid immediately after the E symbol.
-                    if exponent and p != "e":
-                        return False
+                    if exponent:
+                        # After seeing the E symbol, signs are only valid immediately after the E symbol.
+                        if p != "e":
+                            return False
 
-                    # However, signs are not valid if they are the last symbol.
-                    if exponent and i == len(s) - 1:
-                        return False
+                        # However, signs are not valid if they are the last symbol.
+                        if i == len(t) - 1:
+                            return False
+                    else:
+                        # Before seeing the E symbol, signs are not valid if they aren't in the first position.
+                        if i != 0:
+                            return False
 
-                    # Before seeing the E symbol, signs are not valid if they aren't in the first position.
-                    if i != 0:
-                        return False
+                        # Signs are invalid after we have encountered a decimal.
+                        if decimal:
+                            return False
 
-                    # Signs are invalid after we have encountered a decimal.
-                    if decimal:
-                        return False
-
-                    # Signs are invalid if they are the last symbol, and no digits have been seen.  For example, "9." is
-                    # valid, but "." by itself is not.
-                    if i == len(s) - 1 and not digits:
-                        return False
-                case "e" | "E":
+                        # Signs are invalid if they are the last symbol, and no digits have been seen.  For example, "9." is
+                        # valid, but "." by itself is not.
+                        if i == len(t) - 1 and not digits:
+                            return False
+                case "e":
                     # If the E symbol is encountered again after already seeing one, the number is automatically
                     # invalid.
                     if exponent:
                         return False
 
                     # The E symbol may not appear as the first symbol or the last symbol.
-                    if i == 0 or i == len(s) - 1:
+                    if i == 0 or i == len(t) - 1:
                         return False
 
                     # The E symbol may not appear just after the sign symbol.  For example, 46+e3 is invalid.
@@ -102,7 +106,7 @@ class Solution:
                         return False
 
                     # The decimal symbol cannot be the last symbol, unless digits have already been seen.
-                    if i == len(s) - 1 and not digits:
+                    if i == len(t) - 1 and not digits:
                         return False
 
                     decimal = True
