@@ -14,46 +14,47 @@ import random
 
 
 class Solution:
+    """
+    SOLUTION
+    --------
+
+    The naive way to do this is to take the weights and create a new array that's the size of the sum of the
+    weights.  For example, if you have the input [1, 3], create an array [0, 1, 1, 1].  Then, generate a random
+    number using floor(random() * 4) to get a number between 0 and 3 inclusive.  That's the index you should pick.
+
+    This will work, but once you have a large number of weights, you'll be creating quite large arrays.  Probably
+    not a good idea.
+
+    Instead, we can compute a prefix sum to avoid expanding an array.  In the previous example, you can turn the
+    input array [1, 3] into the prefix sum array [1, 4].  The cumulative weights divide the range in this way:
+
+    [0, 1) -> Index 0
+    [1, 4) -> Index 1
+
+    So if you generate a random number between [0, 4), you can do a linear scan of the prefix sum array to find the
+    index that you should pick.  This works because each range's weight increases as you move to the right.
+
+    Likewise, if you had the input array [1, 4, 2], the prefix sum array would be [1, 5, 7].  The ranges would be:
+
+    [0, 1) -> Index 0
+    [1, 5) -> Index 1
+    [5, 7) -> Index 2
+
+    And again, picking a random number between [0, 7) would allow you to do a linear scan to find the index to pick.
+
+    But wait!  Instead of doing a linear scan, it's much more efficient to do a binary search, which is what this
+    solution does.
+
+    COMPLEXITY
+    ----------
+
+    Time complexity in O(n).  It is O(n) to create the prefix sum array, then O(n) to perform a linear scan, or
+    O(log n) to perform a binary search.
+
+    Space complexity is O(n) because we are storing the prefix sum array.
+    """
+
     def __init__(self, w: list[int]) -> None:
-        """
-        SOLUTION
-        --------
-
-        The naive way to do this is to take the weights and create a new array that's the size of the sum of the
-        weights.  For example, if you have the input [1, 3], create an array [0, 1, 1, 1].  Then, generate a random
-        number using floor(random() * 4) to get a number between 0 and 3 inclusive.  That's the index you should pick.
-
-        This will work, but once you have a large number of weights, you'll be creating quite large arrays.  Probably
-        not a good idea.
-
-        Instead, we can compute a prefix sum to avoid expanding an array.  In the previous example, you can turn the
-        input array [1, 3] into the prefix sum array [1, 4].  The cumulative weights divide the range in this way:
-
-        [0, 1) -> Index 0
-        [1, 4) -> Index 1
-
-        So if you generate a random number between [0, 4), you can do a linear scan of the prefix sum array to find the
-        index that you should pick.  This works because each range's weight increases as you move to the right.
-
-        Likewise, if you had the input array [1, 4, 2], the prefix sum array would be [1, 5, 7].  The ranges would be:
-
-        [0, 1) -> Index 0
-        [1, 5) -> Index 1
-        [5, 7) -> Index 2
-
-        And again, picking a random number between [0, 7) would allow you to do a linear scan to find the index to pick.
-
-        But wait!  Instead of doing a linear scan, it's much more efficient to do a binary search, which is what this
-        solution does.
-
-        COMPLEXITY
-        ----------
-
-        Time complexity in O(n).  It is O(n) to create the prefix sum array, then O(n) to perform a linear scan, or
-        O(log n) to perform a binary search.
-
-        Space complexity is O(n) because we are storing the prefix sum array.
-        """
         self.prefix_sum = [0] * len(w)
         self.total = 0
         for i, weight in enumerate(w):

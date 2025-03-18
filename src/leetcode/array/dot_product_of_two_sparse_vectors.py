@@ -15,26 +15,27 @@
 #
 # See https://leetcode.com/problems/dot-product-of-two-sparse-vectors
 class SparseVector:
+    """
+    SOLUTION
+    --------
+
+    If the vector is sparse, just store the non-zero values in a map of index to value.  That will compress for
+    storage; to compute the dot product you can either decompress and then do the dot product, or you can do the
+    multiplication over the non-zero values directly.
+
+    Doing it without decompression is more efficient, and we should start with the smaller vector to minimize the
+    number of operations.
+
+    COMPLEXITY
+    ----------
+
+    Time complexity is O(k) in the best case, where k is the number of non-zero elements.  In the worst case,
+    though, it could still be O(n) if both vectors are dense.
+
+    Space complexity is O(k) in the best case, where k is the number of non-zero elements.
+    """
+
     def __init__(self, nums: list[int]) -> None:
-        """
-        SOLUTION
-        --------
-
-        If the vector is sparse, just store the non-zero values in a map of index to value.  That will compress for
-        storage; to compute the dot product you can either decompress and then do the dot product, or you can do the
-        multiplication over the non-zero values directly.
-
-        Doing it without decompression is more efficient, and we should start with the smaller vector to minimize the
-        number of operations.
-
-        COMPLEXITY
-        ----------
-
-        Time complexity is O(k) in the best case, where k is the number of non-zero elements.  In the worst case,
-        though, it could still be O(n) if both vectors are dense.
-
-        Space complexity is O(k) in the best case, where k is the number of non-zero elements.
-        """
         # This compresses the vector so that non-zero values are mapped.
         self.map: dict[int, int] = {i: num for i, num in enumerate(nums) if num != 0}
 

@@ -9,21 +9,22 @@
 #
 # See https://leetcode.com/problems/design-hit-counter
 class HitCounter:
+    """
+    SOLUTION
+    --------
+
+    To do this efficiently we'll have to use a circular array buffer.  This is the same technique used by time
+    series databases.
+
+    COMPLEXITY
+    ----------
+
+    Time complexity is O(1) for both methods since we fix the array size at 300.
+
+    Space complexity is O(1) for both methods because we fix the array size at 300.
+    """
+
     def __init__(self) -> None:
-        """
-        SOLUTION
-        --------
-
-        To do this efficiently we'll have to use a circular array buffer.  This is the same technique used by time
-        series databases.
-
-        COMPLEXITY
-        ----------
-
-        Time complexity is O(1) for both methods since we fix the array size at 300.
-
-        Space complexity is O(1) for both methods because we fix the array size at 300.
-        """
         # Each event is a [timestamp, hit_count].  Since our granularity is in seconds, we only need to track the last
         # 300 seconds.
         self.timestamps = [0 for _ in range(300)]

@@ -15,20 +15,21 @@ from itertools import accumulate
 
 
 class NumArray:
+    """
+    SOLUTION
+    --------
+
+    This can be done with a prefix sum array.
+
+    COMPLEXITY
+    ----------
+
+    Time complexity is O(n) because we are iterating through the list once.
+
+    Space complexity is O(n) because we are storing the prefix sum array.
+    """
+
     def __init__(self, nums: list[int]) -> None:
-        """
-        SOLUTION
-        --------
-
-        This can be done with a prefix sum array.
-
-        COMPLEXITY
-        ----------
-
-        Time complexity is O(n) because we are iterating through the list once.
-
-        Space complexity is O(n) because we are storing the prefix sum array.
-        """
         self.prefix_sum = list(accumulate(nums))
 
     def sumRange(self, left: int, right: int) -> int:
