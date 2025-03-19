@@ -43,7 +43,7 @@ class LRUCache:
     """
 
     def __init__(self, capacity: int) -> None:
-        self.map: dict[int, Node] = {}
+        self.mapping: dict[int, Node] = {}
         self.capacity = capacity
 
         # Create two sentinel nodes to simplify the logic.
@@ -53,29 +53,29 @@ class LRUCache:
         self.tail.previous = self.head
 
     def get(self, key: int) -> int:
-        if key not in self.map:
+        if key not in self.mapping:
             return -1
 
-        node = self.map[key]
+        node = self.mapping[key]
         self.__updateTimestamp(node)
         return node.value
 
     def put(self, key: int, value: int) -> None:
-        if key in self.map:
-            node = self.map[key]
+        if key in self.mapping:
+            node = self.mapping[key]
             node.value = value
             self.__updateTimestamp(node)
             return
 
         # If the key isn't in the map, we need to add it.
         node = Node(key, value)
-        self.map[key] = node
+        self.mapping[key] = node
         self.__addLeftNode(node)
 
         # If we've exceeded the capacity, remove the least recently used key.
-        if len(self.map) > self.capacity:
+        if len(self.mapping) > self.capacity:
             node = self.tail.previous
-            self.map.pop(node.key)
+            self.mapping.pop(node.key)
             self.__removeNode(node)
 
     def __removeNode(self, node: Node) -> None:

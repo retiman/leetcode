@@ -50,21 +50,21 @@ class Solution:
             return None
 
         # Create a map of original nodes to new nodes.
-        map: dict[Node | None, Node] = {}
+        mapping: dict[Node | None, Node] = {}
 
         # First, create a map of each node to its copy.
         current = head
         while current:
-            map[current] = Node(current.val)
+            mapping[current] = Node(current.val)
             current = current.next
 
         # Second, assign the pointers.
         current = head
         while current:
-            copy = map[current]
-            copy.next = map.get(current.next, None)
-            copy.random = map.get(current.random, None)
+            copy = mapping[current]
+            copy.next = mapping.get(current.next, None)
+            copy.random = mapping.get(current.random, None)
             current = current.next
 
         # Return the head of the copied list.
-        return map[head]
+        return mapping[head]

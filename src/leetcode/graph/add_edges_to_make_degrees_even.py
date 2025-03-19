@@ -33,43 +33,47 @@ class Solution:
 
         Space complexity is O(m + n).  We are storing a set of edges and a map of each node to degree.
         """
-        edgeSet: set[tuple[int, int]] = set()
+        edge_set: set[tuple[int, int]] = set()
 
         def normalizeEdge(edge: tuple[int, int]) -> tuple[int, int]:
             (a, b) = edge
             return (a, b) if a < b else (b, a)
 
         def hasEdge(edge: tuple[int, int]) -> bool:
+            nonlocal edge_set
+
             e = normalizeEdge(edge)
-            return e in edgeSet
+            return e in edge_set
 
         def addEdge(edge: tuple[int, int]) -> None:
+            nonlocal edge_set
+
             e = normalizeEdge(edge)
-            edgeSet.add(e)
+            edge_set.add(e)
 
         # Create a map of node -> degrees.
-        degreeMap: dict[int, int] = defaultdict(int)
+        degree_mapping: dict[int, int] = defaultdict(int)
         for edge in edges:
             [a, b] = edge
-            if a not in degreeMap:
-                degreeMap[a] = 0
-            if b not in degreeMap:
-                degreeMap[b] = 0
+            if a not in degree_mapping:
+                degree_mapping[a] = 0
+            if b not in degree_mapping:
+                degree_mapping[b] = 0
 
-            degreeMap[a] += 1
-            degreeMap[b] += 1
+            degree_mapping[a] += 1
+            degree_mapping[b] += 1
             addEdge((a, b))
 
         # Find all odd degree nodes.  Note that nodes are number 1 through n inclusive.
-        oddNodes: list[int] = []
+        odd_nodes: list[int] = []
         for i in range(1, n + 1):
-            degrees = degreeMap[i]
+            degrees = degree_mapping[i]
             if degrees % 2 == 1:
-                oddNodes.append(i)
+                odd_nodes.append(i)
 
         # Only 0, 2, or 4 odd degree node graphs can have edges added to create a valid all even degree path.  So if we
         # have 0 odd degree nodes, we are golden.
-        if len(oddNodes) == 0:
+        if len(odd_nodes) == 0:
             return True
 
         # If we have 2 odd degree nodes, we have to check if we can create an all even degree graph by doing one of the
@@ -77,8 +81,8 @@ class Solution:
         #
         # 1. Add an edge between the two nodes, as long as it's not a duplicate.
         # 2. Add two edges connecting the nodes, with another node in between.
-        if len(oddNodes) == 2:
-            [a, b] = oddNodes
+        if len(odd_nodes) == 2:
+            [a, b] = odd_nodes
             # Check if we can create an all even degree graph by connecting the nodes directly.
             if not hasEdge((a, b)):
                 return True
@@ -98,8 +102,8 @@ class Solution:
         # If we have 4 odd degree nodes, we can check if we can create an all even degree graph by connecting the nodes
         # together.  The nodes must be connected directly though; we can't connect them through some unrelated node as
         # that requires two edges already, leaving the other two odd degree nodes stranded.
-        if len(oddNodes) == 4:
-            [a, b, c, d] = oddNodes
+        if len(odd_nodes) == 4:
+            [a, b, c, d] = odd_nodes
 
             # With 4 nodes, we can only connect them in 3 distinct ways:
             pairs = [((a, b), (c, d)), ((a, c), (b, d)), ((a, d), (c, b))]

@@ -24,18 +24,18 @@ class Solution:
         Space complexity is O(n) because we are using a map to store frequency.
         """
         # Create a map of number -> frequency.
-        map: dict[int, int] = defaultdict(int)
+        mapping: dict[int, int] = defaultdict(int)
 
         # Now populate the map by mapping each number to its frequency.
         for x in xs:
-            map[x] += 1
+            mapping[x] += 1
 
         # Now get all the unique elements from the list.
-        uniques = list(map.keys())
+        uniques = list(mapping.keys())
 
         # Sort the unique values by their frequency.  Since we want the most frequent elements, we sort in decreasing
         # order (aka reverse order).
-        uniques = sorted(map.keys(), key=lambda x: map[x], reverse=True)
+        uniques = sorted(mapping.keys(), key=lambda x: mapping[x], reverse=True)
 
         # Return the first k elements
         return uniques[:k]

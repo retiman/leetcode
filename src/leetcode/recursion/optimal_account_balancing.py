@@ -31,13 +31,13 @@ class Solution:
         Space complexity is O(n) because we are using recursion to solve the problem.
         """
         # Create a map of person -> amount.
-        map: dict[int, int] = {}
+        mapping: dict[int, int] = {}
 
         # First, figure out the balance that each person holds.
         for transaction in transactions:
             [from_person, to_person, amount] = transaction
-            map[from_person] = map.get(from_person, 0) - amount
-            map[to_person] = map.get(to_person, 0) + amount
+            mapping[from_person] = mapping.get(from_person, 0) - amount
+            mapping[to_person] = mapping.get(to_person, 0) + amount
 
         # Second, figure out all non-zero balances.  If we needed to know who is paying whom to achieve the minimum
         # number of transactions, we will need to have an array indexed by person.  However, we don't need to know that.
@@ -45,7 +45,7 @@ class Solution:
         # We just need to know the number of transactions, so we can just get a list of non-zero balances and try to
         # zero them out.
         balances: list[int] = []
-        for value in map.values():
+        for value in mapping.values():
             if value != 0:
                 balances.append(value)
 

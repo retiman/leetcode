@@ -48,7 +48,7 @@ class Solution:
         #
         # Don't forget to seed the map with a prefix sum of 0 with frequency 1.  Without this seed, we'd miss subarrays
         # that start at the beginning of the array.
-        map: dict[int, int] = {0: 1}
+        mapping: dict[int, int] = {0: 1}
 
         for num in nums:
             pj += num
@@ -59,10 +59,10 @@ class Solution:
 
             # If prefix[j] appears in the frequency map, we have at LEAST one subarray that sums to k.  Add the total
             # frequency to the result.
-            result += map.get(pi, 0)
+            result += mapping.get(pi, 0)
 
             # Now update the frequency map to account for this new prefix sum up to j.
-            freq = map.get(pj, 0)
-            map[pj] = freq + 1
+            freq = mapping.get(pj, 0)
+            mapping[pj] = freq + 1
 
         return result

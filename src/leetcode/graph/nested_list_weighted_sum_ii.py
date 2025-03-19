@@ -38,7 +38,7 @@ class Solution:
         """
         # Define a list of depth -> integers; each integer at that depth will have the same weight.  We'll compute the
         # max depth as we traverse.
-        map: dict[int, list[int]] = defaultdict(list[int])
+        mapping: dict[int, list[int]] = defaultdict(list[int])
         max_depth = 0
 
         def compute(x: NestedInteger, depth: int) -> None:
@@ -47,7 +47,7 @@ class Solution:
 
             if x.isInteger():
                 value = x.getInteger() or 0
-                map[depth].append(value)
+                mapping[depth].append(value)
             else:
                 values = x.getList()
                 for value in values:
@@ -58,7 +58,7 @@ class Solution:
 
         # Now that we have the map, just multiply each list of integers at each depth by the computed weight, and sum.
         result = 0
-        for depth, values in map.items():
+        for depth, values in mapping.items():
             weight = max_depth - depth + 1
             partial = sum(values) * weight
             result += partial

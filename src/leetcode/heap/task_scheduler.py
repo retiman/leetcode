@@ -53,13 +53,13 @@ class Solution:
         Space complexity is O(n).
         """
         # Create a map of task to frequency.
-        map: dict[str, int] = defaultdict(int)
+        mapping: dict[str, int] = defaultdict(int)
         for task in tasks:
-            map[task] += 1
+            mapping[task] += 1
 
         # Create a max heap of frequency.
         max_heap: list[int] = []
-        for freq in map.values():
+        for freq in mapping.values():
             heappush(max_heap, freq)
 
         # Create a queue of [freq, cycle] for cooldown tasks.

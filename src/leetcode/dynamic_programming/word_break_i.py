@@ -29,10 +29,10 @@ class Solution:
         # We'll use a map to indicate if a slice (0,i) can make a sentence.  This can just be an array, because the
         # first index is always going to be 0.  However, we make a map here because it's a little clearer what we are
         # doing.
-        map: dict[tuple[int, int], bool] = {}
+        mapping: dict[tuple[int, int], bool] = {}
 
         # The slice [0,0) is always going to form a sentence; the base sentence.
-        map[(0, 0)] = True
+        mapping[(0, 0)] = True
 
         # We want to see if we can successfully parse a sentence from [0,s.length), but to do so, we'll incrementally
         # build up whether or not we can parse a sentence from [0,j) for all j <= len(s).
@@ -45,8 +45,8 @@ class Solution:
 
                 # If the slice (0,i) formed a sentence, then (0,j) must form a sentence because (i,j) is a word.  For
                 # example, if (0,i) was 'hello' and (i,j) was 'there', then (0,j) slice of 'hellothere' is a sentence.
-                if (0, i) in map:
-                    map[(0, j)] = True
+                if (0, i) in mapping:
+                    mapping[(0, j)] = True
 
         # If we've formed a sentence using all the characters, we've got a winner here.
-        return (0, len(s)) in map
+        return (0, len(s)) in mapping
