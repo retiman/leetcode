@@ -28,10 +28,10 @@ class Solution:
         Space complexity is O(m * n).
         """
         # Define a map of canonical representation -> list of anagrams.
-        map: dict[str, list[str]] = defaultdict(list)
+        mapping: dict[str, list[str]] = defaultdict(list)
 
         for text in texts:
             canonical = "".join(sorted(text))
-            map[canonical].append(text)
+            mapping[canonical].append(text)
 
-        return list(map.values())
+        return list(mapping.values())

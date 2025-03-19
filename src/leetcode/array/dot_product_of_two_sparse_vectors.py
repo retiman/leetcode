@@ -37,11 +37,13 @@ class SparseVector:
 
     def __init__(self, nums: list[int]) -> None:
         # This compresses the vector so that non-zero values are mapped.
-        self.map: dict[int, int] = {i: num for i, num in enumerate(nums) if num != 0}
+        self.mapping: dict[int, int] = {i: num for i, num in enumerate(nums) if num != 0}
 
     def dotProduct(self, vec: "SparseVector") -> int:
         # Get the vectors in order of size; we'll iterate over the smaller vector.
-        (smaller, larger) = (self.map, vec.map) if len(self.map) < len(vec.map) else (vec.map, self.map)
+        (smaller, larger) = (self.mapping, vec.mapping)
+        if len(self.mapping) >= len(vec.mapping):
+            (smaller, larger) = (vec.mapping, self.mapping)
 
         result = 0
         for i, value in smaller.items():
