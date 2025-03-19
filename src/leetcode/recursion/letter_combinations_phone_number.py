@@ -19,6 +19,11 @@ class Solution:
 
         COMPLEXITY
         ----------
+
+        Time complexity is O(4^n) where n is the number of digits in the input string.  We are branching max 4 times per
+        digit.
+
+        Space complexity is O(n) where n is the number of digits in the input string.
         """
         table: dict[str, str] = {
             "2": "abc",

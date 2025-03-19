@@ -13,21 +13,20 @@ from collections import deque
 
 
 class MovingAverage:
-    """
-    SOLUTION
-    --------
-
-    This can be solved with a queue or sliding window.
-
-    COMPLEXITY
-    ----------
-
-    Time complexity is O(1) for next.
-
-    Space complexity is O(n) where n is the size of the window.
-    """
-
     def __init__(self, size: int) -> None:
+        """
+        SOLUTION
+        --------
+
+        This can be solved with a queue or sliding window.
+
+        COMPLEXITY
+        ----------
+
+        Time complexity is O(1) for next.
+
+        Space complexity is O(n) where n is the size of the window.
+        """
         self.size = size
         self.window: deque[int] = deque()
         self.total = 0

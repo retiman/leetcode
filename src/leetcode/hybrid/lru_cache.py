@@ -28,21 +28,20 @@ class Node:
 
 
 class LRUCache:
-    """
-    SOLUTION
-    --------
-
-    This problem can be solved using a combination of a doubly linked list and a hashmap.
-
-    COMPLEXITY
-    ----------
-
-    Time complexity is O(1) for all operations.
-
-    Space complexity is O(n) where n is the number of keys in the data structure.
-    """
-
     def __init__(self, capacity: int) -> None:
+        """
+        SOLUTION
+        --------
+
+        This problem can be solved using a combination of a doubly linked list and a hashmap.
+
+        COMPLEXITY
+        ----------
+
+        Time complexity is O(1) for all operations.
+
+        Space complexity is O(n) where n is the number of keys in the data structure.
+        """
         self.mapping: dict[int, Node] = {}
         self.capacity = capacity
 

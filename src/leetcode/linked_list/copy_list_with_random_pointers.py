@@ -34,10 +34,11 @@ class Solution:
         --------
 
         If there's no random pointer you can iterate through the nodes and create a copy of each node.  With the random
-        pointer you'll have to maintain a map of original node to copied node so you can assign the random pointers later.
+        pointer you'll have to maintain a map of original node to copied node so you can assign the random pointers
+        later.
 
-        First iterate through the list once to make copies of each node in a map.  Then iterate again and assign the next
-        and random pointers.
+        First iterate through the list once to make copies of each node in a map.  Then iterate again and assign the
+        next and random pointers.
 
         COMPLEXITY
         ----------

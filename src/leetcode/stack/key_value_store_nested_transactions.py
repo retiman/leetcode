@@ -15,21 +15,20 @@
 #
 # See https://leetcode.com/discuss/interview-question/279913/Bloomberg-or-Onsite-or-Key-Value-Store-with-transactions
 class KeyValueStore:
-    """
-    SOLUTION
-    --------
-
-    Use a stack to store the transactions.  Each transaction is a dictionary that maps keys to values.
-
-    COMPLEXITY
-    ----------
-
-    Time complexity is O(1) for all operations.
-
-    Space complexity is O(n) where n is the number of keys in the data structure.
-    """
-
     def __init__(self) -> None:
+        """
+        SOLUTION
+        --------
+
+        Use a stack to store the transactions.  Each transaction is a dictionary that maps keys to values.
+
+        COMPLEXITY
+        ----------
+
+        Time complexity is O(1) for all operations.
+
+        Space complexity is O(n) where n is the number of keys in the data structure.
+        """
         self.deletions: list[set[str]] = []
         self.txs: list[dict[str, int]] = []
         self.main: dict[str, int] = {}

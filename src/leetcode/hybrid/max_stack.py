@@ -43,29 +43,29 @@ class StackNode:
 
 
 class MaxStack:
-    """
-    SOLUTION
-    --------
-
-    Use a heap and a doubly linked list to represent the max stack.  Most operations can be performed in O(1) or
-    O(log n).  The only challenge is that when popping from the stack, it's easy to remove from the end of the
-    linked list, but it's not easy to remove from the middle of the max heap.
-
-    Instead of removing from the max heap immediately, defer the deletion until we perform a peekMax or popMax, and
-    check if processing the deferred deletions are required.  If so, perform them there.
-
-    For the purposes of this solution, we won't consider edge cases like popping from an empty stack.  This keeps
-    the solution simple.
-
-    COMPLEXITY
-    ----------
-
-    Time complexity is O(1) for top and O(log n) for each other call.
-
-    Space complexity is O(n).
-    """
-
     def __init__(self):
+        """
+        SOLUTION
+        --------
+
+        Use a heap and a doubly linked list to represent the max stack.  Most operations can be performed in O(1) or
+        O(log n).  The only challenge is that when popping from the stack, it's easy to remove from the end of the
+        linked list, but it's not easy to remove from the middle of the max heap.
+
+        Instead of removing from the max heap immediately, defer the deletion until we perform a peekMax or popMax, and
+        check if processing the deferred deletions are required.  If so, perform them there.
+
+        For the purposes of this solution, we won't consider edge cases like popping from an empty stack.  This keeps
+        the solution simple.
+
+        COMPLEXITY
+        ----------
+
+        Time complexity is O(1) for top and O(log n) for each other call.
+
+        Space complexity is O(n).
+        """
+
         # Because the stack could have multiple duplicate elements, use a unique ID for each node.
         self.keys = 0
         # Because deleting from the middle of a heap is hard, keep track of a set of deletions while popping and defer

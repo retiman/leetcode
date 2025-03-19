@@ -34,25 +34,25 @@ class Node:
 
 
 class AllOne:
-    """
-    SOLUTION
-    --------
-
-    Use a doubly linked list and hashmap to store the keys and their counts.  Each node in the linked list will
-    represent a specific count, and the keys in that node have the count.
-
-    The doubly linked list will let us quickly find the min and max counts, and the hashmap will let us quickly find any
-    key for inc/dec.
-
-    COMPLEXITY
-    ----------
-
-    Time complexity is O(1) for all operations.
-
-    Space complexity is O(n) where n is the number of keys in the data structure.
-    """
-
     def __init__(self) -> None:
+        """
+        SOLUTION
+        --------
+
+        Use a doubly linked list and hashmap to store the keys and their counts.  Each node in the linked list will
+        represent a specific count, and the keys in that node have the count.
+
+        The doubly linked list will let us quickly find the min and max counts, and the hashmap will let us quickly find
+        any key for inc/dec.
+
+        COMPLEXITY
+        ----------
+
+        Time complexity is O(1) for all operations.
+
+        Space complexity is O(n) where n is the number of keys in the data structure.
+        """
+
         # Map of key -> node.
         self.nodes: dict[str, Node] = {}
         # We'll use this linked list to quickly find the min and max counts, which will lead us to the min and max keys.

@@ -15,24 +15,23 @@
 #
 # See https://leetcode.com/problems/min-stack
 class MinStack:
-    """
-    SOLUTION
-    --------
-
-    Use one stack to store the values and another stack to store the minimum values.
-
-    It appears that the problem will not call your solution with an empty stack, so we don't need to worry about that
-    case.
-
-    COMPLEXITY
-    ----------
-
-    Time complexity is O(1) for all operations.
-
-    Space complexity is O(n) where n is the number of elements in the stack.
-    """
-
     def __init__(self):
+        """
+        SOLUTION
+        --------
+
+        Use one stack to store the values and another stack to store the minimum values.
+
+        It appears that the problem will not call your solution with an empty stack, so we don't need to worry about that
+        case.
+
+        COMPLEXITY
+        ----------
+
+        Time complexity is O(1) for all operations.
+
+        Space complexity is O(n) where n is the number of elements in the stack.
+        """
         self.stack: list[int] = []
         self.min_values: list[int] = []
 
