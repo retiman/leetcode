@@ -13,15 +13,11 @@ class Solution:
         """
         SOLUTION
         --------
-
         Use a stack to keep track of the characters.  If the next character is the same as the top of the stack, pop the
         top of the stack.  Otherwise, push the character onto the stack.
-
         COMPLEXITY
         ----------
-
         Time complexity is O(n) where n is the length of s.
-
         Space complexity is O(n).
         """
         stack: list[str] = []
