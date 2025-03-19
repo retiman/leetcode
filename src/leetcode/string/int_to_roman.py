@@ -35,9 +35,10 @@ class Solution:
         COMPLEXITY
         ----------
 
-        Time complexity is O(n).
+        Time complexity is O(n).  However, there is an upper limit of what roman numerals can represent, so you can also
+        argue that the time complexity is O(1).
 
-        Space complexity is O(1) because we are only storing a fixed number of values.
+        Space complexity is O(1).
         """
 
         def convert(digit: int, ones: str, fives: str, tens: str) -> str:

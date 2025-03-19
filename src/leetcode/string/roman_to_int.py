@@ -32,9 +32,17 @@ class Solution:
         SOLUTION
         --------
 
+        A straightforward solution works.
+
 
         COMPLEXITY
         ----------
+
+        Time complexity is O(n).  However, there is an upper limit of what roman numerals can represent, so you can also
+        argue that the time complexity is O(1).
+
+        Space complexity is O(1).
+
         """
         numerals: dict[str, int] = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 
