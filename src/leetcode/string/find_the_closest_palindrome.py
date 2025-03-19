@@ -6,7 +6,7 @@
 #
 # The closest is defined as the absolute difference minimized between two integers.
 #
-# Constraints: 1 <= n.length <= 18
+# Constraints: 1 <= len(str(n)) <= 18
 #
 # See https://leetcode.com/problems/find-the-closest-palindrome
 from collections import defaultdict
