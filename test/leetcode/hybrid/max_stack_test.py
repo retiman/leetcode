@@ -1,4 +1,4 @@
-from leetcode.heap.max_stack import MaxStack
+from leetcode.hybrid.max_stack import MaxStack
 
 
 stack = MaxStack()

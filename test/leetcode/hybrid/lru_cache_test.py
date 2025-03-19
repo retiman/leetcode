@@ -1,4 +1,4 @@
-from leetcode.linked_list.lru_cache import LRUCache
+from leetcode.hybrid.lru_cache import LRUCache
 
 
 def test_case_1():
