@@ -13,7 +13,7 @@
 #
 # See https://leetcode.com/problems/nested-list-weight-sum-ii
 from collections import defaultdict
-from leetcode.graph.common.nested_integer import NestedInteger
+from leetcode.linked_list.common.nested_integer import NestedInteger
 
 
 class Solution:

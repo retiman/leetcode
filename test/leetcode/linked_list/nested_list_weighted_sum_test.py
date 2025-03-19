@@ -1,5 +1,5 @@
-from leetcode.graph.common.nested_integer import NestedInteger
-from leetcode.graph.nested_list_weighted_sum import Solution
+from leetcode.linked_list.common.nested_integer import NestedInteger
+from leetcode.linked_list.nested_list_weighted_sum import Solution
 
 
 soln = Solution()
