@@ -71,11 +71,13 @@ class Solution:
         # In some cases, we may also have to increment or decrement the middle digit.
         uniques: set[str] = set()
         for i in [-1, 0, 1]:
-            u = int(left)
-            v = u + i
-            prefix = str(v)
+            prefix = str(int(left) + i)
             suffix = prefix[::-1]
             uniques.add(prefix + mid + suffix)
+
+            # Skip middle digit variation if there is no middle digit.
+            if not mid:
+                continue
 
             # There are cases where the middle digit needs to be incremented or decremented as well.  For example, take
             # the following cases:
@@ -83,18 +85,15 @@ class Solution:
             # "11911" => "11811"
             # "10001" => "11111"
             #
-            # To handle these cases we'll vary the middle digit as well.
+            # To handle these cases we'll vary the middle digit as well.  However, we need to be careful about the
+            # middle digit going out of bounds, so we'll wrap around if it does.
             for j in [-1, 0, 1]:
-                if mid == "":
-                    continue
-
-                updated = int(mid) + j
-
-                # Only add this middle digit if we have a positive value, so we don't end up with "10-11" or something.
-                if updated < 0:
-                    continue
-
-                uniques.add(prefix + str(updated) + suffix)
+                m = int(mid) + j
+                if m == 10:
+                    m = 0
+                if m == -1:
+                    m = 9
+                uniques.add(prefix + str(m) + suffix)
 
         # These candidates will work for the vast majority of numbers, but sometimes we'll get edge cases where simply
         # incrementing or decrementing won't work.  For example:
@@ -120,7 +119,7 @@ class Solution:
         # Finally prune the candidate list of numbers that don't make sense.
         candidates: list[str] = []
         for candidate in uniques:
-            if candidate.lstrip("0") == "":
+            if candidate.startswith("0"):
                 continue
 
             if candidate == text:
