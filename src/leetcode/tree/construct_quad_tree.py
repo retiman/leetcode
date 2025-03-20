@@ -17,6 +17,8 @@ class Solution:
 
         To make a quad tree, recursively divide the matrix into quadrants until each quadrant is all 1's or all 0's.
 
+        It's not clear why, but in LeetCode, the Node class must be implement and pasted in the solution.
+
         COMPLEXITY
         ----------
 
