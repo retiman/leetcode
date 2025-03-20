@@ -24,7 +24,7 @@
 class FileNode:
     def __init__(self):
         self.is_file = False
-        self.content = ""
+        self.content: str | None = None
         self.children: "dict[str, FileNode]" = {}
 
 
@@ -50,8 +50,8 @@ class FileSystem:
     def ls(self, path: str) -> list[str]:
         node = self.root
 
-        normalized = self.__normalize(path)
-        for part in normalized.split("/"):
+        parts = self.__normalize(path).split("/")
+        for part in parts:
             if part not in node.children:
                 return []
 
@@ -69,8 +69,8 @@ class FileSystem:
     def mkdir(self, path: str) -> None:
         node = self.root
 
-        normalized = self.__normalize(path)
-        for part in normalized.split("/"):
+        parts = self.__normalize(path).split("/")
+        for part in parts:
             if part not in node.children:
                 node.children[part] = FileNode()
 
@@ -79,8 +79,7 @@ class FileSystem:
     def addContentToFile(self, filePath: str, content: str) -> None:
         node = self.root
 
-        normalized = self.__normalize(filePath)
-        parts = normalized.split("/")
+        parts = self.__normalize(filePath).split("/")
         for i, part in enumerate(parts):
             # The problem isn't exactly clear here, but the assumption is that we also mkdir the paths if they do not
             # exist.
@@ -91,17 +90,20 @@ class FileSystem:
 
             # The very last part is the filename, so append the content.
             if i == len(parts) - 1:
-                node.content = node.content + content if node.content else content
+                value = node.content if node.content else ""
+                node.content = value + content
                 node.is_file = True
 
     def readContentFromFile(self, filePath: str) -> str:
         node = self.root
 
-        normalized = self.__normalize(filePath)
-        for part in normalized.split("/"):
+        parts = self.__normalize(filePath).split("/")
+        for part in parts:
             node = node.children[part]
 
         return node.content if node.content else ""
 
     def __normalize(self, path: str) -> str:
+        if path == "/":
+            return ""
         return path[0:-1] if path[-1] == "/" else path
